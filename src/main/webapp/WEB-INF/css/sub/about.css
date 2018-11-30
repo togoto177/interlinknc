@@ -1,0 +1,57 @@
+.about_body{
+	background-color: black;
+}
+.about_width{
+	width: 900px;
+	margin: 0 auto;
+}
+.aboutUs_div{
+	background-color: black;
+	text-align: center;
+	height: 500px;
+}
+.aboutUs_div h1{
+	padding-top: 80px;
+	padding-bottom: 50px;
+	color: white;
+}
+.aboutUs_div a{
+	white-space: nowrap;
+	line-height: 200%;
+	color: white;
+}
+.history_div{
+	background-color: white;
+	text-align: center;
+	height: 700px;
+}
+.history_div h1{
+	padding-top: 80px;
+	padding-bottom: 50px;
+}
+.history_div a{
+	white-space: nowrap;
+	line-height: 200%;
+}
+.businessDomain_div{
+	background-color: black;
+	text-align: center;
+	height: 700px;
+}
+.businessDomain_div h1{
+	padding-top: 80px;
+	padding-bottom: 50px;
+	color: white;
+}
+.businessDomain_div a{
+	white-space: nowrap;
+	line-height: 200%;
+	color: white;
+}
+.businessDomain_div .border{
+	border: 1px solid wheat;
+	width: 400px;
+	margin: 0 auto;
+	padding: 10px;
+	margin-bottom: 30px;
+}

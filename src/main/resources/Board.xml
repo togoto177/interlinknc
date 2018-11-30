@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boards">
+	<resultMap type="Board" id="boardResult">
+		<result property="board_seq" column="board_seq" />
+		<result property="board_division" column="board_division" />
+		<result property="board_title" column="board_title" />
+		<result property="board_content" column="board_content" />
+		<result property="board_hit" column="board_hit" />
+		<result property="board_use_yn" column="board_use_yn" />
+		<result property="board_writer" column="board_writer" />
+		<result property="board_registerdate" column="board_registerdate" />
+		<result property="board_updateid" column="board_updateid" />
+		<result property="board_update_date" column="board_update_date" />
+		<result property="board_etc" column="board_etc" />
+	</resultMap>
+	<insert id="board_insert" parameterType="Board">
+		insert into board_tb
+			
+			values(
+
+			#{board_seq},
+			#{board_division},
+			#{board_title},
+			#{board_content},
+			#{board_hit},
+			#{board_use_yn},
+			#{board_writer},
+			now(),
+			#{board_updateid},
+			now(),
+			#{board_etc}
+		
+        );
+        <selectKey keyProperty="board_seq" resultType="Integer">
+   			SELECT LAST_INSERT_ID();
+  		</selectKey>        
+	</insert>
+	
+	<select id="board_read" resultType="Board" parameterType="int">
+	        select * from board_tb where board_seq = #{board_seq};
+	</select>
+
+</mapper>

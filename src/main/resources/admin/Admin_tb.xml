@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin_tbs">
+	<resultMap type="admin_tb" id="admin_tbResult">
+		<result property="ad_seq" column="ad_seq" />
+		<result property="ad_id" column="ad_id" />
+		<result property="ad_password" column="ad_password" />
+		<result property="ad_name" column="ad_name" />
+		<result property="ad_contact" column="ad_contact" />
+		<result property="ad_email" column="ad_email" />
+		<result property="ad_hiredate" column="ad_hiredate" />
+		<result property="ad_updateid" column="ad_updateid" />
+		<result property="ad_update_date" column="ad_update_date" />
+		<result property="ad_rank" column="ad_rank" />
+		<result property="ad_etc" column="ad_etc" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="admin_tb">
+		insert into admin_tb values(NULL, #{ad_id}, password(#{ad_password}), #{ad_name}, #{ad_contact}, #{ad_email}, now(), #{ad_updateid},
+		#{ad_update_date}, NULL, NULL);
+	</insert>
+	<select id="idcheck" parameterType="String" resultType="Integer">
+		select count(*) from admin_tb where ad_id = #{ad_id}
+	</select>
+	<select id="selectUserInfo" parameterType="HashMap" resultType="admin_tb">
+		select * from admin_tb where ad_id = #{ad_id} and ad_password = password(#{ad_password})
+	</select>
+</mapper>

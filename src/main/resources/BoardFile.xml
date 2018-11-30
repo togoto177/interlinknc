@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardFiles">
+	<resultMap type="BoardFile" id="boardFileResult">
+		<result property="file_seq" column="file_seq" />
+		<result property="board_seq" column="board_seq" />
+		<result property="file_ori_name" column="file_ori_name" />
+		<result property="file_sub_name" column="file_sub_name" />
+		<result property="extention_name" column="extention_name" />
+		<result property="file_size" column="file_size" />
+		<result property="file_path" column="file_path" />
+		<result property="file_use_yn" column="file_use_yn" />
+		<result property="file_updateid" column="file_updateid" />
+		<result property="file_update_date" column="file_update_date" />
+		<result property="file_etc" column="file_etc" />
+	</resultMap>
+	<insert id="file_insert" parameterType="BoardFile">
+		insert into file_tb
+			
+			values(
+
+			#{file_seq},
+			#{board_seq},
+			#{file_ori_name},
+			#{file_sub_name},
+			#{extention_name},
+			#{file_size},
+			#{file_path},
+			#{file_use_yn},
+			#{file_updateid},
+			now(),
+			#{file_etc}
+		
+        );
+	</insert>
+	
+
+</mapper>

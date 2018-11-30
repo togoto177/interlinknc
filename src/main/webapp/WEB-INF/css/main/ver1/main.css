@@ -1,0 +1,208 @@
+body{
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+h1{
+	margin-top: 0;
+}
+/* ex */
+.exlink{
+	text-align: center;
+}
+.exlink a{
+	padding: 10px;
+}
+.topmenu_top{
+	width: 100%;
+	padding: 0px;
+	background-color: #dcdcdc;
+	text-align: right;
+	position: fixed;
+}
+.logo{
+	float: left;
+}
+.logo img{
+	width: 170px;
+	margin: 20px;
+}
+.topmenu{
+	float: right;
+}
+.t_menu_ul{
+	margin: 0;
+	padding: 0;
+	float: right;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 400px;
+	list-style: none;
+}
+.t_menu_ul li a{
+	display: block;
+	float: left;
+	text-decoration: none;
+	padding: 25px 16px;
+	color:black;
+	border-bottom: 3px solid #dcdcdc;
+}
+.t_menu_ul li{
+	float: right;
+}
+.t_menu_ul li a:focus{
+	border-bottom: 3px solid #009688;
+}
+.t_menu_ul li a:hover{
+	border-bottom: 3px solid #009688;
+}
+/* 메인이미지 */
+.mainImg{
+	height: 800px;
+	width: 100%;
+	margin: 0 auto;
+}
+.mainImg img{
+	height: 100%;
+	width: 100%;
+}
+
+/* 소개 about */
+.about{
+	width: 100%;
+	text-align: center;
+}
+.about1_box{
+	border: 2px solid black;
+	padding: 10px;
+	width: 350px;
+	margin: 0 auto;
+}
+.about1_center{
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+.about1_box_title{
+	font-size: 20px;
+	font-weight: 500;
+	color: blue;
+}
+.about2{
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+/* portfolio */
+.portfolio{
+	background: gray;
+	text-align: center;
+}
+.portfolioImg{
+	margin:0 auto;
+	width:935px;
+	height:300px;
+	border:1px solid red;
+	overflow:hidden;
+}  
+.portfolioImg > .portfolioImgAdd{
+	overflow:hidden;
+	height:300px;
+	width:1200px;
+}
+.portfolioImg > .portfolioImgAdd > a{
+	float:left;
+	display:block;
+}  
+.portfolioImg > .portfolioImgAdd > a > img{
+	width:200px;
+	height:300px;
+	margin-right:10px;
+	margin-bottom: 30px;
+	border: none;
+}
+
+/* 다운로드 게시판 */
+.downloads{
+	text-align: center;
+}
+.downloadsTable{
+	width: 70%;
+	margin: 0 auto;
+}
+.downloadsTable table{
+	border-collapse: collapse;
+	width: 100%;
+	min-width: 550px;
+}
+.downloadsTable table td{
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+.downloadsTable table th{
+	border-bottom: double black;
+}
+.downloadsTable table img{
+	width: 30px;
+	height: 30px;
+}
+
+/* customer */
+.customer{
+	width: 100%;
+	background-color: gray;
+	text-align: center;
+}
+.customerCon{
+	width: 70%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.customerCon table{
+	width: 100%;
+	margin-top: 10px;
+}
+.customerCon label{
+	font-size: 12px;
+}
+.customerCon input, textarea{
+	width: 100%;
+	background: #fff;
+	margin-top: 3px;
+	opacity : 0.5;
+}
+.customerCon input{
+	border: 0;
+	border-bottom: 1px solid #03a9f4;
+	float: left;
+	height: 25px;
+	opacity : none;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.customerCon textarea{
+	height: 150px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: solid 2px #fff;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: both;
+	resize: none;
+}
+.customerCon .send_bt{
+	text-align: right;
+}
+.customerCon img{
+	width: 95%;
+	border: 1px solid yellow;
+	padding: 3px;
+	height: 80%;
+}
+
+/* 푸터 */
+.footer{
+	padding: 10px 0;
+	text-align: center;
+}
