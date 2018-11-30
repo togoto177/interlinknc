@@ -99,6 +99,7 @@
     	set
     	board_title = #{board_title},
     	board_content = #{board_content},
+    	board_updateid = #{board_updateid},
     	board_update_date = now()
 
 
@@ -106,6 +107,17 @@
     	
     
     
+    </update>
+    
+    <update id="board_delete" parameterType="java.util.HashMap">
+        update
+            board_tb
+		set
+        board_use_yn = 'N',
+        board_update_date = now()    
+        where
+        board_seq = #{board_seq};
+            
     </update>
 	
 

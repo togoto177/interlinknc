@@ -39,18 +39,31 @@
 	<select id="file_list" resultType="BoardFile">
 	select * from file_tb where file_use_yn = 'y' and board_seq = #{board_seq};
 	</select>
-	<update id="fileDeleteByBoardFile" parameterType="BoardFile">
-	    update 
-    	file_tb
-    	    	
-    	set
-
-    	file_updateid = #{file_updateid},
-    	file_use_yn = 'N',
-    	file_update_date = now()
-
-
-    	where file_seq = #{file_seq};
-        </update>
+	
+	<!-- update폼에서 수정시 파일 N처리할때 필요함 -->
+	<update id="file_updateform_delete" parameterType="BoardFile">
+        update
+            file_tb
+		set
+        file_use_yn = 'N',
+        file_updateid = #{file_updateid},
+        file_update_date = now()    
+        where
+        file_seq = #{file_seq};
+            
+    </update>
+        
+    <!-- 게시판 목록과 상세보기에서 삭제처리할때 사용 -->    
+    <update id="file_delete" parameterType="BoardFile">
+        update
+            file_tb
+		set
+        file_use_yn = 'N',
+        file_updateid = #{file_updateid},
+        file_update_date = now()    
+        where
+        board_seq = #{board_seq};
+            
+    </update>
 
 </mapper>

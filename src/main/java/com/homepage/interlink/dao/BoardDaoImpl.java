@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import com.homepage.interlink.model.Board;
+import com.ibatis.sqlmap.engine.mapping.sql.Sql;
 
 @Repository("boardDao")
 public class BoardDaoImpl implements BoardDao {
@@ -41,6 +42,11 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public void board_update(Board board) {
 		SqlSession.update("boards.board_update", board);
+	}
+
+	@Override
+	public void board_delete(Board board) {
+		SqlSession.update("boards.board_delete", board);
 	}
 	
 }

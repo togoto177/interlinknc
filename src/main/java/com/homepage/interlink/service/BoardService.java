@@ -18,4 +18,6 @@ public interface BoardService {
 	public int board_cnt(Map<String, Object> paramMap);
 	//게시판 수정
 	public void board_update(Board board);
+	//게시글 삭제
+	public void board_delete(Board board);
 }

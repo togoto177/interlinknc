@@ -28,9 +28,16 @@ public class BoardFileDaoImpl implements BoardFileDao {
 		return SqlSession.selectList("boardFiles.file_list", paramMap);
 	}
 
+
 	@Override
-	public void fileDeleteByBoardFile(BoardFile boardFile) {
-		SqlSession.update("boardFiles.fileDeleteByBoardFile", boardFile);
+	public void file_delete(BoardFile boardFile) {
+		SqlSession.update("boardFiles.file_delete", boardFile);
+		
+	}
+
+	@Override
+	public void file_updateform_delete(BoardFile boardFile) {
+		SqlSession.update("boardFiles.file_updateform_delete", boardFile);
 		
 	}
 

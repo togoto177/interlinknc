@@ -14,10 +14,6 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
-		$("#list").click(function() {
-			location.href = "cms_data?board_division=" + $("#board_division").val();
-		});
-		
 		 $("input[type=file]").change(function () {
              
 	            var fileInput = document.getElementById("file_up");
@@ -33,14 +29,35 @@
 	            }
 	              
 	        });
+		 
+				// 네이버 에디터  
+				var oEditors = [];
+				
+				nhn.husky.EZCreator.createInIFrame({
+				    oAppRef: oEditors,
+				    elPlaceHolder: "board_content",
+				    sSkinURI: "util/naver_edit/SmartEditor2Skin.html",
+				    fCreator: "createSEditor2",
+				    htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+				    bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+				    bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+				    bUseModeChanger : true, 
+				    }
+
+
+				});
+				
+		 $("#save").click(function(){
+			 //if(confirm("저장하시겠습니까?")) { // id가 smarteditor인 textarea에 에디터에서 대입 
+				 oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
+			 // 이부분에 에디터 validation 검증
+
+				 $("#data_form").submit(); 
+		 });
+				
 		
 	});
-	
-	function save() {
-		var form = document.data_form;
-		form.submit();
-		
-	}
+
 	/* 파일추가버튼 */
 	function addbt() {
 		var fileIndex = $(".addtable").children().length+1-1;
@@ -103,7 +120,7 @@
 	<div class="contens">
 	<div align="center" style="padding-top: 100px; padding-left: 200px; width: auto;">
 		<h1>downloads</h1>	
-		<form name="data_form" method="post" action="cms_data_update_action" enctype="multipart/form-data">
+		<form id="data_form" name="data_form" method="post" action="cms_data_update_action" enctype="multipart/form-data">
 		<input type="hidden" id="board_division" name="board_division" value="${board_update.board_division }">
 		<input type="hidden" id="board_seq" name="board_seq" value="${board_update.board_seq}">
 				<table class="table table-hover" style="margin-bottom: 0;" border="1">
@@ -195,7 +212,7 @@
 
 					</td>
 					<td align="right">
-						<button class="btn btn-primary" onclick="save()">저장</button>
+						<button type="button" class="btn btn-primary" id="save" name="save">저장</button>
 					</td>
 				</tr>
 			</table>

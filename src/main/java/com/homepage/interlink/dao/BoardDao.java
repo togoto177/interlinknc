@@ -18,4 +18,6 @@ public interface BoardDao {
 
 	public void board_update(Board board);
 
+	public void board_delete(Board board);
+
 }

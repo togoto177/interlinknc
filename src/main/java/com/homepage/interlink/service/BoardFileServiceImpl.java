@@ -27,9 +27,15 @@ public class BoardFileServiceImpl implements BoardFileService{
 		return boardFileDao.file_list(paramMap);
 	}
 
+
 	@Override
-	public void fileDeleteByBoardFile(BoardFile boardFile) {
-		boardFileDao.fileDeleteByBoardFile(boardFile);
+	public void file_delete(BoardFile boardFile) {
+		boardFileDao.file_delete(boardFile);
+		}
+
+	@Override
+	public void file_updateform_delete(BoardFile boardFile) {
+		boardFileDao.file_updateform_delete(boardFile);
 		
 	}
 

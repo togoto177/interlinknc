@@ -5,8 +5,9 @@
 <script src="js/bootstrap,jquery/jquery.js"></script>
 <script src="js/bootstrap,jquery/jquery-3.3.1.min.js"></script>
 <script src="js/cms/cms.js"></script>
+<script src="js/board/board.js"></script>
 <script src="<c:url value='js/common.js'/>" charset="utf-8"></script>
-
+<script src="util/naver_edit/js/HuskyEZCreator.js"></script>
 
 
 

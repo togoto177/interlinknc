@@ -23,6 +23,12 @@ function modify(){
 	location.href="cms_data_update?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
 }
 
+function Delete(){
+	location.href="cms_data_delete?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
+}
+
+
+
 </script>	
 </head>
 <body class="cms_portfolio_body">
@@ -107,7 +113,7 @@ function modify(){
 						
 					    		
 					        		<button type="button" class="btn btn-primary" id="modify" name="modify" onclick="modify();">글 수정</button>
-									<button type="button" class="btn btn-primary" id="delete" name="delete" onclick="detailSubmit(1);">글 삭제</button>
+									<button type="button" class="btn btn-primary" id="delete" name="delete" onclick="Delete();">글 삭제</button>
 					    		
 							
 						

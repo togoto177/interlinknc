@@ -9,7 +9,6 @@ import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -24,18 +23,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.homepage.interlink.model.Admin_tb;
 import com.homepage.interlink.model.Board;
 import com.homepage.interlink.model.BoardFile;
 import com.homepage.interlink.model.Fileup;
 import com.homepage.interlink.service.BoardService;
-import com.homepage.interlink.service.Admin_tbService;
 import com.homepage.interlink.service.BoardFileService;
-import com.homepage.interlink.util.CommandMap;
+
 @Controller
 public class BoardController {
 
@@ -210,26 +205,26 @@ public class BoardController {
 	
     /*자료실 다운로드 */
    @RequestMapping("/dataFileDown")
-   private void dataFileDown(String file_name, HttpServletRequest request, HttpServletResponse response) throws Exception{
+   private void dataFileDown(String file_name, String board_division, HttpServletRequest request, HttpServletResponse response) throws Exception{
    	request.setCharacterEncoding("UTF-8");
-   	
-//   	String u = boardFileService.file_select(file_ori_name);
-   	System.out.println("dddddddddd" + file_name);
-   	//파일 업로드된 경로
 
-   	
-   	try {
+   		System.out.println("dddddddddd" + board_division);
+   		
+   		//자료실 다운 액션
+   		if(board_division.equals("download")) {
+   		try {
 			 /*상대경로 */
    		String file_path = request.getSession().getServletContext().getRealPath("/");
    		String attach_path = "resources/data/";
+
    		String savePath = file_path+attach_path;
    		String fileName = file_name;
-
-   		
    		//실제 내보낼 파일명
    		String oriFileName = file_name;
-
+   		
    		String oriFileNames = oriFileName.substring(oriFileName.indexOf("_")+1);
+
+   		
    		System.out.println(oriFileNames); 
    		
    		InputStream in = null;
@@ -237,6 +232,7 @@ public class BoardController {
    		File file = null;
    		boolean skip = false;
    		String client = "";
+   		
    		
    		//파일을 읽어 스트림에 담기
    		try {
@@ -288,7 +284,84 @@ public class BoardController {
        } catch (Exception e) {
            System.out.println("ERROR : " + e.getMessage());
        }
-       
+   	}
+   		
+   		//포트폴리오 다운 액션
+   		if(board_division.equals("lost")) {
+   			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+   		   	try {
+   					 /*상대경로 */
+   		   		String file_path = request.getSession().getServletContext().getRealPath("/");
+   		   		String attach_path = "resources/lost/";
+
+   		   		String savePath = file_path+attach_path;
+   		   		String fileName = file_name;
+   		   		//실제 내보낼 파일명
+   		   		String oriFileName = file_name;
+   		   		
+   		   		String oriFileNames = oriFileName.substring(oriFileName.indexOf("_")+1);
+
+   		   		
+   		   		System.out.println(oriFileNames); 
+   		   		
+   		   		InputStream in = null;
+   		   		OutputStream os = null;
+   		   		File file = null;
+   		   		boolean skip = false;
+   		   		String client = "";
+   		   		
+   		   		
+   		   		//파일을 읽어 스트림에 담기
+   		   		try {
+   						file = new File(savePath, fileName);
+   						in = new FileInputStream(file);
+   					} catch (FileNotFoundException fe) {
+   						skip = true;
+   					}
+   		   		
+   		   		client = request.getHeader("User-Agent");
+   		   		
+   		   		
+   		   		//파일 다운로드 헤더 지정 
+   		           response.reset();
+   		           response.setContentType("application/octet-stream");
+   		           response.setHeader("Content-Description", "JSP Generated Data");
+   		           
+   		           
+   		           
+   		           if (!skip) {
+   		               // IE
+   		               if (client.indexOf("MSIE") != -1) {
+   		                   response.setHeader("Content-Disposition", "attachment; filename=\""
+   		                           + java.net.URLEncoder.encode(oriFileNames, "UTF-8").replaceAll("\\+", "\\ ") + "\"");
+   		                   
+   		                   // IE 11 이상.
+   		               } else if (client.indexOf("Trident") != -1) {
+   		                   response.setHeader("Content-Disposition", "attachment; filename=\""
+   		                           + java.net.URLEncoder.encode(oriFileNames, "UTF-8").replaceAll("\\+", "\\ ") + "\"");
+   		               } else {
+   		                   // 한글 파일명 처리
+   		                   response.setHeader("Content-Disposition",
+   		                           "attachment; filename=\"" + new String(oriFileNames.getBytes("UTF-8"), "ISO8859_1") + "\"");
+   		                   response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
+   		               }
+   		               response.setHeader("Content-Length", "" + file.length());
+   		               os = response.getOutputStream();
+   		               byte b[] = new byte[(int) file.length()];
+   		               int leng = 0;
+   		               while ((leng = in.read(b)) > 0) {
+   		                   os.write(b, 0, leng);
+   		               }
+   		           } else {
+   		               response.setContentType("text/html;charset=UTF-8");
+   		               System.out.println("파일을 찾을 수 없습니다.");
+   		           }
+   		           in.close();
+   		           os.close();
+   		       } catch (Exception e) {
+   		           System.out.println("ERROR : " + e.getMessage());
+   		       }
+   		   	}	
    	
    }
    @RequestMapping(value = "/cms_data_body")
@@ -312,11 +385,11 @@ public class BoardController {
  	}
 	//자료실 수정 액션
 	@RequestMapping(value="/cms_data_update_action", method=RequestMethod.POST)
-	    public String cms_data_update_action(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag, String[] fName)throws Exception{
+	public String cms_data_update_action(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag, String[] fName)throws Exception{
 			
 			
 		
-			board.setBoard_updateid("admin2");
+			board.setBoard_updateid("admin23333");
 
 			boardService.board_update(board);
 					
@@ -407,7 +480,9 @@ public class BoardController {
 	    			if("D".equals(flag[i])) {
 	    				boardFile.setFile_seq(Integer.parseInt(file_key[i]));
 	    				boardFile.setFile_updateid("session id test before");
-	    				boardFileService.fileDeleteByBoardFile(boardFile);
+	    				
+
+	    				boardFileService.file_updateform_delete(boardFile);
 							
 	    			}
 	    		}
@@ -416,7 +491,22 @@ public class BoardController {
 	        
 	        return "redirect:/cms_data_body?board_division="+board.getBoard_division()+"&board_seq=" + board.getBoard_seq();
 	    }
-	
+	//자료실 삭제 액션 실제로 use_yn = 'N' 처리
+	@RequestMapping(value = "/cms_data_delete" , method = RequestMethod.GET)
+	public String cms_data_delete(Board board, BoardFile boardFile, int[] board_seq) {
+		
+		for (int i = 0; i < board_seq.length; i++) {
+		board.setBoard_updateid("delete success");
+		board.setBoard_seq(board_seq[i]);
+		boardService.board_delete(board);
+		boardFile.setFile_updateid("delete success");
+		boardFile.setBoard_seq(board_seq[i]);
+		boardFileService.file_delete(boardFile);
+		}
+		
+		return "redirect:/cms_data?board_division=" + board.getBoard_division();
+		
+	}
 //	------------end---------------------
 	
 }

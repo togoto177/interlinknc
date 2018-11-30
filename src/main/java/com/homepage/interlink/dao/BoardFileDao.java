@@ -12,6 +12,10 @@ public interface BoardFileDao {
 
 	public List<BoardFile> file_list(Map<String, Object> paramMap);
 
-	public void fileDeleteByBoardFile(BoardFile boardFile);
+
+
+	public void file_delete(BoardFile boardFile);
+
+	public void file_updateform_delete(BoardFile boardFile);
 
 }
