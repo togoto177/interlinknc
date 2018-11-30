@@ -129,7 +129,7 @@ public class CmsController {
         //한페이지에 보여줄 리스트 수
         int visiblePages = (!"".equals(paramMap.get("visiblePages")) && paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
         //일단 전체 건수를 가져온다.
-        int totalCnt = boardService.board_cnt(paramMap);
+        /*int totalCnt = boardService.board_cnt(paramMap);*/
         
         //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
         //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
@@ -157,7 +157,7 @@ public class CmsController {
         model.addAttribute("sch_type", paramMap.get("sch_type"));
         
 		model.addAttribute("board_division", paramMap.get("board_division"));
-		model.addAttribute("board_list", boardService.board_list(paramMap));
+		/*model.addAttribute("board_list", boardService.board_list(paramMap));*/
 		
 		return "cms/board/cms_data";
 	}
@@ -352,20 +352,6 @@ public class CmsController {
        }
        
    	
-   }
-   @RequestMapping(value = "/cms_data_body")
-	public String cms_data_body(@ModelAttribute Board board, Model model) {
-   
-	   model.addAttribute("board_body",boardService.board_read(board.getBoard_seq()));
-	   
-   return "cms/board/cms_data_body";
-   }
-   @RequestMapping(value = "/cms_data_body")
-	public String cms_data_body(@ModelAttribute Board board, Model model) {
-   
-	   model.addAttribute("board_body",boardService.board_read(board.getBoard_seq()));
-	   
-   return "cms/board/cms_data_body";
    }
    @RequestMapping(value = "/cms_data_body")
 	public String cms_data_body(@ModelAttribute Board board, Model model) {
