@@ -124,6 +124,18 @@ h1{
     border: 0;
     height: 1px;
 }
+.whatwedo{
+	position: relative;
+	font-size: 45;
+	top:150%;
+	left:20%;
+	opacity: 0.3;
+	text-shadow: -5px 0px 2px #771380;
+}
+.whatwedo .whatwedoA{
+	color: #9c829e;
+	font-weight: 700;
+}
 .mainImg_con3{
 	text-align: center;
 	width: 100%;

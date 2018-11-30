@@ -16,14 +16,18 @@ $(document).ready(function() {
 <body class="main_body">
 	<div class="mainImg">
 		<div class="mainImgEx">
-		<img alt="logo" src="resources/bg_starry.png">
+		<img alt="logo" src="resources/mainImg/bg_starry.png">
 		</div>
 		<div class="mainImg_con2">
 		<a class="con1">/</a><br />
-		<img alt="logo" src="resources/white_logo.png"><br />
+		<img alt="logo" src="resources/mainImg/white_logo.png"><br />
 		<a class="en">WE ARE INTERLINK&C</a><br />
 		<a class="ko">솔루션 네트워킹으로 정보화를 이끄는 기업</a><br />
 		<a class="con2">/</a>
+		
+		<div class="whatwedo">
+			<a class="whatwedoA">WHAT WE DO</a>
+		</div>
 		<hr class="border-top">
 			<div class="mainImg_con3">
 				<div class="text1">
@@ -78,7 +82,7 @@ $(document).ready(function() {
 			<br>
 			<h1>history</h1>
 			<div class="historyImg">
-				<img alt="이미지" src="resources/history.png" style="width: 50%;">
+				<img alt="이미지" src="resources/mainImg/history.png" style="width: 50%;">
 			</div>
 		</div>
 		<br />
