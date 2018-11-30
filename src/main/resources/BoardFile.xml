@@ -36,5 +36,21 @@
         );
 	</insert>
 	
+	<select id="file_list" resultType="BoardFile">
+	select * from file_tb where file_use_yn = 'y' and board_seq = #{board_seq};
+	</select>
+	<update id="fileDeleteByBoardFile" parameterType="BoardFile">
+	    update 
+    	file_tb
+    	    	
+    	set
+
+    	file_updateid = #{file_updateid},
+    	file_use_yn = 'N',
+    	file_update_date = now()
+
+
+    	where file_seq = #{file_seq};
+        </update>
 
 </mapper>

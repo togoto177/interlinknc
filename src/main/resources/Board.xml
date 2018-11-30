@@ -16,6 +16,7 @@
 		<result property="board_update_date" column="board_update_date" />
 		<result property="board_etc" column="board_etc" />
 	</resultMap>
+	
 	<insert id="board_insert" parameterType="Board">
 		insert into board_tb
 			
@@ -40,7 +41,72 @@
 	</insert>
 	
 	<select id="board_read" resultType="Board" parameterType="int">
-	        select * from board_tb where board_seq = #{board_seq};
+	        select *,
+	        (select group_concat(b.file_sub_name separator '|') 
+	        from file_tb b 
+	        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,
+        	(select group_concat(b.file_ori_name separator '|') 
+        	from file_tb b where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_ori_name
+        	from board_tb a where a.board_seq = #{board_seq}; 
 	</select>
+	
+	<select id="board_list" resultType="Board" parameterType="java.util.HashMap">
+	
+	       select 
+        *,(select group_concat(b.file_sub_name separator '|') 
+        from file_tb b 
+        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,  
+        (select group_concat(b.file_ori_name separator '|') 
+        from file_tb b 
+        
+        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_ori_name
+        from board_tb a 
+        
+         where a.board_division= #{board_division} and a.board_use_yn = 'Y'
+		 <choose>
+     	<when test="sch_type == 'board_title'">
+		  AND a.board_title like CONCAT('%', #{sch_value}, '%')
+		  </when>
+		  <when test="sch_type == 'board_content'">
+		  AND a.board_content like CONCAT('%', #{sch_value}, '%')
+		  </when>
+		  </choose>
+        order by board_seq desc
+        
+        limit #{start}, #{end};
+	
+	</select>
+	
+	<select id="board_cnt" resultType="int" parameterType="Board">
+	
+	    select count(board_seq) from board_tb 
+	    where board_division = #{board_division} and board_use_yn = 'y'
+     	<choose>
+	     	  <when test="sch_type == 'board_title'">
+			  AND board_title like CONCAT('%', #{sch_value}, '%')
+			  </when>
+			  <when test="sch_type == 'board_content'">
+			  AND board_content like CONCAT('%', #{sch_value}, '%')
+			  </when>
+	    </choose>
+	
+	</select>
+	
+    <update id="board_update" parameterType="java.util.HashMap">
+    	update 
+    	board_tb
+    	    	
+    	set
+    	board_title = #{board_title},
+    	board_content = #{board_content},
+    	board_update_date = now()
+
+
+    	where board_seq = #{board_seq}
+    	
+    
+    
+    </update>
+	
 
 </mapper>

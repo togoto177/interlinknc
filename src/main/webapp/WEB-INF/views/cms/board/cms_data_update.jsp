@@ -86,6 +86,14 @@
 		}
 		
 	}
+	
+	function delFile(idx){
+		var obj = $('#flist_' + idx);
+		
+		//alert($(obj).find('#flag').val());
+		$(obj).find('#flag').val("D");
+		$(obj).hide();
+	}
 	</script>
 </head>
 <body class="cms_portfolio_body">
@@ -95,25 +103,31 @@
 	<div class="contens">
 	<div align="center" style="padding-top: 100px; padding-left: 200px; width: auto;">
 		<h1>downloads</h1>	
-		<form name="data_form" method="post" action="cms_data_insert_action" enctype="multipart/form-data">
-				<table class="table table-hover" style="margin-bottom: 0;">
+		<form name="data_form" method="post" action="cms_data_update_action" enctype="multipart/form-data">
+		<input type="hidden" id="board_division" name="board_division" value="${board_update.board_division }">
+		<input type="hidden" id="board_seq" name="board_seq" value="${board_update.board_seq}">
+				<table class="table table-hover" style="margin-bottom: 0;" border="1">
 
 					<tr>
 						<td class="table-info">ID</td>
 						<td> 
-						<input type="hidden" id="board_division" name="board_division" value="${board_division}" />
-						
+						 	<input type="text" style="width: 100%; border: none; "
+							id="board_writer" name="board_writer"  readonly="readonly" 
+						 	value="${board_update.board_writer}" />
 						</td>
 					</tr>
 					<tr>
 						<td class="table-info">제목</td> 
-						<td><input type="text" style="width: 100%;" name="board_title" id="board_title"/>
+						<td>
+						<input type="text" style="width: 100%; border: none; "
+						id="board_title" name="board_title"   
+					 	value="${board_update.board_title}" />
 						</td>
 					</tr>
 				</table>
-				<table class="table table-hover" >
+				<table class="table table-hover" style="margin-bottom: 0;" border="1" >
 					<tr>
-						<td><textarea name="board_content" id="board_content" rows="10" cols="50"></textarea></td>
+						<td><textarea name="board_content" id="board_content" rows="10" cols="30" >${board_update.board_content}</textarea></td>
 					</tr>
 				</table>	
 				<table class="table table-hover">
@@ -121,6 +135,38 @@
 					<td class="table-info" width="235px">첨부파일</td>
 					</tr>
 					</table>
+					<div align="center" style=" padding-left: 200px; width: auto;">
+				<table class="table table-hover">
+<!-- 						<tr style="margin: 0;">
+					<td colspan="2" style="width: 900px">
+					</td>
+								</tr> -->
+					<c:choose>
+						<c:when test="${fn:length(file_list) == 0}">												
+
+							<tr>
+<!-- 							<td class="table-info" width="235px">첨부파일</td> -->
+							<td width="100%" align="left">첨부된 파일이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>		
+							<c:forEach var="file_list" items="${file_list}"  varStatus="status">
+							<tr id="flist_${status.count}">
+								<c:if test="${file_list.file_use_yn eq 'Y'}">
+								 <td>
+									<input style="border: 0; width: 500px;" type="text" id="fName" name="fName" value="${file_list.file_ori_name}">
+									<button class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
+									<input type="hidden" name="file_key" id="file_key" value="${file_list.file_seq}" />
+									<input type="hidden" id="update_id" name="update_id" value="${sessionScope.admin_id}" />
+									<input type="hidden"  name="flag" id="flag" value="C" />
+								</td>
+								</c:if>
+							</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+			</table>
+			</div>
 					<table class="table table-hover" >
 					<tbody class="addtable" id="addtd" >
 					<tr id="file_up0">
@@ -138,6 +184,7 @@
 					</tr>
 					</tbody>
 				    </table>
+				    
 			</form>
 			<br>
 

@@ -111,7 +111,7 @@ public class Board {
 				+ ", board_content=" + board_content + ", board_hit=" + board_hit + ", board_use_yn=" + board_use_yn
 				+ ", board_writer=" + board_writer + ", board_registerdate=" + board_registerdate + ", board_updateid="
 				+ board_updateid + ", board_update_date=" + board_update_date + ", board_etc=" + board_etc + ", seq="
-				+ seq + "]";
+				+ seq + ", file_ori_name=" + file_ori_name + ", file_sub_name=" + file_sub_name + "]";
 	}
 	
 	

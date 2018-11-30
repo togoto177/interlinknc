@@ -28,7 +28,7 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-/*	@Override
+	@Override
 	public List<Board> board_list(Map<String, Object> paramMap) {
 		return boardDao.board_list(paramMap);
 	}
@@ -36,5 +36,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int board_cnt(Map<String, Object> paramMap) {
 		return boardDao.board_cnt(paramMap);
-	}*/
+	}
+
+	@Override
+	public void board_update(Board board) {
+		boardDao.board_update(board);
+	}
 }
