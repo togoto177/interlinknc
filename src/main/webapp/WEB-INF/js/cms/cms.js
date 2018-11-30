@@ -1,14 +1,3 @@
-/*function login() {
-	if($("#ad_id").val().length <1){
-		alert("아이디를 입력해주세요.");
-	}else if($("#user_pwd").val().length <1){
-		alert("비밀번호를 입력해주세요.")
-	}else{
-		var loginSubmit = new ComSubmit("login_form");
-		loginSubmit.setUrl("/loginTry");
-		loginSubmit.submit();
-	}
-}*/
 function login() {
 	if($("#user_id").val().length <1){
 		alert("아이디를 입력하세요.");
