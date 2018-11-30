@@ -29,8 +29,8 @@ h1{
 	padding: 0;
 	float: right;
 	overflow: hidden;
-	white-space: nowrap;
 	width: 400px;
+	white-space: nowrap;
 	list-style: none;
 }
 .t_menu_ul li a{
@@ -178,59 +178,138 @@ h1{
 /* 소개 about */
 .about{
 	width: 100%;
+	height: 1500px;
 	text-align: center;
+	background: url("about.jpg");
+	background-size: cover;
 }
-.about1_box{
-	border: 2px solid black;
-	padding: 10px;
-	width: 350px;
-	margin: 0 auto;
+.about_title{
+	font-size: 30;
+	position: relative;
+	top: 15%;
+	font-weight: 700;
 }
-.about1_center{
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
+.about_title .about_titleA{
+	color: #b576b3;
 }
-.about1_box_title{
-	font-size: 20px;
-	font-weight: 500;
-	color: blue;
-}
+
 .about2{
 	width: 800px;
 	margin: 0 auto;
-	margin-top: 30px;
+	top: 18%;
+	position: relative;
+}
+.about2 .about2A{
+	color: white;
+}
+.about3{
+	position: relative;
+	top: 5%;
+}
+.about_inter{
+	opacity: 0.5;
+	position: relative;
+	left: 20%;
+	top: -10%;
+	text-align: left;
+	font-size: 60;
+	font-weight: 700;
+}
+.about_inter .icolor{
+	color: #a543ff;
+}
+.about_inter a{
+	color: #6292ff;
+}
+.about_history{
+	opacity: 0.5;
+	position: relative;
+	font-size: 80;
+	font-weight: 700;
+	left: 15%;
+}
+.about_history .hcolor{
+	color: red;
+}
+.about_history a{
+	color: #6292ff;
+}
+.about3 .history{
+	width: 500px;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 12;
+}
+.about3 .history table{
+	font-size: 12;
+	margin: 0 auto;
+}
+.about3 .history table .year{
+	font-size: 20;
+	color: #42b7ca;
+}
+.about3 .history table .tb_img{
+	font-size: 20;
+	color: #9c27b0;
+}
+.about3 .history table .mon{
+	padding-left: 20;
+	padding-top:0;
+	vertical-align: top;
+}
+.about3 .history table td{
+	color: white;
 }
 
 /* portfolio */
+
 .portfolio{
-	background: gray;
+	background: url("portfolio.jpg");
+	background-size: cover;
 	text-align: center;
+	overflow:hidden;
 }
 .portfolioImg{
 	margin:0 auto;
-	width:935px;
-	height:300px;
-	border:1px solid red;
-	overflow:hidden;
-}  
-.portfolioImg > .portfolioImgAdd{
-	overflow:hidden;
-	height:300px;
-	width:1200px;
+	width:780;
+	padding: 20% 0;
+	position: relative;
+	overflow: hidden;
+} 
+.portfolioImg_div{
+	width: 100%;
 }
-.portfolioImg > .portfolioImgAdd > a{
-	float:left;
-	display:block;
-}  
-.portfolioImg > .portfolioImgAdd > a > img{
-	width:200px;
-	height:300px;
-	margin-right:10px;
-	margin-bottom: 30px;
-	border: none;
+.portfolioImg .portfolioImg_div li{
+	height: 100%;
+	margin: 10px;
+	
 }
-
+.portfolioImg_div .bxslider{
+	white-space: nowrap;
+	list-style: none;
+}
+.portfolioImg_div img{
+	padding: 0 10px;
+	opacity: 0;
+}
+.portfolioImg_div img:hover{
+	-webkit-filter: grayscale(100%);
+	filter: gray;
+}
+.portfolioImg .prevBtn{
+	float: left;
+	position: absolute;
+	top: 50%;
+}
+.portfolioImg .portfolioImg_div{
+	float: left;
+}
+.portfolioImg .nextBtn{
+	float: left;
+	position: absolute;
+	top: 50%;
+	right: 4%;
+}
 /* 다운로드 게시판 */
 .downloads{
 	text-align: center;
