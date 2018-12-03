@@ -41,6 +41,12 @@ public class BoardFileDaoImpl implements BoardFileDao {
 		
 	}
 
+	@Override
+	public void file_hit(String file_seq) {
+		SqlSession.update("boardFiles.file_hit", file_seq);
+		
+	}
+
 	
 	
 	

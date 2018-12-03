@@ -22,9 +22,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public Board board_read(int board_seq) {
+	public Board board_read(Board board) {
 		
-		return boardDao.board_read(board_seq);
+		return boardDao.board_read(board);
 		
 	}
 
@@ -46,5 +46,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void board_delete(Board board) {
 		boardDao.board_delete(board);
+	}
+
+	@Override
+	public void portfolio_insert(Board board2) {
+		boardDao.portfolio_insert(board2);
 	}
 }

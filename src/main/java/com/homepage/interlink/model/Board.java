@@ -4,6 +4,8 @@ import java.sql.Date;
 
 public class Board {
 
+	//게시판 전체 공통 부분
+	
 	private int board_seq;
 	private String board_division;
 	private String board_title;
@@ -16,11 +18,26 @@ public class Board {
 	private Date board_update_date;
 	private String board_etc;
 	
-	private int seq; //마지막 추가된 auto increament값 반환
 	
 	private String file_ori_name; //file_tb에서 파일명 가져와서 뿌려줌
 	private String file_sub_name; //file_tb에서 파일명 가져와서 뿌려줌
 	
+	private String file_hit; //파일 다운로드 수
+	
+	private String preview;
+	private String nextview;
+	private String pretitle;
+	private String nexttitle;
+	
+	private String file_cnt; //파일 갯수 
+	
+	//포트폴리오 모델 추가
+	private int portfolio_seq;
+	private String business_period;
+	private String buyer;
+	private String link;
+	private String portfolio_etc;
+	private String pf_division;
 	public int getBoard_seq() {
 		return board_seq;
 	}
@@ -87,12 +104,6 @@ public class Board {
 	public void setBoard_etc(String board_etc) {
 		this.board_etc = board_etc;
 	}
-	public int getSeq() {
-		return seq;
-	}
-	public void setSeq(int seq) {
-		this.seq = seq;
-	}
 	public String getFile_ori_name() {
 		return file_ori_name;
 	}
@@ -105,13 +116,89 @@ public class Board {
 	public void setFile_sub_name(String file_sub_name) {
 		this.file_sub_name = file_sub_name;
 	}
+	public String getFile_hit() {
+		return file_hit;
+	}
+	public void setFile_hit(String file_hit) {
+		this.file_hit = file_hit;
+	}
+	public String getPreview() {
+		return preview;
+	}
+	public void setPreview(String preview) {
+		this.preview = preview;
+	}
+	public String getNextview() {
+		return nextview;
+	}
+	public void setNextview(String nextview) {
+		this.nextview = nextview;
+	}
+	public String getPretitle() {
+		return pretitle;
+	}
+	public void setPretitle(String pretitle) {
+		this.pretitle = pretitle;
+	}
+	public String getNexttitle() {
+		return nexttitle;
+	}
+	public void setNexttitle(String nexttitle) {
+		this.nexttitle = nexttitle;
+	}
+	public String getFile_cnt() {
+		return file_cnt;
+	}
+	public void setFile_cnt(String file_cnt) {
+		this.file_cnt = file_cnt;
+	}
+	public int getPortfolio_seq() {
+		return portfolio_seq;
+	}
+	public void setPortfolio_seq(int portfolio_seq) {
+		this.portfolio_seq = portfolio_seq;
+	}
+	public String getBusiness_period() {
+		return business_period;
+	}
+	public void setBusiness_period(String business_period) {
+		this.business_period = business_period;
+	}
+	public String getBuyer() {
+		return buyer;
+	}
+	public void setBuyer(String buyer) {
+		this.buyer = buyer;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public String getPortfolio_etc() {
+		return portfolio_etc;
+	}
+	public void setPortfolio_etc(String portfolio_etc) {
+		this.portfolio_etc = portfolio_etc;
+	}
+	public String getPf_division() {
+		return pf_division;
+	}
+	public void setPf_division(String pf_division) {
+		this.pf_division = pf_division;
+	}
 	@Override
 	public String toString() {
 		return "Board [board_seq=" + board_seq + ", board_division=" + board_division + ", board_title=" + board_title
 				+ ", board_content=" + board_content + ", board_hit=" + board_hit + ", board_use_yn=" + board_use_yn
 				+ ", board_writer=" + board_writer + ", board_registerdate=" + board_registerdate + ", board_updateid="
-				+ board_updateid + ", board_update_date=" + board_update_date + ", board_etc=" + board_etc + ", seq="
-				+ seq + ", file_ori_name=" + file_ori_name + ", file_sub_name=" + file_sub_name + "]";
+				+ board_updateid + ", board_update_date=" + board_update_date + ", board_etc=" + board_etc
+				+ ", file_ori_name=" + file_ori_name + ", file_sub_name=" + file_sub_name + ", file_hit=" + file_hit
+				+ ", preview=" + preview + ", nextview=" + nextview + ", pretitle=" + pretitle + ", nexttitle="
+				+ nexttitle + ", file_cnt=" + file_cnt + ", portfolio_seq=" + portfolio_seq + ", business_period="
+				+ business_period + ", buyer=" + buyer + ", link=" + link + ", portfolio_etc=" + portfolio_etc
+				+ ", pf_division=" + pf_division + "]";
 	}
 	
 	

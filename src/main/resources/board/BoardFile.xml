@@ -10,6 +10,7 @@
 		<result property="file_sub_name" column="file_sub_name" />
 		<result property="extention_name" column="extention_name" />
 		<result property="file_size" column="file_size" />
+		<result property="file_hit" column="file_hit" />
 		<result property="file_path" column="file_path" />
 		<result property="file_use_yn" column="file_use_yn" />
 		<result property="file_updateid" column="file_updateid" />
@@ -27,6 +28,7 @@
 			#{file_sub_name},
 			#{extention_name},
 			#{file_size},
+			'0',
 			#{file_path},
 			#{file_use_yn},
 			#{file_updateid},
@@ -64,6 +66,11 @@
         where
         board_seq = #{board_seq};
             
+    </update>
+    
+    <!-- 파일 다운로드 시 해당 경로에 파일이 있을경우 file_hit 1씩 증가 -->
+    <update id="file_hit" parameterType="int">
+    update file_tb set file_hit = file_hit + 1 where file_seq = #{board_seq};
     </update>
 
 </mapper>

@@ -15,6 +15,7 @@
 		<result property="board_updateid" column="board_updateid" />
 		<result property="board_update_date" column="board_update_date" />
 		<result property="board_etc" column="board_etc" />
+
 	</resultMap>
 	
 	<insert id="board_insert" parameterType="Board">
@@ -40,27 +41,39 @@
   		</selectKey>        
 	</insert>
 	
-	<select id="board_read" resultType="Board" parameterType="int">
-	        select *,
-	        (select group_concat(b.file_sub_name separator '|') 
-	        from file_tb b 
-	        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,
-        	(select group_concat(b.file_ori_name separator '|') 
-        	from file_tb b where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_ori_name
-        	from board_tb a where a.board_seq = #{board_seq}; 
+	<select id="board_read" resultType="Board" parameterType="int"> 
+        	
+        	select a.*, b.*,
+			(select a.board_seq  from board_tb a 
+            where a.board_division = #{board_division} and a.board_use_yn = 'Y' and <![CDATA[a.board_seq < #{board_seq}]]>  
+            ORDER BY a.board_seq desc LIMIT 1) as preview,
+            (select a.board_title  from board_tb a 
+            where a.board_division = #{board_division} and a.board_use_yn = 'Y' and <![CDATA[a.board_seq < #{board_seq}]]>  
+            ORDER BY a.board_seq desc LIMIT 1) as pretitle,
+            (select a.board_seq from board_tb a 
+            where a.board_division = #{board_division} and a.board_use_yn = 'Y' and <![CDATA[a.board_seq > #{board_seq}]]>  
+            ORDER BY a.board_seq asc LIMIT 1) as nextview,
+            (select a.board_title from board_tb a 
+            where a.board_division = #{board_division} and a.board_use_yn = 'Y' and <![CDATA[a.board_seq > #{board_seq}]]>  
+            ORDER BY a.board_seq asc LIMIT 1) as nexttitle
+        	from board_tb a left join portfolio_tb b on a.board_seq = b.board_seq where a.board_seq = #{board_seq}; 
 	</select>
 	
 	<select id="board_list" resultType="Board" parameterType="java.util.HashMap">
 	
 	       select 
-        *,(select group_concat(b.file_sub_name separator '|') 
+        a.*, c.business_period, c.buyer, c.link, c.portfolio_etc,
+        (select count(b.file_seq) from file_tb b where b.file_use_yn = 'y' and b.board_seq = a.board_seq) as file_cnt,
+        (select sum(b.file_hit) from file_tb b where b.board_seq = a.board_seq and b.file_use_yn = 'Y'  ) as file_hit,
+        (select group_concat(b.file_sub_name,'*',b.file_seq separator '|') 
         from file_tb b 
         where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,  
         (select group_concat(b.file_ori_name separator '|') 
         from file_tb b 
         
-        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_ori_name
-        from board_tb a 
+        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_ori_name,
+        (select c.pf_division from portfolio_tb c where c.board_seq = a.board_seq) as pf_division
+        from board_tb a left join portfolio_tb c on a.board_seq = c.board_seq 
         
          where a.board_division= #{board_division} and a.board_use_yn = 'Y'
 		 <choose>
@@ -119,6 +132,31 @@
         board_seq = #{board_seq};
             
     </update>
+    
+    
+    <insert id="portfolio_insert" parameterType="java.util.HashMap">
+		insert into portfolio_tb
+			
+			(
+			board_seq,
+			business_period,
+			buyer,
+			link,
+			portfolio_etc,
+			pf_division
+			)
+			
+			values(
+
+			#{board_seq},
+			#{business_period},
+			#{buyer},
+			#{link},
+			#{portfolio_etc},
+			#{pf_division}
+
+        )      
+	</insert>
 	
 
 </mapper>

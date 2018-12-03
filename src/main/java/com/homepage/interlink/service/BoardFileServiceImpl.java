@@ -39,6 +39,11 @@ public class BoardFileServiceImpl implements BoardFileService{
 		
 	}
 
+	@Override
+	public void file_hit(String file_seq) {
+		boardFileDao.file_hit(file_seq);
+	}
+
 
 	
 }

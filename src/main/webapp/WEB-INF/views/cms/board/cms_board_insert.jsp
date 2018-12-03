@@ -29,14 +29,34 @@
 		});
 		
 		$("#save").click(function(){
-			 //if(confirm("저장하시겠습니까?")) { // id가 smarteditor인 textarea에 에디터에서 대입 
+			 //if(confirm("저장하시겠습니까?")) 
+			// id가 smarteditor인 textarea에 에디터에서 대입 
 				 oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
 			 // 이부분에 에디터 validation 검증
 
-				 $("#data_form").submit(); 
-		 });
+				 $("#board_form").submit(); 
+		
+		  });
+
+		  
+
 
 	});
+		  function loadFile(input) { 
+			  if (input.files && input.files[0]) { 
+				  var reader = new FileReader(); 
+				  reader.onload = function (e) { 
+					  $('#blah').attr('src', e.target.result); 
+					  } 
+				  reader.readAsDataURL(input.files[0]); 
+				  } 
+			  }
+		  $("#file_up003").change(function() {
+
+	          readURL(this);
+
+	        });
+		  
 	</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>interlinknc</title>
@@ -45,15 +65,41 @@
 	<%@ include file="../cms_header.jsp"%>
 	<%@ include file="../cms_left_bar.jsp"%>
 	<div align="center" style="margin-top: 200px; height: 1500px;">
-		<h1>downloads</h1>	
-		<form id="data_form" name="data_form" method="post" action="cms_data_insert_action" enctype="multipart/form-data">
+		
+		<c:if test="${board_division == 'download'}">
+		<h1>downloads</h1>
+		</c:if>
+		<c:if test="${board_division == 'portfolio'}">
+		<h1>portfolio</h1>
+		</c:if>	
+		
+		
+		<form id="board_form" name="board_form" method="post" action="cms_board_insert_action" enctype="multipart/form-data" runat="server">
+				<input type="hidden" id="board_division" name="board_division" value="${board_division}"/>
 				<table style="width: 700px;">
 					<tr>
 						<td style="width: 20%;">ID</td>
-						<td style="width:  80%;"><input type="hidden" id="board_division" name="board_division" value="${board_division}"/></td>
+						<td style="width:  80%;">${sessionScope.ad_id }</td>
 					</tr>
-				</table>
-				<table style="width: 700px;">	
+					
+					<c:if test="${board_division == 'portfolio' }">	
+					<tr>
+						<td style="width: 20%;">구분</td> 
+						<td style="width: 80%;"><input type="text" name="pf_division" id="pf_division" style="width: 100%;" /></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">사업기간</td> 
+						<td style="width: 80%;"><input type="text" name="business_period" id="business_period" style="width: 100%;" /></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">발주처</td> 
+						<td style="width: 80%;"><input type="text" name="buyer" id="buyer" style="width: 100%;" /></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">연결주소</td> 
+						<td style="width: 80%;"><input type="text" name="link" id="link" style="width: 100%;" /></td>
+					</tr>
+					</c:if>
 					<tr>
 						<td style="width: 20%;">제목</td> 
 						<td style="width: 80%;"><input type="text" name="board_title" id="board_title" style="width: 100%;" /></td>
@@ -64,18 +110,19 @@
 						<td colspan="3"><textarea name="board_content" id="board_content" style="width:100%; height:412px;"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="3">첨부파일</td>
+						<td colspan="3">첨부파일<img id="blah" src="#" alt="your image" /></td>
+							
 					</tr>
 					<tbody class="addtable" id="addtd" >
 					<tr id="file_up0">
 						<td id="file_up0" align="left" colspan="1">
-							<input type="file"  name="uploadfile[0]"  required="required" id="file_up0" style="width: 500px;" />
+							<input type="file"  name="uploadfile[0]"  required="required" id="file_up003" style="width: 500px;" />
 						</td>
 						<td align="right" colspan="1">
 							<button name="file_up0" type="button" onclick="delbt_ori(this.name)">-</button>
 						</td>
 						<td align="right" colspan="1">
-							<button name="test0" type="button"  onclick="javascript:addbt()">+</button>
+							<button type="button"  onclick="javascript:addbt()">+</button>
 						</td>
 					</tr>
 					</tbody>

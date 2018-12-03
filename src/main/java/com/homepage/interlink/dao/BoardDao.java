@@ -10,7 +10,7 @@ public interface BoardDao {
 
 	public void board_insert(Board board);
 
-	public Board board_read(int board_seq);
+	public Board board_read(Board board);
 
 	public List<Board> board_list(Map<String, Object> paramMap);
 
@@ -19,5 +19,7 @@ public interface BoardDao {
 	public void board_update(Board board);
 
 	public void board_delete(Board board);
+
+	public void portfolio_insert(Board board2);
 
 }

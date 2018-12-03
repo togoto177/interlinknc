@@ -23,9 +23,9 @@ public class BoardDaoImpl implements BoardDao {
 		}
 
 	@Override
-	public Board board_read(int board_seq) {
+	public Board board_read(Board board) {
 		
-		return SqlSession.selectOne("boards.board_read", board_seq);
+		return SqlSession.selectOne("boards.board_read", board);
 		
 	}
 
@@ -47,6 +47,11 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public void board_delete(Board board) {
 		SqlSession.update("boards.board_delete", board);
+	}
+
+	@Override
+	public void portfolio_insert(Board board2) {
+		SqlSession.insert("boards.portfolio_insert", board2);	
 	}
 	
 }

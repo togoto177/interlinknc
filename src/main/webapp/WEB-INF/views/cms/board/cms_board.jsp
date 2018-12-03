@@ -16,7 +16,7 @@
 							
 							//게시물 등록 클릭
 							$("#insert_view").click(function() {
-								location.href = "cms_data_insert?board_division=" + $("#board_division").val();
+								location.href = "cms_board_insert?board_division=" + $("#board_division").val();
 							});
 							
 							//--페이지 셋팅
@@ -77,7 +77,7 @@
 							//--페이지 셋팅
 
 							$("#searchBtn").click(function() {
-								document.data_form.submit();
+								document.board_form.submit();
 							
 							});
 							
@@ -90,7 +90,7 @@
 										
 										$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
 										$('#visiblePages').val(visiblePages);
-										document.data_form.submit();
+										document.board_form.submit();
 									});
 							
 							var i = $("#hidden_type").val();
@@ -102,9 +102,9 @@
 											
 													var chk = $(this).is(":checked");
 													if (chk) {
-														$('input[name*="seq_id"]').prop('checked',true);
+														$('input[name*="board_seq"]').prop('checked',true);
 													} else {
-														$('input[name*="seq_id"]').prop('checked',false);
+														$('input[name*="board_seq"]').prop('checked',false);
 													}
 												});		
 							});
@@ -143,24 +143,21 @@
 							}
 						};
 						
-						//이중폼 보내는 방법
 						 function detailSubmit() {
 							    	//체크박스 선택에 따른 삭제 유무
 									if(confirm("정말로 삭제 하시겠습니까?") == true) {
 										if($('input:checkbox[id="checkOne"]').is(":checked") == true)  {
-								           document.data_form.action='cms_data_delete';
+								           document.board_form.action='cms_board_delete';
 												alert("삭제 되었습니다.");
 								          } else{
 								            alert("삭제하실 목록을 체크하여 주십시오.")
 								            return;
 								             }
-												
-										
 										}else{
 											alert("취소 되었습니다.");
 											return;
 										}	
-							    document.data_form.submit();
+							    document.board_form.submit();
 							  };
 	</script>
 </head>
@@ -168,11 +165,17 @@
 	<%@ include file="../cms_header.jsp"%>
 <div>
 	<%@ include file="../cms_left_bar.jsp"%>
-	<div>	
-		<form name="data_form"  method="get">
-		<div align="center" style="padding-top: 200px;">
+	<div style="padding-top: 100px;">	
+		<form name="board_form"  method="get">
+		<div align="center" style="padding-top: 100px; padding-left: 200px; width: auto;">
 		
+			<c:if test="${board_division == 'download'}">
 			<h1>downloads</h1>
+			</c:if>
+			<c:if test="${board_division == 'portfolio'}">
+			<h1>portfolio</h1>
+			</c:if>
+			
 			<input type="hidden" id="board_division" name="board_division" value="${board_division}">
  			<input type="hidden" id="startPage" name="startPage" value="">
 			<input type="hidden" id="visiblePages" name="visiblePages" value="">
@@ -196,23 +199,30 @@
 					</tbody>
 				</table>
 				<br>	
-				<table class="table table-hover" border="1">
+				<table class="table table-hover" border="1" style="width: 700px; font-size: small;" >
 					<tr class="table-info" align="center">
 						<th align="center" width="30px">
 							<input type="checkbox" id="product_check_all"/> 
 						</th>
 						<th align="center" width="30px">No</th>
+						<c:if test="${board_division == 'portfolio' }">
+						<th align="center" width="100px">구분</th>
+						</c:if>
 						<th align="center" width="300px">제목</th>
 						<th align="center" width="100px">일자</th>
+						
+						<c:if test="${board_division == 'download'}">
 						<th align="center" width="100px">첨부파일</th>
-						<th align="center" width="100px">다운수</th>
+						<th align="center" width="100px">총 다운 수</th>
+						</c:if>
+						
 						<th align="center" width="100px">조회수</th>
 					</tr>												
 						<c:forEach var="board_list" items="${board_list}"  varStatus="status">
 							<input type="hidden" id="filename" name="filename" value="${filename}">
 					<tr class="qest">
 						<td align="center">
-						<input type="checkbox" id="checkOne" name="seq_id" value="${board_list.board_seq}"/>
+						<input type="checkbox" id="checkOne" name="board_seq" value="${board_list.board_seq}"/>
 						</td>
 						<td align="center">
                            <!--역순공식: 전체 레코드 수 - ( (현재 페이지 번호 - 1) * 한 페이지당 보여지는 레코드 수 + 현재 게시물 출력 순서 ) -->
@@ -221,27 +231,40 @@
                            ${totalCnt+1-(startpage*10+statuscount)} 
                                  
                         </td>
+                        <c:if test="${board_division == 'portfolio' }">
+						<td align="center">${board_list.pf_division}</td>
 						<td>
-						<a id="title" class="mouseOverHighlight" onclick="location.href='cms_data_body?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a>
+						<a id="title" class="mouseOverHighlight" onclick="location.href='cms_board_body?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a>
 						</td>
+						<td align="center">${board_list.business_period}</td>
+						</c:if>
+						<c:if test="${board_division == 'download'}">
+						<td><a id="title" class="mouseOverHighlight" onclick="location.href='cms_board_body?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
 						<td align="center">${board_list.board_registerdate}</td>
 						<td align="center">
-						<c:set var="boarlist" value="${board_list.file_sub_name}" />																	
-						<c:set var="split_file" value="${fn:split(board_list.file_sub_name,'|')}" />					
-						<c:if test="${fn:length(split_file) == 1}">
+						<c:set var="boardlist" value="${board_list.file_sub_name}" />													
+						<c:set var="split_file" value="${fn:split(board_list.file_sub_name,'|')}" />
+						<c:if test="${board_list.file_cnt == 0}">
+						X
+						</c:if>
+						<c:if test="${board_list.file_cnt == 1}">
 						<c:forEach items="${split_file}" var="boardlist">
-						<button type="button" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}');">
+						<button type="button" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${board_list.board_seq}');">
 						<c:set var="TextValue" value="${boardlist}"/>다운로드									
 						</button>
 						<br/>
 						</c:forEach>
 						</c:if>
-						<c:if test="${fn:length(split_file) >= 2}">
+						<c:if test="${board_list.file_cnt >= 2}">
 						<button type="button" id="hidden_over" name="hidden_over" onclick="over('${board_list.board_seq}');" >열기</button>		
 						</c:if>
 						</td>
-						<td align="center">9999</td>
-						<td align="center">9999</td>
+						<td align="center">
+						${board_list.file_hit}
+						</td>
+						</c:if>
+						
+						<td align="center">${board_list.board_hit}</td>
 					</tr>
 					<tr id = "hidden${board_list.board_seq}" style="display: none;">
 						<td align="center" colspan="7">			
@@ -255,16 +278,16 @@
 					</tr>
 					</c:forEach>
 				</table>
-		<div align="center">
+		<div>
 		<br/>
 			<table style="width: 700px;">
 				<tr>
 					<td align="left">
-					   <input class="btn btn-primary" style="font-size: small;" type="button" value="전체선택" onclick="checkboxSelectQue(1,'seq_id')" />
-					   <input class="btn btn-primary" style="font-size: small;" type="button" value="전체해제" onclick="checkboxSelectQue(2,'seq_id')" /> 
+					   <input class="btn btn-primary" style="font-size: small;" type="button" value="전체선택" onclick="checkboxSelectQue(1,'board_seq')" />
+					   <input class="btn btn-primary" style="font-size: small;" type="button" value="전체해제" onclick="checkboxSelectQue(2,'board_seq')" /> 
 					</td>
 					<td align="right">
-			        		<input class="btn btn-primary" style="font-size: small;" type="button" value="게시물 삭제" id="listDelBtn" name="listDelBtn" onclick="detailSubmit(1)" />
+			        		<input class="btn btn-primary" style="font-size: small;" type="button" value="게시물 삭제" id="listDelBtn" name="listDelBtn" onclick="detailSubmit()" />
 							<input class="btn btn-primary" style="font-size: small;" type="button" value="업로드" id="insert_view" />								
 					</td>
 				</tr>
@@ -273,14 +296,14 @@
 		</div>
 		<!-- 페이징 view -->
 		<br/>
-			<div align="center">
+			<div align="center" style=" padding-left: 200px;">
 				<table>
 				<tr>
-				<td><a href="cms_data.do?board_division=download&startPage=1&visiblePages=10">처음</a></td>
+				<td><a href="cms_board?board_division=download&startPage=1&visiblePages=10">처음</a></td>
 				<!-- <a href="#" class="c-pagination__arrow c-pagination__arrow--prev">이전페이지로</a> -->
 				<td><a href="#"  id="pagination"></a></td>
 				<!-- <a href="#" class="c-pagination__arrow c-pagination__arrow--next">다음페이지로</a> -->
-				<td><a href="cms_data.do?board_division=download&startPage=${totalPage}&visiblePages=10">마지막</a></td>
+				<td><a href="cms_board?board_division=download&startPage=${totalPage}&visiblePages=10">마지막</a></td>
 				</tr>
 				</table>
 			</div>

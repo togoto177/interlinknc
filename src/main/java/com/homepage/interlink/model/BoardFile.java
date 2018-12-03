@@ -10,15 +10,12 @@ public class BoardFile {
 	private String file_sub_name;
 	private String extention_name;
 	private String file_size;
+	private String file_hit;
 	private String file_path;
 	private String file_use_yn;
 	private String file_updateid;
 	private Date file_update_date;
 	private String file_etc;
-	
-	
-	
-	
 	
 	public int getFile_seq() {
 		return file_seq;
@@ -56,6 +53,12 @@ public class BoardFile {
 	public void setFile_size(String file_size) {
 		this.file_size = file_size;
 	}
+	public String getFile_hit() {
+		return file_hit;
+	}
+	public void setFile_hit(String file_hit) {
+		this.file_hit = file_hit;
+	}
 	public String getFile_path() {
 		return file_path;
 	}
@@ -90,9 +93,11 @@ public class BoardFile {
 	public String toString() {
 		return "BoardFile [file_seq=" + file_seq + ", board_seq=" + board_seq + ", file_ori_name=" + file_ori_name
 				+ ", file_sub_name=" + file_sub_name + ", extention_name=" + extention_name + ", file_size=" + file_size
-				+ ", file_path=" + file_path + ", file_use_yn=" + file_use_yn + ", file_updateid=" + file_updateid
-				+ ", file_update_date=" + file_update_date + ", file_etc=" + file_etc + "]";
+				+ ", file_hit=" + file_hit + ", file_path=" + file_path + ", file_use_yn=" + file_use_yn
+				+ ", file_updateid=" + file_updateid + ", file_update_date=" + file_update_date + ", file_etc="
+				+ file_etc + "]";
 	}
+	
 	
 	
 }

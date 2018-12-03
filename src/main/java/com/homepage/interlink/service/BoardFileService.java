@@ -16,4 +16,6 @@ public interface BoardFileService {
 
 	public void file_updateform_delete(BoardFile boardFile);
 
+	public void file_hit(String file_seq);
+
 }

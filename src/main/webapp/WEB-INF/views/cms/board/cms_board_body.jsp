@@ -9,40 +9,19 @@
 <html>
 <head>
 	<title>interlinknc</title>
-<script type="text/javascript">
-function downFile(fileName){
-	alert(fileName);
-	location.href="dataFileDown.do?file_name="+encodeURI(fileName);
-}
-
-function list(){
-	location.href="cms_data?board_division="+$("#board_division").val();
-}
-
-function modify(){
-	location.href="cms_data_update?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
-}
-
-function Delete(){
-	location.href="cms_data_delete?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
-}
-
-
-
-</script>	
 </head>
 <body class="cms_portfolio_body">
 <%@ include file="../cms_header.jsp"%>
 <div class="cms_portfolio_div">
 	<%@ include file="../cms_left_bar.jsp"%>
-	<div class="contens">	
+	<div style="padding-top: 100px;">	
 		<div align="center" style="padding-top: 100px; padding-left: 200px; width: auto;">
 		
 			<h1>downloads</h1>
 			<input type="hidden" id="board_division" name="board_division" value="${board_body.board_division}">
 			<input type="hidden" id="board_seq" name="board_seq" value="${board_body.board_seq}">
 		<br>
-			<table border="1" class="table table-hover" style="margin-bottom: 0;">
+			<table border="1" class="table table-hover" style="width: 700px;">
 
 				<tr>
 					<td class="table-info" colspan="1" width="150px">제목</td>
@@ -63,16 +42,16 @@ function Delete(){
 					<tr height="200px">
 					<td class="table-info">내용</td>
 					<td valign="top">
-							<br>
+					<br>
 					${board_body.board_content}
 					</td>
 					</tr>
 			</table>
 			</div>
-			<div align="center" style=" padding-left: 200px; width: auto;">
-			<table border="1" class="table table-hover">
+			<div align="center" style=" padding-left: 200px;">
+			<table border="1" class="table table-hover" style="width: 700px;">
 					 <c:choose>
-						<c:when test="${fn:length(board_body.file_ori_name) == 0}">												
+						<c:when test="${fn:length(file_list) == 0}">												
 							<tr>
 								<td class="table-info" colspan="1" width="150px">첨부파일</td>
 								<td colspan="2" align="center">조회결과가 없습니다.</td>
@@ -81,14 +60,14 @@ function Delete(){
 						<c:otherwise>		
 							<tr>
 								 <td class="table-info" width="150px">첨부파일</td>
-								 <td align="left" colspan="2">	
+								 <td align="left" colspan="2" style="font-size: small;">	
 								 <c:forEach items="${file_list}" var="file_list">
-
-									${file_list.file_ori_name}
-									<button type="button" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${file_list.file_sub_name}');">		
-												다운받기
+									파일 명 : ${file_list.file_ori_name}
+									| 파일 크기 : ${file_list.file_size}KB
+									| 다운로드 수 : ${file_list.file_hit}
+									<button type="button" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${file_list.file_sub_name}*${file_list.file_seq}');">		
+												↓
 									</button>
-									${file_list.file_size}KB
 									    <br/>
 									</c:forEach>
 								</td>
@@ -103,36 +82,39 @@ function Delete(){
 
 			 
 			<br>
-			<div align="center" style=" padding-left: 200px; width: auto;">
-			<table class="table table-hover">
+			<div align="center" style=" padding-left: 200px;">
+			<table class="table table-hover" style="width: 700px;">
 				<tr>
-					<td align="left">
-						<button type="button" class="btn btn-primary" onclick="list();">목록</button>
+					<td colspan="1" align="left">
+						<button type="button" class="btn btn-primary" id="list">목록</button>
 					</td>
 					<td colspan="2" align="right">
 						
-					    		
-					        		<button type="button" class="btn btn-primary" id="modify" name="modify" onclick="modify();">글 수정</button>
-									<button type="button" class="btn btn-primary" id="delete" name="delete" onclick="Delete();">글 삭제</button>
-					    		
-							
-						
+					    <button type="button" class="btn btn-primary" id="modify">글 수정</button>
+						<button type="button" class="btn btn-primary" id="delete">글 삭제</button>
 					</td>
-			
+					</tr>
+				<tr>
+					
+					<td align="left">
+						<c:if test="${board_body.preview eq null}">
+						제일 첫 페이지 입니다.
+						</c:if>
+						<c:if test="${board_body.preview ne null}">
+						<button type="button" class="btn btn-primary" id="preview" value="${board_body.preview}">이전 글 (${board_body.pretitle})</button>
+						</c:if>
+					</td>
+					<td align="right">
+						<c:if test="${board_body.nextview eq null}">
+						제일 마지막 페이지 입니다.
+						</c:if>
+						<c:if test="${board_body.nextview ne null}">
+						<button type="button" class="btn btn-primary" id="nextview" value="${board_body.nextview}">다음 글(${board_body.nexttitle})</button>
+						</c:if>
+						</td>
 				</tr>
 			</table>
-			</div>
-			<div align="center">
-				<table >
-			<tr>
-			<td align="left">
-<!-- 			<button id="preBtn" name="preBtn">이전글</button>
-			<button id="afterBtn" name="afterBtn">다음글</button> -->
-			</td>
-			</tr>
-			</table>
-			</div>
-			
+			</div>		
 			</div>
 	</div>
 

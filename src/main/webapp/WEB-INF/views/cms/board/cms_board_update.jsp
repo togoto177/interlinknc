@@ -13,22 +13,6 @@
 	<title>interlinknc</title>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		
-		 $("input[type=file]").change(function () {
-             
-	            var fileInput = document.getElementById("file_up");
-	              
-	            var files = fileInput.files;
-	            var file;
-	              
-	            for (var i = 0; i < files.length; i++) {
-	                  
-	                file = files[i];
-	  
-	                alert(file.name);
-	            }
-	              
-	        });
 		 
 				// 네이버 에디터  
 				var oEditors = [];
@@ -52,21 +36,13 @@
 				 oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
 			 // 이부분에 에디터 validation 검증
 
-				 $("#data_form").submit(); 
+				 $("#board_form").submit(); 
 		 });
 				
 		
 	});
 
-	/* 파일추가버튼 */
-	function addbt() {
-		var fileIndex = $(".addtable").children().length+1-1;
-		$("#addtd").append(
-				'<tr id="file_up' + fileIndex + '"><td>' + 
-				'<input style="width: 100%;" type="file" name="uploadfile[' + fileIndex + ']" id="file_up' + fileIndex + '"  />' +
-				'</td>' +'<td align="right"><a href="#" class="btn btn-primary"  name="file_up' + fileIndex + '" style="margin-left: 0%;" type="button" onclick="delbt(this.name)">ㅡ</a>' +
-				'</td></tr>');
-	}
+	
 	/* 추가된 파일 제거버튼  */
 	function delbt(thisname) {
 		
@@ -83,47 +59,21 @@
 		}
 		
 	}
-	/* 기존 파일 제거버튼 */
-	function delbt_ori(thisname) {
-		
-		var file_del = thisname;
-		
-	 	if (/(MSIE|Trident)/.test(navigator.userAgent)) { 
-			// ie 일때 input[type=file] init.
-			$("input[id=" + file_del + "]").replaceWith( $("input[id=" + file_del + "]").clone(true) );
-			$("input[id=" + file_del + "]").remove();
-			$("td[id=" + file_del + "]").append(
-					'<input type="file"  name="uploadfile[0]"  required="required" id="file_up0" />');
-		} else {
-			 // other browser 일때 input[type=file] init.
-			$("input[id=" + file_del + "]").val(""); 
-		    $("input[id=" + file_del + "]").remove();
-		    $("td[id=" + file_del + "]").append(
-			'<input type="file"  name="uploadfile[0]"  required="required" id="file_up0" />');
-		}
-		
-	}
 	
-	function delFile(idx){
-		var obj = $('#flist_' + idx);
-		
-		//alert($(obj).find('#flag').val());
-		$(obj).find('#flag').val("D");
-		$(obj).hide();
-	}
+
 	</script>
 </head>
-<body class="cms_portfolio_body">
+<body>
 <%@ include file="../cms_header.jsp"%>
-<div class="cms_portfolio_div">
+<div>
 	<%@ include file="../cms_left_bar.jsp"%>
-	<div class="contens">
+	<div style="padding-top: 100px;">
 	<div align="center" style="padding-top: 100px; padding-left: 200px; width: auto;">
 		<h1>downloads</h1>	
-		<form id="data_form" name="data_form" method="post" action="cms_data_update_action" enctype="multipart/form-data">
+		<form id="board_form" name="board_form" method="post" action="cms_board_update_action" enctype="multipart/form-data">
 		<input type="hidden" id="board_division" name="board_division" value="${board_update.board_division }">
 		<input type="hidden" id="board_seq" name="board_seq" value="${board_update.board_seq}">
-				<table class="table table-hover" style="margin-bottom: 0;" border="1">
+				<table class="table table-hover" style="width: 700px;" border="1">
 
 					<tr>
 						<td class="table-info">ID</td>
@@ -142,27 +92,23 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table table-hover" style="margin-bottom: 0;" border="1" >
+				<table class="table table-hover" style="width: 700px;" border="1">
 					<tr>
-						<td><textarea name="board_content" id="board_content" rows="10" cols="30" >${board_update.board_content}</textarea></td>
+						<td><textarea name="board_content" id="board_content" rows="10" cols="30" style="width: 700px; height: 500px;">${board_update.board_content}</textarea></td>
 					</tr>
 				</table>	
-				<table class="table table-hover">
+				<table class="table table-hover" style="width: 700px;" border="1">
 					<tr>
 					<td class="table-info" width="235px">첨부파일</td>
 					</tr>
 					</table>
-					<div align="center" style=" padding-left: 200px; width: auto;">
-				<table class="table table-hover">
-<!-- 						<tr style="margin: 0;">
-					<td colspan="2" style="width: 900px">
-					</td>
-								</tr> -->
+					<div align="center" >
+				<table class="table table-hover" style="width: 700px;" border="1">
+
 					<c:choose>
 						<c:when test="${fn:length(file_list) == 0}">												
 
 							<tr>
-<!-- 							<td class="table-info" width="235px">첨부파일</td> -->
 							<td width="100%" align="left">첨부된 파일이 없습니다.</td>
 							</tr>
 						</c:when>
@@ -176,6 +122,8 @@
 									<input type="hidden" name="file_key" id="file_key" value="${file_list.file_seq}" />
 									<input type="hidden" id="update_id" name="update_id" value="${sessionScope.admin_id}" />
 									<input type="hidden"  name="flag" id="flag" value="C" />
+									<label>${file_list.file_size} KB</label>
+									
 								</td>
 								</c:if>
 							</tr>
@@ -184,19 +132,17 @@
 					</c:choose>
 			</table>
 			</div>
-					<table class="table table-hover" >
+					<table class="table table-hover" style="width: 700px;" >
 					<tbody class="addtable" id="addtd" >
 					<tr id="file_up0">
 					<td id="file_up0">
 						<input type="file"  name="uploadfile[0]"  required="required" id="file_up0" multiple />
 					</td>
 					<td align="right">
-						<!-- <input class="btn btn-primary"  name="file_up0" style="margin-left: 0%;" type="button" value="파일 제거" onclick="delbt_ori(this.name)" /> -->
-						<a href="#" class="btn btn-primary"  name="file_up0" style="margin-left: 0%;" type="button" onclick="delbt_ori(this.name)">ㅡ</a>
+						<button class="btn btn-primary"  name="file_up0" style="margin-left: 0%;" type="button" onclick="delbt_ori(this.name)">ㅡ</button>
 					</td>
 					<td align="right">
-						<!-- <input class="btn btn-primary" name="test0" style="margin-left: 0%;" type="button" value="파일 추가" onclick="addbt()" /> -->
-						&emsp;<a href="#" class="btn btn-primary" name="test0" style="margin-left: 0%;" type="button"  onclick="addbt()">+</a>
+						<button class="btn btn-primary" style="margin-left: 0%;" type="button"  onclick="javascript:addbt()">+</button>
 					</td>
 					</tr>
 					</tbody>
@@ -205,7 +151,7 @@
 			</form>
 			<br>
 
-			<table class="table table-hover">
+			<table class="table table-hover" width="700px;">
 				<tr>
 					<td align="left">
 						<button class="btn btn-primary" id="list" name="list">목록</button>
@@ -216,6 +162,16 @@
 					</td>
 				</tr>
 			</table>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
 			</div>
 	</div>
 
