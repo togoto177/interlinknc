@@ -37,15 +37,22 @@ $(document).ready(function() {
 </head>
 <body class="main_body">
 	<div class="mainImg">
-		<div class="mainImgEx">
-		<img alt="logo" src="resources/mainImg/bg_starry.png">
+		<div class="mainImgEx1">
+		<img alt="별이미지1" src="resources/mainImg/mainbg_violet_particle.png">
 		</div>
+		<div class="mainImgEx2">
+		<img alt="별이미지2" src="resources/mainImg/mainbg_green_particle.png">
+		</div>
+		<div class="mainImgEx3">
+		<img alt="별이미지3" src="resources/mainImg/mainbg_white_particle.png">
+		</div>
+		
 		<div class="mainImg_con2">
-		<a class="con1">/</a><br />
+		<a class="con1"><img alt="main 사선 이미지" src="resources/mainImg/diagonal_main.png"></a><br />
 		<img alt="logo" src="resources/mainImg/white_logo.png"><br />
 		<a class="en">WE ARE INTERLINK&amp;C</a><br />
 		<a class="ko">솔루션 네트워킹으로 정보화를 이끄는 기업</a><br />
-		<a class="con2">/</a>
+		<a class="con2"><img alt="main 사선 이미지" src="resources/mainImg/diagonal_portfolio.png"></a>
 		
 		<div class="whatwedo">
 			<a class="whatwedoA">WHAT WE DO</a>
@@ -69,165 +76,225 @@ $(document).ready(function() {
 		<hr class="border-bottom">
 		</div>
 	</div>
-	<div class="exlink"><a href="/main1">1번</a><a href="/main2">2번</a><a href="/main3">3번</a><a href="/main4">4번</a></div>
 	<div class="about" id="about">
-		<div class="about_title"><a class="about_titleA">ABOUT US</a></div>
-		
-		<div class="about2">
-				<a class="about2A">(주)인터링크앤씨는 다년간 정부 중앙부처 및 산하기관의 시스템 구축과 운영 경험을 바탕으로<br />
-				습득한 노하우를 전산시스템 구축을 필요로 하는 기관 및 기업에 적용할 수 있도록<br />
-				시스템 구축 컨설팅과 시스템 개발을 통하여<br />
-				시스템 구축시 발생할 수 있는 문제점을 최소화 할 수 있는 시스템을 적용하고 있습니다.<br />
-				현재 소프트웨어 개발 및 공급과, 포털 홈페이지 구축 운영,<br />
-				해양어촌관광(상품개발) 컨설팅 프로젝트를 진행하고 있습니다.<br />
-				향후 인터링크앤씨는 더욱 분야를 확대하여,<br />
-				최고의 컨설팅으로 최고의 소프트웨어를 제공하는 기업으로 확대하여 나갈 예정입니다.<br />
-				웹 기반의 비지니스 솔루션 공급 사업으로 서비스 체계를 갖춘 기업으로 도약할 것입니다.<br />
-				또한 저희 기업은 인터넷 및 전산시스템과 관련한 블루오션을 찾아 항상 생각하고 창출하여<br />
-				사용자들이 원하는 소프트웨어 개발에 주력하고자 합니다.</a>
-		</div>
-		
+	
 		<div class="about_inter"><a class="icolor">I</a><a>nter-</a><br />
 			<a>Link<br />
 			and<br />
 			C</a>
 		</div>
 		
+		<div class="about_title">
+		<a class="about_titleA"><img alt="about us 이미지" src="resources/mainImg/diagonal_about.png"><br />ABOUT US</a>
+		</div>
+		
+		<div class="about2">
+				<a class="about2A">(주)인터링크앤씨는 다년간 정부 중앙부처 및 산하기관의 시스템을 구축하고 운영해 온<br />
+				다년간의 경험이 있습니다. 이를 바탕으로 습득한 노하우를<br />
+				전산시스템 구축이 필요한 고객사인 공공기관&#180;기업에 적용하여<br />
+				업무상 발생가능한 문제점을 최소화하고 니즈를 충족시키는<br />
+				고객 맞춤형 토털솔루션을 제공합니다.<br />
+				&#150;<br />
+				(주)인터링크앤씨는 활동분야를 확대하여,<br />
+				웹 기반의 비즈니스 솔루션 제공 서비스에 지향점을 두고 있습니다.<br />
+				최고의 컨설팅과 양질의 소프트웨어를 제공하는 업계 선도기업으로 도약하려 합니다.<br />
+				나아가 인터넷 및 전산시스템과 관련한 블루오션을 모색하여<br />
+				사용자들의 잠재적 니즈를 충족시키고 새로운 가치를 창충하는<br />
+				참신한 소프트웨어 개발에 주력하겠습니다.</a>
+		</div>
+
+		<div class="about_history"><a class="hcolor">h</a><a class="icolor">i</a><a>story</a></div>
+		
 		<div class="about3">
-			<br />
+		<div class="history_title">
+			<a class="history_titleA"><img alt="history 이미지" src="resources/mainImg/diagonal_about.png"><br />HISTORY</a>
+		</div>
 			<div class="history">
 			<table>
 				<colgroup>
-					<col style="width: 5%" />
-					<col style="width: 15%" />
-					<col style="width: 80%" />
+					<col style="width: 45%" />
+					<col style="width: 45%" />
 				</colgroup>
 				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2006</td>
+					<td class="historyLeft"></td>
+					<td class="historyRight">
+					<div class="historyImg">
+						<img alt="히스토리 이미지" src="resources/mainImg/history_right.png">
+						2006.11
+					</div>
+					<div class="historyText">
+						<a>(주)씨앤닷컴 법인회사 설립 및 법인사업자 신고</a>
+					</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="tb_img"></td>
-					<td class="mon">11월</td>
-					<td>(주)씨앤닷컴 법인회사 설립 및 법인사업자 신고</td>
+					<td class="historyLeft">
+					<div class="historyImg">
+						2007.03
+						<img alt="히스토리 이미지" src="resources/mainImg/history_left.png">
+					</div>
+					<div class="historyText">
+						<a>벤처기업확인서 인증(기술보증기금)</a>
+					</div>
+					</td>
+					<td class="historyRight"></td>
 				</tr>
 				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2007</td>
+					<td class="historyLeft"></td>
+					<td class="historyRight">
+					<div class="historyImg">
+						<img alt="히스토리 이미지" src="resources/mainImg/history_right.png">
+						2007.04
+					</div>
+					<div class="historyText">
+						<a>소프트웨어 사업자 신고(한국소프트웨어 산업협회)</a>
+					</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="tb_img"></td>
-					<td class="mon">3월</td>
-					<td>벤처기업확인서 인증(기술보증기금)</td>
+					<td class="historyLeft">
+					<div class="historyImg">
+						2008.05
+						<img alt="히스토리 이미지" src="resources/mainImg/history_left.png">
+					</div>
+					<div class="historyText">
+						<a>직접생산확인증명서 승인(중소기업중앙회)</a>
+					</div>
+					</td>
+					<td class="historyRight"></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td class="mon">4월</td>
-					<td>소프트웨어 사업자 신고(한국소프트웨어 산업협회)</td>
+					<td class="historyLeft"></td>
+					<td class="historyRight">
+					<div class="historyImg">
+						<img alt="히스토리 이미지" src="resources/mainImg/history_right.png">
+						2009.03
+					</div>
+					<div class="historyText">
+						<a>직접생산확인증명서 연장승인(중소기업중앙회)</a>
+					</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2008</td>
+					<td class="historyLeft">
+					<div class="historyImg">
+						2010.05
+						<img alt="히스토리 이미지" src="resources/mainImg/history_left.png">
+					</div>
+					<div class="historyText">
+						<a>스마트폰을 활용한 웹프로그램 저작권등록(한국저작권위원회)</a>
+					</div>
+					</td>
+					<td class="historyRight"></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td class="mon">5월</td>
-					<td>직접생산확인증명서 승인(중소기업중앙회)</td>
+					<td class="historyLeft"></td>
+					<td class="historyRight">
+					<div class="historyImg">
+						<img alt="히스토리 이미지" src="resources/mainImg/history_right.png">
+						2010.12
+					</div>
+					<div class="historyText">
+						<a>국토해양부장관 표장(제12235호)</a>
+					</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2009</td>
+					<td class="historyLeft">
+					<div class="historyImg">
+						2012.12
+						<img alt="히스토리 이미지" src="resources/mainImg/history_left.png">
+					</div>
+					<div class="historyText">
+						<a>농림수산식품부 장관 표창(제82260호)</a>
+					</div>
+					</td>
+					<td class="historyRight"></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td class="mon">3월</td>
-					<td>직접생산확인증명서 연장승인(중소기업중앙회)</td>
+					<td class="historyLeft"></td>
+					<td class="historyRight">
+					<div class="historyImg">
+						<img alt="히스토리 이미지" src="resources/mainImg/history_right.png">
+						2014.05
+					</div>
+					<div class="historyText">
+						<a>스마트카드(IC)급모듈 외 4종 프로그램 저작권등록(한국저작권위원회)</a>
+					</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2010</td>
+					<td class="historyLeft">
+					<div class="historyImg">
+						2015.07
+						<img alt="히스토리 이미지" src="resources/mainImg/history_left.png">
+					</div>
+					<div class="historyText">
+						<a>스마트카드 플릿 이중 보안방법 특허등록(제10-1542106호)</a>
+					</div>
+					</td>
+					<td class="historyRight"></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td class="mon">5월</td>
-					<td>스마트폰을 활용한 웹프로그램 저작권등록(한국저작권위원회)</td>
+					<td class="historyLeft"></td>
+					<td class="historyRight">
+					<div class="historyImg">
+						<img alt="히스토리 이미지" src="resources/mainImg/history_right.png">
+						2017.02
+					</div>
+					<div class="historyText">
+						<a>(주)씨앤닷컴 대표이사 김종우 사임<br />
+						(주)인터링크앤씨로 회사명 변경 및 대표이사 김제범 취임</a>
+					</div>
+					</td>
 				</tr>
 				<tr>
-					<td></td>
-					<td class="mon">12월</td>
-					<td>국토해양부장관 표창(제12235호)</td>
-				</tr>
-				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2012</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td class="mon">12월</td>
-					<td>농림수산식품부 장관 표창(제82260호)</td>
-				</tr>
-				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2014</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td class="mon">5월</td>
-					<td>스마트카드(IC)발급모듈 외 4종 프로그램 저작권등록(한국저작권위원회)</td>
-				</tr>
-				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2015</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td class="mon">7월</td>
-					<td>스마트카드 애플릿 이중 보안방법 특허등록(제10-1542106호)</td>
-				</tr>
-				<tr>
-					<td class="tb_img">&bull;</td>
-					<td colspan="2" class="year">2017</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td class="mon">2월</td>
-					<td>(주)씨앤닷컴 대표이사 김종우 사임<br />
-					(주)인터링크앤씨로 회사명 변경 및 대표이사 김제범 취임</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td class="mon">11월</td>
-					<td>직접생산확인증명서 승인(중소기업중앙회)</td>
+					<td class="historyLeft">
+					<div class="historyImg">
+						2017.11
+						<img alt="히스토리 이미지" src="resources/mainImg/history_left.png">
+					</div>
+					<div class="historyText">
+						<a>직접생산확인증명서 승인(중소기업중앙회)</a>
+					</div>
+					</td>
+					<td class="historyRight"></td>
 				</tr>
 			</table>
 			</div>
 		</div>
-		<br />
-		
-		<div class="about_history"><a class="hcolor">H</a><a>istory</a>
-		</div>
+
 	</div>
 	
 	<div class="portfolio_menu"></div>
 	<div class="portfolio" id="portfolio">
 		<div class="portfolioImg">
-			<div class="prevBtn"><a id="prevBtn">앞</a></div>
+			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>
 			<div class="portfolioImg_div">
 			<ul class="bxslider">
-				<li class="banner_a1" style="background: url('resources/mainImg/pf1.jpg')"><a href="#">1</a></li>
-				<li class="banner_a2" style="background: url('resources/mainImg/pf2.jpg')"><a href="#">1</a></li>
-				<li class="banner_a3" style="background: url('resources/mainImg/pf1.jpg')"><a href="#">1</a></li>
-				<li class="banner_a4" style="background: url('resources/mainImg/pf2.jpg')"><a href="#">1</a></li>
+				<li class="banner_a1" style="background: url('resources/mainImg/pf1.jpg'); background-repeat: no-repeat; background-size: cover;">
+				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				</li>
+				<li class="banner_a2" style="background: url('resources/mainImg/pf2.jpg'); background-repeat: no-repeat; background-size: cover;">
+				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				</li>
+				<li class="banner_a3" style="background: url('resources/mainImg/pf1.jpg'); background-repeat: no-repeat; background-size: cover;">
+				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				</li>
+				<li class="banner_a4" style="background: url('resources/mainImg/pf2.jpg'); background-repeat: no-repeat; background-size: cover;">
+				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				</li>
 			</ul>
 			</div>
-			<div class="nextBtn"><a id="nextBtn">뒤</a></div>
 		</div>
 	</div>
 	
 	<div class="downloads" id="downloads">
-	<br />
-	<h1>Downloads</h1>
+	<div class="downloads_title"><a class="downloads_titleA"><img alt="downloads 이미지" src="resources/mainImg/diagonal_download.png"><br/>DOWNLOAD</a></div>
+	
 		<div class="downloadsTable">
+		
+		<hr class="downloads_border-top">
 			<table>
 				<colgroup>
 					<col style="width: 10%" />
@@ -237,7 +304,7 @@ $(document).ready(function() {
 					<col style="width: 15%" />
 				</colgroup>
 				<tr>
-					<th>No</th>
+					<th>번호</th>
 					<th>제목</th>
 					<th>일자</th>
 					<th>다운로드</th>
@@ -250,40 +317,79 @@ $(document).ready(function() {
 					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
 					<td>99999</td>
 				</tr>
+				<tr>
+					<td>2</td>
+					<td>스마트카드 v.1.0.1</td>
+					<td>2018.11.21</td>
+					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td>99999</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>스마트카드 v.1.0.1</td>
+					<td>2018.11.21</td>
+					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td>99999</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>스마트카드 v.1.0.1</td>
+					<td>2018.11.21</td>
+					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td>99999</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>스마트카드 v.1.0.1</td>
+					<td>2018.11.21</td>
+					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td>99999</td>
+				</tr>
 			</table>
+			
+			<div class="downCnt">
+			<ul>
+			<li>◀</li>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>▶</li>
+			</ul>
+			</div>
+			<hr class="downloads_border-bottom">
 		</div>
-		<br />
 	</div>
 	
 	<div class="customer" id="customer">
-	<br />
-	<h1>Customer</h1>
-		<div class="customerCon">
-			<table>
-				<colgroup>
-					<col style="width: 45%" />
-					<col style="width: 55%" />
-				</colgroup>
-				<tr>
-					<td rowspan="5"><img alt="네이버 지도" src="resources/mainImg/nav.jpg"></td>
-					<td><label>작성자</label><input type="text" /></td>
-				</tr>
-				<tr>
-					<td><label>이메일</label><input type="text" /></td>
-				</tr>
-				<tr>
-					<td><label>연락처</label><input type="text" /></td>
-				</tr>
-				<tr>
-					<td><label>문의내용</label><textarea></textarea> </td>
-				</tr>
-				<tr>
-					<td class="send_bt"><a>Send</a></td>
-				</tr>
-			</table>
+	<div class="customer_title"><a class="customer_titleA"><img alt="customer 이미지" src="resources/mainImg/diagonal_contact.png"><br/>CUSTOMER</a></div>
+		<div class="customer_con">
+			<div class="customerLeft">
+				<div class="customerLeftText">
+					<a class="text1">Tel.</a><a>02-2202-8565</a><br />
+					<a class="text1">Email.</a><a>info@interlinknc.com</a><br />
+					<a class="text1">Address.</a><a>서울특별시 송파구 위례성대로 18, 703호(방이동, 금복빌딩)</a>
+				</div>
+				<div class="coustomerLeftImg">
+					<img alt="네이버 지도" src="resources/mainImg/nav.jpg">
+				</div>
+			</div>
+			<div class="customerRight">
+				<div class="customerRightText">
+					<a>인터링크앤씨는 고객 여러분의 문의를 기다립니다.<br />
+					온라인으로 문의사항을 접수해 주시면<br />
+					이메일 또는 유선상으로 답변 드립니다</a>
+				</div>
+				<div class="customerRightInput">
+					<label>작성자</label><input type="text" /><br />
+					<label>이메일</label><input type="text" /><br />
+					<label>연락처</label><input type="text" /><br />
+					<label>문의내용</label><textarea></textarea>
+				</div>
+			</div>
 		</div>
-	<br />
 	</div>
-	<%@ include file="../front/footer.jsp"%>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
