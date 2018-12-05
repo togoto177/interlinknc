@@ -24,6 +24,8 @@ jQuery(document).ready(function($){
             $('html,body').animate({scrollTop:0}, 500);
             //ofWfset()함수로 위치를 찾음
      });
+    
+    /*메인으로 아이콘*/
     $(window).scroll(function() {
     	  var $el = $('.show-on-scroll');
     	  
@@ -52,6 +54,28 @@ jQuery(document).ready(function($){
 	    $('body').css("overflow", "scroll");
 	    $('.window').hide();  
 	});
+	
+	/* 이미지 효과 */
+	$(".home_icon").hide();
+/*	$(".portConText").css("visibility", "hidden"); */
+	/*$(".bxslider li").mouseover(function(){
+		$(this).children('.portConText').css("visibility", "visible");
+    }).mouseleave(function(){
+    	$(this).children('.portConText').css("visibility", "hidden");
+    });*/
+	$(".portConText").hide();
+	$(".bxslider li").mouseover(function(){
+		$(this).children('.portConText').show();
+    }).mouseleave(function(){
+    	$(this).children('.portConText').hide();
+    });
+	
+	$(".downloadsTable table tr").mouseover(function(){
+		$(this).find("img").attr("src", "resources/mainImg/downloadImg2.png");
+	}).mouseleave(function(){
+		$(this).find("img").attr("src", "resources/mainImg/downloadImg.png");
+    });;
+	
 });
 
 function wrapWindowByMask(){
