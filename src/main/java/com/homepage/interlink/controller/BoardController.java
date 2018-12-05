@@ -48,13 +48,6 @@ public class BoardController {
 	@RequestMapping(value = "/cms_board")
 	public String cms_board(@RequestParam Map<String, Object> paramMap, Model model, HttpSession session) {
 		
-		/*
-		 *   2018-12-03 나중에 세션 값 넘겨 받을때 처리 할 것 
-		 * Object obj_id = session.getAttribute("ad_id");
-		System.out.println("============================>" + obj_id);
-		
-		*/
-		
 		//조회 하려는 페이지
         int startPage = (!"".equals(paramMap.get("startPage")) && paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
 
@@ -102,19 +95,29 @@ public class BoardController {
 	}
 	//게시판 작성 액션
 	@RequestMapping(value="/cms_board_insert_action", method=RequestMethod.POST)
-	    public String cms_board_insert_action(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model, HttpSession session)throws Exception{
+	public String cms_board_insert_action(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model, HttpSession session)throws Exception{
 			
 			String board_division =  board.getBoard_division();
 			
-			Object objss_id = session.getAttribute("ad_id");
-		    String session_id = objss_id.toString();
-			/*System.out.println("======================session_id======>" + session_id);*/
+			
+		    if(!session.equals(null)) {
+		    	board.setBoard_writer("GUEST");
+		    	board.setBoard_use_yn("Y");
+				board.setBoard_hit(0);
+				board.setBoard_updateid("GUEST");
+				board.setBoard_etc("etc");
+		    }else{
+		    	Object objss_id = session.getAttribute("ad_id");
+		    	String session_id = objss_id.toString();
+		    	System.out.println("======================session_id======>" + session_id);
+		    	board.setBoard_writer(session_id);
+		    	board.setBoard_use_yn("Y");
+				board.setBoard_hit(0);
+				board.setBoard_updateid(session_id);
+				board.setBoard_etc("etc");
+		    }
 		
-			board.setBoard_use_yn("Y");
-			board.setBoard_hit(0);
-			board.setBoard_writer(session_id);
-			board.setBoard_updateid(session_id);
-			board.setBoard_etc("etc");
+			
 
 			boardService.board_insert(board);
 			
@@ -125,6 +128,10 @@ public class BoardController {
 			if(board_division.equals("portfolio")) {
 			board.setBoard_seq(board.getBoard_seq());
 			boardService.portfolio_insert(board);
+			}else if(board_division.equals("customer")) {
+			board.setBoard_seq(board.getBoard_seq());
+			board.setStatus("0");
+			boardService.customer_insert(board);
 			}
 			
 			
@@ -213,13 +220,14 @@ public class BoardController {
 				
 			}
 
-	        
+	        if(board_division.equals("customer")) {
+	        return "redirect:/main1";	
+	        }
 	        return "redirect:/cms_board?board_division=" + board.getBoard_division();
 	    }
-	
-    /*자료실 다운로드 */
-   @RequestMapping("/boardFileDown")
-   private void boardFileDown(String file_name, String file_seq, String board_division, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	//게시판 다운로드
+	@RequestMapping("/boardFileDown")
+    private void boardFileDown(String file_name, String file_seq, String board_division, HttpServletRequest request, HttpServletResponse response) throws Exception{
    	request.setCharacterEncoding("UTF-8");
 
    		System.out.println("=========================> file_seq1---   " + file_name);
@@ -309,15 +317,16 @@ public class BoardController {
        }
    		
    	}
-   //게시판 상세보기
-   @RequestMapping(value = "/cms_board_body")
+    //게시판 상세보기
+    @RequestMapping(value = "/cms_board_body")
 	public String cms_board_body(@RequestParam Map<String, Object> paramMap, @ModelAttribute Board board, Model model) {
-	   model.addAttribute("file_list",boardFileService.file_list(paramMap));
+       model.addAttribute("board_division", paramMap.get("board_division"));
+       model.addAttribute("file_list",boardFileService.file_list(paramMap));
 	   model.addAttribute("board_body",boardService.board_read(board));
 	   
    return "cms/board/cms_board_body";
    }
-   //자료실 수정 화면
+    //게시판 수정 화면
  	@RequestMapping(value = "/cms_board_update", method=RequestMethod.GET)
  	public String cms_board_update(@RequestParam Map<String, Object> paramMap, Board board, Model model) {
  		model.addAttribute("board_update",boardService.board_read(board));
@@ -327,127 +336,131 @@ public class BoardController {
  		
  		return "cms/board/cms_board_update";
  	}
-	//자료실 수정 액션
+	//게시판 수정 액션
 	@RequestMapping(value="/cms_board_update_action", method=RequestMethod.POST)
 	public String cms_board_update_action(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag, String[] fName, HttpSession session)throws Exception{
 			
-			String board_division =  board.getBoard_division();
-		
-			Object objss_id = session.getAttribute("ad_id");
-		    String session_id = objss_id.toString();
-			
-			board.setBoard_updateid(session_id);
-
-			boardService.board_update(board);
-					
-	        BoardFile boardFile = new BoardFile();
-	        boardFile.setBoard_seq(board.getBoard_seq());
-	        boardFile.setFile_updateid(session_id);
-	        boardFile.setFile_use_yn("Y");
-	        
-	        //파일
-	        Calendar cal = Calendar.getInstance()  ;
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmSS");
-	        String time = dateFormat.format(cal.getTime());
-	        
-	        List<MultipartFile> files = fileup.getUploadfile();
-			
-			//List<String> fileNames = new ArrayList<String>();
-			if (null != files && files.size() > 0) {
+				String board_division =  board.getBoard_division();
+				System.out.println("========================board_division>" + board_division);
 				
+				if (!board_division.equals("customer")) {
 				
-				for (MultipartFile multipartFile : files) {
-					if (!"".equals(multipartFile.getOriginalFilename()) && multipartFile.getSize() > 0) {
+				Object objss_id = session.getAttribute("ad_id");
+			    String session_id = objss_id.toString();
+				
+				board.setBoard_updateid(session_id);
+
+				boardService.board_update(board);
+						
+		        BoardFile boardFile = new BoardFile();
+		        boardFile.setBoard_seq(board.getBoard_seq());
+		        boardFile.setFile_updateid(session_id);
+		        boardFile.setFile_use_yn("Y");
+		        
+		        //파일
+		        Calendar cal = Calendar.getInstance()  ;
+		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmSS");
+		        String time = dateFormat.format(cal.getTime());
+		        
+		        List<MultipartFile> files = fileup.getUploadfile();
+				
+				//List<String> fileNames = new ArrayList<String>();
+				if (null != files && files.size() > 0) {
 					
-						System.out.println("file = " + multipartFile.getOriginalFilename() + "/" + multipartFile.getSize());
-						// 상대경로 
-						String file_path = request.getSession().getServletContext().getRealPath("/");
-						String file_ori_name = multipartFile.getOriginalFilename();
-						String file_sub_name = time + "-" + UUID.randomUUID().toString() +"_" +file_ori_name;
+					
+					for (MultipartFile multipartFile : files) {
+						if (!"".equals(multipartFile.getOriginalFilename()) && multipartFile.getSize() > 0) {
 						
-						System.out.println("file_ori_name ----->" + file_ori_name);
-						
-						String attach_path = "";
-						if(board_division.equals("download")) {
-							attach_path = "resources/downloads/";
-						}else if (board_division.equals("portfolio")) {
-							attach_path = "resources/portfolio/";
-						}
-						
-						File f = new File(file_path + attach_path + file_sub_name);
-						
-						System.out.println("===========자료실 파일업로드 실제 Path=========" + f);
-
-						//	이력서 model에 파일명,주소 저장
-						//         파일명에서 확장자 추출 
-						String filename = file_ori_name;
-						int fileLen = filename.length();
-						int lastDot = filename.lastIndexOf('.');
-						String fileExt = filename.substring(lastDot, fileLen).toLowerCase();
-						boardFile.setExtention_name(fileExt);
-						boardFile.setFile_ori_name(file_ori_name);
-						boardFile.setFile_sub_name(file_sub_name);
-						boardFile.setFile_path("/" + attach_path);
-						
-						long test = multipartFile.getSize();
-						String test2 = String.valueOf(test);
-
-				        System.out.println(" size = " + test2 + " bytes");
-				 
-						
-						boardFile.setFile_size(test2);
-
-						System.out.println("확장명 : " + fileExt);
-						
-						boardFileService.file_insert(boardFile);
-						
-						try {
-							multipartFile.transferTo(f);
-						} catch (IllegalStateException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						
-						
-						
-						
-						try { 						
+							System.out.println("file = " + multipartFile.getOriginalFilename() + "/" + multipartFile.getSize());
+							// 상대경로 
+							String file_path = request.getSession().getServletContext().getRealPath("/");
+							String file_ori_name = multipartFile.getOriginalFilename();
+							String file_sub_name = time + "-" + UUID.randomUUID().toString() +"_" +file_ori_name;
 							
-						} catch (Exception e) {
-							model.addAttribute("msg", "다시 입력하세요.");
+							System.out.println("file_ori_name ----->" + file_ori_name);
+							
+							String attach_path = "";
+							if(board_division.equals("download")) {
+								attach_path = "resources/downloads/";
+							}else if (board_division.equals("portfolio")) {
+								attach_path = "resources/portfolio/";
+							}
+							
+							File f = new File(file_path + attach_path + file_sub_name);
+							
+							System.out.println("===========자료실 파일업로드 실제 Path=========" + f);
+
+							//	이력서 model에 파일명,주소 저장
+							//         파일명에서 확장자 추출 
+							String filename = file_ori_name;
+							int fileLen = filename.length();
+							int lastDot = filename.lastIndexOf('.');
+							String fileExt = filename.substring(lastDot, fileLen).toLowerCase();
+							boardFile.setExtention_name(fileExt);
+							boardFile.setFile_ori_name(file_ori_name);
+							boardFile.setFile_sub_name(file_sub_name);
+							boardFile.setFile_path("/" + attach_path);
+							
+							long test = multipartFile.getSize();
+							String test2 = String.valueOf(test);
+
+					        System.out.println(" size = " + test2 + " bytes");
+					 
+							
+							boardFile.setFile_size(test2);
+
+							System.out.println("확장명 : " + fileExt);
+							
+							boardFileService.file_insert(boardFile);
+							
+							try {
+								multipartFile.transferTo(f);
+							} catch (IllegalStateException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							
+							
+							
+							
+							try { 						
+								
+							} catch (Exception e) {
+								model.addAttribute("msg", "다시 입력하세요.");
+							}
+							
 						}
-						
 					}
+					
+					
 				}
-				
-				
-			}
-			if(file_key != null) {
-	    		
-	    		for(int i=0; i<file_key.length ; i++) {
-	    			
-	    			System.out.println("===========fileKey==============>" + file_key[i]);
-	    			System.out.println("===========flag==============>" + flag[i]);
-	        		System.out.println("===========fName==============>" + fName[i]);
+				if(file_key != null) {
+		    		
+		    		for(int i=0; i<file_key.length ; i++) {
+		    			
+		    			System.out.println("===========fileKey==============>" + file_key[i]);
+		    			System.out.println("===========flag==============>" + flag[i]);
+		        		System.out.println("===========fName==============>" + fName[i]);
 
-	        		//flag가 D인건 삭제. 데이터도 삭제, 파일도 삭제.
-	    			if("D".equals(flag[i])) {
-	    				boardFile.setFile_seq(Integer.parseInt(file_key[i]));
-	    				boardFile.setFile_updateid(session_id);
-	    				
+		        		//flag가 D인건 삭제. 데이터도 삭제, 파일도 삭제.
+		    			if("D".equals(flag[i])) {
+		    				boardFile.setFile_seq(Integer.parseInt(file_key[i]));
+		    				boardFile.setFile_updateid(session_id);
+		    				
 
-	    				boardFileService.file_updateform_delete(boardFile);
-							
-	    			}
-	    		}
-	    		}
-
-	        
+		    				boardFileService.file_updateform_delete(boardFile);
+								
+		    			}
+		    		}
+		    		}
+				}else{
+				boardService.board_update(board);
+				}
+			
 	        return "redirect:/cms_board_body?board_division="+board.getBoard_division()+"&board_seq=" + board.getBoard_seq();
 	    }
-	
-	//자료실 목록 및 상세보기에서 삭제 액션 실제로 use_yn = 'N' 처리
+	//게시판 목록 및 상세보기에서 삭제 액션 실제로 use_yn = 'N' 처리
 	@RequestMapping(value = "/cms_board_delete" , method = RequestMethod.GET)
 	public String cms_board_delete(Board board, BoardFile boardFile, int[] board_seq, HttpServletRequest request) {
 		

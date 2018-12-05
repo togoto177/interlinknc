@@ -4,7 +4,7 @@
 		<ul>
 			<li>게시판</li>
 			<li><a href="/cms_board?board_division=portfolio">Portfolio</a></li>
-			<li><a href="/cms_contact">Contact Us</a></li>
+			<li><a href="/cms_board?board_division=customer">Contact Us</a></li>
 			<li><a href="/cms_board?board_division=download">Downloads</a></li>
 			<li>일정</li>
 			<li>설정</li>

@@ -20,6 +20,7 @@
 				location.href="cms_board_body?board_division="+$("#board_division").val()+"&board_seq="+$("#nextview").val();
 			});
 			
+			$("#customer_select").val("${board_body.board_division}").attr("selected", "selected");
 			
 				
 	});
@@ -88,8 +89,10 @@
 	function downFile(fileName){
 		
 		var file_name = fileName.split('*');
-
+		
 		if($("#board_division").val() == "download"){
+			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division=download&file_seq="+file_name[1];
+		}else if($("#board_division").val() == "download"){
 			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division=download&file_seq="+file_name[1];
 		}else if($("#board_division").val() == "portfolio"){
 			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division=portfolio";
@@ -99,7 +102,6 @@
 	}
 	//수정폼에서 기존 업로드된 파일 삭제시 id 값 c --> d로 변환시킴
 	function delFile(idx){
-		alert(idx);
 		
 		var obj = $('#flist_' + idx);
 
@@ -107,14 +109,26 @@
 		$(obj).hide();
 	}
 	
-
+	//파일 버튼 교체 스크립트
 	$(function(){          
 		$('#newFile').click(function(e){
-			$('.length_x').empty();
-			$( '.length_x' ).append( '<input type="file" name="uploadfile" class="multi with-preview" id="orgFile"/>' );
-			
 			e.preventDefault();             
-			$('.multi').click();               
+			$('input[type=file]').last().click();               
 		});                         
-	});   
+	});
+	
+	//customer 상태 선택만해도 변경되게
+	$(function() {
+		$('#status').change(function() {
+			var s = this.value;
+			if (s == "1") {
+				alert("답변상태가 '확인'으로 변경 되었습니다.");
+			}else{
+				alert("답변상태가 '미확인'으로 변경 되었습니다.");
+			}
+			
+			$("#board_form").submit(); 
+	});
+		
+	})
 	

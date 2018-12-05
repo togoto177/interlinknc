@@ -20,6 +20,8 @@ public interface BoardDao {
 
 	public void board_delete(Board board);
 
-	public void portfolio_insert(Board board2);
+	public void portfolio_insert(Board board);
+
+	public void customer_insert(Board board);
 
 }
