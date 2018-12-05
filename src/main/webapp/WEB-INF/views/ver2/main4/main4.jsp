@@ -8,9 +8,8 @@
 <head>
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	var mySlider = $('.bxslider').bxSlider({
-		auto: true,
+ 	var mySlider = $('.bxslider').bxSlider({
+		auto: false,
 		controls:true,     //이전/다음 버튼 노출 여부
 		autoHover: true,   // 마우스 호버시 정지 여부
 		pager:false,
@@ -83,10 +82,8 @@ $(document).ready(function() {
 	<div class="home_icon"><img alt="맨위로 가기" src="/resources/mainImg/home.png"></div>
 	<div class="about" id="about">
 	
-		<div class="about_inter"><a class="icolor">I</a><a>nter-</a><br />
-			<a>Link<br />
-			and<br />
-			C</a>
+		<div class="about_inter">
+			<img alt="뒷배경 이미지" src="resources/mainImg/about_interlinkandc.png">
 		</div>
 		
 		<div class="about_title">
@@ -108,7 +105,9 @@ $(document).ready(function() {
 				참신한 소프트웨어 개발에 주력하겠습니다.</a>
 		</div>
 
-		<div class="about_history"><a class="hcolor">h</a><a class="icolor">i</a><a>story</a></div>
+		<div class="about_history">
+			<img alt="history 뒷배경 이미지" src="resources/mainImg/about_history.png">
+		</div>
 		
 		<div class="about3">
 		<div class="history_title">
@@ -277,100 +276,113 @@ $(document).ready(function() {
 			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>
 			<div class="portfolioImg_div">
 			<ul class="bxslider">
+				<!-- back-보라 -->
 				<li class="background_1">
 					<div class="portImg">
 					<img alt="포트폴리오이미지" src="resources/mainImg/pf1.jpg">
 					</div>
-					<div class="portCon">
+					<div class="portConText">
+						<div class="portCon">
+							<a class="portA">수협중앙회</a>
+						</div>
+						<div class="portCon2">
+							<a class="protCon2_1">2007.01 - 2007.12</a><br />
+							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+							<a class="protCon2_2">운영 및 유지보수</a>
+						</div>
+						<div class="portCon3">
+							<ul>
+								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+								<li>유지보수교육 실시 지원</li>
+								<li>여행상품 개발, 수익모델 구현 등<br />
+								"어촌사랑" 운영업무 지원</li>
+								<li>웹 검색 포털사이트 등록</li>
+								<li>한국정보문화진흥원의 한국형<br />
+								웹컨텐츠 접근성지침1.0 정책 준수</li>
+								<li>1111111111111111</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="background_2">
+					<div class="portImg">
+					<img alt="포트폴리오이미지" src="resources/mainImg/pf2.jpg">
+					</div>
+					<div class="portConText">
+						<div class="portCon">
 						<a class="portA">수협중앙회</a>
-					</div>
-					<div class="portCon2">
-						<a class="protCon2_1">2007.01 - 2007.12</a><br />
-						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-						<a class="protCon2_2">운영 및 유지보수</a>
-					</div>
-					<div class="portCon3">
-						<ul>
-							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-							<li>유지보수교육 실시 지원</li>
-							<li>여행상품 개발, 수익모델 구현 등<br />
-							"어촌사랑" 운영업무 지원</li>
-							<li>웹 검색 포털사이트 등록</li>
-							<li>한국정보문화진흥원의 한국형<br />
-							웹컨텐츠 접근성지침1.0 정책 준수</li>
-						</ul>
-					</div>
-				</li>
-				<li class="background_2">
-					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/mainImg/pf2.jpg">
-					</div>
-					<div class="portCon">
-					<a class="portA">수협중앙회</a>
-					</div>
-					<div class="portCon2">
-						<a class="protCon2_1">2007.01 - 2007.12</a><br />
-						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-						<a class="protCon2_2">운영 및 유지보수</a>
-					</div>
-					<div class="portCon3">
-						<ul>
-							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-							<li>유지보수교육 실시 지원</li>
-							<li>여행상품 개발, 수익모델 구현 등<br />
-							"어촌사랑" 운영업무 지원</li>
-							<li>웹 검색 포털사이트 등록</li>
-							<li>한국정보문화진흥원의 한국형<br />
-							웹컨텐츠 접근성지침1.0 정책 준수</li>
-						</ul>
+						</div>
+						<div class="portCon2">
+							<a class="protCon2_1">2007.01 - 2007.12</a><br />
+							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+							<a class="protCon2_2">운영 및 유지보수</a>
+						</div>
+						<div class="portCon3">
+							<ul>
+								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+								<li>유지보수교육 실시 지원</li>
+								<li>여행상품 개발, 수익모델 구현 등<br />
+								"어촌사랑" 운영업무 지원</li>
+								<li>웹 검색 포털사이트 등록</li>
+								<li>한국정보문화진흥원의 한국형<br />
+								웹컨텐츠 접근성지침1.0 정책 준수</li>
+								<li>2222222222222222222</li>
+							</ul>
+						</div>
 					</div>
 				</li>
 				<li class="background_1">
 					<div class="portImg">
 					<img alt="포트폴리오이미지" src="resources/mainImg/pf1.jpg">
 					</div>
-					<div class="portCon">
-					<a class="portA">수협중앙회</a>
-					</div>
-					<div class="portCon2">
-						<a class="protCon2_1">2007.01 - 2007.12</a><br />
-						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-						<a class="protCon2_2">운영 및 유지보수</a>
-					</div>
-					<div class="portCon3">
-						<ul>
-							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-							<li>유지보수교육 실시 지원</li>
-							<li>여행상품 개발, 수익모델 구현 등<br />
-							"어촌사랑" 운영업무 지원</li>
-							<li>웹 검색 포털사이트 등록</li>
-							<li>한국정보문화진흥원의 한국형<br />
-							웹컨텐츠 접근성지침1.0 정책 준수</li>
-						</ul>
+					<div class="portConText">
+						<div class="portCon">
+						<a class="portA">수협중앙회</a>
+						</div>
+						<div class="portCon2">
+							<a class="protCon2_1">2007.01 - 2007.12</a><br />
+							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+							<a class="protCon2_2">운영 및 유지보수</a>
+						</div>
+						<div class="portCon3">
+							<ul>
+								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+								<li>유지보수교육 실시 지원</li>
+								<li>여행상품 개발, 수익모델 구현 등<br />
+								"어촌사랑" 운영업무 지원</li>
+								<li>웹 검색 포털사이트 등록</li>
+								<li>한국정보문화진흥원의 한국형<br />
+								웹컨텐츠 접근성지침1.0 정책 준수</li>
+								<li>333333333333333333333</li>
+							</ul>
+						</div>
 					</div>
 				</li>
 				<li class="background_2">
 					<div class="portImg">
 					<img alt="포트폴리오이미지" src="resources/mainImg/pf2.jpg">
 					</div>
-					<div class="portCon">
-					<a class="portA">수협중앙회</a>
-					</div>
-					<div class="portCon2">
-						<a class="protCon2_1">2007.01 - 2007.12</a><br />
-						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-						<a class="protCon2_2">운영 및 유지보수</a>
-					</div>
-					<div class="portCon3">
-						<ul>
-							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-							<li>유지보수교육 실시 지원</li>
-							<li>여행상품 개발, 수익모델 구현 등<br />
-							"어촌사랑" 운영업무 지원</li>
-							<li>웹 검색 포털사이트 등록</li>
-							<li>한국정보문화진흥원의 한국형<br />
-							웹컨텐츠 접근성지침1.0 정책 준수</li>
-						</ul>
+					<div class="portConText">
+						<div class="portCon">
+						<a class="portA">수협중앙회</a>
+						</div>
+						<div class="portCon2">
+							<a class="protCon2_1">2007.01 - 2007.12</a><br />
+							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+							<a class="protCon2_2">운영 및 유지보수</a>
+						</div>
+						<div class="portCon3">
+							<ul>
+								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+								<li>유지보수교육 실시 지원</li>
+								<li>여행상품 개발, 수익모델 구현 등<br />
+								"어촌사랑" 운영업무 지원</li>
+								<li>웹 검색 포털사이트 등록</li>
+								<li>한국정보문화진흥원의 한국형<br />
+								웹컨텐츠 접근성지침1.0 정책 준수</li>
+								<li>4444444444444444444444</li>
+							</ul>
+						</div>
 					</div>
 				</li>
 			</ul>
@@ -431,7 +443,7 @@ $(document).ready(function() {
 					<td>5</td>
 					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
-					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td><img class="imggg" alt="" src="resources/mainImg/downloadImg.png"> </td>
 					<td>99999</td>
 				</tr>
 			</table>
@@ -459,13 +471,13 @@ $(document).ready(function() {
 			
 			<div class="downCnt">
 			<ul>
-			<li>◀</li>
-			<li>1</li>
+			<li><img alt="왼쪽" src="resources/mainImg/history_left.png"></li>
+			<li class="focus">1</li>
 			<li>2</li>
 			<li>3</li>
 			<li>4</li>
 			<li>5</li>
-			<li>▶</li>
+			<li><img alt="오른쪽" src="resources/mainImg/history_right.png"></li>
 			</ul>
 			</div>
 			<hr class="downloads_border-bottom">
