@@ -9,7 +9,8 @@
 
 <html>
 <head>
-	<script type="text/javascript">
+ 	<script type="text/javascript">
+	
 	$(document).ready(function() {
 		// 네이버 에디터  
 		var oEditors = [];
@@ -37,29 +38,25 @@
 				 $("#board_form").submit(); 
 		
 		  });
-
-		  
-
-
 	});
-		  function loadFile(input) { 
-			  if (input.files && input.files[0]) { 
-				  var reader = new FileReader(); 
-				  reader.onload = function (e) { 
-					  $('#blah').attr('src', e.target.result); 
-					  } 
-				  reader.readAsDataURL(input.files[0]); 
-				  } 
-			  }
-		  $("#file_up003").change(function() {
-
-	          readURL(this);
-
-	        });
-		  
 	</script>
+	<script>
+       
+		</script>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>interlinknc</title>
+	<style>
+.multi{
+ display: none;
+}
+
+#newFile {
+ background-color:black;
+ color:white;
+ cursor:pointer;
+}
+	</style>
 </head>
 <body>
 	<%@ include file="../cms_header.jsp"%>
@@ -74,9 +71,9 @@
 		</c:if>	
 		
 		
-		<form id="board_form" name="board_form" method="post" action="cms_board_insert_action" enctype="multipart/form-data" runat="server">
+		<form id="board_form" name="board_form" method="post" action="cms_board_insert_action" enctype="multipart/form-data">
 				<input type="hidden" id="board_division" name="board_division" value="${board_division}"/>
-				<table style="width: 700px;">
+				<table style="width: 700px;" border="1">
 					<tr>
 						<td style="width: 20%;">ID</td>
 						<td style="width:  80%;">${sessionScope.ad_id }</td>
@@ -104,19 +101,38 @@
 						<td style="width: 20%;">제목</td> 
 						<td style="width: 80%;"><input type="text" name="board_title" id="board_title" style="width: 100%;" /></td>
 					</tr>
+					<tr>
+						<td style="width: 20%;"><button type="button" id="newFile" >dddd</button>첨부파일</td> 
+						<td style="width: 80%;">
+						<div style="overflow-y:scroll; height:100px; width:100%">
+						<c:if test="${board_division == 'portfolio'}">
+						<input type="file" name="uploadfile" class="multi with-preview" id="orgFile" maxlength="1" />
+						</c:if>
+						<c:if test="${board_division == 'download'}">
+						<input type="file" name="uploadfile" class="multi with-preview" id="orgFile"/>
+						</c:if>
+						</div>
+					</tr>
+					
 				</table>
 				<table style="width: 700px;">	
 					<tr>
-						<td colspan="3"><textarea name="board_content" id="board_content" style="width:100%; height:412px;"></textarea></td>
+						<td colspan="4"><textarea name="board_content" id="board_content" style="width:100%; height:412px;"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="3">첨부파일<img id="blah" src="#" alt="your image" /></td>
+						<td colspan="4">첨부파일</td>
 							
 					</tr>
 					<tbody class="addtable" id="addtd" >
-					<tr id="file_up0">
-						<td id="file_up0" align="left" colspan="1">
-							<input type="file"  name="uploadfile[0]"  required="required" id="file_up003" style="width: 500px;" />
+					<tr id="file_up0" style="border: 1;">
+				<td>						
+				
+				</td>
+				
+				
+					<!-- 	<td id="file_up0" align="left" colspan="1">
+							<input type="file"  name="uploadfile[0]"  required="required" id="file_up0003" style="width: 500px;" />
+
 						</td>
 						<td align="right" colspan="1">
 							<button name="file_up0" type="button" onclick="delbt_ori(this.name)">-</button>
@@ -124,7 +140,9 @@
 						<td align="right" colspan="1">
 							<button type="button"  onclick="javascript:addbt()">+</button>
 						</td>
-					</tr>
+						
+						
+ -->					</tr>
 					</tbody>
 					<tr>
 						<td align="left" colspan="1">
@@ -136,6 +154,10 @@
 					</tr>
 			    </table>
 			</form>
-		</div>
+
+
+
+
+	</div>
 </body>
 </html>

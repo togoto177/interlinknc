@@ -11,6 +11,17 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>interlinknc</title>
+		<style>
+		.multi{
+		 display: none;
+		}
+		
+		#newFile {
+		 background-color:black;
+		 color:white;
+		 cursor:pointer;
+		}
+	</style>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		 
@@ -91,6 +102,36 @@
 					 	value="${board_update.board_title}" />
 						</td>
 					</tr>
+					<c:choose>
+						<c:when test="${fn:length(file_list) == 0}">												
+					<tr>
+							<td class="table-info">첨부파일<button type="button" id="newFile" >dddd</button></td>
+							<td width="100%" align="left" class="length_x" >첨부된 파일이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>		
+								<tr>	
+								<td>
+									첨부파일<button type="button" id="newFile" >dddd</button>
+								</td>		
+								 <td>
+							<c:forEach var="file_list" items="${file_list}"  varStatus="status">
+								<c:if test="${file_list.file_use_yn eq 'Y'}">
+								 	<div id="flist_${status.count}">
+									<input style="border: 0; width: 500px;" type="text" id="fName" name="fName" value="${file_list.file_ori_name}">
+									<button class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
+									<input type="hidden" name="file_key" id="file_key" value="${file_list.file_seq}" />
+									<input type="hidden" id="update_id" name="update_id" value="${sessionScope.admin_id}" />
+									<input type="hidden"  name="flag" id="flag" value="C" />
+									<label>${file_list.file_size} KB</label>
+									</div>
+								</c:if>
+							</c:forEach>
+									<input type="file" name="uploadfile" class="multi with-preview" id="orgFile"/>
+								</td>
+								</tr>
+						</c:otherwise>
+					</c:choose>
 				</table>
 				<table class="table table-hover" style="width: 700px;" border="1">
 					<tr>
@@ -117,12 +158,12 @@
 							<tr id="flist_${status.count}">
 								<c:if test="${file_list.file_use_yn eq 'Y'}">
 								 <td>
-									<input style="border: 0; width: 500px;" type="text" id="fName" name="fName" value="${file_list.file_ori_name}">
+									<%-- <input style="border: 0; width: 500px;" type="text" id="fName" name="fName" value="${file_list.file_ori_name}">
 									<button class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
 									<input type="hidden" name="file_key" id="file_key" value="${file_list.file_seq}" />
 									<input type="hidden" id="update_id" name="update_id" value="${sessionScope.admin_id}" />
 									<input type="hidden"  name="flag" id="flag" value="C" />
-									<label>${file_list.file_size} KB</label>
+									<label>${file_list.file_size} KB</label> --%>
 									
 								</td>
 								</c:if>

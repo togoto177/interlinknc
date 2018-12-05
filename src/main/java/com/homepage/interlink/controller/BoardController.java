@@ -29,7 +29,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.homepage.interlink.model.Board;
 import com.homepage.interlink.model.BoardFile;
 import com.homepage.interlink.model.Fileup;
-import com.homepage.interlink.model.Portfolio;
 import com.homepage.interlink.service.BoardService;
 import com.homepage.interlink.service.BoardFileService;
 
@@ -330,17 +329,20 @@ public class BoardController {
  	}
 	//자료실 수정 액션
 	@RequestMapping(value="/cms_board_update_action", method=RequestMethod.POST)
-	public String cms_board_update_action(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag, String[] fName)throws Exception{
+	public String cms_board_update_action(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag, String[] fName, HttpSession session)throws Exception{
 			
-			
+			String board_division =  board.getBoard_division();
 		
-			board.setBoard_updateid("admin23333");
+			Object objss_id = session.getAttribute("ad_id");
+		    String session_id = objss_id.toString();
+			
+			board.setBoard_updateid(session_id);
 
 			boardService.board_update(board);
 					
 	        BoardFile boardFile = new BoardFile();
 	        boardFile.setBoard_seq(board.getBoard_seq());
-	        boardFile.setFile_updateid(board.getBoard_writer());
+	        boardFile.setFile_updateid(session_id);
 	        boardFile.setFile_use_yn("Y");
 	        
 	        //파일
@@ -349,7 +351,7 @@ public class BoardController {
 	        String time = dateFormat.format(cal.getTime());
 	        
 	        List<MultipartFile> files = fileup.getUploadfile();
-			System.out.println("File ----->" + files);
+			
 			//List<String> fileNames = new ArrayList<String>();
 			if (null != files && files.size() > 0) {
 				
@@ -360,9 +362,17 @@ public class BoardController {
 						System.out.println("file = " + multipartFile.getOriginalFilename() + "/" + multipartFile.getSize());
 						// 상대경로 
 						String file_path = request.getSession().getServletContext().getRealPath("/");
-						String attach_path = "resources/downloads/";
 						String file_ori_name = multipartFile.getOriginalFilename();
 						String file_sub_name = time + "-" + UUID.randomUUID().toString() +"_" +file_ori_name;
+						
+						System.out.println("file_ori_name ----->" + file_ori_name);
+						
+						String attach_path = "";
+						if(board_division.equals("download")) {
+							attach_path = "resources/downloads/";
+						}else if (board_division.equals("portfolio")) {
+							attach_path = "resources/portfolio/";
+						}
 						
 						File f = new File(file_path + attach_path + file_sub_name);
 						
@@ -424,7 +434,7 @@ public class BoardController {
 	        		//flag가 D인건 삭제. 데이터도 삭제, 파일도 삭제.
 	    			if("D".equals(flag[i])) {
 	    				boardFile.setFile_seq(Integer.parseInt(file_key[i]));
-	    				boardFile.setFile_updateid("session id test before");
+	    				boardFile.setFile_updateid(session_id);
 	    				
 
 	    				boardFileService.file_updateform_delete(boardFile);

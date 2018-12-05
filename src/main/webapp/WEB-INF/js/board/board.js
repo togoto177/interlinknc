@@ -27,7 +27,7 @@
 	function addbt() {
 		var fileIndex = $(".addtable").children().length+1-1;
 		$("#addtd").append(
-				'<tr id="file_up' + fileIndex + '"><td>' + 
+				'<tr id="file_up' + fileIndex + '"><td><img id="blah" src="#" alt="your image" /></td><td>' + 
 				'<input style="width: 100%;" type="file" name="uploadfile[' + fileIndex + ']" id="file_up' + fileIndex + '"  />' +
 				'</td>' +'<td align="right"><button name="file_up' + fileIndex + '" type="button" onclick="delbt(this.name)">-</button>' +
 				'</td></tr>');
@@ -107,4 +107,14 @@
 		$(obj).hide();
 	}
 	
+
+	$(function(){          
+		$('#newFile').click(function(e){
+			$('.length_x').empty();
+			$( '.length_x' ).append( '<input type="file" name="uploadfile" class="multi with-preview" id="orgFile"/>' );
+			
+			e.preventDefault();             
+			$('.multi').click();               
+		});                         
+	});   
 	
