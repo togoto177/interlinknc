@@ -30,6 +30,10 @@ $(document).ready(function() {
 	   mySlider.goToNextSlide();  //다음 슬라이드 배너로 이동
 	   return false;
 	  } );
+	    
+	  $("#down_title").on("click", function(){
+		  modal();
+	  });
 
 });
 </script>
@@ -76,6 +80,7 @@ $(document).ready(function() {
 		<hr class="border-bottom">
 		</div>
 	</div>
+	<div class="home_icon"><img alt="맨위로 가기" src="/resources/mainImg/home.png"></div>
 	<div class="about" id="about">
 	
 		<div class="about_inter"><a class="icolor">I</a><a>nter-</a><br />
@@ -272,17 +277,101 @@ $(document).ready(function() {
 			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>
 			<div class="portfolioImg_div">
 			<ul class="bxslider">
-				<li class="banner_a1" style="background: url('resources/mainImg/pf1.jpg'); background-repeat: no-repeat; background-size: cover;">
-				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				<li class="background_1">
+					<div class="portImg">
+					<img alt="포트폴리오이미지" src="resources/mainImg/pf1.jpg">
+					</div>
+					<div class="portCon">
+						<a class="portA">수협중앙회</a>
+					</div>
+					<div class="portCon2">
+						<a class="protCon2_1">2007.01 - 2007.12</a><br />
+						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+						<a class="protCon2_2">운영 및 유지보수</a>
+					</div>
+					<div class="portCon3">
+						<ul>
+							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+							<li>유지보수교육 실시 지원</li>
+							<li>여행상품 개발, 수익모델 구현 등<br />
+							"어촌사랑" 운영업무 지원</li>
+							<li>웹 검색 포털사이트 등록</li>
+							<li>한국정보문화진흥원의 한국형<br />
+							웹컨텐츠 접근성지침1.0 정책 준수</li>
+						</ul>
+					</div>
 				</li>
-				<li class="banner_a2" style="background: url('resources/mainImg/pf2.jpg'); background-repeat: no-repeat; background-size: cover;">
-				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				<li class="background_2">
+					<div class="portImg">
+					<img alt="포트폴리오이미지" src="resources/mainImg/pf2.jpg">
+					</div>
+					<div class="portCon">
+					<a class="portA">수협중앙회</a>
+					</div>
+					<div class="portCon2">
+						<a class="protCon2_1">2007.01 - 2007.12</a><br />
+						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+						<a class="protCon2_2">운영 및 유지보수</a>
+					</div>
+					<div class="portCon3">
+						<ul>
+							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+							<li>유지보수교육 실시 지원</li>
+							<li>여행상품 개발, 수익모델 구현 등<br />
+							"어촌사랑" 운영업무 지원</li>
+							<li>웹 검색 포털사이트 등록</li>
+							<li>한국정보문화진흥원의 한국형<br />
+							웹컨텐츠 접근성지침1.0 정책 준수</li>
+						</ul>
+					</div>
 				</li>
-				<li class="banner_a3" style="background: url('resources/mainImg/pf1.jpg'); background-repeat: no-repeat; background-size: cover;">
-				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				<li class="background_1">
+					<div class="portImg">
+					<img alt="포트폴리오이미지" src="resources/mainImg/pf1.jpg">
+					</div>
+					<div class="portCon">
+					<a class="portA">수협중앙회</a>
+					</div>
+					<div class="portCon2">
+						<a class="protCon2_1">2007.01 - 2007.12</a><br />
+						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+						<a class="protCon2_2">운영 및 유지보수</a>
+					</div>
+					<div class="portCon3">
+						<ul>
+							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+							<li>유지보수교육 실시 지원</li>
+							<li>여행상품 개발, 수익모델 구현 등<br />
+							"어촌사랑" 운영업무 지원</li>
+							<li>웹 검색 포털사이트 등록</li>
+							<li>한국정보문화진흥원의 한국형<br />
+							웹컨텐츠 접근성지침1.0 정책 준수</li>
+						</ul>
+					</div>
 				</li>
-				<li class="banner_a4" style="background: url('resources/mainImg/pf2.jpg'); background-repeat: no-repeat; background-size: cover;">
-				<a class="aaa"><b class="por_day">19.11.28 - 18.11.28</b><br /><b class="por_title2">국토해양누리고도화사업</b></a>
+				<li class="background_2">
+					<div class="portImg">
+					<img alt="포트폴리오이미지" src="resources/mainImg/pf2.jpg">
+					</div>
+					<div class="portCon">
+					<a class="portA">수협중앙회</a>
+					</div>
+					<div class="portCon2">
+						<a class="protCon2_1">2007.01 - 2007.12</a><br />
+						<a class="protCon2_2">어촌사랑 홈페이지</a><br />
+						<a class="protCon2_2">운영 및 유지보수</a>
+					</div>
+					<div class="portCon3">
+						<ul>
+							<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+							<li>유지보수교육 실시 지원</li>
+							<li>여행상품 개발, 수익모델 구현 등<br />
+							"어촌사랑" 운영업무 지원</li>
+							<li>웹 검색 포털사이트 등록</li>
+							<li>한국정보문화진흥원의 한국형<br />
+							웹컨텐츠 접근성지침1.0 정책 준수</li>
+						</ul>
+					</div>
 				</li>
 			</ul>
 			</div>
@@ -312,40 +401,61 @@ $(document).ready(function() {
 				</tr>
 				<tr>
 					<td>1</td>
-					<td>스마트카드 v.1.0.1</td>
+					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
 					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
 					<td>99999</td>
 				</tr>
 				<tr>
 					<td>2</td>
-					<td>스마트카드 v.1.0.1</td>
+					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
 					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
 					<td>99999</td>
 				</tr>
 				<tr>
 					<td>3</td>
-					<td>스마트카드 v.1.0.1</td>
+					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
 					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
 					<td>99999</td>
 				</tr>
 				<tr>
 					<td>4</td>
-					<td>스마트카드 v.1.0.1</td>
+					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
 					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
 					<td>99999</td>
 				</tr>
 				<tr>
 					<td>5</td>
-					<td>스마트카드 v.1.0.1</td>
+					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
 					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
 					<td>99999</td>
 				</tr>
 			</table>
+			
+			<!-- 모달창 -->
+			<!-- 뒷배경 -->
+			<div id="mask"></div>
+			<!-- 모달 view -->
+			<div class="window">
+				<div class="close_div"><a class="close">X</a></div>
+				<div class="windowCon">
+					<div class="windowCon1">
+						<a class="windowConNo">1</a>&ensp;<a class="windowConDay">2018.11.21 / 400 views</a><br />
+						<a class="windowConTitle">스마트카드 v.1.0.1</a>
+					</div>
+					<div class="windowCon2">
+						<a>아래 테스트용 파일을 다운로드받은 후 실행하십시오.<br />
+						문제가 해결되지 않을시 문의 바랍니다. 고맙습니다.</a>
+					</div>
+					<div class="windowCon3">
+						<a class="windowConBut">DOWNLOAD &darr;</a>
+					</div>
+				</div>
+			</div>
 			
 			<div class="downCnt">
 			<ul>
@@ -387,6 +497,9 @@ $(document).ready(function() {
 					<label>연락처</label><input type="text" /><br />
 					<label>문의내용</label><textarea></textarea>
 				</div>
+			</div>
+			<div class="send_bt">
+				<a class="sendBt">SEND</a>
 			</div>
 		</div>
 	</div>
