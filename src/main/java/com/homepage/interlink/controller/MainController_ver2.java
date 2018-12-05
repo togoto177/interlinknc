@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.homepage.interlink.model.Board;
 import com.homepage.interlink.service.BoardFileService;
 import com.homepage.interlink.service.BoardService;
 
@@ -25,8 +26,21 @@ public class MainController_ver2 {
 		return "ver2/front/main";
 	}
 	@RequestMapping(value = "/main1")
-	public String main1(@RequestParam Map<String, Object> paramMap, Model model) {
+	public String main1() {
+		return "ver2/main1/main1";
+	}
+	@RequestMapping(value = "/main2")
+	public String main2() {
+		return "ver2/main2/main2";
+	}
+	@RequestMapping(value = "/main3")
+	public String main3() {
+		return "ver2/main3/main3";
+	}
+	@RequestMapping(value = "/main4")
+	public String main4(@RequestParam Map<String, Object> paramMap, Model model, Board board) {
 		
+
 		/*2018-12-05 메인 테스트 겸 권수 추가*/
 		
 		//조회 하려는 페이지
@@ -64,20 +78,11 @@ public class MainController_ver2 {
         
 		model.addAttribute("board_division", paramMap.get("board_division"));
 		model.addAttribute("board_list", boardService.board_list(paramMap));
+		model.addAttribute("file_list",boardFileService.file_list(paramMap));
+		model.addAttribute("board_body",boardService.board_read(board));
 		
 		
-		return "ver2/main1/main1";
-	}
-	@RequestMapping(value = "/main2")
-	public String main2() {
-		return "ver2/main2/main2";
-	}
-	@RequestMapping(value = "/main3")
-	public String main3() {
-		return "ver2/main3/main3";
-	}
-	@RequestMapping(value = "/main4")
-	public String main4() {
+		
 		return "ver2/main4/main4";
 	}
 }
