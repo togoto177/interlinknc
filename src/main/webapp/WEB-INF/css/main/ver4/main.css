@@ -13,6 +13,8 @@
 @font-face {
 	font-family: orator;
 	src: url("../../../fonts/OratorStd.otf");
+	/* src: url('../../../fonts/OratorStd.otf');
+	src: url('../../../fonts/OratorStd.otf?#iefix') format('embedded-opentype'); */
 }
 body{
 	margin: 0;
@@ -38,7 +40,7 @@ h1{
 	text-align: right;
 	position: fixed;
 	z-index: 999;
-	font-family: orator;
+	font-family: 'orator', sans-serif;;
 }
 .topmenu{
 	float: right;

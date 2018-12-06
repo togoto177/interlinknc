@@ -37,10 +37,7 @@ jQuery(document).ready(function($){
     $('.openMask').click(function(e){
 		e.preventDefault();
 		$('body').css("overflow", "hidden");
-		
-		var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가 
-		
-		wrapWindowByMask(id_check);
+		wrapWindowByMask();
 	});
 
 	//닫기 버튼을 눌렀을 때
@@ -67,6 +64,7 @@ jQuery(document).ready(function($){
     	$(this).children('.portConText').css("visibility", "hidden");
     });*/
 	$(".portConText").hide();
+	/*$(".portConText .portCon").show();*/
 	$(".bxslider li").mouseover(function(){
 		$(this).children('.portConText').show();
     }).mouseleave(function(){
@@ -77,11 +75,11 @@ jQuery(document).ready(function($){
 		$(this).find("img").attr("src", "resources/mainImg/downloadImg2.png");
 	}).mouseleave(function(){
 		$(this).find("img").attr("src", "resources/mainImg/downloadImg.png");
-    });
+    });;
 	
 });
 
-function wrapWindowByMask(seq){
+function wrapWindowByMask(){
 	//화면의 높이와 너비를 구한다.
 	var maskHeight = $(document).height();  
 	var maskWidth = $(window).width();  
@@ -94,5 +92,5 @@ function wrapWindowByMask(seq){
 	$('#mask').fadeTo("slow",0.8);    
 
 	//윈도우 같은 거 띄운다.
-	$('#'+seq+'').show(); //해당 seq값인 상세보기 실행을 위해 새로 추가 
+	$('.window').show();
 }
