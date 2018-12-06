@@ -57,4 +57,9 @@ public class BoardServiceImpl implements BoardService{
 	public void customer_insert(Board board) {
 		boardDao.customer_insert(board);
 	}
+
+	@Override
+	public List<Board> download_list(Map<String, Object> paramMap) {
+		return boardDao.download_list(paramMap);
+	}
 }

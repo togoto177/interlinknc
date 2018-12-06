@@ -59,5 +59,10 @@ public class BoardDaoImpl implements BoardDao {
 		SqlSession.insert("boards.customer_insert", board);
 		
 	}
+
+	@Override
+	public List<Board> download_list(Map<String, Object> paramMap) {
+	 	return SqlSession.selectList("boards.download_list", paramMap);
+	}
 	
 }

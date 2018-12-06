@@ -22,6 +22,8 @@ public interface BoardService {
 	public void board_delete(Board board);
 	//포트폴리오 테이블 insert
 	public void portfolio_insert(Board board);
-	
+	//고객센터 테이블 insert
 	public void customer_insert(Board board);
+	//메인 다운로드 뷰 출력
+	List<Board> download_list(Map<String, Object> paramMap);
 }

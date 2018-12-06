@@ -90,13 +90,15 @@
 		
 		var file_name = fileName.split('*');
 		
-		if($("#board_division").val() == "download"){
+		var id_check = $(this).attr("id");
+		alert(id_check);
+		/*if($("#board_division").val() == "download"){*/
 			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division=download&file_seq="+file_name[1];
-		}else if($("#board_division").val() == "download"){
+		/*}else if($("#board_division").val() == "download"){
 			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division=download&file_seq="+file_name[1];
 		}else if($("#board_division").val() == "portfolio"){
 			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division=portfolio";
-		}
+		}*/
 
 
 	}

@@ -24,4 +24,6 @@ public interface BoardDao {
 
 	public void customer_insert(Board board);
 
+	public List<Board> download_list(Map<String, Object> paramMap);
+
 }

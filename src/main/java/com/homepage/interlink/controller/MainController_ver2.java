@@ -26,19 +26,7 @@ public class MainController_ver2 {
 		return "ver2/front/main";
 	}
 	@RequestMapping(value = "/main1")
-	public String main1() {
-		return "ver2/main1/main1";
-	}
-	@RequestMapping(value = "/main2")
-	public String main2() {
-		return "ver2/main2/main2";
-	}
-	@RequestMapping(value = "/main3")
-	public String main3() {
-		return "ver2/main3/main3";
-	}
-	@RequestMapping(value = "/main4")
-	public String main4(@RequestParam Map<String, Object> paramMap, Model model, Board board) {
+	public String main1(@RequestParam Map<String, Object> paramMap, Model model, Board board) {
 		
 
 		/*2018-12-05 메인 테스트 겸 권수 추가*/
@@ -77,12 +65,24 @@ public class MainController_ver2 {
         model.addAttribute("sch_type", paramMap.get("sch_type"));
         
 		model.addAttribute("board_division", paramMap.get("board_division"));
-		model.addAttribute("board_list", boardService.board_list(paramMap));
-		model.addAttribute("file_list",boardFileService.file_list(paramMap));
-		model.addAttribute("board_body",boardService.board_read(board));
+		model.addAttribute("download_list", boardService.download_list(paramMap));
+		/*model.addAttribute("portfolio_list", boardService.portfolio_list(paramMap));*/
 		
 		
 		
+		
+		return "ver2/main1/main1";
+	}
+	@RequestMapping(value = "/main2")
+	public String main2() {
+		return "ver2/main2/main2";
+	}
+	@RequestMapping(value = "/main3")
+	public String main3() {
+		return "ver2/main3/main3";
+	}
+	@RequestMapping(value = "/main4")
+	public String main4() {
 		return "ver2/main4/main4";
 	}
 }

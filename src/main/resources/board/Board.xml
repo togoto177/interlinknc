@@ -211,5 +211,34 @@
         )      
 	</insert>
 	
+	<select id="download_list" resultType="Board" parameterType="java.util.HashMap">
+	
+	    select 
+        a.*,
+        (select count(b.file_seq) from file_tb b where b.file_use_yn = 'y' and b.board_seq = a.board_seq) as file_cnt,
+        (select sum(b.file_hit) from file_tb b where b.board_seq = a.board_seq and b.file_use_yn = 'Y'  ) as file_hit,
+        (select group_concat(b.file_sub_name,'*',b.file_seq separator '|') 
+        from file_tb b 
+        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,  
+        (select group_concat(b.file_ori_name separator '|') 
+        from file_tb b 
+        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_ori_name
+        from board_tb a 
+        
+         where a.board_division = 'download' and a.board_use_yn = 'Y'
+		 <choose>
+     	<when test="sch_type == 'board_title'">
+		  AND a.board_title like CONCAT('%', #{sch_value}, '%')
+		  </when>
+		  <when test="sch_type == 'board_content'">
+		  AND a.board_content like CONCAT('%', #{sch_value}, '%')
+		  </when>
+		  </choose>
+        order by board_seq desc
+        
+        limit #{start}, #{end};
+	
+	</select>
+	
 
 </mapper>
