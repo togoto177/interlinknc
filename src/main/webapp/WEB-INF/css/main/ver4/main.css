@@ -11,7 +11,7 @@
 	src: url("../../../fonts/Gotham-Bold.otf");
 }
 @font-face {
-	font-family: gotham;
+	font-family: orator;
 	src: url("../../../fonts/OratorStd.otf");
 }
 body{
@@ -38,7 +38,7 @@ h1{
 	text-align: right;
 	position: fixed;
 	z-index: 999;
-	font-family: gotham;
+	font-family: orator;
 }
 .topmenu{
 	float: right;
@@ -58,7 +58,7 @@ h1{
 	float: left;
 	text-decoration: none;
 	padding: 20px 16px;
-	padding-bottom: 13px;
+	padding-bottom: 7px;
 	color:white;
 	border-bottom: 1px solid #fff;
 }
@@ -67,42 +67,42 @@ h1{
 }
 .t_menu_ul li .about_menu:focus{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #cc66ff;
 }
 .t_menu_ul li .about_menu:hover{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #cc66ff;
 }
 .t_menu_ul li .portfolio_menu:focus{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #00ffcc;
 }
 .t_menu_ul li .portfolio_menu:hover{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #00ffcc;
 }
 .t_menu_ul li .downloadst_menu:focus{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #6600ff;
 }
 .t_menu_ul li .downloadst_menu:hover{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #6600ff;
 }
 .t_menu_ul li .customer_menu:focus{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #0033cc;
 }
 .t_menu_ul li .customer_menu:hover{
 	color:white;
-	padding-bottom: 12px;
+	padding-bottom: 6px;
 	border-bottom: 3px solid #0033cc;
 }
 /* 메인이미지 */
@@ -177,13 +177,22 @@ h1{
 	top: 18%;
 }
 .mainImg_con2 .en{
-	font-family: KoPub_medium;
-	font-size: 28;
-	letter-spacing:5;
-	line-height:1.5;
+	font-family: orator;
+	font-size: 39px;
+	line-height:1.1;
+}
+.mainImg_con2 .en2{
+	font-family: orator;
+	font-size: 39px;
+	margin-left: 14;
+}
+.mainImg_con2 .en3{
+	font-family: orator;
+	font-size: 39px;
+	margin-left: 14;
 }
 .mainImg_con2 .ko{
-	font-size: 13;
+	font-size: 15;
 	color: #ccffff;
 }
 .mainImg_con2 .con1 img{
@@ -210,15 +219,17 @@ h1{
 }
 .whatwedo{
 	position: relative;
-	font-size: 45;
-	top:150%;
-	left:20%;
-	opacity: 0.3;
+	font-size: 50;
+	top:139%;
+	left:14%;
+	opacity: 0.2;
 	text-shadow: -5px 0px 2px #771380;
 }
 .whatwedo .whatwedoA{
 	color: #9c829e;
 	font-weight: 700;
+	font-family: gotham;
+	letter-spacing: -3;
 }
 .mainImg_con3{
 	text-align: center;
@@ -240,7 +251,7 @@ h1{
 .mainImg_con3 .text1 a{
 	color: #cc99ff;
 	margin-top: 20;
-	font-size: 15px;
+	font-size: 18px;
 }
 .mainImg_con3 .text2{
 	float: left;
@@ -258,7 +269,7 @@ h1{
 }
 .mainImg_con3 .text2 li a{
 	color: #ccccff;
-	font-size: 12px;
+	font-size: 15px;
 }
 .mainImg_con2 img{
 	width: 200px;
@@ -279,17 +290,21 @@ h1{
 	padding-bottom: 100;
 }
 .about_title{
-	font-size: 25;
+	font-size: 30;
 	position: relative;
 	top: -5%;
-	font-weight: 700;
-	font-family: gotham;
+	font-weight: 600;
+	font-family: orator;
 }
 .about_title img{
 	margin-bottom: 30;
 }
 .about_title .about_titleA{
-	color: #7a8efd;
+	color: #6699ff;
+}
+.about_title .about_titleA2{
+	color: #6699ff;
+	margin-left: 11;
 }
 
 .about_title .about_titleA img{
@@ -303,7 +318,7 @@ h1{
 }
 .about2 .about2A{
 	color: white;
-	font-size: 12;
+	font-size: 15;
 	line-height:1.8;
 }
 .about3{
@@ -321,17 +336,17 @@ h1{
 /* history */
 
 .history_title{
-	font-size: 25;
-	font-weight: 700;
+	font-size: 30;
+	font-weight: 600;
 	margin-bottom: 70;
-	font-family: gotham;
+	font-family: orator;
 }
 
 .history_titleA img{
 	margin-bottom: 30;
 }
 .history_titleA{
-	color: #7a8efd;
+	color: #6699ff;
 }
 
 .history_titleA img{
@@ -357,29 +372,38 @@ h1{
 .about3 .history .historyLeft .historyImg{
 	position: relative;
 	left: 15;
-	font-size: 20;
-	color: #ccccff;
-	font-family: gotham;
+	font-size: 22;
+	color: #b3b3ff;
+	font-family: orator;
+	margin-bottom: -4;
+	letter-spacing: -1;
 }
 .about3 .history .historyRight .historyImg{
 	position: relative;
 	right: 15;
-	font-size: 20;
-	color: #ccccff;
-	font-family: gotham;
+	font-size: 22;
+	color: #b3b3ff;
+	font-family: orator;
+	margin-bottom: -4;
+	letter-spacing: -1;
 }
 .about3 .history .historyText{
-	font-size: 12;
+	font-size: 13;
 	color: #ffffff;
 	line-height:1.5;
+	padding-right: 5;
 }
 .about3 .history .historyLeft{
 	text-align: right;
 	padding-right: 15;
+	/* padding-left: 5; */
 }
 .about3 .history .historyRight{
 	text-align: left;
 	padding-left: 15;
+}
+.about3 .history .historyRight .historyText{
+	padding-left: 5;
 }
 .about3 .history .historyImg img{
 	width: 7;
@@ -397,9 +421,9 @@ h1{
 .portfolio_title{
 	font-size: 30;
 	position: relative;
-	top: -15%;
+	top: -27%;
 	font-weight: 700;
-	font-family: gotham;
+	font-family: orator;
 }
 .portfolio_title .portfolio_titleA{
 	color: #66cccc;
@@ -418,13 +442,15 @@ h1{
 }
 .portfolioImg_div{
 	width: 100%;
+	position: relative;
+	top: -70;
 }
 .portfolioImg .portfolioImg_div .bxslider li{
 	top: 0;
 	height: 100%;
 	position: relative;
 	z-index: 105;
-	margin: 0 10;
+	margin: 0 4;
 }
 .portfolioImg .portfolioImg_div .bxslider .background_1:hover:after{
 	position: absolute;
