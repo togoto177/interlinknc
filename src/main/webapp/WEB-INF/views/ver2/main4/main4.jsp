@@ -399,6 +399,7 @@ $(document).ready(function() {
 		<div class="downloadsTable">
 		
 		<hr class="downloads_border-top">
+		<input type="hidden" id="board_division" name="board_division" value="${board_division}" />
 			<table>
 				<colgroup>
 					<col style="width: 10%" />

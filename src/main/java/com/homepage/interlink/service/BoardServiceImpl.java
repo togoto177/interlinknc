@@ -49,7 +49,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void portfolio_insert(Board board2) {
-		boardDao.portfolio_insert(board2);
+	public void portfolio_insert(Board board) {
+		boardDao.portfolio_insert(board);
+	}
+
+	@Override
+	public void customer_insert(Board board) {
+		boardDao.customer_insert(board);
 	}
 }

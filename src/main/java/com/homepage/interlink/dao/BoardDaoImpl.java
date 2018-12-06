@@ -50,8 +50,14 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public void portfolio_insert(Board board2) {
-		SqlSession.insert("boards.portfolio_insert", board2);	
+	public void portfolio_insert(Board board) {
+		SqlSession.insert("boards.portfolio_insert", board);	
+	}
+
+	@Override
+	public void customer_insert(Board board) {
+		SqlSession.insert("boards.customer_insert", board);
+		
 	}
 	
 }

@@ -46,17 +46,6 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>interlinknc</title>
-	<style>
-.multi{
- display: none;
-}
-
-#newFile {
- background-color:black;
- color:white;
- cursor:pointer;
-}
-	</style>
 </head>
 <body>
 	<%@ include file="../cms_header.jsp"%>
@@ -74,11 +63,14 @@
 		<form id="board_form" name="board_form" method="post" action="cms_board_insert_action" enctype="multipart/form-data">
 				<input type="hidden" id="board_division" name="board_division" value="${board_division}"/>
 				<table style="width: 700px;" border="1">
-					<tr>
+					<tr class="display_none">
 						<td style="width: 20%;">ID</td>
 						<td style="width:  80%;">${sessionScope.ad_id }</td>
 					</tr>
-					
+					<tr>
+						<td style="width: 20%;">제목</td> 
+						<td style="width: 80%;"><input type="text" name="board_title" id="board_title" style="width: 100%;" /></td>
+					</tr>
 					<c:if test="${board_division == 'portfolio' }">	
 					<tr>
 						<td style="width: 20%;">구분</td> 
@@ -98,18 +90,14 @@
 					</tr>
 					</c:if>
 					<tr>
-						<td style="width: 20%;">제목</td> 
-						<td style="width: 80%;"><input type="text" name="board_title" id="board_title" style="width: 100%;" /></td>
-					</tr>
-					<tr>
-						<td style="width: 20%;"><button type="button" id="newFile" >dddd</button>첨부파일</td> 
+						<td style="width: 20%;"><button type="button" id="newFile" >첨부파일</button></td> 
 						<td style="width: 80%;">
 						<div style="overflow-y:scroll; height:100px; width:100%">
 						<c:if test="${board_division == 'portfolio'}">
 						<input type="file" name="uploadfile" class="multi with-preview" id="orgFile" maxlength="1" />
 						</c:if>
 						<c:if test="${board_division == 'download'}">
-						<input type="file" name="uploadfile" class="multi with-preview" id="orgFile"/>
+						<input type="file" name="uploadfile" class="multi" id="orgFile" />
 						</c:if>
 						</div>
 					</tr>
@@ -119,31 +107,6 @@
 					<tr>
 						<td colspan="4"><textarea name="board_content" id="board_content" style="width:100%; height:412px;"></textarea></td>
 					</tr>
-					<tr>
-						<td colspan="4">첨부파일</td>
-							
-					</tr>
-					<tbody class="addtable" id="addtd" >
-					<tr id="file_up0" style="border: 1;">
-				<td>						
-				
-				</td>
-				
-				
-					<!-- 	<td id="file_up0" align="left" colspan="1">
-							<input type="file"  name="uploadfile[0]"  required="required" id="file_up0003" style="width: 500px;" />
-
-						</td>
-						<td align="right" colspan="1">
-							<button name="file_up0" type="button" onclick="delbt_ori(this.name)">-</button>
-						</td>
-						<td align="right" colspan="1">
-							<button type="button"  onclick="javascript:addbt()">+</button>
-						</td>
-						
-						
- -->					</tr>
-					</tbody>
 					<tr>
 						<td align="left" colspan="1">
 						<br><button type="button" class="btn btn-primary" id="list">목록</button>

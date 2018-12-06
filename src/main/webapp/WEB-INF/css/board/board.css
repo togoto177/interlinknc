@@ -1,20 +1,14 @@
 @charset "UTF-8";
 
-.MultiFile-wrap{
-	width: 100%;
+.multi{
+ display: none;
 }
 
-.MultiFile-list{
-
-	
+#newFile {
+ background-color:black;
+ color:white;
+ cursor:pointer;
 }
-
-.MultiFile-title{
-font-size: small;
-font-size-adjust: inherit;
+.display_none{
+	display: none;
 }
-
-.MultiFile-preview{
-	
-}
-

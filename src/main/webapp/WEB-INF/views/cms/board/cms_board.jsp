@@ -175,6 +175,9 @@
 			<c:if test="${board_division == 'portfolio'}">
 			<h1>portfolio</h1>
 			</c:if>
+			<c:if test="${board_division == 'customer'}">
+			<h1>customer</h1>
+			</c:if>
 			
 			<input type="hidden" id="board_division" name="board_division" value="${board_division}">
  			<input type="hidden" id="startPage" name="startPage" value="">
@@ -205,10 +208,17 @@
 							<input type="checkbox" id="product_check_all"/> 
 						</th>
 						<th align="center" width="30px">No</th>
+						
 						<c:if test="${board_division == 'portfolio' }">
 						<th align="center" width="100px">구분</th>
 						</c:if>
+						
 						<th align="center" width="300px">제목</th>
+						
+						<c:if test="${board_division == 'customer' }">
+						<th align="center" width="100px">작성자</th>
+						</c:if>
+						
 						<th align="center" width="100px">일자</th>
 						
 						<c:if test="${board_division == 'download'}">
@@ -216,7 +226,13 @@
 						<th align="center" width="100px">총 다운 수</th>
 						</c:if>
 						
+						<c:if test="${board_division == 'portfolio' ||board_division == 'download'}">
 						<th align="center" width="100px">조회수</th>
+						</c:if>
+						
+						<c:if test="${board_division == 'customer' }">
+						<th align="center" width="100px">답변상태</th>
+						</c:if>
 					</tr>												
 						<c:forEach var="board_list" items="${board_list}"  varStatus="status">
 							<input type="hidden" id="filename" name="filename" value="${filename}">
@@ -231,6 +247,7 @@
                            ${totalCnt+1-(startpage*10+statuscount)} 
                                  
                         </td>
+                        
                         <c:if test="${board_division == 'portfolio' }">
 						<td align="center">${board_list.pf_division}</td>
 						<td>
@@ -238,6 +255,15 @@
 						</td>
 						<td align="center">${board_list.business_period}</td>
 						</c:if>
+						 
+						 <c:if test="${board_division == 'customer' }">
+						<td>
+						<a id="title" class="mouseOverHighlight" onclick="location.href='cms_board_body?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a>
+						</td>
+						<td align="center">${board_list.user_id}</td>
+						<td align="center">${board_list.board_registerdate}</td>
+						</c:if>
+						
 						<c:if test="${board_division == 'download'}">
 						<td><a id="title" class="mouseOverHighlight" onclick="location.href='cms_board_body?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
 						<td align="center">${board_list.board_registerdate}</td>
@@ -264,7 +290,17 @@
 						</td>
 						</c:if>
 						
+						<c:if test="${board_division == 'download' || board_division == 'portfolio'}">
 						<td align="center">${board_list.board_hit}</td>
+						</c:if>
+						<c:if test="${board_division == 'customer'}">
+							<c:if test="${board_list.status == '0'}">
+								<td align="center">미확인</td>
+							</c:if>
+							<c:if test="${board_list.status == '1'}">
+								<td align="center">확인</td>
+							</c:if>
+						</c:if>
 					</tr>
 					<tr id = "hidden${board_list.board_seq}" style="display: none;">
 						<td align="center" colspan="7">			
@@ -288,7 +324,9 @@
 					</td>
 					<td align="right">
 			        		<input class="btn btn-primary" style="font-size: small;" type="button" value="게시물 삭제" id="listDelBtn" name="listDelBtn" onclick="detailSubmit()" />
-							<input class="btn btn-primary" style="font-size: small;" type="button" value="업로드" id="insert_view" />								
+							<c:if test="${board_division != 'customer' }">
+							<input class="btn btn-primary" style="font-size: small;" type="button" value="업로드" id="insert_view" />
+							</c:if>								
 					</td>
 				</tr>
 			</table>

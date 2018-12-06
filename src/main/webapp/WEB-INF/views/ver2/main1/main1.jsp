@@ -3,12 +3,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <%@ include file="includever2.jsp"%>
+
 <html>
 <head>
+<script src="js/board/board.js"></script>
 <script type="text/javascript">
+
+//주소창 파라메터 값 제거 - 박권수 2018-12-05
+/* history.replaceState({}, null, location.pathname);  */
+
 $(document).ready(function() {
 	imgMove();
+	
+	//customer 전송 - 박권수 2018-12-05
+	$("#save").click(function(){
+
+				 $("#board_form").submit(); 
+		
+	});
 });
 </script>
 	<title>interlinknc</title>
@@ -82,6 +97,7 @@ $(document).ready(function() {
 	<br />
 	<h1>Downloads</h1>
 		<div class="downloadsTable">
+		<input type="hidden" id="board_division" name="board_division" value="${board_division}" />
 			<table>
 				<colgroup>
 					<col style="width: 10%" />
@@ -97,13 +113,52 @@ $(document).ready(function() {
 					<th>다운로드</th>
 					<th>조회수</th>
 				</tr>
+				
+				<!-- 다운로드 view 뿌리기위해 테스트중 2018-12-05 박권수 -->
+				<c:forEach var="board_list" items="${board_list}"  varStatus="status">
 				<tr>
-					<td>1</td>
-					<td>스마트카드 v.1.0.1</td>
-					<td>2018.11.21</td>
-					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
-					<td>99999</td>
+					<td><!--역순공식: 전체 레코드 수 - ( (현재 페이지 번호 - 1) * 한 페이지당 보여지는 레코드 수 + 현재 게시물 출력 순서 ) -->
+                           <c:set var="startpage" value="${startPage-1}" />
+                           <c:set var="statuscount" value="${status.count }" />
+                           ${totalCnt+1-(startpage*10+statuscount)} </td>
+					<td>${board_list.board_title}</td>
+					<td>${board_list.board_registerdate}</td>
+					<td>
+					<%-- <a href="#" style="cursor: pointer;" onclick="downFile('${file_list.file_name2}');"
+					title="첨부파일 다운로드" download>
+					<img alt="" src="resources/mainImg/downloadImg.png"></a> --%>
+					
+					<c:set var="boardlist" value="${board_list.file_sub_name}" />													
+						<c:set var="split_file" value="${fn:split(board_list.file_sub_name,'|')}" />
+						<c:if test="${board_list.file_cnt == 0}">
+						X
+						</c:if>
+						<c:if test="${board_list.file_cnt == 1}">
+						<c:forEach items="${split_file}" var="boardlist">
+						<button type="button" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${board_list.board_seq}');">
+						<!-- <img alt="" src="resources/mainImg/downloadImg.png"> -->다운
+						</button>									
+						</c:forEach>
+						</c:if>
+						<c:if test="${board_list.file_cnt >= 2}">
+						<button type="button" id="hidden_over" name="hidden_over" onclick="over('${board_list.board_seq}');" >열기</button>		
+						</c:if>
+					
+					</td>
+					<td>${board_list.board_hit}</td>
 				</tr>
+				<tr id = "hidden${board_list.board_seq}" style="display: none;">
+						<td align="center" colspan="7">			
+							<c:forEach items="${split_file}" var="boardlist">
+							<button type="button" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}');">
+							<c:set var="TextValue" value="${boardlist}"/>${fn:substringAfter(TextValue,'_') }									
+							</button>
+							<br/>
+							</c:forEach>
+						</td>
+					</tr>
+				</c:forEach>
+				
 			</table>
 		</div>
 		<br />
@@ -113,28 +168,34 @@ $(document).ready(function() {
 	<br />
 	<h1>Customer</h1>
 		<div class="customerCon">
-			<table>
+			<form id="board_form" name="board_form" method="post" action="cms_board_insert_action" enctype="multipart/form-data">
+			<input type="hidden" id="board_division" name="board_division" value="customer"/>
+			<table>			
 				<colgroup>
 					<col style="width: 45%" />
 					<col style="width: 55%" />
 				</colgroup>
 				<tr>
-					<td rowspan="5"><img alt="네이버 지도" src="resources/mainImg/nav.jpg"></td>
-					<td><label>작성자</label><input type="text" /></td>
+					<td rowspan="6"><img alt="네이버 지도" src="resources/mainImg/nav.jpg"></td>
+					<td><label>작성자</label><input type="text" id="user_id" name="user_id" /></td>
 				</tr>
 				<tr>
-					<td><label>이메일</label><input type="text" /></td>
+					<td><label>이메일</label><input type="text" id="user_email" name="user_email"/></td>
 				</tr>
 				<tr>
-					<td><label>연락처</label><input type="text" /></td>
+					<td><label>연락처</label><input type="text" id="user_contact" name="user_contact"/></td>
 				</tr>
 				<tr>
-					<td><label>문의내용</label><textarea></textarea> </td>
+					<td><label>제목</label><input type="text" id="board_title" name="board_title"/> </td>
 				</tr>
 				<tr>
-					<td class="send_bt"><a>Send</a></td>
+					<td><label>문의내용</label><textarea id="board_contetnt" name="board_content"></textarea> </td>
+				</tr>
+				<tr>
+					<td class="send_bt"><a id="save">Send</a></td>
 				</tr>
 			</table>
+			</form>
 		</div>
 	<br />
 	</div>

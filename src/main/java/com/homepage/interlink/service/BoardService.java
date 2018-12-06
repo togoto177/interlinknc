@@ -21,5 +21,7 @@ public interface BoardService {
 	//게시글 삭제
 	public void board_delete(Board board);
 	//포트폴리오 테이블 insert
-	public void portfolio_insert(Board board2);
+	public void portfolio_insert(Board board);
+	
+	public void customer_insert(Board board);
 }

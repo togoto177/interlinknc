@@ -38,6 +38,14 @@ public class Board {
 	private String link;
 	private String portfolio_etc;
 	private String pf_division;
+	
+	//고객센터 모델 추가
+	private int customer_seq;
+	private String user_id;
+	private String user_email;
+	private String user_contact;
+	private String status;
+	
 	public int getBoard_seq() {
 		return board_seq;
 	}
@@ -188,6 +196,37 @@ public class Board {
 	public void setPf_division(String pf_division) {
 		this.pf_division = pf_division;
 	}
+	public int getCustomer_seq() {
+		return customer_seq;
+	}
+	public void setCustomer_seq(int customer_seq) {
+		this.customer_seq = customer_seq;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+	public String getUser_contact() {
+		return user_contact;
+	}
+	public void setUser_contact(String user_contact) {
+		this.user_contact = user_contact;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	@Override
 	public String toString() {
 		return "Board [board_seq=" + board_seq + ", board_division=" + board_division + ", board_title=" + board_title
@@ -198,7 +237,8 @@ public class Board {
 				+ ", preview=" + preview + ", nextview=" + nextview + ", pretitle=" + pretitle + ", nexttitle="
 				+ nexttitle + ", file_cnt=" + file_cnt + ", portfolio_seq=" + portfolio_seq + ", business_period="
 				+ business_period + ", buyer=" + buyer + ", link=" + link + ", portfolio_etc=" + portfolio_etc
-				+ ", pf_division=" + pf_division + "]";
+				+ ", pf_division=" + pf_division + ", customer_seq=" + customer_seq + ", user_id=" + user_id
+				+ ", user_email=" + user_email + ", user_contact=" + user_contact + ", status=" + status + "]";
 	}
 	
 	

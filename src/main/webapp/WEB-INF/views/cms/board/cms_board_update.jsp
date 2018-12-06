@@ -11,17 +11,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>interlinknc</title>
-		<style>
-		.multi{
-		 display: none;
-		}
-		
-		#newFile {
-		 background-color:black;
-		 color:white;
-		 cursor:pointer;
-		}
-	</style>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		 
@@ -80,13 +69,18 @@
 	<%@ include file="../cms_left_bar.jsp"%>
 	<div style="padding-top: 100px;">
 	<div align="center" style="padding-top: 100px; padding-left: 200px; width: auto;">
+		<c:if test="${board_update.board_division == download}">
 		<h1>downloads</h1>	
+		</c:if>
+		<c:if test="${board_update.board_division == portfolio}">
+		<h1>portfolio</h1>	
+		</c:if>
 		<form id="board_form" name="board_form" method="post" action="cms_board_update_action" enctype="multipart/form-data">
 		<input type="hidden" id="board_division" name="board_division" value="${board_update.board_division }">
 		<input type="hidden" id="board_seq" name="board_seq" value="${board_update.board_seq}">
 				<table class="table table-hover" style="width: 700px;" border="1">
 
-					<tr>
+					<tr class="display_none">
 						<td class="table-info">ID</td>
 						<td> 
 						 	<input type="text" style="width: 100%; border: none; "
@@ -95,31 +89,49 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="table-info">제목</td> 
-						<td>
+						<td style="width: 20%;">제목</td> 
+						<td style="width: 80%;">
 						<input type="text" style="width: 100%; border: none; "
 						id="board_title" name="board_title"   
 					 	value="${board_update.board_title}" />
 						</td>
 					</tr>
+					<c:if test="${board_division == 'portfolio' }">	
+					<tr>
+						<td style="width: 20%;">구분</td> 
+						<td style="width: 80%;"><input type="text" name="pf_division" id="pf_division" style="width: 100%;" value="${board_update.pf_division}"/></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">사업기간</td> 
+						<td style="width: 80%;"><input type="text" name="business_period" id="business_period" style="width: 100%;" value="${board_update.business_period}"/></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">발주처</td> 
+						<td style="width: 80%;"><input type="text" name="buyer" id="buyer" style="width: 100%;" value="${board_update.buyer}"/></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;">연결주소</td> 
+						<td style="width: 80%;"><input type="text" name="link" id="link" style="width: 100%;" value="${board_update.link}"/></td>
+					</tr>
+					</c:if>
 					<c:choose>
 						<c:when test="${fn:length(file_list) == 0}">												
 					<tr>
-							<td class="table-info">첨부파일<button type="button" id="newFile" >dddd</button></td>
-							<td width="100%" align="left" class="length_x" >첨부된 파일이 없습니다.</td>
+							<td class="table-info"><button type="button" id="newFile" >첨부파일</button></td>
+							<td width="100%" align="left" class="length_x" ><input type="file" name="uploadfile" class="multi with-preview" id="orgFile"/></td>
 							</tr>
 						</c:when>
 						<c:otherwise>		
 								<tr>	
 								<td>
-									첨부파일<button type="button" id="newFile" >dddd</button>
+									<button type="button" id="newFile" >첨부파일</button>
 								</td>		
 								 <td>
 							<c:forEach var="file_list" items="${file_list}"  varStatus="status">
 								<c:if test="${file_list.file_use_yn eq 'Y'}">
 								 	<div id="flist_${status.count}">
-									<input style="border: 0; width: 500px;" type="text" id="fName" name="fName" value="${file_list.file_ori_name}">
-									<button class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
+									<input style="border: 0; width: 100%;" type="text" id="fName" name="fName" value="${file_list.file_ori_name}">
+									<button type="button" class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
 									<input type="hidden" name="file_key" id="file_key" value="${file_list.file_seq}" />
 									<input type="hidden" id="update_id" name="update_id" value="${sessionScope.admin_id}" />
 									<input type="hidden"  name="flag" id="flag" value="C" />
@@ -138,57 +150,6 @@
 						<td><textarea name="board_content" id="board_content" rows="10" cols="30" style="width: 700px; height: 500px;">${board_update.board_content}</textarea></td>
 					</tr>
 				</table>	
-				<table class="table table-hover" style="width: 700px;" border="1">
-					<tr>
-					<td class="table-info" width="235px">첨부파일</td>
-					</tr>
-					</table>
-					<div align="center" >
-				<table class="table table-hover" style="width: 700px;" border="1">
-
-					<c:choose>
-						<c:when test="${fn:length(file_list) == 0}">												
-
-							<tr>
-							<td width="100%" align="left">첨부된 파일이 없습니다.</td>
-							</tr>
-						</c:when>
-						<c:otherwise>		
-							<c:forEach var="file_list" items="${file_list}"  varStatus="status">
-							<tr id="flist_${status.count}">
-								<c:if test="${file_list.file_use_yn eq 'Y'}">
-								 <td>
-									<%-- <input style="border: 0; width: 500px;" type="text" id="fName" name="fName" value="${file_list.file_ori_name}">
-									<button class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
-									<input type="hidden" name="file_key" id="file_key" value="${file_list.file_seq}" />
-									<input type="hidden" id="update_id" name="update_id" value="${sessionScope.admin_id}" />
-									<input type="hidden"  name="flag" id="flag" value="C" />
-									<label>${file_list.file_size} KB</label> --%>
-									
-								</td>
-								</c:if>
-							</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-			</table>
-			</div>
-					<table class="table table-hover" style="width: 700px;" >
-					<tbody class="addtable" id="addtd" >
-					<tr id="file_up0">
-					<td id="file_up0">
-						<input type="file"  name="uploadfile[0]"  required="required" id="file_up0" multiple />
-					</td>
-					<td align="right">
-						<button class="btn btn-primary"  name="file_up0" style="margin-left: 0%;" type="button" onclick="delbt_ori(this.name)">ㅡ</button>
-					</td>
-					<td align="right">
-						<button class="btn btn-primary" style="margin-left: 0%;" type="button"  onclick="javascript:addbt()">+</button>
-					</td>
-					</tr>
-					</tbody>
-				    </table>
-				    
 			</form>
 			<br>
 
