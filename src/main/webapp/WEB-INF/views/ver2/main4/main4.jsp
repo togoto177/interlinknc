@@ -275,21 +275,36 @@ $(document).ready(function() {
 	<div class="portfolio" id="portfolio">
 		<div class="portfolioImg">
 			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>
+			<div class="portfolio_navigator">
+				<img alt="포트폴리오이미지" src="resources/mainImg/portfolio_navigator.png">
+				<div class="portfolio_div_ul">
+					<ul class="portfolio_ul">
+						<li class="left">&ltrif;</li>
+						<li>2009</li>
+						<li>&#183;</li>
+						<li class="dddd">2008</li>
+						<li>&#183;</li>
+						<li>2007</li>
+						<li class="right">&rtrif;</li>
+					</ul>
+				</div>
+			</div>
 			<div class="portfolioImg_div">
 			<ul class="bxslider">
 				<!-- back-보라 -->
 				<li class="background_1">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/mainImg/pf1.jpg">
+					<img alt="포트폴리오이미지" src="resources/portfolio/pf1.jpg">
 					</div>
 					<div class="portConText">
-						<div class="portCon">
-							<a class="portA">수협중앙회</a>
+						<div class="portCen">
+							<div class="portCon"></div>
+							<a class="portA">수협중앙회</a><br />
+							<a class="portUrl">www.interlinknc.com</a>
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-							<a class="protCon2_2">운영 및 유지보수</a>
+							<a class="protCon2_2">어촌사랑 홈페이지</a>
 						</div>
 						<div class="portCon3">
 							<ul>
@@ -307,16 +322,17 @@ $(document).ready(function() {
 				</li>
 				<li class="background_2">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/mainImg/pf2.jpg">
+					<img alt="포트폴리오이미지" src="resources/portfolio/pf2.jpg">
 					</div>
 					<div class="portConText">
-						<div class="portCon">
-						<a class="portA">수협중앙회</a>
+						<div class="portCen">
+							<div class="portCon"></div>
+							<a class="portA">수협중앙회</a><br />
+							<a class="portUrl">www.interlinknc.com</a>
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-							<a class="protCon2_2">운영 및 유지보수</a>
+							<a class="protCon2_2">어촌사랑 홈페이지<br />운영 및 유지보수</a>
 						</div>
 						<div class="portCon3">
 							<ul>
@@ -334,16 +350,17 @@ $(document).ready(function() {
 				</li>
 				<li class="background_1">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/mainImg/pf1.jpg">
+					<img alt="포트폴리오이미지" src="resources/portfolio/pf1.jpg">
 					</div>
 					<div class="portConText">
-						<div class="portCon">
-						<a class="portA">수협중앙회</a>
+						<div class="portCen">
+							<div class="portCon"></div>
+							<a class="portA">수협중앙회</a><br />
+							<a class="portUrl">www.interlinknc.com</a>
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-							<a class="protCon2_2">운영 및 유지보수</a>
+							<a class="protCon2_2">어촌사랑 홈페이지</a>
 						</div>
 						<div class="portCon3">
 							<ul>
@@ -361,16 +378,17 @@ $(document).ready(function() {
 				</li>
 				<li class="background_2">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/mainImg/pf2.jpg">
+					<img alt="포트폴리오이미지" src="resources/portfolio/pf2.jpg">
 					</div>
 					<div class="portConText">
-						<div class="portCon">
-						<a class="portA">수협중앙회</a>
+						<div class="portCen">
+							<div class="portCon"></div>
+							<a class="portA">수협중앙회</a><br />
+							<a class="portUrl">www.interlinknc.com</a>
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지</a><br />
-							<a class="protCon2_2">운영 및 유지보수</a>
+							<a class="protCon2_2">어촌사랑 홈페이지</a>
 						</div>
 						<div class="portCon3">
 							<ul>
@@ -395,8 +413,6 @@ $(document).ready(function() {
 	<div class="downloads_title"><a class="downloads_titleA"><img alt="downloads 이미지" src="resources/mainImg/diagonal_download.png"><br/>DOWNLOAD</a></div>
 	
 		<div class="downloadsTable">
-		
-		<hr class="downloads_border-top">
 			<table>
 				<colgroup>
 					<col style="width: 10%" />
@@ -481,7 +497,6 @@ $(document).ready(function() {
 			<li><img alt="오른쪽" src="resources/mainImg/history_right.png"></li>
 			</ul>
 			</div>
-			<hr class="downloads_border-bottom">
 		</div>
 	</div>
 	

@@ -54,28 +54,40 @@ jQuery(document).ready(function($){
 	    $('body').css("overflow", "scroll");
 	    $('.window').hide();  
 	});
-	
 	/* 이미지 효과 */
 	$(".home_icon").hide();
-/*	$(".portConText").css("visibility", "hidden"); */
-	/*$(".bxslider li").mouseover(function(){
-		$(this).children('.portConText').css("visibility", "visible");
+
+	$(".bxslider .background_1").mouseover(function(){
+		$(this).find('.portCon3').hide();
+		$(this).find('.protCon2_1').hide();
+		$(this).find('.portCon2').css("background","none");
+		$(this).find('.portUrl').css("color","#99ffff");
     }).mouseleave(function(){
-    	$(this).children('.portConText').css("visibility", "hidden");
-    });*/
-	$(".portConText").hide();
-	/*$(".portConText .portCon").show();*/
-	$(".bxslider li").mouseover(function(){
-		$(this).children('.portConText').show();
+    	$(this).find('.portCon3').show();
+    	$(this).find('.protCon2_1').show();
+    	$(this).find('.portCon2').css("background","#6600ff");
+    	$(this).find('.portUrl').css("color","#87ceeb00");
+    });
+	$(".bxslider .background_2").mouseover(function(){
+		$(this).find('.portCon3').hide();
+		$(this).find('.protCon2_1').hide();
+		$(this).find('.portCon2').css("background","none");
+		$(this).find('.protCon2_2').css("color","black");
+		$(this).find('.portUrl').css("color","#6600ff");
     }).mouseleave(function(){
-    	$(this).children('.portConText').hide();
+    	$(this).find('.portCon3').show();
+    	$(this).find('.protCon2_1').show();
+    	$(this).find('.portCon2').css("background","#99ffff");
+
+    	$(this).find('.protCon2_2').css("color","black");
+    	$(this).find('.portUrl').css("color","#87ceeb00");
     });
 	
 	$(".downloadsTable table tr").mouseover(function(){
 		$(this).find("img").attr("src", "resources/mainImg/downloadImg2.png");
 	}).mouseleave(function(){
 		$(this).find("img").attr("src", "resources/mainImg/downloadImg.png");
-    });;
+    });
 	
 });
 
