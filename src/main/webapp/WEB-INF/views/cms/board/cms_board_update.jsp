@@ -91,7 +91,7 @@
 					<tr>
 						<td style="width: 20%;">제목</td> 
 						<td style="width: 80%;">
-						<input type="text" style="width: 100%; border: none; "
+						<input type="text" style="width: 100%;"
 						id="board_title" name="board_title"   
 					 	value="${board_update.board_title}" />
 						</td>
@@ -124,7 +124,14 @@
 						<c:otherwise>		
 								<tr>	
 								<td>
+									<c:if test="${board_update.board_division == 'portfolio'}">
+									<c:if test="${fn:length(file_list) == 1}">								
+									<button type="button" id="newFile" disabled="disabled" >첨부파일</button>
+									</c:if>
+									</c:if>
+									<c:if test="${board_update.board_division == 'download'}">								
 									<button type="button" id="newFile" >첨부파일</button>
+									</c:if>
 								</td>		
 								 <td>
 							<c:forEach var="file_list" items="${file_list}"  varStatus="status">
@@ -139,7 +146,12 @@
 									</div>
 								</c:if>
 							</c:forEach>
-									<input type="file" name="uploadfile" class="multi with-preview" id="orgFile"/>
+									<c:if test="${board_division == 'portfolio'}">
+									<input type="file" name="uploadfile" class="multi with-preview" id="orgFile" maxlength="1" />
+									</c:if>
+									<c:if test="${board_division == 'download'}">
+									<input type="file" name="uploadfile" class="multi" id="orgFile" maxlength="2"/>
+									</c:if>
 								</td>
 								</tr>
 						</c:otherwise>

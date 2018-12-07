@@ -64,5 +64,15 @@ public class BoardDaoImpl implements BoardDao {
 	public List<Board> download_list(Map<String, Object> paramMap) {
 	 	return SqlSession.selectList("boards.download_list", paramMap);
 	}
+
+	@Override
+	public int download_cnt(Map<String, Object> paramMap) {
+		return SqlSession.selectOne("boards.download_cnt", paramMap);
+	}
+
+	@Override
+	public int download_hit(int board_seq) {
+		return SqlSession.update("boards.download_hit", board_seq);
+	}
 	
 }

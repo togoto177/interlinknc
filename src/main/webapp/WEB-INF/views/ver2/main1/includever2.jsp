@@ -9,6 +9,7 @@
 <script src="js/main1/main.js"></script>
 <script src="js/main1/jquery.bxslider.js"></script>
 <script src="js/main1/jquery.bxslider.min.js"></script>
+<script src="js/board/board.js"></script>
 
 
 

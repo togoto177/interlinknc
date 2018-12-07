@@ -26,4 +26,8 @@ public interface BoardDao {
 
 	public List<Board> download_list(Map<String, Object> paramMap);
 
+	public int download_cnt(Map<String, Object> paramMap);
+
+	public int download_hit(int board_seq);
+
 }

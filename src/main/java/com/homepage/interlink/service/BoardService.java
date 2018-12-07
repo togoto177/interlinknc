@@ -8,6 +8,8 @@ import com.homepage.interlink.model.Board;
 
 public interface BoardService {
 	
+	/*공통*/
+	
 	//게시판 작성
 	public void board_insert(Board board);                
 	//게시판 상세보기
@@ -20,10 +22,16 @@ public interface BoardService {
 	public void board_update(Board board);
 	//게시글 삭제
 	public void board_delete(Board board);
+	
+	/*서브*/
 	//포트폴리오 테이블 insert
 	public void portfolio_insert(Board board);
 	//고객센터 테이블 insert
 	public void customer_insert(Board board);
 	//메인 다운로드 뷰 출력
 	List<Board> download_list(Map<String, Object> paramMap);
+	//다운로드 전체 조회수
+	public int download_cnt(Map<String, Object> paramMap);
+	//다운로드 클릭 시 조회수 증가
+	int download_hit(int board_seq);
 }

@@ -9,41 +9,6 @@
 
 <html>
 <head>
- 	<script type="text/javascript">
-	
-	$(document).ready(function() {
-		// 네이버 에디터  
-		var oEditors = [];
-		
-		nhn.husky.EZCreator.createInIFrame({
-		    oAppRef: oEditors,
-		    elPlaceHolder: "board_content",
-		    sSkinURI: "util/naver_edit/SmartEditor2Skin.html",
-		    fCreator: "createSEditor2",
-		    htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-		    bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-		    bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-		    bUseModeChanger : true, 
-		    }
-
-
-		});
-		
-		$("#save").click(function(){
-			 //if(confirm("저장하시겠습니까?")) 
-			// id가 smarteditor인 textarea에 에디터에서 대입 
-				 oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
-			 // 이부분에 에디터 validation 검증
-
-				 $("#board_form").submit(); 
-		
-		  });
-	});
-	</script>
-	<script>
-       
-		</script>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>interlinknc</title>
 </head>
@@ -97,7 +62,7 @@
 						<input type="file" name="uploadfile" class="multi with-preview" id="orgFile" maxlength="1" />
 						</c:if>
 						<c:if test="${board_division == 'download'}">
-						<input type="file" name="uploadfile" class="multi" id="orgFile" />
+						<input type="file" name="uploadfile" class="multi" id="orgFile" maxlength="2"/>
 						</c:if>
 						</div>
 					</tr>

@@ -34,17 +34,33 @@ jQuery(document).ready(function($){
     });
     
     /*모달창*/
-    $('.openMask').click(function(e){
+    $(document).on("click",".openMask",function(e){
+    	
+    	var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가 
+    	
+    	
+    	$.ajax({
+    		type : "POST",
+    		url : "cnt_test",
+    		async : false,
+    		data : {board_seq : id_check} ,
+    		dataType : "json",
+    		cache: false,
+    		success: function(data){    
+    			alert("저장되었습니다.");
+    		}  
+    	}); 
+
 		e.preventDefault();
 		$('body').css("overflow", "hidden");
 		
-		var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가 
-		
+
 		wrapWindowByMask(id_check);
+		
 	});
 
 	//닫기 버튼을 눌렀을 때
-	$('.window .close').click(function (e) {  
+    $(document).on("click",".window .close",function(e){
 	    //링크 기본동작은 작동하지 않도록 한다.
 	    e.preventDefault();  
 	    $('body').css("overflow", "scroll");
@@ -52,7 +68,7 @@ jQuery(document).ready(function($){
 	});       
 
 	//검은 막을 눌렀을 때
-	$('#mask').click(function () {  
+    $(document).on("click","#mask",function(){
 	    $(this).hide();
 	    $('body').css("overflow", "scroll");
 	    $('.window').hide();  

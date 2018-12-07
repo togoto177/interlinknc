@@ -39,7 +39,14 @@
 	</insert>
 	
 	<select id="file_list" resultType="BoardFile">
-	select * from file_tb where file_use_yn = 'y' and board_seq = #{board_seq};
+	<!-- select * from file_tb where file_use_yn = 'y' and board_seq = #{board_seq}; -->
+	select a.file_seq, a.board_seq, a.file_ori_name, 
+         concat(a.file_sub_name,'*',b.board_division) as file_sub_name,
+         a.extention_name,
+         a.file_size, a.file_hit, a.file_path, a.file_use_yn, 
+         a.file_update_date, a.file_etc, b.board_division 
+         from file_tb a left join board_tb b on a.board_seq = b.board_seq  
+         where a.file_use_yn = 'y' and a.board_seq = #{board_seq};
 	</select>
 	
 	<!-- update폼에서 수정시 파일 N처리할때 필요함 -->

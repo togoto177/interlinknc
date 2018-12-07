@@ -28,6 +28,7 @@
 			
 			
 			<input type="hidden" id="board_seq" name="board_seq" value="${board_body.board_seq}">
+			<input type="hidden" id="board_division" name="board_division" value="${board_division}">
 		<br>
 			<table border="1" class="table table-hover" style="width: 700px;">
 

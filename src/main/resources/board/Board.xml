@@ -68,7 +68,7 @@
         a.*, c.business_period, c.buyer, c.link, c.portfolio_etc, d.status, d.user_id,
         (select count(b.file_seq) from file_tb b where b.file_use_yn = 'y' and b.board_seq = a.board_seq) as file_cnt,
         (select sum(b.file_hit) from file_tb b where b.board_seq = a.board_seq and b.file_use_yn = 'Y'  ) as file_hit,
-        (select group_concat(b.file_sub_name,'*',b.file_seq separator '|') 
+        (select group_concat(b.file_sub_name,'*',a.board_division,'*',b.file_seq separator '|') 
         from file_tb b 
         where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,  
         (select group_concat(b.file_ori_name separator '|') 
@@ -217,7 +217,7 @@
         a.*,
         (select count(b.file_seq) from file_tb b where b.file_use_yn = 'y' and b.board_seq = a.board_seq) as file_cnt,
         (select sum(b.file_hit) from file_tb b where b.board_seq = a.board_seq and b.file_use_yn = 'Y'  ) as file_hit,
-        (select group_concat(b.file_sub_name,'*',b.file_seq separator '|') 
+        (select group_concat(b.file_sub_name,'*',a.board_division,'*',b.file_seq separator '|') 
         from file_tb b 
         where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,  
         (select group_concat(b.file_ori_name separator '|') 
@@ -239,6 +239,27 @@
         limit #{start}, #{end};
 	
 	</select>
+	
+	<select id="download_cnt" resultType="int" parameterType="Board">
+	
+	    select count(board_seq) from board_tb 
+	    where board_division = 'download' and board_use_yn = 'y'
+     	<choose>
+	     	  <when test="sch_type == 'board_title'">
+			  AND board_title like CONCAT('%', #{sch_value}, '%')
+			  </when>
+			  <when test="sch_type == 'board_content'">
+			  AND board_content like CONCAT('%', #{sch_value}, '%')
+			  </when>
+	    </choose>
+	
+	</select>
+	
+	 <update id="download_hit" parameterType="int">
+        update board_tb set board_hit = board_hit + 1 where board_seq = #{board_seq}
+    
+    
+    </update>
 	
 
 </mapper>

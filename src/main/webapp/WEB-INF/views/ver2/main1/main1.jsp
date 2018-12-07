@@ -6,9 +6,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="includever2.jsp"%>
+
+<!DOCTYPE html>
+
 <html>
 <head>
-<script src="js/board/board.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
  	var mySlider = $('.bxslider').bxSlider({
@@ -393,12 +395,13 @@ $(document).ready(function() {
 		</div>
 	</div>
 	
-	<div class="downloads" id="downloads">
+	<div class="downloads" >
 	<div class="downloads_title"><a class="downloads_titleA"><img alt="downloads 이미지" src="resources/mainImg/diagonal_download.png"><br/>DOWNLOAD</a></div>
 	
-		<div class="downloadsTable">
-		
-		<hr class="downloads_border-top">
+		<form name="board_form"  method="get" id="board_form">
+		<div class="downloadsTable" >
+		<div class="a" id="downloads">
+		<hr class="downloads_border-top" id="Context">
 		<input type="hidden" id="board_division" name="board_division" value="${board_division}" />
 			<table>
 				<colgroup>
@@ -417,39 +420,40 @@ $(document).ready(function() {
 				</tr>
 				
 				<!-- 다운로드 view 뿌리기위해 테스트중 2018-12-05 박권수 -->
-				<c:forEach var="board_list" items="${board_list}"  varStatus="status">
+				<c:forEach var="download_list" items="${download_list}"  varStatus="status">
 				<tr>
 					<td><!--역순공식: 전체 레코드 수 - ( (현재 페이지 번호 - 1) * 한 페이지당 보여지는 레코드 수 + 현재 게시물 출력 순서 ) -->
-							<input type="hidden" id="board_seq" name="board_seq" value="${board_list.board_seq}">
+
+							<input type="hidden" id="board_seq" name="board_seq" value="${download_list.board_seq}">
+
+							<input type="hidden" id="totalCnt" name="totalCnt" value="${totalCnt}">
+							<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
+							<input type="hidden" id="wow" name="wow" value="${wow}">
                            <c:set var="startpage" value="${startPage-1}" />
                            <c:set var="statuscount" value="${status.count }" />
                            ${totalCnt+1-(startpage*10+statuscount)} </td>
-					<td><a href="#" class="openMask" id="${board_list.board_seq}">${board_list.board_title}</a></td>
-					<td>${board_list.board_registerdate}</td>
+					<td><a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}">${download_list.board_title}</a></td>
+					<td>${download_list.board_registerdate}</td>
 					<td>
-					<%-- <a href="#" style="cursor: pointer;" onclick="downFile('${file_list.file_name2}');"
-					title="첨부파일 다운로드" download>
-					<img alt="" src="resources/mainImg/downloadImg.png"></a> --%>
-					
-					<c:set var="boardlist" value="${board_list.file_sub_name}" />													
-						<c:set var="split_file" value="${fn:split(board_list.file_sub_name,'|')}" />
-						<c:if test="${board_list.file_cnt == 0}">
+					<c:set var="boardlist" value="${download_list.file_sub_name}" />													
+						<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
+						<c:if test="${download_list.file_cnt == 0}">
 						</c:if>
-						<c:if test="${board_list.file_cnt == 1}">
+						<c:if test="${download_list.file_cnt == 1}">
 						<c:forEach items="${split_file}" var="boardlist">
-						<a href="javascript:void(0);" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${board_list.board_seq}');">
+						<a href="javascript:void(0);" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
 						<img alt="" src="resources/mainImg/downloadImg.png">
 						</a>									
 						</c:forEach>
 						</c:if>
-						<c:if test="${board_list.file_cnt >= 2}">
-						<a href="#" class="openMask" id="${board_list.board_seq}"><img alt="" src="resources/mainImg/downloadImg.png"></a>		
+						<c:if test="${download_list.file_cnt >= 2}">
+						<a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}"><img alt="" src="resources/mainImg/downloadImg.png"></a>		
 						</c:if>
 					
 					</td>
-					<td>${board_list.board_hit}</td>
+					<td>${download_list.board_hit}</td>
 				</tr>
-				<tr id = "hidden${board_list.board_seq}" style="display: none;">
+				<tr id = "hidden${download_list.board_seq}" style="display: none;">
 						<td align="center" colspan="7">			
 							<c:forEach items="${split_file}" var="boardlist">
 							<a href="javascript:void(0);" class="btn btn-primary" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}');">
@@ -464,24 +468,36 @@ $(document).ready(function() {
 			<!-- 뒷배경 -->
 			<div id="mask"></div>
 			<!-- 모달 view -->
-			<div class="window" id="${board_list.board_seq}">
+			<div class="window" id="${download_list.board_seq}">
 				<div class="close_div"><a class="close">X</a></div>
 				<div class="windowCon">
 					<div class="windowCon1">
 					
-						<a class="windowConNo">1</a>&ensp;<a class="windowConDay">
-						<fmt:formatDate value="${board_list.board_registerdate}" pattern="yyyy.MM.dd"/>
-						 / ${board_list.board_hit} views</a><br />
+						<a class="windowConNo">${totalCnt+1-(startpage*10+statuscount)}</a>&ensp;<a class="windowConDay">
+						<fmt:formatDate value="${download_list.board_registerdate}" pattern="yyyy.MM.dd"/>
+						 / ${download_list.board_hit} views</a><br />
 						<a class="windowConTitle"></a>
-						${board_list.board_title}
+						${download_list.board_title}
 					</div>
 					<div class="windowCon2">
-						<a>${board_list.board_content}</a>
+						<a>${download_list.board_content}</a>
 					</div>
 					<div class="windowCon3">
 						<c:forEach items="${split_file}" var="boardlist">
-						<a href="javascript:void(0);" class="windowConBut" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${board_list.board_seq}');">
+						<br/>
+						<a href="javascript:void(0);" class="windowConBut" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
 						DOWNLOAD &darr;
+						
+						</a>									
+						</c:forEach>
+						<!-- <a class="windowConBut">DOWNLOAD &darr;</a> -->
+					</div>
+					<div class="windowCon4">
+						<c:forEach items="${split_file}" var="boardlist">
+						<br/>
+						<a href="javascript:void(0);" class="windowConBut" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
+						DOWNLOAD &darr;
+						
 						</a>									
 						</c:forEach>
 						<!-- <a class="windowConBut">DOWNLOAD &darr;</a> -->
@@ -493,22 +509,29 @@ $(document).ready(function() {
 				<!-- 다운로드 view 뿌리기위해 테스트중 2018-12-05 박권수 -->
 				
 			</table>
+			</div>
+			
 			
 			
 			<div class="downCnt">
+			<input type="hidden" id="startPage" name="startPage" value="">
+			<input type="hidden" id="visiblePages" name="visiblePages" value="">
 			<ul>
-			<li><img alt="왼쪽" src="resources/mainImg/history_left.png"></li>
-			<li class="focus">1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-			<li>5</li>
-			<li><img alt="오른쪽" src="resources/mainImg/history_right.png"></li>
+			<li>
+			<a href="javascript:void(0);" name="page_move" id="page_first">
+			<img alt="왼쪽" src="resources/mainImg/history_left.png">
+			</a>
+			</li>
+			<!-- <li class="focus">1</li> -->
+			<li id="pagination"></li>
+			<li><a href="javascript:void(0)" name="page_move" id="page_last"><img alt="오른쪽" src="resources/mainImg/history_right.png"></a></li>
 			</ul>
 			</div>
 			<hr class="downloads_border-bottom">
 		</div>
+			</form>
 	</div>
+	
 	
 	<div class="customer" id="customer">
 	<div class="customer_title"><a class="customer_titleA"><img alt="customer 이미지" src="resources/mainImg/diagonal_contact.png"><br/>CUSTOMER</a></div>

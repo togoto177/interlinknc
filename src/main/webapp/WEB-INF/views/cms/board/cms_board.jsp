@@ -166,7 +166,6 @@
 <div>
 	<%@ include file="../cms_left_bar.jsp"%>
 	<div style="padding-top: 100px;">	
-		<form name="board_form"  method="get">
 		<div align="center" style="padding-top: 100px; padding-left: 200px; width: auto;">
 		
 			<c:if test="${board_division == 'download'}">
@@ -178,10 +177,11 @@
 			<c:if test="${board_division == 'customer'}">
 			<h1>customer</h1>
 			</c:if>
-			
-			<input type="hidden" id="board_division" name="board_division" value="${board_division}">
- 			<input type="hidden" id="startPage" name="startPage" value="">
-			<input type="hidden" id="visiblePages" name="visiblePages" value="">
+
+			<form name="board_form"  method="get">
+				<input type="hidden" id="board_division" name="board_division" value="${board_division}">
+				<input type="hidden" id="startPage" name="startPage" value="">
+				<input type="hidden" id="visiblePages" name="visiblePages" value="">
     			<table style="border: 0; width: 700px;">		
 					<tbody>	
 					<tr>
@@ -201,6 +201,7 @@
 				 	</tr>
 					</tbody>
 				</table>
+			</form>				
 				<br>	
 				<table class="table table-hover" border="1" style="width: 700px; font-size: small;" >
 					<tr class="table-info" align="center">
@@ -335,18 +336,19 @@
 		<!-- 페이징 view -->
 		<br/>
 			<div align="center" style=" padding-left: 200px;">
+				
 				<table>
 				<tr>
 				<td><a href="cms_board?board_division=download&startPage=1&visiblePages=10">처음</a></td>
 				<!-- <a href="#" class="c-pagination__arrow c-pagination__arrow--prev">이전페이지로</a> -->
-				<td><a href="#"  id="pagination"></a></td>
+				<td id="pagination"></td>
 				<!-- <a href="#" class="c-pagination__arrow c-pagination__arrow--next">다음페이지로</a> -->
 				<td><a href="cms_board?board_division=download&startPage=${totalPage}&visiblePages=10">마지막</a></td>
 				</tr>
 				</table>
+				
 			</div>
 		<!-- 페이징 end -->
-		</form>
 	</div>
 
 		
