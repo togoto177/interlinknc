@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="includever2.jsp"%>
+
 <html>
+<%@ include file="includever2.jsp"%>
 <head>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -13,7 +14,7 @@ $(document).ready(function() {
 		controls:true,     //이전/다음 버튼 노출 여부
 		autoHover: true,   // 마우스 호버시 정지 여부
 		pager:false,
-		maxSlides: 3,
+		maxSlides: 5,
 		moveSlides:1,
 		slideWidth: 240,
 		slideMargin:0,
@@ -53,7 +54,7 @@ $(document).ready(function() {
 		<div class="mainImg_con2">
 		<a class="con1"><img alt="main 사선 이미지" src="resources/mainImg/diagonal_main.png"></a><br />
 		<img alt="logo" src="resources/mainImg/white_logo.png"><br />
-		<a class="en">we</a><a class="en2">are</a><a class="en3">interlink&amp;c</a><br />
+		<a class="en">WE</a><a class="en2">ARE</a><a class="en3">INTERLINK&amp;C</a><br />
 		<a class="ko">솔루션 네트워킹으로 정보화를 이끄는 기업</a><br />
 		<a class="con2"><img alt="main 사선 이미지" src="resources/mainImg/diagonal_portfolio.png"></a>
 		
@@ -87,7 +88,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="about_title">
-		<a class="about_titleA"><img alt="about us 이미지" src="resources/mainImg/diagonal_about.png"><br />about</a><a class="about_titleA2">us</a>
+		<a class="about_titleA"><img alt="about us 이미지" src="resources/mainImg/diagonal_about.png"><br />ABOUT</a><a class="about_titleA2">US</a>
 		</div>
 		
 		<div class="about2">
@@ -111,7 +112,7 @@ $(document).ready(function() {
 		
 		<div class="about3">
 		<div class="history_title">
-			<a class="history_titleA"><img alt="history 이미지" src="resources/mainImg/diagonal_about.png"><br />history</a>
+			<a class="history_titleA"><img alt="history 이미지" src="resources/mainImg/diagonal_about.png"><br />HISTORY</a>
 		</div>
 			<div class="history">
 			<table>
@@ -273,7 +274,7 @@ $(document).ready(function() {
 	<div class="portfolio_menu"></div>
 	<div class="portfolio" id="portfolio">
 		<div class="portfolioImg">
-			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>portfolio</a></div>
+			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>
 			<div class="portfolioImg_div">
 			<ul class="bxslider">
 				<!-- back-보라 -->

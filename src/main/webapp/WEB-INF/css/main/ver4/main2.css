@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+@media only screen and (min-width: 320px) {
+	
+	.portfolioImg{
+		width: 316px;
+	}
+	.portfolioImg .portfolioImg_div .bxslider li{
+		margin: 0 5;
+	}
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (                min-resolution: 192dpi) and (min-width: 320px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 320px) { 
+
+	.portfolioImg{
+		width: 316px;
+	}
+	
+	.portfolioImg .portfolioImg_div .bxslider li{
+		margin: 0 5;
+	}
+	
+  /* Small screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 630px) {
+	
+	.portfolioImg{
+		width: 624px;
+	}
+
+  /* Small screen, non-retina */
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 630px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 630px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 630px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 630px),
+only screen and (                min-resolution: 192dpi) and (min-width: 630px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 630px) { 
+
+	.portfolioImg{
+		width: 624px;
+	}
+	
+	
+  /* Small screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 900px) {
+
+	.portfolioImg{
+		width: 935;
+	}
+	.mainImg_con3 .text2 li a{
+	font-size: 15px;
+	}
+	.mainImg_con3 .text1 a{
+	font-size: 18px;
+	}
+
+
+
+	.mainImg_con3 .text2{
+	color: white;
+	position: relative;
+	width: 50%;
+	font-size: 12;
+	text-align: left;
+	float: left;
+	margin: 0;
+	}
+	.mainImg_con3 .text1{
+	color: white;
+	position: relative;
+	top: 15px;
+	width: 50%;
+	text-align: right;
+	float: left;
+	margin:0;
+	}
+
+  /* Medium screen, non-retina */
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 900px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 900px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 900px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 900px),
+only screen and (                min-resolution: 192dpi) and (min-width: 900px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 900px) { 
+
+	.portfolioImg{
+		width: 935;
+	}
+	.mainImg_con3 .text2 li a{
+	font-size: 15px;
+	}
+	.mainImg_con3 .text1 a{
+	font-size: 18px;
+	}
+  /* Medium screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+	.portfolioImg{
+		/* width: 935; */
+		width: 1244px;
+	}
+  /* Large screen, non-retina */
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1200px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1200px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1200px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1200px),
+only screen and (                min-resolution: 192dpi) and (min-width: 1200px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 1200px) { 
+
+	.portfolioImg{
+		/* width: 935; */
+		width: 1244px;
+	}
+  /* Large screen, retina, stuff to override above media query */
+
+}
+
+@media only screen and (min-width: 1500px) {
+
+  /* Large screen, non-retina */
+  
+  .portfolioImg{
+  	width: 1555;
+  	/* width: 1244px; */
+  }
+ 
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1500px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1500px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1500px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1500px),
+only screen and (                min-resolution: 192dpi) and (min-width: 1500px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 1500px) { 
+
+  /* Large screen, retina, stuff to override above media query */
+  
+  .portfolioImg{
+  	width: 1555;
+  	/* width: 1244px; */
+  }
+
+}

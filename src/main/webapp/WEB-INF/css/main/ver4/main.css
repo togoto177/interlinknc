@@ -3,7 +3,7 @@
 	src: url("../../../fonts/KoPub-Dotum-Light.ttf");
 }
 @font-face {
-	font-family: KoPub_medium;
+	font-family: 'KoPub_medium';
 	src: url("../../../fonts/KoPub-Dotum-Medium.ttf");
 }
 @font-face {
@@ -11,16 +11,14 @@
 	src: url("../../../fonts/Gotham-Bold.otf");
 }
 @font-face {
-	font-family: orator;
-	src: url("../../../fonts/OratorStd.otf");
-	/* src: url('../../../fonts/OratorStd.otf');
-	src: url('../../../fonts/OratorStd.otf?#iefix') format('embedded-opentype'); */
+	font-family: HPSimplified_Rg;
+	src: url("../../../fonts/HPSimplified_Rg.ttf");
 }
 body{
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	font-family: KoPub, sans-serif;
+	font-family:'Malgun Gothic';
 }
 h1{
 	margin-top: 0;
@@ -165,7 +163,7 @@ h1{
 }
 
 .mainImg{
-	height: 800px;
+	height: 880px;
 	width: 100%;
 	margin: 0 auto;
 	background: url( "images/main_bg.jpg" );
@@ -179,23 +177,48 @@ h1{
 	top: 18%;
 }
 .mainImg_con2 .en{
-	font-family: orator;
-	font-size: 39px;
+	font-family: "HPSimplified_Rg";
+	font-size: 33px;
 	line-height:1.1;
+	display:inline-block; 
+    -webkit-transform:scale(1,1.1); /* Safari and Chrome */ 
+    -moz-transform:scale(1,1.1); /* Firefox */ 
+    -ms-transform:scale(1,1.1); /* IE 9 */ 
+    -o-transform:scale(1,1.1); /* Opera */ 
+    transform:scale(1,1.1); /* W3C */
+    
+    letter-spacing: 9;
 }
 .mainImg_con2 .en2{
-	font-family: orator;
-	font-size: 39px;
+	font-family: "HPSimplified_Rg";
+	font-size: 33px;
 	margin-left: 14;
+	display:inline-block; 
+    -webkit-transform:scale(1,1.1); /* Safari and Chrome */ 
+    -moz-transform:scale(1,1.1); /* Firefox */ 
+    -ms-transform:scale(1,1.1); /* IE 9 */ 
+    -o-transform:scale(1,1.1); /* Opera */ 
+    transform:scale(1,1.1); /* W3C */
+    
+    letter-spacing: 9;
 }
 .mainImg_con2 .en3{
-	font-family: orator;
-	font-size: 39px;
+	font-family: "HPSimplified_Rg";
+	font-size: 33px;
 	margin-left: 14;
+	display:inline-block; 
+    -webkit-transform:scale(1,1.1); /* Safari and Chrome */ 
+    -moz-transform:scale(1,1.1); /* Firefox */ 
+    -ms-transform:scale(1,1.1); /* IE 9 */ 
+    -o-transform:scale(1,1.1); /* Opera */ 
+    transform:scale(1,1.1); /* W3C */
+    
+    letter-spacing: 9;
 }
 .mainImg_con2 .ko{
 	font-size: 15;
 	color: #ccffff;
+	line-height: 2.5;
 }
 .mainImg_con2 .con1 img{
 	width: 30;
@@ -230,7 +253,7 @@ h1{
 .whatwedo .whatwedoA{
 	color: #9c829e;
 	font-weight: 700;
-	font-family: gotham;
+	font-family: "gotham";
 	letter-spacing: -3;
 }
 .mainImg_con3{
@@ -239,31 +262,28 @@ h1{
 	background-color: rgba( 0,0,0,0.5 );
 	overflow: auto;
 	padding: 50px 0;
+	overflow-x:hidden;
 }
 .mainImg_con3 .text1{
-	float: left;
 	color: white;
 	position: relative;
 	top: 15px;
 	width: 50%;
-	text-align: right;
-	/* left:50%;
-	transform: translateX(-110%); */
+	text-align: left;
+	margin-left: 30;
+	padding-bottom: 20;
 }
 .mainImg_con3 .text1 a{
 	color: #cc99ff;
 	margin-top: 20;
-	font-size: 18px;
+	font-size: 15px;
 }
 .mainImg_con3 .text2{
-	float: left;
 	color: white;
-	text-align: left;
 	position: relative;
-	/* left:50%;
-	transform: translateX(-80%); */
 	width: 50%;
 	font-size: 12;
+	text-align: left;
 }
 .mainImg_con3 .text2 li{
 	color: #cc99ff;
@@ -271,7 +291,8 @@ h1{
 }
 .mainImg_con3 .text2 li a{
 	color: #ccccff;
-	font-size: 15px;
+	font-size: 12px;
+	white-space : pre;
 }
 .mainImg_con2 img{
 	width: 200px;
@@ -296,7 +317,7 @@ h1{
 	position: relative;
 	top: -5%;
 	font-weight: 600;
-	font-family: orator;
+	font-family: "HPSimplified_Rg";
 }
 .about_title img{
 	margin-bottom: 30;
@@ -341,7 +362,7 @@ h1{
 	font-size: 30;
 	font-weight: 600;
 	margin-bottom: 70;
-	font-family: orator;
+	font-family: "HPSimplified_Rg";
 }
 
 .history_titleA img{
@@ -376,7 +397,7 @@ h1{
 	left: 15;
 	font-size: 22;
 	color: #b3b3ff;
-	font-family: orator;
+	font-family: "HPSimplified_Rg";
 	margin-bottom: -4;
 	letter-spacing: -1;
 }
@@ -385,7 +406,7 @@ h1{
 	right: 15;
 	font-size: 22;
 	color: #b3b3ff;
-	font-family: orator;
+	font-family: "HPSimplified_Rg";
 	margin-bottom: -4;
 	letter-spacing: -1;
 }
@@ -425,7 +446,7 @@ h1{
 	position: relative;
 	top: -27%;
 	font-weight: 700;
-	font-family: orator;
+	font-family: "HPSimplified_Rg";
 }
 .portfolio_title .portfolio_titleA{
 	color: #66cccc;
@@ -436,7 +457,7 @@ h1{
 }
 .portfolioImg{
 	margin:0 auto;
-	width:930;
+	width:1555;
 	height : 400;
 	padding: 20% 0;
 	position: relative;
@@ -541,7 +562,6 @@ h1{
 	width: 100%;
 	margin: 0 auto;
 	z-index: 105;
-	font-family: KoPub_medium;
 }
 .portfolioImg .portfolioImg_div .bxslider .background_2 .portCon3{
 	color: #99ffff;
@@ -553,7 +573,7 @@ h1{
 }
 .portfolioImg .portfolioImg_div .bxslider .portCon2 .protCon2_1{
 	color: #99ffff;
-	font-family: gotham;
+	font-family: "gotham";
 	font-size: 15;
 	z-index: 105;
 }
@@ -564,7 +584,6 @@ h1{
 .portfolioImg .portfolioImg_div .bxslider .portCon3{
 	font-size: 12;
 	color: #ccccff;
-	font-family: KoPub_medium;
 	position: absolute;
 	top: 130;
 	left: 5;
@@ -598,7 +617,7 @@ h1{
 	top: -15%;
 	font-weight: 700;
 	padding: 13% 0;
-	font-family: gotham;
+	font-family: "HPSimplified_Rg";
 }
 .downloads_title .downloads_titleA{
 	color: #671f9e;
@@ -621,19 +640,19 @@ h1{
 	margin-top: 8%;
 }
 .downloadsTable table hr{
-	font-family: KoPub_medium;
+	font-family: 'Malgun Gothic';
 }
 .downloadsTable table tr:hover .openMask{
 	color: #993399;
-	font-family: KoPub_medium;
+	font-family: "Malgun Gothic";
 }
 .downloadsTable table tr:hover th{
 	color: black;
-	font-family: KoPub_medium;
+	font-family: "Malgun Gothic";
 }
 .downloadsTable table tr:hover{
 	color: #993399;
-	font-family: KoPub_medium;
+	font-family: "Malgun Gothic";
 }
 .downloadsTable table tr .openMask{
 	text-decoration: none;
@@ -642,7 +661,7 @@ h1{
 .downloadsTable table td{
 	text-align: center;
 	border-bottom: 1px solid black;
-	font-size: 12;
+	font-size: 15;
 	padding: 5 0;
 }
 .downloadsTable table th{
@@ -656,7 +675,7 @@ h1{
 	margin: 0 auto;
 	overflow: hidden;
 	text-align: center;
-	font-family: KoPub_medium;
+	font-family: "Malgun Gothic";
 }
 .downloads .downCnt ul{
 	list-style: none;
@@ -705,6 +724,7 @@ h1{
 	text-align: center;
 	overflow:hidden;
 	position: relative;
+	height: 100%;
 	padding-bottom: 200;
 }
 .customerCon{
@@ -716,13 +736,13 @@ h1{
 }
 .customer_title{
 	font-size: 30;
-	top: 100;
+	top: 207;
 	position: relative;
 	font-weight: 700;
 }
 .customer_title .customer_titleA{
 	color: #0033cc;
-	font-family: gotham;
+	font-family: "HPSimplified_Rg";
 }
 .customer_title .customer_titleA img{
 	width: 30;
@@ -733,9 +753,9 @@ h1{
 	margin: 0 auto;
 	text-align: left;
 	position: relative;
-	top: 180;
+	top: 330;
 	overflow: overlay;
-	font-family: KoPub_medium;
+	font-family: "Malgun Gothic";
 }
 .customerLeft{
 	width: 50%;
@@ -771,7 +791,7 @@ h1{
 	position: relative;
 	font-size: 15px;
 	color: white;
-	top: 2;
+	top: 7;
 	right: -10;
 }
 .customerRight input, textarea{
@@ -785,6 +805,11 @@ h1{
 	position: relative;
 	top: -20;
 	color: white;
+}
+.customerRight input{
+	padding-top: 8;
+	padding-bottom: 8;
+	margin-bottom: -13;
 }
 .customerRight textarea{
 	height: 173;
@@ -801,9 +826,9 @@ h1{
 	float: right;
 	color: white;
 	background: #0033cc;
-	padding: 10 20;
-	font-size: 12;
-	font-family: gotham;
+	padding: 10 23;
+	font-size: 10;
+	font-family: "gotham";
 	color: #99ccff;
 	height: 10;
 }
@@ -819,7 +844,7 @@ h1{
 	padding-bottom: 2%;
 	font-size: 12;
 	line-height: 1.5;
-	font-family: KoPub_medium;
+	font-family: "Malgun Gothic";
 }
 .footer .footerCon .footer_gray{
 	color: #666666;
@@ -872,18 +897,18 @@ h1{
 	font-size: 18;
 	color: #999999;
 	font-weight: 700;
-	font-family: gotham;
+	font-family: "gotham";
 }
 .window .windowCon .windowCon1 .windowConDay{
 	color: #999999;
 	font-size: 10;
-	font-family: gotham;
+	font-family: "gotham";
 }
 .window .windowCon .windowCon1 .windowConTitle{
 	font-size: 18;
 	color: #993399;
 	font-weight: 500;
-	font-family: KoPub_medium;
+	font-family: "Malgun Gothic";
 }
 .window .windowCon .windowCon1{
 	border-bottom: 1px solid #b9b9b9;
@@ -903,7 +928,7 @@ h1{
 	background: purple;
 	color: white;
 	float: right;
-	font-family: gotham;
+	font-family: "gotham";
 	height: 20px;
     line-height: 25px;
     padding: 5 15;

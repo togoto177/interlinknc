@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ include file="topmenu.jsp"%>
 <link href="css/main/ver4/main.css" rel="stylesheet">
+<link href="css/main/ver4/main2.css" rel="stylesheet">
 <link href="css/main/ver4/jquery.bxslider.css" rel="stylesheet">
 <script src="js/bootstrap,jquery/jquery.js"></script>
 <script src="js/bootstrap,jquery/jquery-3.3.1.min.js"></script>
