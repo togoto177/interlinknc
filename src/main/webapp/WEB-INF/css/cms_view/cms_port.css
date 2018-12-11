@@ -1,0 +1,120 @@
+@charset "UTF-8";
+.portfolioListBody{
+	position: relative;
+	top: 52;
+	left: 200;
+	color: white;
+	width: 100%;
+}
+.portTable{
+	width: 600;
+	margin: 0 auto;
+	position: relative;
+	left: -100;
+}
+.portTable table{
+	font-size: 13;
+	width: 100%;
+}
+.portTable table td{
+	
+	text-align: center;
+}
+.portTable td{
+	color: white;
+	padding: 8 0;
+}
+.portTable table tr:hover{
+	background: rgba(0,0,0,0.5);
+}
+
+.portTable table tr:hover td{
+	color: #625fe0;
+}
+.portTitle img{
+	width: 30;
+}
+.portTitle{
+	padding: 20;
+}
+.portTitle a{
+	font-size: 20;
+	color: #625fe0;
+}
+.portSerch{
+	width: 600;
+	margin: 0 auto;
+	position: relative;
+	left: -100;
+	overflow: hidden;
+	margin-bottom: 5;
+	margin-top:10%;
+}
+.portSerch input{
+	float: right;
+	position: relative;
+	right: 25;
+	border: none;
+	background: none;
+	border-bottom: 1px solid white;
+	width: 110;
+}
+.portSerch img{
+	width: 10;
+	float: right;
+	position: relative;
+	top: 5;
+	right: -99;
+}
+.portTh td{
+	border-bottom: 1px solid #625fe0;
+}
+.portCount{
+	width: 600;
+	margin: 0 auto;
+	overflow: hidden;
+	left:-100;
+	position: relative;
+}
+.portCount img{
+	width: 10;
+	height: 10;
+}
+.portCount .portCount1 img{
+	transform: rotate(180deg);
+}
+.portCount .focus{
+	color: #625fe0;
+}
+.portCount ul{
+	list-style: none;
+	font-size: 13;
+	overflow: hidden;
+	left: 50%;
+	transform: translateX(-21%);
+	position: relative;
+	margin-top: 20;
+}
+.portCount li{
+	float: left;
+	padding: 0 5;
+}
+.portCount li img{
+	padding: 0 5;
+}
+.portCount .writeDiv{
+	overflow: hidden;
+	width: 100;
+	background: purple;
+	color: white;
+	float: right;
+	text-align: center;
+	height: 35;
+	font-size: 13;
+	top:-38;
+	position: relative;
+}
+.portCount .writeDiv a{
+	position: relative;
+	top: 7;
+}

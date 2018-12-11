@@ -13,11 +13,7 @@
 <body>
 <div class="cmsTop">
 	<div class="cmsTopLogo">
-		<img alt="인터링크앤씨 로고" src="resources/mainImg/logo2.png">
-	</div>
-	<div class="cmsTopText">
-		<a>ㅇㅇㅇ님 환영합니다.</a>
-		<a>비밀번호변경 | 로그아웃</a>
+		<img alt="인터링크앤씨 로고" src="resources/cms/logo_darkgray.png">
 	</div>
 </div>
 
@@ -27,14 +23,78 @@
 	</div>
 	<div class="con2">
 		<div class="con2Input">
-			<label>ID</label><input type="text" /><br />
+			<div class="con2Input1">
+			<label>ID</label><input type="text" />
+			</div>
+			<div class="con2Input2">
 			<label>PASSWORD</label><input type="text" />
+			</div>
 		</div>
 		<div class="con2But">
-			<a class="con2But1">SIGN IN</a>
-			<a class="con2But2">REGISTER&#183;가입하기</a>
+			<a class="con2But1" href="/portfoiloList">SIGN IN</a>
 		</div>
 	</div>
+	<div class="con3">
+		<div class="con3Text">
+			<a class="con2But2">REGISTER&#183;</a><a href="#signUp">가입하기</a>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<a href="#x" class="overlay" id="signUp"></a>
+<div class="popup">
+	<div class="popupCon">
+		<div class="popupTitle">
+			<a class="popupTitle1">회원가입</a><br />
+			<a class="popupTitle2">가입 후 관리자가 승인해야 로그인이 가능합니다.</a>
+		</div>
+		<div class="popupCon2">
+			<div class="popupCon2_1">
+				<div class="popupCon2_1_id">
+					<label class="labelLeft">아이디</label>
+					<input type="text" />
+				</div>
+				<div class="popupCon2_1_bt">
+					<a>중복확인</a>
+				</div>
+			</div>
+			
+			<div class="popupCon2_2">
+				<label class="labelLeft">비밀번호</label>
+				<input type="password" />
+			</div>
+			<div class="popupCon2_2">
+				<label class="labelRight">비밀번호확인</label>
+				<input type="password" />
+			</div>
+			
+			<div class="popupCon2_2">
+				<label class="labelLeft">이름</label>
+				<input type="text" />
+			</div>
+			<div class="popupCon2_2">
+				<label class="labelRight">전화번호</label>
+				<input type="text" />
+			</div>
+			
+			<div class="popupCon2_1_E">
+				<label class="labelLeft">이메일</label>
+				<input type="text" />
+			</div>
+			
+			<div class="popupCon2_1_But">
+				<a>REGISTER</a>
+			</div>
+		</div>
+	</div>
+	
+	<a class="close" href="#close"></a>
 </div>
 
 </body>

@@ -3,7 +3,7 @@
 @media only screen and (min-width: 320px) {
 	
 	.portfolioImg{
-		width: 316px;
+		width: 312px;
 	}
 	.portfolioImg .portfolioImg_div .bxslider li{
 		margin: 0 5;
@@ -20,7 +20,7 @@ only screen and (                min-resolution: 192dpi) and (min-width: 320px),
 only screen and (                min-resolution: 2dppx)  and (min-width: 320px) { 
 
 	.portfolioImg{
-		width: 316px;
+		width: 312px;
 	}
 	
 	.portfolioImg .portfolioImg_div .bxslider li{
@@ -119,8 +119,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 900px) 
 @media only screen and (min-width: 1200px) {
 
 	.portfolioImg{
-		/* width: 935; */
-		width: 1244px;
+		width: 1250px;
 	}
   /* Large screen, non-retina */
 
@@ -136,7 +135,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 1200px)
 
 	.portfolioImg{
 		/* width: 935; */
-		width: 1244px;
+		width: 1250px;
 	}
   /* Large screen, retina, stuff to override above media query */
 

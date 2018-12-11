@@ -9,4 +9,8 @@ public class view_cms {
 	public String view_cms_main() {
 		return "cms_view/cms_main";
 	}
+	@RequestMapping(value = "/portfoiloList")
+	public String portfoiloList() {
+		return "cms_view/portfolioList";
+	}
 }

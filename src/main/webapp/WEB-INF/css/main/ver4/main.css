@@ -25,7 +25,7 @@ h1{
 }
 .scroll{
 	position: relative;
-	width: 80;
+	width: 64;
 	margin: 0 auto;
 	top: 84%;
 }
@@ -56,7 +56,8 @@ h1{
 	text-align: right;
 	position: fixed;
 	z-index: 999;
-	font-family: 'orator', sans-serif;;
+	font-family: 'HPSimplified_Rg';
+	letter-spacing: 2;
 }
 .topmenu{
 	float: right;
@@ -66,20 +67,20 @@ h1{
 	padding: 0;
 	float: right;
 	overflow: hidden;
-	width: 400px;
+	width: 351;
 	white-space: nowrap;
 	list-style: none;
 }
 .t_menu_ul li a{
 	display: block;
-	font-size: 12;
+	font-size: 11;
 	float: left;
 	text-decoration: none;
-	padding: 20px 16px;
+	padding: 20px 11px;
 	padding-bottom: 7px;
 	color:white;
 	border-bottom: 1px solid #fff;
-}
+}\
 .t_menu_ul li{
 	float: right;
 }
@@ -558,7 +559,7 @@ h1{
 	width: 100%;
 }
 .portfolio_title .portfolio_titleA{
-	color: #99ffff;
+	color: #41bbbb;
 	letter-spacing: 9;
 }
 .portfolio_title .portfolio_titleA img{
@@ -608,7 +609,7 @@ h1{
     left: 0;
     width: 100%;
     height: 400;
-    background: rgba(0, 0, 51, 0.5);
+    background: rgba(0, 0, 37, 0.6);
     z-index: 100;
 }
 .portfolioImg .portfolioImg_div .bxslider li:hover:after{
@@ -622,7 +623,7 @@ h1{
     left: 0;
     width: 100%;
     height: 400;
-    background: rgba(0, 51, 51, 0.6);
+    background: rgba(0, 31, 31, 0.7);
     z-index: 100;
 }
 .portfolioImg .portfolioImg_div .bxslider .portImg .img1{
@@ -789,9 +790,8 @@ h1{
 	font-family: "HPSimplified_Rg";
 }
 .downloads_title .downloads_titleA{
-	color: #671f9e;
-	letter-spacing: 9;
-	font-weight: 600;
+	color: #511480;
+	letter-spacing: 7;
 }
 .downloads_title .downloads_titleA img{
 	width: 30;
@@ -814,11 +814,11 @@ h1{
 }
 .downloadsTable table tr:hover .openMask{
 	/* background: rgba(153,0,255,0.5); */
-	color: #ffccff;
+	color: #c7a9f5;
 }
 .downloadsTable .tabletD:hover td{
-	background: rgba(153,0,255,0.5);
-	color: #ffccff;
+	background: rgba(0,0,0,0.5);
+	color: #c7a9f5;
 }
 .downloadsTable .tabletD .title{
 	text-align: left;
@@ -836,7 +836,7 @@ h1{
 	text-overflow : ellipsis; */
 }
 .downloadsTable table .tabletH td{
-	border-bottom: 2px solid #6600ff;
+	border-bottom: 1px solid #993399;
 	font-family: 'Malgun Gothic';
 }
 .downloadsTable table img{
@@ -871,7 +871,11 @@ h1{
 	padding-top: 2;
 }
 .downloads .downCnt .focus{
-	color: #6600ff;
+	color: #511480;
+	font-size: 14;
+	font-weight: 700;
+	top:-1;
+	position: relative;
 }
 .downloads .downCnt .downCntli1 img{
 	width: 10;
@@ -966,7 +970,6 @@ h1{
 	color: white;
 	top: 7;
 	right: -10;
-	font-weight: 700;
 }
 .customerRight input, textarea{
 	width: 100%;
@@ -1003,10 +1006,11 @@ h1{
 	padding: 11 23;
 	padding-right: 20;
 	font-size: 10;
-	font-family: "gotham";
+	font-family: "HPSimplified_Rg";
 	color: #99ccff;
 	height: 10;
 	letter-spacing: 2;
+	font-weight: 700;
 }
 
 /* 푸터 */
