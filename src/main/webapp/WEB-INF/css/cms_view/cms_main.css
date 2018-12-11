@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+body{
+	background-image: url(../../resources/cms/BG.jpg);
+	background-size: cover;
+	margin: 0;
+}
+.cmsTop{
+	height: 50;
+	position: fixed;
+	width: 100%;
+	background: white;
+}
+.cmsTop .cmsTopLogo img{
+	width: 200;
+	padding: 5;
+	float: left;
+}
+.cmsTop .cmsTopText{
+	float: right;
+	position: relative;
+	bottom: -20;
+	left: -10;
+}
+
+.cmsMainCon{
+	text-align: center;
+	width: 50%;
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	margin: 0 auto;
+	color: white;
+}
+.cmsMainCon .con1{
+	margin-bottom: 30;
+}
+.cmsMainCon .con2{
+	text-align: left;
+	height: 100;
+}
+.cmsMainCon .con2 .con2Input{
+	width: 70%;
+	float: left;
+}
+.cmsMainCon .con2 .con2Input label{
+	width: 30%;
+	display: block;
+	float: left;
+	margin-bottom: 10;
+}
+.cmsMainCon .con2 .con2Input input{
+	width: 70%;
+	margin-bottom: 10;
+}
+.cmsMainCon .con2 .con2But{
+	width: 30%;
+	float: left;
+}
+.cmsMainCon .con2 .con2But .con2But1{
+	position: relative;
+	color: white;
+	background: purple;
+	padding: 16 20;
+	margin-left: 10;
+	top: 16;
+}
+.cmsMainCon .con2 .con2But .con2But2{
+	top: 50;
+	position: relative;
+	font-size: 12;
+	text-align: right;
+}

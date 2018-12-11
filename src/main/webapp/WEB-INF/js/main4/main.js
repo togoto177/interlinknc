@@ -62,11 +62,13 @@ jQuery(document).ready(function($){
 		$(this).find('.protCon2_1').hide();
 		$(this).find('.portCon2').css("background","none");
 		$(this).find('.portUrl').css("color","#99ffff");
+		$(this).find('.protCon2_2').css("color","black");
     }).mouseleave(function(){
     	$(this).find('.portCon3').show();
     	$(this).find('.protCon2_1').show();
     	$(this).find('.portCon2').css("background","#6600ff");
-    	$(this).find('.portUrl').css("color","#87ceeb00");
+    	$(this).find('.portUrl').css("color","rgba(0, 0, 0, 0)");
+    	$(this).find('.protCon2_2').css("color","white");
     });
 	$(".bxslider .background_2").mouseover(function(){
 		$(this).find('.portCon3').hide();
@@ -80,13 +82,13 @@ jQuery(document).ready(function($){
     	$(this).find('.portCon2').css("background","#99ffff");
 
     	$(this).find('.protCon2_2').css("color","black");
-    	$(this).find('.portUrl').css("color","#87ceeb00");
+    	$(this).find('.portUrl').css("color","rgba(0, 0, 0, 0)");
     });
 	
 	$(".downloadsTable table tr").mouseover(function(){
-		$(this).find("img").attr("src", "resources/mainImg/downloadImg2.png");
+		$(this).find("img").attr("src", "resources/mainImg/download_arrow_pink.png");
 	}).mouseleave(function(){
-		$(this).find("img").attr("src", "resources/mainImg/downloadImg.png");
+		$(this).find("img").attr("src", "resources/mainImg/download_arrow_white.png");
     });
 	
 });

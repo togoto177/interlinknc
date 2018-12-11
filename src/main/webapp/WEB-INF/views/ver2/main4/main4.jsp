@@ -79,6 +79,10 @@ $(document).ready(function() {
 			</div>
 		<hr class="border-bottom">
 		</div>
+		
+		<div class="scroll">
+			<img alt="밑으로" src="resources/mainImg/scroll.png">
+		</div>
 	</div>
 	<div class="home_icon"><img alt="맨위로 가기" src="/resources/mainImg/home.png"></div>
 	<div class="about" id="about">
@@ -268,7 +272,10 @@ $(document).ready(function() {
 			</table>
 			</div>
 		</div>
-
+		
+		<div class="scroll">
+			<img alt="밑으로" src="resources/mainImg/scroll.png">
+		</div>
 	</div>
 	
 	<div class="portfolio_menu"></div>
@@ -294,7 +301,8 @@ $(document).ready(function() {
 				<!-- back-보라 -->
 				<li class="background_1">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/portfolio/pf1.jpg">
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf1.jpg">
+						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
 					</div>
 					<div class="portConText">
 						<div class="portCen">
@@ -322,7 +330,8 @@ $(document).ready(function() {
 				</li>
 				<li class="background_2">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/portfolio/pf2.jpg">
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf2.jpg">
+						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
 					</div>
 					<div class="portConText">
 						<div class="portCen">
@@ -350,7 +359,8 @@ $(document).ready(function() {
 				</li>
 				<li class="background_1">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/portfolio/pf1.jpg">
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf3.jpg">
+						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
 					</div>
 					<div class="portConText">
 						<div class="portCen">
@@ -378,7 +388,8 @@ $(document).ready(function() {
 				</li>
 				<li class="background_2">
 					<div class="portImg">
-					<img alt="포트폴리오이미지" src="resources/portfolio/pf2.jpg">
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf4.jpg">
+						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
 					</div>
 					<div class="portConText">
 						<div class="portCen">
@@ -407,6 +418,10 @@ $(document).ready(function() {
 			</ul>
 			</div>
 		</div>
+		
+		<div class="scroll">
+			<img alt="밑으로" src="resources/mainImg/scroll.png">
+		</div>
 	</div>
 	
 	<div class="downloads" id="downloads">
@@ -415,53 +430,112 @@ $(document).ready(function() {
 		<div class="downloadsTable">
 			<table>
 				<colgroup>
-					<col style="width: 10%" />
-					<col style="width: 40%" />
+					<col style="width: 25%" />
+					<col style="width: 5%" />
 					<col style="width: 20%" />
-					<col style="width: 15%" />
-					<col style="width: 15%" />
+					<col style="width: 9%" />
+					<col style="width: 9%" />
+					<col style="width: 7%" />
+					<col style="width: 25%" />
 				</colgroup>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>일자</th>
-					<th>다운로드</th>
-					<th>조회수</th>
+				<tr class="tabletH">
+					<td style="color:rgba(0, 0, 0, 0); border-bottom: none;">-</td>
+					<td>no</td>
+					<td>제목</td>
+					<td>날짜</td>
+					<td>download</td>
+					<td>조회수</td>
+					<td style="color:rgba(0, 0, 0, 0); border-bottom: none;">-</td>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+				<tr class="tabletD">
+					<td></td>
+					<td>10</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
-					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td><img alt="" src="resources/mainImg/download_arrow_white.png"> </td>
 					<td>99999</td>
+					<td></td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+				<tr class="tabletD">
+					<td></td>
+					<td>9</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1 / 스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
-					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td><img alt="" src="resources/mainImg/download_arrow_white.png"> </td>
 					<td>99999</td>
+					<td></td>
 				</tr>
-				<tr>
-					<td>3</td>
-					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+				<tr class="tabletD">
+					<td></td>
+					<td>8</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
-					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td><img alt="" src="resources/mainImg/download_arrow_white.png"> </td>
 					<td>99999</td>
+					<td></td>
 				</tr>
-				<tr>
-					<td>4</td>
-					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+				<tr class="tabletD">
+					<td></td>
+					<td>7</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
-					<td><img alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td><img alt="" src="resources/mainImg/download_arrow_white.png"> </td>
 					<td>99999</td>
+					<td></td>
 				</tr>
-				<tr>
+				<tr class="tabletD">
+					<td></td>
+					<td>6</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+					<td>2018.11.21</td>
+					<td><img class="imggg" alt="" src="resources/mainImg/download_arrow_white.png"> </td>
+					<td>99999</td>
+					<td></td>
+				</tr>
+				<tr class="tabletD">
+					<td></td>
 					<td>5</td>
-					<td><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
 					<td>2018.11.21</td>
-					<td><img class="imggg" alt="" src="resources/mainImg/downloadImg.png"> </td>
+					<td><img class="imggg" alt="" src="resources/mainImg/download_arrow_white.png"> </td>
 					<td>99999</td>
+					<td></td>
+				</tr>
+				<tr class="tabletD">
+					<td></td>
+					<td>4</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1 / 스마트카드 v.1.0.2</a></td>
+					<td>2018.11.21</td>
+					<td><img class="imggg" alt="" src="resources/mainImg/download_arrow_white.png"> </td>
+					<td>99999</td>
+					<td></td>
+				</tr>
+				<tr class="tabletD">
+					<td></td>
+					<td>3</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+					<td>2018.11.21</td>
+					<td><img class="imggg" alt="" src="resources/mainImg/download_arrow_white.png"> </td>
+					<td>99999</td>
+					<td></td>
+				</tr>
+				<tr class="tabletD">
+					<td></td>
+					<td>2</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+					<td>2018.11.21</td>
+					<td><img class="imggg" alt="" src="resources/mainImg/download_arrow_white.png"> </td>
+					<td>99999</td>
+					<td></td>
+				</tr>
+				<tr class="tabletD">
+					<td></td>
+					<td>1</td>
+					<td class="title"><a href="#" class="openMask">스마트카드 v.1.0.1</a></td>
+					<td>2018.11.21</td>
+					<td><img class="imggg" alt="" src="resources/mainImg/download_arrow_white.png"> </td>
+					<td>99999</td>
+					<td></td>
 				</tr>
 			</table>
 			
@@ -481,22 +555,26 @@ $(document).ready(function() {
 						문제가 해결되지 않을시 문의 바랍니다. 고맙습니다.</a>
 					</div>
 					<div class="windowCon3">
-						<a class="windowConBut">DOWNLOAD &darr;</a>
+						<a class="windowConBut">DOWNLOAD&darr;</a>
 					</div>
 				</div>
 			</div>
 			
 			<div class="downCnt">
 			<ul>
-			<li><img alt="왼쪽" src="resources/mainImg/history_left.png"></li>
+			<li class="downCntli1"><img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png"><img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"></li>
 			<li class="focus">1</li>
 			<li>2</li>
 			<li>3</li>
 			<li>4</li>
 			<li>5</li>
-			<li><img alt="오른쪽" src="resources/mainImg/history_right.png"></li>
+			<li class="downCntli2"><img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"><img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png"></li>
 			</ul>
 			</div>
+		</div>
+		
+		<div class="scroll">
+			<img alt="밑으로" src="resources/mainImg/scroll.png">
 		</div>
 	</div>
 	
