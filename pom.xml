@@ -27,6 +27,19 @@
 			<version>20170516</version>
 		</dependency>
 		
+		<!-- 2018.12.12 Ajax 관련 추가- -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<!-- end -->
+		
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>

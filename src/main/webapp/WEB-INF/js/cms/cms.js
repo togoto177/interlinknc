@@ -14,8 +14,9 @@ function login() {
 }
 function userIdCheck() {
 	var userid = "userid="+$("#ad_id").val();
+	console.log(userid);
 	$.ajax({
-        type : 'GET',
+        type : 'POST',
         data : userid,
         url : "userIdCheck",
         dataType: "json",

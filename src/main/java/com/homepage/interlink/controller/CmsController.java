@@ -40,13 +40,16 @@ public class CmsController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/userIdCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/userIdCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> userIdCheck(@RequestParam("userid") String id){
+		/*System.out.println("id="+id);*/
 		int person = as.idcheck(id);
-		Map<String,Object>  map = new HashMap<String,Object>();
+		System.out.println(person);
+		Map<String,Object> map = new HashMap<String,Object>();
 		
 		map.put("cnt", person);
+		
 		return map;
 	}
 	

@@ -1,9 +1,25 @@
 @charset "UTF-8";
-
+@font-face {
+	font-family: KoPub;
+	src: url("../../../fonts/KoPub-Dotum-Light.ttf");
+}
+@font-face {
+	font-family: 'KoPub_medium';
+	src: url("../../../fonts/KoPub-Dotum-Medium.ttf");
+}
+@font-face {
+	font-family: gotham;
+	src: url("../../../fonts/Gotham-Bold.otf");
+}
+@font-face {
+	font-family: HPSimplified_Rg;
+	src: url("../../../fonts/HPSimplified_Lt.ttf");
+}
 body{
 	background-image: url(../../resources/cms/BG.jpg);
 	background-size: cover;
 	margin: 0;
+	font-family:'Malgun Gothic';
 }
 .cmsTop{
 	height: 50;
@@ -34,9 +50,11 @@ body{
 	color: white;
 }
 .cmsMainCon .con1{
-	margin-bottom: 30;
+	margin-bottom: 40;
 	font-size: 25;
-	letter-spacing: 3;
+	letter-spacing: 4;
+	font-family: HPSimplified_Rg;
+	font-weight: 700;
 }
 .cmsMainCon .con2{
 	text-align: left;
@@ -66,7 +84,10 @@ body{
 	width: 30%;
 	display: block;
 	float: left;
-	margin: 3;
+	margin: 7;
+	font-family: HPSimplified_Rg;
+	letter-spacing: 2;
+	font-size: 13;
 }
 .cmsMainCon .con2 .con2Input input{
 	width: 60%;
@@ -74,24 +95,28 @@ body{
 	border: none;
 	float: left;
 	padding: 0;
-	margin: 3;
+	margin: 5;
 	background: none;
 	color: white;
 }
 .cmsMainCon .con2 .con2But{
-	width: 110;
+	width: 100;
 	float: left;
-	background: purple;
+	background: #9900ff;
 	overflow: hidden;
-	height: 60;
+	height: 63;
 	margin: 0 auto;
 	margin-left: 10;
 	text-align: center;
+	font-family: HPSimplified_Rg;
 }
 .cmsMainCon .con2 .con2But .con2But1{
 	position: relative;
 	color: white;
-	top: 20;
+	top: 23;
+	letter-spacing: 1.5;
+	font-size: 14;
+	text-decoration: none;
 }
 .cmsMainCon .con2 .con2But .con2But2{
 	top: 50;
@@ -102,9 +127,22 @@ body{
 .cmsMainCon .con3 .con3Text{
 	text-align: right;
 	float: right;
-	margin-right: 20;
+	margin-right: 25;
 	font-size: 14;
 	color: #c1a1c1;
+}
+.cmsMainCon .con3 .con3Text .con2But2{
+	text-decoration: none;
+	color: #9999cc;
+	font-size: 12;
+	font-family: HPSimplified_Rg;
+	letter-spacing: 1;
+}
+.cmsMainCon .con3 .con3Text .con2But2_2{
+	text-decoration: none;
+	color: #9999cc;
+	font-size: 12;
+	letter-spacing: -1.1;
 }
 
 /* 모달창 */
@@ -131,8 +169,8 @@ body{
     opacity: 1;
 }
 .popup {
-	width:500px;
-	height: 400px;
+	width:600px;
+	height: 472px;
     background-color: white;
     display: inline-block;
     left: 50%;
@@ -195,14 +233,17 @@ body{
 	overflow: hidden;
 	margin: 0 auto;
 	text-align: center;
-	color: purple;
+	color: #9900ff;
 	font-size: 8;
 	line-height: 1.5;
-	margin-top: 30;
+	margin-top: 45;
 	margin-bottom: 50;
 }
 .popupTitle .popupTitle1{
 	font-size: 25;
+}
+.popupTitle .popupTitle2{
+	color: #cc99ff;
 }
 .popupCon2{
 	width: 80%;
@@ -211,37 +252,43 @@ body{
 }
 .popupCon2 label{
 	position: relative;
-	top: 5;
+	top: 8;
+	color: #666666;
 }
 .popupCon2 .popupCon2_1{
-	width: 100%;
+	width: 457;
 	margin: 0 auto;
-	margin-bottom: 5;
+	margin-bottom: 9;
 	overflow: hidden;
 }
 .popupCon2_1_E{
-	width: 382;
+	width: 447;
+	height: 34;
 	overflow: hidden;
-	border: 1px solid black;
+	border: 1px solid #666666;
+	margin: 0 auto;
 	padding-left: 7;
 }
 .popupCon2_1_E input{
 	height: 25;
 	border: none;
+	margin: 5;
+	width: 375;
 }
 .popupCon2 .popupCon2_1 input{
 	width: 70%;
 	border: none;
 }
 .popupCon2 .popupCon2_1 .popupCon2_1_id{
-	width: 75%;
+	width: 352;
+	height: 34;
 	margin: 0;
 	float: left;
-	border: 1px solid black;
+	border: 1px solid #666666;
 	padding-left: 7;
 }
 .labelLeft{
-	width: 50;
+	width: 60;
 	margin: 0;
 	display: block;
 	float: left;
@@ -254,50 +301,55 @@ body{
 }
 .popupCon2 .popupCon2_1 .popupCon2_1_id input{
 	width: 80%;
-	margin: 0;
+	margin: 5;
 	float: left;
 	height: 25;
 	border: none;
 }
 .popupCon2 .popupCon2_1 .popupCon2_1_bt{
-	width: 75;
+	width: 88;
 	margin: 0;
-	margin-left: 5;
+	margin-left: 7;
 	float: left;
-	background: gray;
+	background: #666666;
 	color: white;
 	text-align: center;
-	height: 27;
+	height: 36;
 }
 .popupCon2 .popupCon2_1 .popupCon2_1_bt a{
 	position: relative;
-	top: 5;
+	top: 9;
 }
 .popupCon2 .popupCon2_2{
-	margin-right: 5;
-	margin-bottom: 5;
-	border: 1px solid black;
+	margin-left: 12;
+	margin-bottom: 9;
+	border: 1px solid #666666;
 	padding-left: 7;
-	width: 46%;
+	width: 213;
+	height: 34;
 	float: left;
 }
 .popupCon2 .popupCon2_2 input {
-	width: 103;
+	width: 120;
 	height: 25;
 	border: none;
+	margin: 5;
 }
 .popupCon2_1_But{
-	width: 98%;
-	background: purple;
+	width: 455;
+	background: #9900ff;
 	color: white;
-	height: 35;
+	height: 43;
 	text-align: center;
 	font-size: 15;
-	margin-top: 15;
+	margin: 0 auto;
+	margin-top: 23;
 }
 .popupCon2_1_But a{
 	position: relative;
-	top: 7;
+	top: 13;
+	font-family: HPSimplified_Rg;
+	letter-spacing: 2;
 }
 
 /* 왼쪽 바 */

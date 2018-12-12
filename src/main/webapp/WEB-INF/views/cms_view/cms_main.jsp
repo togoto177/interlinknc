@@ -19,7 +19,7 @@
 
 <div class="cmsMainCon">
 	<div class="con1">
-		<a>INTERLINK&amp;C</a>
+		<a>INTERLINK<b style="color:9999ff;">&amp;</b>C</a>
 	</div>
 	<div class="con2">
 		<div class="con2Input">
@@ -36,7 +36,7 @@
 	</div>
 	<div class="con3">
 		<div class="con3Text">
-			<a class="con2But2">REGISTER&#183;</a><a href="#signUp">가입하기</a>
+			<a class="con2But2" href="#signUp">REGISTER &#183; </a><a class="con2But2_2" href="#signUp">가입하기</a>
 		</div>
 	</div>
 </div>

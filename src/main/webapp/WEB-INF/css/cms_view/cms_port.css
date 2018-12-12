@@ -15,31 +15,34 @@
 .portTable table{
 	font-size: 13;
 	width: 100%;
+	border-collapse: collapse;
 }
 .portTable table td{
-	
 	text-align: center;
 }
 .portTable td{
 	color: white;
 	padding: 8 0;
 }
-.portTable table tr:hover{
+.portTable table .portTd:hover{
 	background: rgba(0,0,0,0.5);
 }
 
-.portTable table tr:hover td{
-	color: #625fe0;
+.portTable table .portTd:hover td{
+	color: #9999ff;
 }
 .portTitle img{
-	width: 30;
+	width: 18;
 }
 .portTitle{
 	padding: 20;
 }
 .portTitle a{
 	font-size: 20;
-	color: #625fe0;
+	color: #9999ff;
+	font-weight: 600;
+	letter-spacing: 3.5;
+	font-family: HPSimplified_Rg;
 }
 .portSerch{
 	width: 600;
@@ -84,7 +87,7 @@
 	transform: rotate(180deg);
 }
 .portCount .focus{
-	color: #625fe0;
+	color: #9999ff;
 }
 .portCount ul{
 	list-style: none;
@@ -104,17 +107,20 @@
 }
 .portCount .writeDiv{
 	overflow: hidden;
-	width: 100;
-	background: purple;
+	width: 85;
+	background: #9900ff;
 	color: white;
 	float: right;
 	text-align: center;
-	height: 35;
+	height: 33;
 	font-size: 13;
 	top:-38;
 	position: relative;
 }
 .portCount .writeDiv a{
 	position: relative;
-	top: 7;
+	top: 11;
+	font-size: 11;
+	font-family: HPSimplified_Rg;
+	letter-spacing: 2;
 }

@@ -34,7 +34,7 @@
 
 <div class="portfolioListBody">
 	<div class="portTitle">
-		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_portfolio.png">
+		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_download.png">
 		<a>PORTFOLIO</a>
 	</div>
 	<div class="portSerch">
@@ -56,64 +56,63 @@
 				<td>일자</td>
 				<td>조회수</td>
 			</tr>
-			
-			<tr>
+			<tr class="portTd">
 				<td>9</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>8</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>7</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>6</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>5</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>4</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>3</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>2</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
-			<tr>
+			<tr class="portTd">
 				<td>1</td>
 				<td>홈페이지</td>
 				<td>국토해양통계누리 고도화 및 안정화 사업</td>
