@@ -53,3 +53,6 @@ function signUpFun() {
 		comSubmit.submit();
 	}
 }
+function logout() {
+	location.href = "logout";
+}

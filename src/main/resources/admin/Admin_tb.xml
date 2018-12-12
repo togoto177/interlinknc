@@ -19,12 +19,52 @@
 	
 	<insert id="insert" parameterType="admin_tb">
 		insert into admin_tb values(NULL, #{ad_id}, password(#{ad_password}), #{ad_name}, #{ad_contact}, #{ad_email}, now(), #{ad_updateid},
-		#{ad_update_date}, NULL, NULL);
+		now(), NULL, 0);
 	</insert>
 	<select id="idcheck" parameterType="String" resultType="Integer">
 		select count(*) from admin_tb where ad_id = #{ad_id}
 	</select>
 	<select id="selectUserInfo" parameterType="HashMap" resultType="admin_tb">
-		select * from admin_tb where ad_id = #{ad_id} and ad_password = password(#{ad_password})
+		select * from admin_tb where ad_id = #{ad_id} 
+		and ad_password = password(#{ad_password})
 	</select>
+	
+	<!--  권수추가  -->
+	<!-- 관리자정보읽어오기 -->
+	<select id="admin_read" parameterType="int" resultType="admin_tb">
+		select * 
+		from admin_tb where ad_seq = #{ad_seq} 
+	</select>
+	<!-- 관리자 수정 -->
+    <update id="admin_update" parameterType="java.util.HashMap">
+    	update 
+    	admin_tb
+		set
+     	ad_name = #{ad_name},
+    	ad_contact = #{ad_contact},
+    	ad_email = #{ad_email},
+    	ad_updateid = #{ad_updateid},
+		ad_update_date = now()    	
+		where ad_seq = #{ad_seq}
+   </update>
+   <!-- 관리자 비밀번호체크 -->
+   <select id="passwordCheck" resultType="int" parameterType="java.util.HashMap">
+        SELECT 
+            COUNT(*) 
+        FROM 
+        	admin_tb
+        WHERE 
+        	ad_seq = #{ad_seq} and ad_password = password(#{ad_ori_password})
+    </select>
+    <!-- 관리자 수정 -->
+    <update id="password_update" parameterType="java.util.HashMap">
+    	update 
+    	admin_tb
+		set
+     	ad_password = password(#{ad_password}),
+    	ad_updateid = #{ad_updateid},
+		ad_update_date = now()    	
+		where ad_seq = #{ad_seq}
+   </update>
+	
 </mapper>

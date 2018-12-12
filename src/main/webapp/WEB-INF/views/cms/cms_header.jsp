@@ -10,6 +10,6 @@
 		<img alt="로고" onclick="javascript:location.href='/cms_main';" src="/resources/mainImg/logo.png" />
 	</div>
 	<div class="header_text">
-		<a>${sessionScope.ad_id}님 환영합니다.</a><a href="#">[비밀번호 변경]</a><a>[로그아웃]</a>
+		<a>${sessionScope.ad_id}님 환영합니다.</a><a href="password_modify">[비밀번호 변경]</a><a href="#" onclick="logout()">[로그아웃]</a>
 	</div>
 </div>

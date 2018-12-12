@@ -30,4 +30,26 @@ public class Admin_tbServiceImpl implements Admin_tbService {
 		return ad.selectUserInfo(map);
 	}
 
+	@Override
+	public Admin_tb admin_read(Admin_tb admin) {
+		return ad.admin_read(admin);
+	}
+
+	@Override
+	public void admin_update(Admin_tb admin) {
+		ad.admin_update(admin);
+	}
+
+	@Override
+	public boolean passwordCheck(Admin_tb admin) {
+		return ad.passwordCheck(admin);
+		
+	}
+
+	@Override
+	public void password_update(Admin_tb admin) {
+		ad.password_update(admin);
+		
+	}
+
 }
