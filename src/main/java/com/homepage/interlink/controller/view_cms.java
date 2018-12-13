@@ -11,6 +11,14 @@ public class view_cms {
 	}
 	@RequestMapping(value = "/portfoiloList")
 	public String portfoiloList() {
-		return "cms_view/portfolioList";
+		return "cms_view/portfolio/portfolioList";
+	}
+	@RequestMapping(value = "/portfolioWrite")
+	public String portfolioWrite() {
+		return "cms_view/portfolio/portfolioWrite";
+	}
+	@RequestMapping(value = "/portfolioUpdate")
+	public String portfolioUpdate() {
+		return "cms_view/portfolio/portfolioUpdate";
 	}
 }

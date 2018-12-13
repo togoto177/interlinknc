@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="cms_include.jsp"%>
+<%@ include file="../cms_include.jsp"%>
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
@@ -23,7 +23,7 @@
 <div class="cmsLeft">
 	<ul>
 		<li class="title">게시판관리</li>
-		<li class="rightAc"><a class="right">&rtrif;</a> PORTFOLIO</li>
+		<li class="rightAc"><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
 		<li><a class="right">&rtrif;</a> DOWNLOADS</li>
 		<li><a class="right">&rtrif;</a> CONTACT</li>
 		<li class="title">설정</li>
@@ -32,7 +32,7 @@
 	</ul>
 </div>
 
-<div class="portfolioListBody">
+<div class="portfolioBody">
 	<div class="portTitle">
 		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_download.png">
 		<a>PORTFOLIO</a>
@@ -59,63 +59,63 @@
 			<tr class="portTd">
 				<td>9</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>8</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>7</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>6</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>5</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>4</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>3</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>2</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
 			<tr class="portTd">
 				<td>1</td>
 				<td>홈페이지</td>
-				<td>국토해양통계누리 고도화 및 안정화 사업</td>
+				<td><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
 				<td>2019.04~2010.12</td>
 				<td>999</td>
 			</tr>
@@ -132,8 +132,10 @@
 		<li>5</li>
 		<li class="portCount2"><img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"><img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png"></li>
 		</ul>
-		<div class="writeDiv">
-		<a class="write">WRITE</a>
+		<div class="btnList">
+		<div class="btnDiv1">
+		<a class="btn1" href="/portfolioWrite">WRITE</a>
+		</div>
 		</div>
 	</div>
 </div>

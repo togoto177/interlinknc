@@ -1,16 +1,15 @@
 @charset "UTF-8";
-.portfolioListBody{
+.portfolioBody{
 	position: relative;
-	top: 52;
-	left: 200;
+	padding-top: 52;
+	padding-left: 200;
 	color: white;
-	width: 100%;
 }
 .portTable{
 	width: 600;
 	margin: 0 auto;
 	position: relative;
-	left: -100;
+	padding-left: -200;
 }
 .portTable table{
 	font-size: 13;
@@ -31,6 +30,13 @@
 .portTable table .portTd:hover td{
 	color: #9999ff;
 }
+.portTable table .portTd a{
+	text-decoration: none;
+	color: white;
+}
+.portTable table .portTd:hover a{
+	color: #9999ff;
+}
 .portTitle img{
 	width: 18;
 }
@@ -48,7 +54,6 @@
 	width: 600;
 	margin: 0 auto;
 	position: relative;
-	left: -100;
 	overflow: hidden;
 	margin-bottom: 5;
 	margin-top:10%;
@@ -76,7 +81,6 @@
 	width: 600;
 	margin: 0 auto;
 	overflow: hidden;
-	left:-100;
 	position: relative;
 }
 .portCount img{
@@ -96,7 +100,7 @@
 	left: 50%;
 	transform: translateX(-21%);
 	position: relative;
-	margin-top: 20;
+	margin-top: 27;
 }
 .portCount li{
 	float: left;
@@ -105,22 +109,128 @@
 .portCount li img{
 	padding: 0 5;
 }
-.portCount .writeDiv{
+.btnList{
+	position: relative;
 	overflow: hidden;
-	width: 85;
-	background: #9900ff;
-	color: white;
-	float: right;
-	text-align: center;
-	height: 33;
-	font-size: 13;
-	top:-38;
-	position: relative;
+	top: -38;
 }
-.portCount .writeDiv a{
+/* 등록 */
+.portBox{
+	width: 960;
+	height: 500;
+	margin: 0 auto;
+	background: white;
 	position: relative;
-	top: 11;
-	font-size: 11;
-	font-family: HPSimplified_Rg;
-	letter-spacing: 2;
+	top: 90;
+}
+.portTitleView{
+	width: 960;
+	margin: 0 auto;
+	font-size: 20;
+	position: relative;
+	top: 80;
+}
+.portBox table label{
+	position: relative;
+	top: 7;
+	left: 5;
+}
+.portBox table {
+	width: 100%;
+	padding:15;
+	border-spacing: 7;
+}
+.portBox table td{
+	height: 35;
+	border: 1px solid #666666;
+	font-size: 13;
+}
+.portBox table input{
+	width: 69%;
+	float: right;
+	height: 100%;
+	border: none;
+	position: relative;
+	padding-left: 5;
+}
+.portBox table .titleText{
+	width: 100%;
+}
+.imgTd a{
+	float: left;
+	margin-right: 50;
+}
+.portBox table .imgTd{
+	vertical-align: top;
+	padding: 5 7;
+}
+.portBox table .imgTd input{
+	float: left;
+	width: 70%;
+	height: 30;
+}
+.portBox table select{
+	width: 100%;
+	height: 100%;
+	border: none;
+	text-align: center;
+}
+.portBox table .textarea textarea{
+	resize: none;
+	width: 100%;
+	height: 280;
+	border: none;
+	padding: 5 7;
+}
+.btnbox{
+	width: 960;
+	margin: 0 auto;
+	position: relative;
+	top: 100;
+}
+.btnbox .btnDiv2{
+	margin-right: 7;
+}
+.btnbox .btnDiv3{
+	margin-right: 7;
+}
+
+/* 이미지 파일 스타일 */
+.portBox table .imgTd .upload_text {/*읽기전용 인풋텍스트*/
+	float:left;
+	width:265px;/* 버튼 포함 전체 가로 길이*/
+	height: 25;
+	line-height:19px;
+	padding:0 3px;
+	border:1px solid #bbb;
+}
+
+div.upload-btn_wrap input.input_file {/*파일찾기 폼 투명하게*/
+	position:absolute;
+	top:0;
+	right:0;
+	cursor:pointer;
+	opacity:0;
+	width: 54;
+	filter:alpha(opacity=0);
+	-ms-filter:"alpha(opacity=0)";
+	-moz-opacity:0;
+}
+div.upload-btn_wrap {/*버튼테두리 감싼 div*/
+	overflow:hidden;
+	position:relative;
+	float:left;
+	width:50px;/*width, height 값은 button(찾아보기)값과 같아야함 */
+	height:27px;
+	padding-left:3px;
+}
+div.upload-btn_wrap button {/*버튼 div*/
+	width:50px;
+	height:27px;
+	font-weight:bold;
+	background:#333;
+	border:1px solid #333;
+	color:#fff;
+	position: relative;
+	top:-1;
 }

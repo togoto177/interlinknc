@@ -361,6 +361,7 @@ body{
 	position: fixed;
 	top: 50;
 	color: white;
+	z-index: 100;
 }
 .cmsLeft ul{
 	list-style:none;
@@ -370,6 +371,12 @@ body{
 .cmsLeft li{
 	margin-bottom: 7px;
 	font-size: 15;
+}
+.cmsLeft a{
+	text-decoration: none;
+}
+.cmsLeft .rightAc a{
+	color: #9900ff;
 }
 .cmsLeft .title{
 	color: gray;
@@ -383,5 +390,68 @@ body{
 	visibility: visible;
 }
 .cmsLeft .rightAc{
-	color: purple;
+	color: #9900ff;
+}
+/* 보라버튼 */
+.btnDiv1{
+	overflow: hidden;
+	width: 85;
+	background: #9900ff;
+	color: white;
+	float: right;
+	text-align: center;
+	height: 33;
+	font-size: 13;
+	position: relative;
+}
+.btnDiv1 .btn1{
+	position: relative;
+	top: 11;
+	font-size: 11;
+	font-family: HPSimplified_Rg;
+	letter-spacing: 2;
+	text-decoration: none;
+	color: white;
+}
+/* 검정버튼 */
+.btnDiv2{
+	overflow: hidden;
+	width: 85;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	float: right;
+	text-align: center;
+	height: 33;
+	font-size: 13;
+	position: relative;
+}
+.btnDiv2 .btn1{
+	position: relative;
+	top: 11;
+	font-size: 11;
+	font-family: HPSimplified_Rg;
+	letter-spacing: 2;
+	text-decoration: none;
+	color: white;
+}
+/* 검정버튼 */
+.btnDiv3{
+	overflow: hidden;
+	width: 85;
+	background: #9999ff;
+	color: white;
+	float: right;
+	text-align: center;
+	height: 33;
+	font-size: 13;
+	position: relative;
+}
+.btnDiv3 .btn1{
+	position: relative;
+	top: 11;
+	font-size: 11;
+	font-family: HPSimplified_Rg;
+	letter-spacing: 2;
+	text-decoration: none;
+	color: white;
 }
