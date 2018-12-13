@@ -33,14 +33,18 @@
 						<td style="width:  80%;">${sessionScope.ad_id }</td>
 					</tr>
 					<tr>
-						<td style="width: 20%;">제목</td> 
-						<td style="width: 80%;"><input type="text" name="board_title" id="board_title" style="width: 100%;" /></td>
+						<c:if test="${board_division == 'portfolio' }">	
+						<td style="width: 20%;">
+						<select name="pf_division" id="pf_division">
+							<option>구분</option>
+							<option value="홈페이지">홈페이지</option>
+							<option value="유지보수">유지보수</option>
+						</select>
+						</td>
+						</c:if> 
+						<td style="width: 80%;"><input type="text" name="board_title" id="board_title" style="width: 100%;" placeholder="" /></td>
 					</tr>
 					<c:if test="${board_division == 'portfolio' }">	
-					<tr>
-						<td style="width: 20%;">구분</td> 
-						<td style="width: 80%;"><input type="text" name="pf_division" id="pf_division" style="width: 100%;" /></td>
-					</tr>
 					<tr>
 						<td style="width: 20%;">사업기간</td> 
 						<td style="width: 80%;"><input type="text" name="business_period" id="business_period" style="width: 100%;" /></td>

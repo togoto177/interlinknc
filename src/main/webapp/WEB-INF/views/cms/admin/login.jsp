@@ -39,6 +39,12 @@
  			$("#ad_id").on('change keyup paste', function () {
  				$("#idchek_hidden").val("0");
  			});
+ 			if ($("#result").val() == 'fail') {
+				alert("아이디와 비밀번호를 확인해주세요.");
+			}else if($("#result").val() == 'fail_auth'){
+				alert("관리자의 승인이 되지 않았습니다.");
+			}
+				
 		});
 	</script>
 </head>
@@ -49,6 +55,7 @@
 	</div>
 	<div class="login_table">
 		<form id="login_form">
+			<input type="hidden" id="result" name="result" value="${result}" />
 			<table>
 			<tr>
 				<th>아이디</th>

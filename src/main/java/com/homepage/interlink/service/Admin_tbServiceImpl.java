@@ -52,4 +52,39 @@ public class Admin_tbServiceImpl implements Admin_tbService {
 		
 	}
 
+	@Override
+	public List<Admin_tb> employee_list(Map<String, Object> paramMap) {
+		return ad.employee_list(paramMap);
+	}
+
+	@Override
+	public int employee_cnt(Map<String, Object> paramMap) {
+		return ad.employee_cnt(paramMap);
+	}
+
+	@Override
+	public int wait_cnt(Map<String, Object> paramMap) {
+		return ad.wait_cnt(paramMap);
+	}
+
+	@Override
+	public int employee_delete(int ad_seq) {
+		return ad.employee_delete(ad_seq);
+	}
+
+	@Override
+	public List<Admin_tb> wait_list(Map<String, Object> paramMap) {
+		return ad.wait_list(paramMap);
+	}
+
+	@Override
+	public int wait_admit(Admin_tb admin_tb) {
+		return ad.wait_admit(admin_tb);
+		
+	}
+	
+	
+	
+
+	
 }

@@ -66,5 +66,53 @@
 		ad_update_date = now()    	
 		where ad_seq = #{ad_seq}
    </update>
+   <!-- 사원목록출력 -->
+   <select id="employee_list" resultType="admin_tb" parameterType="java.util.HashMap">
 	
+	    select
+	     
+        *
+        
+        from admin_tb
+        where ad_etc = 1        
+        order by ad_seq desc
+        
+        limit #{start}, #{end};
+	
+	</select>
+	<!-- 사원목록 전체 수 -->
+	<select id="employee_cnt" resultType="int" parameterType="admin_tb">
+	
+	    select count(ad_seq) from admin_tb 
+	
+	</select>
+	<!-- 회원가입대기자 전체 수 -->
+	<select id="wait_cnt" resultType="int" parameterType="admin_tb">
+	    select count(ad_seq) from admin_tb where ad_etc = 0 
+	</select>
+	<!-- 사원관리 삭제쿼리  -->
+	<select id="employee_delete" parameterType="int">
+	delete from admin_tb where ad_seq = #{ad_seq};
+	</select>
+	<!-- 사원목록출력 -->
+   <select id="wait_list" resultType="admin_tb" parameterType="java.util.HashMap">	
+	    select	     
+        *        
+        from admin_tb
+        where ad_etc = 0        
+        order by ad_seq desc	
+	</select>
+	<!-- 회원가입대기자 승인 -->
+	<update id="wait_admit" parameterType="java.util.HashMap">
+    	
+        update
+            admin_tb
+		set
+		ad_rank = #{ad_rank},
+        ad_etc = #{ad_etc},
+        ad_update_date = now()    
+        where
+        ad_seq = #{ad_seq}
+            
+    </update>
 </mapper>

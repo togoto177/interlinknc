@@ -11,57 +11,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>interlinknc</title>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		 
-				// 네이버 에디터  
-				var oEditors = [];
-				
-				nhn.husky.EZCreator.createInIFrame({
-				    oAppRef: oEditors,
-				    elPlaceHolder: "board_content",
-				    sSkinURI: "util/naver_edit/SmartEditor2Skin.html",
-				    fCreator: "createSEditor2",
-				    htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-				    bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-				    bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-				    bUseModeChanger : true, 
-				    }
-
-
-				});
-				
-		 $("#save").click(function(){
-			 //if(confirm("저장하시겠습니까?")) { // id가 smarteditor인 textarea에 에디터에서 대입 
-				 oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
-			 // 이부분에 에디터 validation 검증
-
-				 $("#board_form").submit(); 
-		 });
-				
-		
-	});
-
-	
-	/* 추가된 파일 제거버튼  */
-	function delbt(thisname) {
-		
-		var file_del = thisname;
-		
-	 	if (/(MSIE|Trident)/.test(navigator.userAgent)) { 
-			// ie 일때 input[type=file] init.
-			$("input[id=" + file_del + "]").replaceWith( $("input[id=" + file_del + "]").clone(true) );
-			$("tr[id=" + file_del + "]").hide();
-		} else {
-			 // other browser 일때 input[type=file] init.
-			$("input[id=" + file_del + "]").val(""); 
-		    $("tr[id=" + file_del + "]").hide();	 
-		}
-		
-	}
-	
-
-	</script>
 </head>
 <body>
 <%@ include file="../cms_header.jsp"%>
@@ -99,7 +48,12 @@
 					<c:if test="${board_division == 'portfolio' }">	
 					<tr>
 						<td style="width: 20%;">구분</td> 
-						<td style="width: 80%;"><input type="text" name="pf_division" id="pf_division" style="width: 100%;" value="${board_update.pf_division}"/></td>
+						<td style="width: 80%;">
+						<select name="pf_division" id="pf_division">
+							<option value="홈페이지" ${board_update.pf_division eq "홈페이지" ? "selected" :""}>홈페이지</option>
+							<option value="유지보수" ${board_update.pf_division eq "유지보수" ? "selected" :""}>유지보수</option>
+					</select>
+					</td>
 					</tr>
 					<tr>
 						<td style="width: 20%;">사업기간</td> 

@@ -9,6 +9,6 @@
 			<li>일정</li>
 			<li>설정</li>
 			<li><a href="/admin_modify?ad_seq=${sessionScope.ad_seq}">내정보수정</a></li>
-			<li><a href="#">사원관리</a></li>
+			<li><a href="/employee_list">사원관리</a></li>
 		</ul>
 	</div>
