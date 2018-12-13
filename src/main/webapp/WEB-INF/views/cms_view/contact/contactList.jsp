@@ -23,9 +23,9 @@
 <div class="cmsLeft">
 	<ul>
 		<li class="title">게시판관리</li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
+		<li><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
 		<li><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
+		<li class="rightAc"><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
 		<li class="title">설정</li>
 		<li><a class="right">&rtrif;</a><a href="/info"> 내정보수정</a></li>
 		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
@@ -34,8 +34,8 @@
 
 <div class="portfolioBody">
 	<div class="portTitle">
-		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_download.png">
-		<a>PORTFOLIO</a>
+		<img alt="이미지" src="resources/mainImg/diagonal_download.png">
+		<a>CONTACT</a>
 	</div>
 	<div class="portSerch">
 		<input type="text" /><img alt="돋보기" src="resources/cms/search.png">
@@ -43,81 +43,92 @@
 	<div class="portTable">
 		<table>
 			<colgroup>
-					<col style="width: 5%" />
+					<col style="width: 7%" />
+					<col style="width: 7%" />
+					<col style="width: 41%" />
+					<col style="width: 13%" />
+					<col style="width: 17%" />
 					<col style="width: 15%" />
-					<col style="width: 50%" />
-					<col style="width: 20%" />
-					<col style="width: 10%" />
 			</colgroup>
 			<tr class="portTh">
 				<td>No</td>
-				<td>구분</td>
+				<td><input type="checkbox"></td>
 				<td>제목</td>
+				<td>작성자</td>
 				<td>일자</td>
-				<td>조회수</td>
+				<td>상태</td>
 			</tr>
 			<tr class="portTd">
 				<td>9</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox" class="check"><label class="label"></label></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>미확인</td>
 			</tr>
 			<tr class="portTd">
 				<td>8</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>미확인</td>
 			</tr>
 			<tr class="portTd">
 				<td>7</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>확인</td>
 			</tr>
 			<tr class="portTd">
 				<td>6</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>확인</td>
 			</tr>
 			<tr class="portTd">
 				<td>5</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>답변완료</td>
 			</tr>
 			<tr class="portTd">
 				<td>4</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의 / 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>답변완료</td>
 			</tr>
 			<tr class="portTd">
 				<td>3</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>답변완료</td>
 			</tr>
 			<tr class="portTd">
 				<td>2</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>답변완료</td>
 			</tr>
 			<tr class="portTd">
 				<td>1</td>
-				<td>홈페이지</td>
-				<td class="title"><a href="/portfolioUpdate">국토해양통계누리 고도화 및 안정화 사업</a></td>
-				<td>2019.04~2010.12</td>
-				<td>999</td>
+				<td><input type="checkbox"></td>
+				<td class="title"><a href="/contactUpdate">홈페이지 가격 문의</a></td>
+				<td>ㅇㅇㅇ</td>
+				<td>2019.04.21</td>
+				<td>답변완료</td>
 			</tr>
 		</table>
 	</div>
@@ -133,9 +144,9 @@
 		<li class="portCount2"><img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"><img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png"></li>
 		</ul>
 		<div class="btnList">
-		<div class="btnDiv1">
-		<a class="btn1" href="/portfolioWrite">WRITE</a>
-		</div>
+			<div class="btnDiv1">
+				<a class="btn1" href="/downloadsWrite" style="padding: 30 21;">DELETE</a>
+			</div>
 		</div>
 	</div>
 </div>

@@ -374,6 +374,7 @@ body{
 }
 .cmsLeft a{
 	text-decoration: none;
+	color: white;
 }
 .cmsLeft .rightAc a{
 	color: #9900ff;
@@ -396,7 +397,6 @@ body{
 .btnDiv1{
 	overflow: hidden;
 	width: 85;
-	background: #9900ff;
 	color: white;
 	float: right;
 	text-align: center;
@@ -412,12 +412,13 @@ body{
 	letter-spacing: 2;
 	text-decoration: none;
 	color: white;
+	background: #9900ff;
+	padding: 30 24;
 }
 /* 검정버튼 */
 .btnDiv2{
 	overflow: hidden;
 	width: 85;
-	background: rgba(0,0,0,0.5);
 	color: white;
 	float: right;
 	text-align: center;
@@ -433,12 +434,13 @@ body{
 	letter-spacing: 2;
 	text-decoration: none;
 	color: white;
+	background: rgba(0,0,0,0.5);
+	padding: 30 21;
 }
 /* 검정버튼 */
 .btnDiv3{
 	overflow: hidden;
 	width: 85;
-	background: #9999ff;
 	color: white;
 	float: right;
 	text-align: center;
@@ -454,4 +456,6 @@ body{
 	letter-spacing: 2;
 	text-decoration: none;
 	color: white;
+	background: #9999ff;
+	padding: 30 21;
 }

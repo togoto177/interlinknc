@@ -21,4 +21,32 @@ public class view_cms {
 	public String portfolioUpdate() {
 		return "cms_view/portfolio/portfolioUpdate";
 	}
+	@RequestMapping(value = "/downloadsList")
+	public String downloadsList() {
+		return "cms_view/downloads/downloadsList";
+	}
+	@RequestMapping(value = "/downloadsWrite")
+	public String downloadsWrite() {
+		return "cms_view/downloads/downloadsWrite";
+	}
+	@RequestMapping(value = "/downloadsUpdate")
+	public String downloadsUpdate() {
+		return "cms_view/downloads/downloadsUpdate";
+	}
+	@RequestMapping(value = "/contactList")
+	public String contactList() {
+		return "cms_view/contact/contactList";
+	}
+	@RequestMapping(value = "/contactUpdate")
+	public String contactUpdate() {
+		return "cms_view/contact/contactUpdate";
+	}
+	@RequestMapping(value = "/info")
+	public String info() {
+		return "cms_view/admin/info";
+	}
+	@RequestMapping(value = "/adminList")
+	public String adminList() {
+		return "cms_view/admin/adminList";
+	}
 }

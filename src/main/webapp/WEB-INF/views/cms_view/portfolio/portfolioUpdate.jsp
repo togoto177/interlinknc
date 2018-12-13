@@ -33,11 +33,11 @@ $(function(){
 	<ul>
 		<li class="title">게시판관리</li>
 		<li class="rightAc"><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
-		<li><a class="right">&rtrif;</a> DOWNLOADS</li>
-		<li><a class="right">&rtrif;</a> CONTACT</li>
+		<li><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
+		<li><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
 		<li class="title">설정</li>
-		<li><b class="right">&rtrif;</b> 내정보수정</li>
-		<li><b class="right">&rtrif;</b> 사원관리</li>
+		<li><a class="right">&rtrif;</a><a href="/info"> 내정보수정</a></li>
+		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
 	</ul>
 </div>
 
@@ -99,7 +99,7 @@ $(function(){
 			<a class="btn1">DELETE</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1">LIST</a>
+			<a class="btn1" style="padding: 30 29;">LIST</a>
 		</div>
 	</div>
 </div>

@@ -32,9 +32,9 @@ $(function(){
 <div class="cmsLeft">
 	<ul>
 		<li class="title">게시판관리</li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
+		<li><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
 		<li><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
+		<li class="rightAc"><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
 		<li class="title">설정</li>
 		<li><a class="right">&rtrif;</a><a href="/info"> 내정보수정</a></li>
 		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
@@ -44,59 +44,62 @@ $(function(){
 <div class="portfolioBody">
 	<div class="portTitle">
 		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_download.png">
-		<a>PORTFOLIO</a>
+		<a>CONTACT</a>
 	</div>
 	
 	<div class="portTitleView">
-		<a>등록</a>
+		<a>문의글 확인</a>
 	</div>
 	<div class="portBox">
-		<table>
+		<table class="contactTable">
 			<colgroup>
-				<col style="width: 15%" />
-				<col style="width: 35%" />
-				<col style="width: 15%" />
-				<col style="width: 35%" />
+				<col style="width: 50%" />
+				<col style="width: 50%" />
 			</colgroup>
 			<tr>
-				<td><select>
-				  <option>구분</option>
-				  <option value="saab">홈페이지</option>
-				  <option value="opel">유지보수</option>
-				  <option value="audi">등등</option>
-				</select></td>
-				<td colspan="3"><input class="titleText" type="text" placeholder="제목을 입력하세요." /></td>
+				<td colspan="2" class="oneTitle"><a>홈페이지 가격 문의</a></td>
 			</tr>
 			<tr>
-				<td colspan="2"><label>사업기간</label><input type="text" /></td>
-				<td rowspan="3" colspan="2" class="imgTd">
-					<a>첨부이미지</a>
-					<input type="text" class="upload_text" readonly="readonly">
-					<div class="upload-btn_wrap">
-					  <button type="button" title="파일선택하기">
-					   <span>선택</span>  
-					  </button>
-					  <input type="file" class="input_file" title="파일찾기">
-					</div>
+				<td>
+					<label>작성자</label>
+					<a>김영정</a>
+				</td>
+				<td>
+					<label>일자</label>
+					<a>2018-12-12</a>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><label>발주처</label><input type="text" /></td>
+				<td>
+					<label>이메일</label>
+					<a class="Email">question@gmail.com</a><img alt="복사" src="resources/cms/notepad.png">
+				</td>
+				<td>
+					<label>연락처</label>
+					<a>010-1234-1234</a>
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><label>연결주소</label><input type="text" /></td>
+				<td colspan="2" class="tdText"><a>홈페이지 가격 문의합니다.</a></td>
 			</tr>
-			<tr>
-				<td colspan="4" class="textarea"><textarea rows="5" cols="5" placeholder="내용을 입력하세요."></textarea></td>
+			<tr class="noBorder">
+				<td colspan="2">
+					<div class="btnDiv1">
+						<a class="btn1">상태수정</a>
+					</div>
+					<select>
+						<option>상태</option>
+						<option>미확인</option>
+						<option>확인</option>
+						<option>답변완료</option>
+					</select>
+				</td>
 			</tr>
 		</table>
 	</div>
 	<div class="btnbox">
-		<div class="btnDiv1">
-			<a class="btn1">SAVE</a>
-		</div>
-		<div class="btnDiv2">
-			<a class="btn1">CANCEL</a>
+		<div class="btnDiv2" style="margin-right: 0;">
+			<a class="btn1" style="padding: 30;">LIST</a>
 		</div>
 	</div>
 </div>
