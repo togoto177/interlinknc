@@ -108,6 +108,7 @@
         update
             admin_tb
 		set
+		ad_hiredate = #{ad_hiredate},
 		ad_rank = #{ad_rank},
         ad_etc = #{ad_etc},
         ad_update_date = now()    

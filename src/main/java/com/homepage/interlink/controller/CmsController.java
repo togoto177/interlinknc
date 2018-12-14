@@ -1,11 +1,11 @@
 package com.homepage.interlink.controller;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.Collections;
+
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +24,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.homepage.interlink.model.Admin_tb;
-import com.homepage.interlink.model.Board;
-import com.homepage.interlink.model.BoardFile;
 import com.homepage.interlink.service.BoardService;
 import com.homepage.interlink.service.Admin_tbService;
 import com.homepage.interlink.service.BoardFileService;
@@ -234,31 +232,23 @@ public class CmsController {
   	
   	//회원가입 승인
   	@RequestMapping(value = "/wait_admit" , method = RequestMethod.GET)
-  	public String wait_admit(Admin_tb admin_tb,int[] ad_seq, String[] ad_rank,  HttpServletRequest request) {
+  	public String wait_admit(Admin_tb admin_tb, int[] chk, String[] ad_rank, String[] ad_hiredate, HttpServletRequest request) {
+  	
   		
-  		request.getParameterValues("ad_rank");
-  		System.out.println(request.getParameterValues("ad_rank"));
-  	for(int k = 0; k <ad_rank.length; k++){
-  			if(!ad_rank[k].equals("1")){
-  				System.out.println(ad_rank[k]);
-  			}
-  		}
-  	System.out.println("===================ad_rank" + ad_rank);
-  		for (int i = 0; i < ad_seq.length; i++) {
-  			 
-  		admin_tb.setAd_seq(ad_seq[i]);
-  		admin_tb.setAd_etc("1");
-  		if(!ad_rank[i].equals("1")){
-				admin_tb.setAd_rank(ad_rank[i]);
-			
-			}
-        		
-        		System.out.println("=============>ad_rank[] " + ad_rank[i]);
+  		for (int i = 0; i < chk.length; i++) {
+  		
+  					admin_tb.setAd_seq(chk[i]);
+  					admin_tb.setAd_etc("1");
+  					admin_tb.setAd_rank(ad_rank[i]);
+					admin_tb.setAd_hiredate(ad_hiredate[i]);
+  					System.out.println("======================>ad_seq[i] :" + chk[i]);
+					System.out.println("=====================>ad_rank[i] : " + ad_rank[i]);
+					System.out.println("=====================>ad_rank[i] : " + ad_hiredate[i]);
+					as.wait_admit(admin_tb);
+ 
 
-  		
-  		as.wait_admit(admin_tb);
+  
   		}
-  		
   		return "redirect:/employee_list";
   		
   	}

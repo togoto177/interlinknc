@@ -6,6 +6,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="../cms_include.jsp"%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -93,7 +95,23 @@
 														$('input[name*="ad_seq"]').prop('checked',false);
 													}
 												});		
+										 $('input:checkbox[name="chk"]').click(function(){
+										   				var index = $('input:checkbox[name="chk"]').index(this);
+										        if($('input:checkbox[name="chk"]').is(":checked") == true){
+										   				$('#ad_rank'+index).removeAttr('disabled');
+										   				$('#datepicker'+index).removeAttr('disabled');
+										   				$('#datepicker'+index).attr('readonly', true);
+										        }else{
+										        		$('#ad_rank'+index).attr('disabled', 'true');
+										        		$('#datepicker'+index).attr('disabled', 'true');
+										        		$('#datepicker'+index).val('');
+										        		$('#datepicker'+index).attr('readonly', false);
+
+										        }
+										    });
 							});
+
+							
 							
 						}); 
 						
@@ -165,12 +183,12 @@
 							    document.wait_form.submit();
 							  };
 							  
-							  function waitSubmit() {
-								  $('#toto').attr('disabled', true); 
+							  function waitSubmit() { 
 									if(confirm("해당 대기자들을 승인하시겠습니까?") == true) {
 										if($('input:checkbox[id="checkOne"]').is(":checked")){
 											document.wait_form.action='wait_admit';
-												alert("가입이 승인 되었습니다.");
+											alert("가입이 승인 되었습니다.");
+											
 								          } else{
 								            alert("승인하실 목록을 체크하여 주십시오.")
 								            return;
@@ -181,9 +199,18 @@
 										}	
 							    document.wait_form.submit();
 							  };	
+							  
+							  $(function() {
+
+								  $('input:text[name="ad_hiredate"]').datepicker({
+								    dateFormat: 'yy년 mm월 dd일'
+								  });
+								});
+							
 	</script>
 </head>
 <body>
+	
 	<%@ include file="../cms_header.jsp"%>
 	<div>
 		<%@ include file="../cms_left_bar.jsp"%>
@@ -276,9 +303,9 @@
 			<!--역순공식: 전체 레코드 수 - ( (현재 페이지 번호 - 1) * 한 페이지당 보여지는 레코드 수 + 현재 게시물 출력 순서 ) -->
             <c:set var="startpage" value="${startPage-1}" />
             <c:set var="statuscount" value="${status.count }" />
-			${totalCnt+1-1-(startpage*10+statuscount)} <input type="checkbox" id="checkOne" name="ad_seq" value="${wait_list.ad_seq}" /> 이름 : ${wait_list.ad_name} , 아이디 : ${wait_list.ad_id}
-			<select name="ad_rank" id="ad_rank" >
-				<option id="toto" value="1">선택</option>
+			${totalCnt+1-1-(startpage*10+statuscount)} <input type="checkbox" id="checkOne" name="chk" value="${wait_list.ad_seq}" /> 이름 : ${wait_list.ad_name} , 아이디 : ${wait_list.ad_id}
+			<select disabled="disabled" name="ad_rank" id="ad_rank${status.index}" >
+				<option value="">직급</option>
 				<option value="사원">사원</option>
 				<option value="대리">대리</option>
 				<option value="주임">주임</option>
@@ -288,7 +315,8 @@
 				<option value="이사">이사</option>
 				<option value="부사장">부사장</option>
 				<option value="대표">대표</option>
-			</select> 
+			</select>
+			<input type="text" name="ad_hiredate" disabled="disabled" id="datepicker${status.index}">  
 			</td>
 			</tr>
 			</c:forEach>
@@ -299,7 +327,7 @@
 			        		<button class="btn btn-primary" style="font-size: small;" type="button" onclick="waitDelete()" >거절</button>
 					</td>				
 					<td align="right">
-			        		<button class="btn btn-primary" style="font-size: small;" type="button" onclick="waitSubmit()" >승인</button>
+			        		<button class="btn btn-primary" style="font-size: small;" type="button" onclick="waitSubmit()">승인</button>
 					</td>
 				</tr>
 			</table>
