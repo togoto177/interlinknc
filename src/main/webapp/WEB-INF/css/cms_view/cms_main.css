@@ -26,6 +26,11 @@ body{
 	position: fixed;
 	width: 100%;
 	background: white;
+	z-index: 100;
+}
+.cmsTop a{
+	text-decoration: none;
+	color: black;
 }
 .cmsTop .cmsTopLogo img{
 	width: 200;
@@ -35,10 +40,28 @@ body{
 .cmsTop .cmsTopText{
 	float: right;
 	position: relative;
-	bottom: -20;
+	bottom: -27;
 	left: -10;
+	font-size: 14;
 }
-
+.cmsTop .cmsTopText a{
+	text-decoration: none;
+}
+.cmsTop .cmsTopText .cmsTopText1{
+	color: #9900ff;
+}
+.cmsTop .cmsTopText .cmsTopText2{
+	margin-right: 20;
+}
+.cmsTop .cmsTopText .cmsTopText3{
+	font-size: 12;
+}
+.cmsTop .cmsTopText .cmsTopText4{
+	font-size: 12;
+	position: relative;
+	top: -2;
+	margin: 0 7;
+}
 .cmsMainCon{
 	text-align: center;
 	width: 450;

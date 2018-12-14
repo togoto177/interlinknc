@@ -16,14 +16,14 @@
 		<img alt="인터링크앤씨 로고" src="resources/cms/logo_darkgray.png">
 	</div>
 	<div class="cmsTopText">
-		<a>ㅇㅇㅇ님 환영합니다.</a>
-		<a>비밀번호변경 | 로그아웃</a>
+		<a class="cmsTopText1">ㅇㅇㅇ</a><a class="cmsTopText2">님 환영합니다.</a>
+		<a class="cmsTopText3" href="/password">비밀번호변경</a><a class="cmsTopText4">|</a><a class="cmsTopText3">로그아웃</a>
 	</div>
 </div>
 <div class="cmsLeft">
 	<ul>
 		<li class="title">게시판관리</li>
-		<li><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
+		<li><a class="right">&rtrif;</a><a href="/portfolioList"> PORTFOLIO</a></li>
 		<li><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
 		<li class="rightAc"><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
 		<li class="title">설정</li>

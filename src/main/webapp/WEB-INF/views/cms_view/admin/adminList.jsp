@@ -16,14 +16,14 @@
 		<img alt="인터링크앤씨 로고" src="resources/cms/logo_darkgray.png">
 	</div>
 	<div class="cmsTopText">
-		<a>ㅇㅇㅇ님 환영합니다.</a>
-		<a>비밀번호변경 | 로그아웃</a>
+		<a class="cmsTopText1">ㅇㅇㅇ</a><a class="cmsTopText2">님 환영합니다.</a>
+		<a class="cmsTopText3" href="/password">비밀번호변경</a><a class="cmsTopText4">|</a><a class="cmsTopText3">로그아웃</a>
 	</div>
 </div>
 <div class="cmsLeft">
 	<ul>
 		<li class="title">게시판관리</li>
-		<li><a class="right">&rtrif;</a><a href="/portfoiloList"> PORTFOLIO</a></li>
+		<li><a class="right">&rtrif;</a><a href="/portfolioList"> PORTFOLIO</a></li>
 		<li><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
 		<li><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
 		<li class="title">설정</li>
@@ -47,8 +47,8 @@
 			<colgroup>
 					<col style="width: 7%" />
 					<col style="width: 7%" />
-					<col style="width: 20%" />
 					<col style="width: 10%" />
+					<col style="width: 20%" />
 					<col style="width: 16%" />
 					<col style="width: 25%" />
 					<col style="width: 15%" />
@@ -66,7 +66,7 @@
 				<td>9</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -75,7 +75,7 @@
 				<td>8</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -84,7 +84,7 @@
 				<td>7</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -93,7 +93,7 @@
 				<td>6</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -102,7 +102,7 @@
 				<td>5</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -111,7 +111,7 @@
 				<td>4</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -120,7 +120,7 @@
 				<td>3</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -129,7 +129,7 @@
 				<td>2</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -138,7 +138,7 @@
 				<td>1</td>
 				<td><input type="checkbox" class="check"><label class="label"></label></td>
 				<td class="textLeft">사원</td>
-				<td class="title"><a href="/contactUpdate">ㅇㅇㅇ</a></td>
+				<td class="title"><a href="/adminUpdate">ㅇㅇㅇ</a></td>
 				<td>02-2222-2222</td>
 				<td>info@interlinknc.com</td>
 				<td>2018.12.12</td>
@@ -158,7 +158,7 @@
 		</ul>
 		<div class="btnList">
 			<div class="btnDiv1">
-				<a class="btn1" href="/downloadsWrite" style="padding: 30 21;">DELETE</a>
+				<a class="btn1" href="#" style="padding: 30 21;">DELETE</a>
 			</div>
 		</div>
 	</div>
@@ -183,6 +183,16 @@
 					<div class="listCon1_Text">
 						<a>이름 : ㅇㅇㅇ , 아이디 : dkdlel</a>
 					</div>
+					<div class="listCon1_Select">
+						<select>
+							<option>직급</option>
+							<option>사원</option>
+							<option>대리</option>
+						</select>
+					</div>
+					<div class="listCon1_Date">
+						<label>입사일</label><input type="text" />
+					</div>
 				</div>
 			</div>
 			<div class="listCon">
@@ -196,6 +206,16 @@
 					<div class="listCon1_Text">
 						<a>이름 : ㅇㅇㅇ , 아이디 : dkdlel</a>
 					</div>
+					<div class="listCon1_Select">
+						<select>
+							<option>직급</option>
+							<option>사원</option>
+							<option>대리</option>
+						</select>
+					</div>
+					<div class="listCon1_Date">
+						<label>입사일</label><input type="text" />
+					</div>
 				</div>
 			</div>
 			<div class="listCon">
@@ -208,6 +228,16 @@
 					</div>
 					<div class="listCon1_Text">
 						<a>이름 : ㅇㅇㅇ , 아이디 : dkdlel</a>
+					</div>
+					<div class="listCon1_Select">
+						<select>
+							<option>직급</option>
+							<option>사원</option>
+							<option>대리</option>
+						</select>
+					</div>
+					<div class="listCon1_Date">
+						<label>입사일</label><input type="text" />
 					</div>
 				</div>
 			</div>

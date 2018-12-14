@@ -27,7 +27,7 @@
 		<li><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
 		<li><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
 		<li class="title">설정</li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/info"> 내정보수정</a></li>
+		<li><a class="right">&rtrif;</a><a href="/info"> 내정보수정</a></li>
 		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
 	</ul>
 </div>
@@ -35,48 +35,40 @@
 <div class="portfolioBody">
 	<div class="portTitle">
 		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_download.png">
-		<a>내정보수정</a>
+		<a>비밀번호변경</a>
 	</div>
 	
-	<div class="infoCon">
+	<div class="infoCon" style="top: 180;">
 		<div class="infoCon1">
 			<div class="label">
-			<a>아이디</a>
+			<a>기존비밀번호</a>
 			</div>
 			<div class="input">
-			<input type="text" />
+			<input type="password" />
 			</div>
 		</div>
 		<div class="infoCon1">
 			<div class="label">
-			<a>이름</a>
+			<a>신규비밀번호</a>
 			</div>
 			<div class="input">
-			<input type="text" />
+			<input type="password" />
 			</div>
 		</div>
 		<div class="infoCon1">
 			<div class="label">
-			<a>연락처</a>
+			<a>비밀번호확인</a>
 			</div>
 			<div class="input">
-			<input type="text" />
-			</div>
-		</div>
-		<div class="infoCon1">
-			<div class="label">
-			<a>이메일</a>
-			</div>
-			<div class="input">
-			<input type="text" />
+			<input type="password" />
 			</div>
 		</div>
 	</div>
-	<div class="pubText">
-		<a>내 정보가 성공적으로 변경되었습니다!</a>
+	<div class="pubText" style="top:180;">
+		<a>비밀번호가 성공적으로 변경되었습니다!</a>
 	</div>
-	<div class="butEdit">
-		<a>EDIT</a>
+	<div class="butEdit" style="top:225">
+		<a style="padding: 9 145;">CONFIRM</a>
 	</div>
 </div>
 </body>

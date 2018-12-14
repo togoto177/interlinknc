@@ -9,8 +9,8 @@ public class view_cms {
 	public String view_cms_main() {
 		return "cms_view/cms_main";
 	}
-	@RequestMapping(value = "/portfoiloList")
-	public String portfoiloList() {
+	@RequestMapping(value = "/portfolioList")
+	public String portfolioList() {
 		return "cms_view/portfolio/portfolioList";
 	}
 	@RequestMapping(value = "/portfolioWrite")
@@ -48,5 +48,13 @@ public class view_cms {
 	@RequestMapping(value = "/adminList")
 	public String adminList() {
 		return "cms_view/admin/adminList";
+	}
+	@RequestMapping(value = "/adminUpdate")
+	public String adminUpdate() {
+		return "cms_view/admin/adminUpdate";
+	}
+	@RequestMapping(value = "/password")
+	public String password() {
+		return "cms_view/admin/password";
 	}
 }

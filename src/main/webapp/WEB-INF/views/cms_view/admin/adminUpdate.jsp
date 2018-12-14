@@ -33,77 +33,82 @@ $(function(){
 	<ul>
 		<li class="title">게시판관리</li>
 		<li><a class="right">&rtrif;</a><a href="/portfolioList"> PORTFOLIO</a></li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
+		<li><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
 		<li><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
 		<li class="title">설정</li>
 		<li><a class="right">&rtrif;</a><a href="/info"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
+		<li class="rightAc"><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
 	</ul>
 </div>
 
 <div class="portfolioBody">
 	<div class="portTitle">
 		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_download.png">
-		<a>DOWNLOADS</a>
+		<a>사원관리</a>
 	</div>
 	
 	<div class="portTitleView">
-		<a>수정</a>
+		<a>사원정보수정</a>
 	</div>
 	<div class="portBox">
-		<table>
+		<table class="adminUpdate">
+			<colgroup>
+				<col style="width: 50%" />
+				<col style="width: 50%" />
+			</colgroup>
 			<tr>
-				<td class="oneTitle"><input type="text" placeholder="제목을 입력하세요." /></td>
-			</tr>
-			<tr>
-				<td class="down">
-					<div class="downFile">
-						<label>첨부파일</label>
-							<div class="downFileBox">
-								<div class="upload-btn_wrap">
-								  <input type="file" class="input_file" title="파일찾기">
-								  <button type="button" title="파일선택하기">
-								   <span>선택</span>
-								  </button>
-								</div>
-								<input type="text" class="upload_text" readonly="readonly">
-							</div>
-							<div class="downFileBox">
-								<div class="upload-btn_wrap">
-								  <input type="file" class="input_file" title="파일찾기">
-								  <button type="button" title="파일선택하기">
-								   <span>선택</span>
-								  </button>
-								</div>
-								<input type="text" class="upload_text" readonly="readonly">
-							</div>
-							<div class="downFileBox">
-								<div class="upload-btn_wrap">
-								  <input type="file" class="input_file" title="파일찾기">
-								  <button type="button" title="파일선택하기">
-								   <span>선택</span>
-								  </button>
-								</div>
-								<input type="text" class="upload_text" readonly="readonly">
-							</div>
-						
-					</div>
+				<td>
+					<div class="td1">아이디</div>
+					<div class="td2">dkdlel</div>
+				</td>
+				<td>
+					<div class="td1">전화번호</div>
+					<div class="td2"><input type="text" value="010-1234-1234" /></div>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" class="textarea"><textarea rows="5" cols="5" placeholder="내용을 입력하세요."></textarea></td>
+				<td>
+					<div class="td1">이름</div>
+					<div class="td2">ㅇㅇㅇ</div>
+				</td>
+				<td>
+					<div class="td1">이메일</div>
+					<div class="td2"><input type="text" value="dkdlel@interlinknc.com" /></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="td1" style="position: relative; top: 3;">직급</div>
+					<div class="td2">
+						<select>
+							<option>직급</option>
+							<option>사원</option>
+							<option>대리</option>
+						</select>
+					</div>
+				</td>
+				<td>
+					<div class="td1">입사일</div>
+					<div class="td2"><input type="text" value="2018-12-12"/></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="td3">비고</div>
+					<div class="td4" style="height: 325;"><textarea rows="3" cols="5" placeholder="내용을 입력하세요."></textarea></div>
+				</td>
 			</tr>
 		</table>
 	</div>
 	<div class="btnbox">
 		<div class="btnDiv1">
-			<a class="btn1">SAVE</a>
+			<a class="btn1">EDIT</a>
 		</div>
 		<div class="btnDiv3">
-			<a class="btn1">REMOVE</a>
+			<a class="btn1">DELETE</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1" style="padding: 30 29;" href="/downloadsList">LIST</a>
+			<a class="btn1" href="/adminList" style="padding: 30 29;">LIST</a>
 		</div>
 	</div>
 </div>
