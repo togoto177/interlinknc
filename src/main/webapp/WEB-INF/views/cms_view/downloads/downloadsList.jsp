@@ -11,27 +11,8 @@
 <title>interLink&amp;C</title>
 </head>
 <body>
-<div class="cmsTop">
-	<div class="cmsTopLogo">
-		<img alt="인터링크앤씨 로고" src="resources/cms/logo_darkgray.png">
-	</div>
-	<div class="cmsTopText">
-		<a class="cmsTopText1">ㅇㅇㅇ</a><a class="cmsTopText2">님 환영합니다.</a>
-		<a class="cmsTopText3" href="/password">비밀번호변경</a><a class="cmsTopText4">|</a><a class="cmsTopText3">로그아웃</a>
-	</div>
-</div>
-<div class="cmsLeft">
-	<ul>
-		<li class="title">게시판관리</li>
-		<li><a class="right">&rtrif;</a><a href="/portfolioList"> PORTFOLIO</a></li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/downloadsList">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList"> CONTACT</a></li>
-		<li class="title">설정</li>
-		<li><a class="right">&rtrif;</a><a href="/info"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
-	</ul>
-</div>
-
+<%@ include file="../cms_header.jsp"%>
+<%@ include file="../cms_left_bar.jsp"%>
 <div class="portfolioBody">
 	<div class="portTitle">
 		<img alt="이미지" src="resources/mainImg/diagonal_download.png">

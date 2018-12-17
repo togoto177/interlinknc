@@ -169,7 +169,6 @@
 							    	$("#ad_rank").remove();
 									if(confirm("회원가입을 거절 하시겠습니까?") == true) {
 										if($('input:checkbox[id="checkOne"]').is(":checked") == true)  {
-											/* $("#ad_rank").remove(); */
 								           document.wait_form.action='employee_delete';
 												alert("리스트에서 제거 되었습니다.");
 								          } else{
@@ -186,6 +185,7 @@
 							  function waitSubmit() { 
 									if(confirm("해당 대기자들을 승인하시겠습니까?") == true) {
 										if($('input:checkbox[id="checkOne"]').is(":checked")){
+											var index = $('input:checkbox[name="chk"]').index(this);
 											document.wait_form.action='wait_admit';
 											alert("가입이 승인 되었습니다.");
 											
@@ -305,7 +305,7 @@
             <c:set var="statuscount" value="${status.count }" />
 			${totalCnt+1-1-(startpage*10+statuscount)} <input type="checkbox" id="checkOne" name="chk" value="${wait_list.ad_seq}" /> 이름 : ${wait_list.ad_name} , 아이디 : ${wait_list.ad_id}
 			<select disabled="disabled" name="ad_rank" id="ad_rank${status.index}" >
-				<option value="">직급</option>
+				<option selected>직급</option>
 				<option value="사원">사원</option>
 				<option value="대리">대리</option>
 				<option value="주임">주임</option>
