@@ -1,7 +1,15 @@
 package com.homepage.interlink.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,15 +18,22 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.homepage.interlink.model.Admin_tb;
+import com.homepage.interlink.model.Board;
+import com.homepage.interlink.model.BoardFile;
+import com.homepage.interlink.model.Fileup;
 import com.homepage.interlink.service.Admin_tbService;
+import com.homepage.interlink.service.BoardFileService;
+import com.homepage.interlink.service.BoardService;
 import com.homepage.interlink.util.CommandMap;
 
 @Controller
@@ -26,8 +41,12 @@ public class view_cms {
 	
 	@Autowired
 	private Admin_tbService as;
-	
-	@RequestMapping(value = "/view_cms_main") //로그인 및 회원가입
+	@Autowired
+    BoardService boardService;
+	@Autowired
+    BoardFileService boardFileService;
+	//로그인 및 회원가입
+	@RequestMapping(value = "/view_cms_main") 
 	public ModelAndView view_cms_main(HttpServletRequest request, SessionStatus status, HttpServletResponse response,
 			CommandMap commandMap, Model model, @RequestParam Map<String, Object> paramMap) throws Exception {
 		
@@ -41,8 +60,8 @@ public class view_cms {
 		
 		return mav;
 	}
-	
-	@RequestMapping(value = "/userIdCheck", method = RequestMethod.POST) //아이디 중복 검사
+	//아이디 중복 검사
+	@RequestMapping(value = "/userIdCheck", method = RequestMethod.POST) 
 	@ResponseBody
 	public Map<String, Object> userIdCheck(@RequestParam("userid") String id){
 		int person = as.idcheck(id);
@@ -50,7 +69,7 @@ public class view_cms {
 		map.put("cnt", person);
 		return map;
 	}
-	
+	//login try
 	@RequestMapping(value = "/loginTry")
 	public ModelAndView loginTry(HttpServletRequest request, @RequestParam Map<String, Object> map) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -69,13 +88,15 @@ public class view_cms {
 			request.getSession().setAttribute("ad_id", map.get("ad_id"));
 			request.getSession().setAttribute("ad_seq", admin_tb.getAd_seq());
 			request.getSession().setAttribute("ad_name", admin_tb.getAd_name());
+			request.getSession().setAttribute("ad_contact", admin_tb.getAd_contact());
+			request.getSession().setAttribute("ad_email", admin_tb.getAd_email());
 			
 			request.getSession().setMaxInactiveInterval(60*30);
-			mav.setViewName("cms_view/admin/info");
+			mav.setViewName("redirect:/portfolioList?board_division=portfolio");
 		}
 		return mav;
 	}
-	
+	//회원가입
 	@RequestMapping(value="/sign_form_insert", method = RequestMethod.POST)
 	public String sign_form_insert(CommandMap commandmap, Admin_tb admin_tb) throws Exception {
 		try {
@@ -86,7 +107,7 @@ public class view_cms {
 		}
 		return "cms_view/cms_main";
 	}
-	
+	//내정보수정
 	@RequestMapping(value = "/info")
 	public String info(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
 
@@ -95,8 +116,8 @@ public class view_cms {
 		
 		return "cms_view/admin/info";
 	}
-	
-	@RequestMapping(value = "/admin_modify_action", method=RequestMethod.POST) //관리자정보 수정액션
+	//관리자정보 수정액션
+	@RequestMapping(value = "/admin_modify_action", method=RequestMethod.POST) 
 	public String admin_modify_action(Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
 		
 		Object ss_id = session.getAttribute("ad_id");
@@ -110,28 +131,437 @@ public class view_cms {
 		
 		return "redirect:/info?ad_seq=" + session_seq + "&result=sucess";
 	}
-	
-	@RequestMapping(value = "/logout") //로그아웃
+	//로그아웃
+	@RequestMapping(value = "/logout") 
 	public String logout(HttpServletRequest request) {
 
 		return "cms_view/admin/logout";
 	}
+	//비밀번호 변경
+	@RequestMapping(value = "/password") 
+	public String password(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
+		
+		model.addAttribute("admin_info", as.admin_read(admin));
+		model.addAttribute("result", paramMap.get("result"));
+		
+		return "cms_view/admin/password";
+	}
+	//비밀번호 변경 액션
+    @RequestMapping(value = "/password_modify_action", method=RequestMethod.POST) 
+    public String password_modify_action(@RequestParam Map<String, Object> paramMap, String ad_password, String ad_passwordChk, @ModelAttribute Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
+       boolean result = as.passwordCheck(admin);
 
-	@RequestMapping(value = "/portfolioList")
-	public String portfolioList() {
+        Object ss_id = session.getAttribute("ad_id");
+	    String session_id = ss_id.toString();
+		
+		admin.setAd_updateid(session_id);
+		
+		if(result == true){
+			if(!ad_password.equals(ad_passwordChk)){
+	        	return "redirect:/password?result=fail_id";
+	        }
+			as.password_update(admin);
+			return "redirect:/password?result=sucsess";
+			
+        }else { 
+        	return "redirect:/password?result=fail";
+        }
+
+    }
+    //포트폴리오 목록
+	@RequestMapping(value = "/portfolioList") 
+	public String portfolioList(@RequestParam Map<String, Object> paramMap, Model model, HttpSession session) {
+		
+		//조회 하려는 페이지
+        int startPage = (!"".equals(paramMap.get("startPage")) && paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
+
+        //한페이지에 보여줄 리스트 수
+        int visiblePages = (!"".equals(paramMap.get("visiblePages")) && paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
+        //일단 전체 건수를 가져온다.
+        int totalCnt = boardService.board_cnt(paramMap);
+        
+        //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
+        //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
+        BigDecimal decimal1 = new BigDecimal(totalCnt);
+        BigDecimal decimal2 = new BigDecimal(visiblePages);
+        BigDecimal totalPage = decimal1.divide(decimal2, 0, BigDecimal.ROUND_UP);
+        
+        //int allCount = boardService.getallCount(paramMap);
+ 
+        int startLimitPage = 0;
+        //2.mysql limit 범위를 구하기 위해 계산
+        if(startPage==1){
+            startLimitPage = 0;
+        }else{
+            startLimitPage = (startPage-1)*visiblePages;
+        }
+        
+        paramMap.put("start", startLimitPage);
+        paramMap.put("end", visiblePages);
+        
+        model.addAttribute("startPage", startPage+"");//현재 페이지      
+        model.addAttribute("totalCnt", totalCnt);//전체 게시물수
+        model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
+        model.addAttribute("sch_value", paramMap.get("sch_value"));
+        model.addAttribute("sch_type", paramMap.get("sch_type"));
+        
+		model.addAttribute("board_division", paramMap.get("board_division"));
+		model.addAttribute("board_list", boardService.board_list(paramMap));
+		
 		return "cms_view/portfolio/portfolioList";
 	}
-
+	//포트폴리오 작성 폼
 	@RequestMapping(value = "/portfolioWrite")
-	public String portfolioWrite() {
+	public String portfolioWrite(@RequestParam Map<String, Object> paramMap, Model model) {
+		
+		model.addAttribute("board_division", paramMap.get("board_division"));
+		
 		return "cms_view/portfolio/portfolioWrite";
 	}
+	//포트폴리오 수정 폼
+	@RequestMapping(value = "/portfolioUpdate", method=RequestMethod.GET)
+	public String portfolioUpdate(@RequestParam Map<String, Object> paramMap, Board board, Model model) {
 
-	@RequestMapping(value = "/portfolioUpdate")
-	public String portfolioUpdate() {
+		model.addAttribute("board_update",boardService.board_read(board));
+ 		model.addAttribute("file_list",boardFileService.file_list(paramMap));
+ 		model.addAttribute("board_division", paramMap.get("board_division"));
+ 		model.addAttribute("board_seq", paramMap.get("board_seq"));
 		return "cms_view/portfolio/portfolioUpdate";
 	}
+	//고객센터 목록
+	@RequestMapping(value = "/contactList")
+	public String contactList(@RequestParam Map<String, Object> paramMap, Model model, HttpSession session) {
+		
+		//조회 하려는 페이지
+        int startPage = (!"".equals(paramMap.get("startPage")) && paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
 
+        //한페이지에 보여줄 리스트 수
+        int visiblePages = (!"".equals(paramMap.get("visiblePages")) && paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
+        //일단 전체 건수를 가져온다.
+        int totalCnt = boardService.board_cnt(paramMap);
+        
+        //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
+        //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
+        BigDecimal decimal1 = new BigDecimal(totalCnt);
+        BigDecimal decimal2 = new BigDecimal(visiblePages);
+        BigDecimal totalPage = decimal1.divide(decimal2, 0, BigDecimal.ROUND_UP);
+        
+        //int allCount = boardService.getallCount(paramMap);
+ 
+        int startLimitPage = 0;
+        //2.mysql limit 범위를 구하기 위해 계산
+        if(startPage==1){
+            startLimitPage = 0;
+        }else{
+            startLimitPage = (startPage-1)*visiblePages;
+        }
+        
+        paramMap.put("start", startLimitPage);
+        paramMap.put("end", visiblePages);
+        
+        model.addAttribute("startPage", startPage+"");//현재 페이지      
+        model.addAttribute("totalCnt", totalCnt);//전체 게시물수
+        model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
+        model.addAttribute("sch_value", paramMap.get("sch_value"));
+        model.addAttribute("sch_type", paramMap.get("sch_type"));
+        
+		model.addAttribute("board_division", paramMap.get("board_division"));
+		model.addAttribute("board_list", boardService.board_list(paramMap));
+		
+		return "cms_view/contact/contactList";
+	}
+	
+	@RequestMapping(value = "/contactUpdate")
+	public String contactUpdate() {
+		return "cms_view/contact/contactUpdate";
+	}
+
+	//공통 CMS 게시판 작성 액션
+	@RequestMapping(value="/boardWriteAction", method=RequestMethod.POST)
+	public String boardWriteAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model, HttpSession session)throws Exception{
+				
+				String board_division =  board.getBoard_division();
+				
+				
+			    if(!session.equals(null)) {
+			    	board.setBoard_writer("GUEST");
+			    	board.setBoard_use_yn("Y");
+					board.setBoard_hit(0);
+					board.setBoard_updateid("GUEST");
+					board.setBoard_etc("etc");
+			    }else{
+			    	Object objss_id = session.getAttribute("ad_id");
+			    	String session_id = objss_id.toString();
+			    	System.out.println("======================session_id======>" + session_id);
+			    	board.setBoard_writer(session_id);
+			    	board.setBoard_use_yn("Y");
+					board.setBoard_hit(0);
+					board.setBoard_updateid(session_id);
+					board.setBoard_etc("etc");
+			    }
+			
+				
+
+				boardService.board_insert(board);
+				
+				System.out.println("==========================>" + board);
+				
+			
+				//포트폴리오 테이블 작성 액션
+				if(board_division.equals("portfolio")) {
+				board.setBoard_seq(board.getBoard_seq());
+				boardService.portfolio_insert(board);
+				}else if(board_division.equals("customer")) {
+				board.setBoard_seq(board.getBoard_seq());
+				board.setStatus("0");
+				boardService.customer_insert(board);
+				}
+				
+				
+				
+				board = boardService.board_read(board);
+				
+		        BoardFile boardFile = new BoardFile();
+		        boardFile.setBoard_seq(board.getBoard_seq());
+		        boardFile.setFile_updateid(board.getBoard_writer());
+		        boardFile.setFile_use_yn("Y");
+		        
+		        //파일
+		        Calendar cal = Calendar.getInstance()  ;
+		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmSS");
+		        String time = dateFormat.format(cal.getTime());
+		        
+		        List<MultipartFile> files = fileup.getUploadfile();
+				System.out.println("File ----->" + files);
+				if (null != files && files.size() > 0) {
+					
+					
+					for (MultipartFile multipartFile : files) {
+						if (!"".equals(multipartFile.getOriginalFilename()) && multipartFile.getSize() > 0) {
+						
+							System.out.println("file = " + multipartFile.getOriginalFilename() + "/" + multipartFile.getSize());
+							// 상대경로 
+							String file_path = request.getSession().getServletContext().getRealPath("/");
+							
+							String file_ori_name = multipartFile.getOriginalFilename();
+							String file_sub_name = time + "-" + UUID.randomUUID().toString() +"_" +file_ori_name;
+							String attach_path = "";
+							
+							if(board_division.equals("download")) {
+								attach_path = "resources/downloads/";
+							}else if (board_division.equals("portfolio")) {
+								attach_path = "resources/portfolio/";
+							}
+							
+							File f = new File(file_path + attach_path + file_sub_name);
+							
+							System.out.println("===========자료실 파일업로드 실제 Path=========" + f);
+
+							//	이력서 model에 파일명,주소 저장
+							//         파일명에서 확장자 추출 
+							String filename = file_ori_name;
+							int fileLen = filename.length();
+							int lastDot = filename.lastIndexOf('.');
+							String fileExt = filename.substring(lastDot, fileLen).toLowerCase();
+							boardFile.setExtention_name(fileExt);
+							boardFile.setFile_ori_name(file_ori_name);
+							boardFile.setFile_sub_name(file_sub_name);
+							boardFile.setFile_path("/" + attach_path);
+							
+							long fsize = multipartFile.getSize();
+							String Fsize = String.valueOf(fsize);
+
+					        System.out.println(" size = " + Fsize + " bytes");
+					 
+							
+							boardFile.setFile_size(Fsize);
+
+							System.out.println("확장명 : " + fileExt);
+							
+							boardFileService.file_insert(boardFile);
+							
+							try {
+								multipartFile.transferTo(f);
+							} catch (IllegalStateException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							
+							
+							
+							
+							try { 						
+								
+							} catch (Exception e) {
+								model.addAttribute("msg", "다시 입력하세요.");
+							}
+							
+						}
+					}
+					
+					
+				}
+
+		        if(board_division.equals("customer")) {
+		        	return "redirect:/main1";	
+		        }else if (board_division.equals("portfolio")) {
+		        	return "redirect:/portfolioList?board_division=" + board.getBoard_division();
+				}
+		        return "redirect:/portfolioList?board_division=" + board.getBoard_division();
+		    }
+	//공통 CMS 게시판 수정 액션
+	@RequestMapping(value="/boardUpdateAction", method=RequestMethod.POST)
+	public String boardUpdateAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag, String[] fName, HttpSession session)throws Exception{
+				
+					String board_division =  board.getBoard_division();
+					
+					if (!board_division.equals("customer")) {
+					
+					Object objss_id = session.getAttribute("ad_id");
+				    String session_id = objss_id.toString();
+					
+					board.setBoard_updateid(session_id);
+
+					boardService.board_update(board);
+							
+			        BoardFile boardFile = new BoardFile();
+			        boardFile.setBoard_seq(board.getBoard_seq());
+			        boardFile.setFile_updateid(session_id);
+			        boardFile.setFile_use_yn("Y");
+			        
+			        //파일
+			        Calendar cal = Calendar.getInstance()  ;
+			        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmSS");
+			        String time = dateFormat.format(cal.getTime());
+			        
+			        List<MultipartFile> files = fileup.getUploadfile();
+					
+					//List<String> fileNames = new ArrayList<String>();
+					if (null != files && files.size() > 0) {
+						
+						
+						for (MultipartFile multipartFile : files) {
+							if (!"".equals(multipartFile.getOriginalFilename()) && multipartFile.getSize() > 0) {
+							
+								System.out.println("file = " + multipartFile.getOriginalFilename() + "/" + multipartFile.getSize());
+								// 상대경로 
+								String file_path = request.getSession().getServletContext().getRealPath("/");
+								String file_ori_name = multipartFile.getOriginalFilename();
+								String file_sub_name = time + "-" + UUID.randomUUID().toString() +"_" +file_ori_name;
+								
+								System.out.println("file_ori_name ----->" + file_ori_name);
+								
+								String attach_path = "";
+								if(board_division.equals("download")) {
+									attach_path = "resources/downloads/";
+								}else if (board_division.equals("portfolio")) {
+									attach_path = "resources/portfolio/";
+								}
+								
+								File f = new File(file_path + attach_path + file_sub_name);
+								
+								System.out.println("===========자료실 파일업로드 실제 Path=========" + f);
+
+								//	이력서 model에 파일명,주소 저장
+								//         파일명에서 확장자 추출 
+								String filename = file_ori_name;
+								int fileLen = filename.length();
+								int lastDot = filename.lastIndexOf('.');
+								String fileExt = filename.substring(lastDot, fileLen).toLowerCase();
+								boardFile.setExtention_name(fileExt);
+								boardFile.setFile_ori_name(file_ori_name);
+								boardFile.setFile_sub_name(file_sub_name);
+								boardFile.setFile_path("/" + attach_path);
+								
+								long test = multipartFile.getSize();
+								String test2 = String.valueOf(test);
+
+						        System.out.println(" size = " + test2 + " bytes");
+						 
+								
+								boardFile.setFile_size(test2);
+
+								System.out.println("확장명 : " + fileExt);
+								
+								boardFileService.file_insert(boardFile);
+								
+								try {
+									multipartFile.transferTo(f);
+								} catch (IllegalStateException e) {
+									e.printStackTrace();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+								
+								
+								
+								
+								try { 						
+									
+								} catch (Exception e) {
+									model.addAttribute("msg", "다시 입력하세요.");
+								}
+								
+							}
+						}
+						
+						
+					}
+					if(file_key != null) {
+			    		
+			    		for(int i=0; i<file_key.length ; i++) {
+			    			
+			    			System.out.println("===========fileKey==============>" + file_key[i]);
+			    			System.out.println("===========flag==============>" + flag[i]);
+			        		System.out.println("===========fName==============>" + fName[i]);
+
+			        		//flag가 D인건 삭제. 데이터도 삭제, 파일도 삭제.
+			    			if("D".equals(flag[i])) {
+			    				boardFile.setFile_seq(Integer.parseInt(file_key[i]));
+			    				boardFile.setFile_updateid(session_id);
+			    				
+
+			    				boardFileService.file_updateform_delete(boardFile);
+									
+			    			}
+			    		}
+			    		}
+					}else{
+					boardService.board_update(board);
+					}
+				
+		        return "redirect:/portfolioList?board_division="+board.getBoard_division()+"&board_seq=" + board.getBoard_seq();
+		    }
+	//공통 CMS 게시판 목록 및 상세보기에서 삭제 액션 실제로 use_yn = 'N' 처리
+	@RequestMapping(value = "/board_delete" , method = RequestMethod.GET)
+	public String board_delete(Board board, BoardFile boardFile, int[] board_seq, HttpServletRequest request) {
+			
+		System.out.println("=======================board_seq?" + board_seq);
+		
+			for (int i = 0; i < board_seq.length; i++) {
+				
+			board.setBoard_updateid("delete success");
+			board.setBoard_seq(board_seq[i]);
+			System.out.println("=======================board_seq[i]?" + board_seq[i]);
+			
+			boardService.board_delete(board);
+			
+			boardFile.setFile_updateid("delete success");
+			boardFile.setBoard_seq(board_seq[i]);
+			
+			boardFileService.file_delete(boardFile);
+			}
+			if (board.getBoard_division().equals("portfolio")) {
+				return "redirect:/portfolioList?board_division=" + board.getBoard_division();
+				
+			}else if(board.getBoard_division().equals("contact")){
+				return "redirect:/contactList?board_division=" + board.getBoard_division();
+			}else {
+				return null;
+			}
+			
+		}
 	@RequestMapping(value = "/downloadsList")
 	public String downloadsList() {
 		return "cms_view/downloads/downloadsList";
@@ -147,15 +577,6 @@ public class view_cms {
 		return "cms_view/downloads/downloadsUpdate";
 	}
 
-	@RequestMapping(value = "/contactList")
-	public String contactList() {
-		return "cms_view/contact/contactList";
-	}
-
-	@RequestMapping(value = "/contactUpdate")
-	public String contactUpdate() {
-		return "cms_view/contact/contactUpdate";
-	}
 	
 	@RequestMapping(value = "/adminList")
 	public String adminList() {
@@ -163,16 +584,9 @@ public class view_cms {
 	}
 
 	@RequestMapping(value = "/adminUpdate")
-	public String adminUpdate(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
-		
-		model.addAttribute("admin_info", as.admin_read(admin));
-		model.addAttribute("result", paramMap.get("result"));
-		
+	public String adminUpdate(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {			
 		return "cms_view/admin/adminUpdate";
 	}
 
-	@RequestMapping(value = "/password")
-	public String password() {
-		return "cms_view/admin/password";
-	}
+
 }

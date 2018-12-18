@@ -32,7 +32,7 @@ function admin_modify() {
 			<a>아이디</a>
 			</div>
 			<div class="input">
-			<input type="text" id="ad_id" name="ad_id" value="${sessionScope.ad_id}" readonly="readonly" />
+			<input type="text" id="ad_id" name="ad_id" value="${admin_info.ad_id}" readonly="readonly" />
 					<input type="hidden" id="ad_seq" name="ad_seq" value="${ad_seq}" />
 					<input type="hidden" id="result" name="result" value="${result}" />
 			</div>

@@ -121,6 +121,8 @@
 	position: relative;
 	overflow: hidden;
 	top: -38;
+	width: 85px;
+	float: right;
 }
 /* 등록 */
 .portBox{

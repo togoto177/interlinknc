@@ -129,7 +129,7 @@ public class CmsController {
 		return "redirect:/admin_modify?ad_seq=" + session_seq + "&result=sucess";
 	}*/
 	
-	@RequestMapping(value = "/password_modify") //관리자정보 수정
+/*	@RequestMapping(value = "/password_modify") //관리자정보 수정
 	public String password_modify(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
 		
 		model.addAttribute("admin_info", as.admin_read(admin));
@@ -137,10 +137,10 @@ public class CmsController {
 		model.addAttribute("result", paramMap.get("result"));
 		
 		return "cms/admin/password_modify";
-	}
+	}*/
 	
 	//문의하기 사용자 수정 비밀번호 확인 처리
-    @RequestMapping(value = "password_modify_action", method=RequestMethod.POST)
+/*    @RequestMapping(value = "password_modify_action", method=RequestMethod.POST)
     public String password_modify_action(@RequestParam Map<String, Object> paramMap, @ModelAttribute Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
        boolean result = as.passwordCheck(admin);
        
@@ -161,7 +161,7 @@ public class CmsController {
         	return "redirect:/password_modify?result=fail";
         }
 
-    }
+    }*/
     
     //사원 목록
     @RequestMapping(value = "/employee_list") 

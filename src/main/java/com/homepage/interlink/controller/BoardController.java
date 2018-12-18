@@ -461,7 +461,7 @@ public class BoardController {
 	        return "redirect:/cms_board_body?board_division="+board.getBoard_division()+"&board_seq=" + board.getBoard_seq();
 	    }
 	//게시판 목록 및 상세보기에서 삭제 액션 실제로 use_yn = 'N' 처리
-	@RequestMapping(value = "/cms_board_delete" , method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cms_board_delete" , method = RequestMethod.GET)
 	public String cms_board_delete(Board board, BoardFile boardFile, int[] board_seq, HttpServletRequest request) {
 		
 		for (int i = 0; i < board_seq.length; i++) {
@@ -479,7 +479,7 @@ public class BoardController {
 		
 		return "redirect:/cms_board?board_division=" + board.getBoard_division();
 		
-	}
+	}*/
 	
 //	------------end---------------------
 	
