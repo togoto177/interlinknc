@@ -27,7 +27,7 @@ h1{
 	position: relative;
 	width: 64;
 	margin: 0 auto;
-	top: 84%;
+	margin-top: 7%;
 }
 .scroll img{
 	width: 100%;
@@ -67,9 +67,10 @@ h1{
 	padding: 0;
 	float: right;
 	overflow: hidden;
-	width: 351;
 	white-space: nowrap;
 	list-style: none;
+	padding-right: 12%;
+	width: 100%;
 }
 .t_menu_ul li a{
 	display: block;
@@ -80,7 +81,7 @@ h1{
 	padding-bottom: 7px;
 	color:white;
 	border-bottom: 1px solid #fff;
-}\
+}
 .t_menu_ul li{
 	float: right;
 }
@@ -127,7 +128,7 @@ h1{
 /* 메인이미지 */
 .mainImgEx1{
 	width: 100%;
-	height: 800px;
+	height: 53%;
 	font-weight:bold;
 	position: absolute;
 }
@@ -149,7 +150,7 @@ h1{
 }
 .mainImgEx2{
 	width: 100%;
-	height: 800px;
+	height: 53%;
 	font-weight:bold;
 	position: absolute;
 }
@@ -160,7 +161,7 @@ h1{
 }
 .mainImgEx3{
 	width: 100%;
-	height: 800px;
+	height: 53%;
 	font-weight:bold;
 	position: absolute;
 }
@@ -182,16 +183,18 @@ h1{
 }
 
 .mainImg{
-	height: 880px;
+	overflow: hidden;
+	padding-top: 10%;
+	padding-bottom: 5%;
 	width: 100%;
 	margin: 0 auto;
 	background: url( "images/main_bg.jpg" );
 	background-size: cover;
 }
 .mainImg_con2{
+	overflow: hidden;
 	text-align: center;
 	width: 100%;
-	height: 10%;
 	position: relative;
 	top: 18%;
 }
@@ -254,10 +257,10 @@ h1{
     height: 1px;
 }
 .whatwedo{
-	position: relative;
+	position: absolute;
+	top: 53%;
+	left: 60%;
 	font-size: 50;
-	top:127%;
-	left:14%;
 	opacity: 0.2;
 	text-shadow: -5px 0px 2px #771380;
 }
@@ -280,9 +283,9 @@ h1{
 	position: relative;
 	top: 15px;
 	width: 50%;
-	text-align: left;
-	margin-left: 30;
-	padding-bottom: 20;
+	text-align: right;
+	/* float: left; */
+	margin:0;
 }
 .mainImg_con3 .text1 a{
 	color: #cc99ff;
@@ -295,6 +298,8 @@ h1{
 	width: 50%;
 	font-size: 12;
 	text-align: left;
+	/* float: left; */
+	margin: 0;
 }
 .mainImg_con3 .text2 li{
 	color: #cc99ff;
@@ -307,6 +312,7 @@ h1{
 }
 .mainImg_con2 img{
 	width: 223px;
+	height: auto;
 	padding-bottom: 8;
 }
 .mainImg_con2 a{
@@ -316,17 +322,16 @@ h1{
 /* 소개 about */
 .about{
 	width: 100%;
-	height: 1500px;
 	text-align: center;
 	background: url("images/about_bg.jpg");
 	background-size: cover;
 	overflow: hidden;
-	padding-bottom: 300;
+	padding-bottom: 7%;
 }
 .about_title{
 	font-size: 27;
 	position: relative;
-	top: -5%;
+	top: -100px;
 	font-weight: 600;
 	font-family: "HPSimplified_Rg";
 	letter-spacing: 7;
@@ -355,9 +360,10 @@ h1{
 }
 
 .about2{
-	width: 800px;
+	top: -100px;
 	margin: 0 auto;
 	position: relative;
+	word-break: keep-all;
 }
 .about2 .about2A{
 	color: white;
@@ -368,12 +374,17 @@ h1{
 	position: relative;
 }
 .about_inter{
+	width: 30%;
 	position: relative;
-	left: 15%;
-	top: 15%;
 	text-align: left;
 	font-size: 60;
 	font-weight: 700;
+}
+.about_inter img{
+	top: 215px;
+	left: 65%;
+	position: relative;
+	height: auto !important;
 }
 
 /* history */
@@ -392,6 +403,9 @@ h1{
     -ms-transform:scale(1,1.1);
     -o-transform:scale(1,1.1); 
     transform:scale(1,1.1);
+    
+    position: relative;
+    top: -100px;
 }
 
 .history_titleA img{
@@ -409,14 +423,20 @@ h1{
 	position: relative;
 	font-size: 80;
 	font-weight: 700;
-	left: 20%;
-	top: 14%;
+	top: 105px;
+	left: 60%;
+	width: 340px;
 }
 .about3 .history{
 	width: 70%;
 	margin: 0 auto;
 	text-align: left;
 	font-size: 12;
+	position: relative;
+	top: -100px;
+}
+.about3 .history td{
+	word-break: keep-all;
 }
 .about3 .history table{
 	margin: 0 auto;
@@ -568,22 +588,21 @@ h1{
 }
 .portfolioImg{
 	margin:0 auto;
-	width:1555;
-	padding: 20% 0;
+	width:100%;
+	padding: 15% 0;
 	position: relative;
 	overflow: hidden;
 }
 .portfolioImg_div{
-	width: 100%;
+	/* width: 1525px; */
+	margin: 0 auto;
 	position: relative;
 	top: 81;
 }
 .portfolioImg .portfolioImg_div .bxslider li{
 	top: 0;
-	height: 100%;
 	position: relative;
 	z-index: 105;
-	margin: 0 4;
 }
 .portfolioImg .portfolioImg_div .bxslider .portImg{
 	width: 100%;
@@ -635,6 +654,7 @@ h1{
 	right: 5%;
 }
 .portfolioImg .portfolioImg_div .bxslider .portImg img{
+	height: 100%;
 	width: 100%;
 }
 .portConText{
@@ -774,6 +794,11 @@ h1{
 	margin:3 0;
 	z-index: 105;
 }
+
+.bx-wrapper{
+	max-width: 1170px;
+}
+
 /* 다운로드 게시판 */
 .downloads{
 	background: url("images/download.jpg");
@@ -808,7 +833,6 @@ h1{
 	border-collapse: collapse;
 	width: 100%;
 	margin:0 auto;
-	min-width: 550px;
 	margin-top: 8%;
 	color: white;
 }
@@ -827,13 +851,15 @@ h1{
 	text-decoration: none;
 	color: white;
 	text-align: left;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 .downloadsTable table td{
+	white-space: nowrap;
 	text-align: center;
 	font-size: 13;
-	padding: 8 0;
-	/* word-break : nowrap;
-	text-overflow : ellipsis; */
+	padding: 8 2;
 }
 .downloadsTable table .tabletH td{
 	border-bottom: 1px solid #993399;
@@ -854,8 +880,8 @@ h1{
 	padding: 0;
 	overflow: hidden;
 	position: relative;
-	left: 52%;
-	transform: translateX(-10%);
+	width: 190px;
+	margin: 0 auto;
 	font-size: 13;
 }
 .downloads .downCnt li{
@@ -899,7 +925,6 @@ h1{
 	text-align: center;
 	overflow:hidden;
 	position: relative;
-	padding-bottom: 350;
 }
 .customerCon{
 	width: 70%;
@@ -910,7 +935,7 @@ h1{
 }
 .customer_title{
 	font-size: 30;
-	top: 207;
+	padding-top: 15%;
 	position: relative;
 	font-weight: 700;
 }
@@ -929,9 +954,9 @@ h1{
 	margin: 0 auto;
 	text-align: left;
 	position: relative;
-	top: 330;
 	overflow: overlay;
 	font-family: "Malgun Gothic";
+	padding: 10% 0;
 }
 .customerLeft{
 	width: 50%;
