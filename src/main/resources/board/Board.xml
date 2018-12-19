@@ -138,7 +138,7 @@
 		
 		where a.board_seq = #{board_seq};
 	</if>
-	 <if test="board_division.equals('customer')">
+	 <if test="board_division.equals('contact')">
     	update 
     	customer_tb
     	    	

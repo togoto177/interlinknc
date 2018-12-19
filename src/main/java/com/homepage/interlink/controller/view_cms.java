@@ -81,7 +81,7 @@ public class view_cms {
 		if (admin_tb == null) {
 			mav.setViewName("cms_view/cms_main");
 			mav.addObject("result", "fail");
-		}else if(admin_tb.getAd_etc().equals("0")){
+		}else if(admin_tb.getAd_auth().equals("0")){
 			mav.setViewName("cms_view/cms_main");
 			mav.addObject("result", "fail_auth");
 		}else{
@@ -111,14 +111,17 @@ public class view_cms {
 	@RequestMapping(value = "/info")
 	public String info(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
 
+		String division = "info";
+        model.addAttribute("division", division);
+		
 		model.addAttribute("admin_info", as.admin_read(admin));
 		model.addAttribute("result", paramMap.get("result"));
 		
 		return "cms_view/admin/info";
 	}
-	//관리자정보 수정액션
+	//관리자정보 공통 수정액션
 	@RequestMapping(value = "/admin_modify_action", method=RequestMethod.POST) 
-	public String admin_modify_action(Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
+	public String admin_modify_action(Admin_tb admin, Model model, HttpServletRequest request, HttpSession session, String division) {
 		
 		Object ss_id = session.getAttribute("ad_id");
 	    String session_id = ss_id.toString();
@@ -129,7 +132,14 @@ public class view_cms {
 		
 		as.admin_update(admin);
 		
+		System.out.println("========================================request.getServletPath(); >" + request.getRequestURI());
+		
+		if(division.equals("info")) {
 		return "redirect:/info?ad_seq=" + session_seq + "&result=sucess";
+		}else {
+		return "redirect:/adminList";	
+		}
+		
 	}
 	//로그아웃
 	@RequestMapping(value = "/logout") 
@@ -137,9 +147,12 @@ public class view_cms {
 
 		return "cms_view/admin/logout";
 	}
-	//비밀번호 변경
+	//비밀번호 변경 폼
 	@RequestMapping(value = "/password") 
 	public String password(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
+		
+		String division = "password";
+        model.addAttribute("division", division);
 		
 		model.addAttribute("admin_info", as.admin_read(admin));
 		model.addAttribute("result", paramMap.get("result"));
@@ -270,13 +283,79 @@ public class view_cms {
 		
 		return "cms_view/contact/contactList";
 	}
-	
+	//고객센터 수정폼
 	@RequestMapping(value = "/contactUpdate")
-	public String contactUpdate() {
+	public String contactUpdate(@RequestParam Map<String, Object> paramMap, Model model, Board board) {
+		
+	   model.addAttribute("board_division", paramMap.get("board_division"));
+       model.addAttribute("file_list",boardFileService.file_list(paramMap));
+	   model.addAttribute("board_body",boardService.board_read(board));
+		
 		return "cms_view/contact/contactUpdate";
 	}
+	//다운로드 목록
+	@RequestMapping(value = "/downloadsList")
+	public String downloadsList(@RequestParam Map<String, Object>paramMap, Model model) {
+		
+		//조회 하려는 페이지
+        int startPage = (!"".equals(paramMap.get("startPage")) && paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
 
+        //한페이지에 보여줄 리스트 수
+        int visiblePages = (!"".equals(paramMap.get("visiblePages")) && paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
+        //일단 전체 건수를 가져온다.
+        int totalCnt = boardService.board_cnt(paramMap);
+        
+        //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
+        //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
+        BigDecimal decimal1 = new BigDecimal(totalCnt);
+        BigDecimal decimal2 = new BigDecimal(visiblePages);
+        BigDecimal totalPage = decimal1.divide(decimal2, 0, BigDecimal.ROUND_UP);
+        
+        //int allCount = boardService.getallCount(paramMap);
+ 
+        int startLimitPage = 0;
+        //2.mysql limit 범위를 구하기 위해 계산
+        if(startPage==1){
+            startLimitPage = 0;
+        }else{
+            startLimitPage = (startPage-1)*visiblePages;
+        }
+        
+        paramMap.put("start", startLimitPage);
+        paramMap.put("end", visiblePages);
+        
+        model.addAttribute("startPage", startPage+"");//현재 페이지      
+        model.addAttribute("totalCnt", totalCnt);//전체 게시물수
+        model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
+        model.addAttribute("sch_value", paramMap.get("sch_value"));
+        model.addAttribute("sch_type", paramMap.get("sch_type"));
+        
+		model.addAttribute("board_division", paramMap.get("board_division"));
+		model.addAttribute("board_list", boardService.board_list(paramMap));
+		
+		return "cms_view/downloads/downloadsList";
+	}
+	//다운로드 작성 폼
+	@RequestMapping(value = "/downloadsWrite")
+	public String downloadsWrite(@RequestParam Map<String, Object>paramMap, Model model) {
+		
+		model.addAttribute("board_division", paramMap.get("board_division"));
+		
+		return "cms_view/downloads/downloadsWrite";
+	}
+	//다운로드 수정 폼
+	//다운로드 수정 폼
+	@RequestMapping(value = "/downloadsUpdate")
+	public String downloadsUpdate(@RequestParam Map<String, Object> paramMap, Model model, Board board) {
+		
+	   model.addAttribute("board_division", paramMap.get("board_division"));
+       model.addAttribute("file_list",boardFileService.file_list(paramMap));
+	   model.addAttribute("board_update",boardService.board_read(board));
+		
+		return "cms_view/downloads/downloadsUpdate";
+	}
 	//공통 CMS 게시판 작성 액션
+	//CMS 공통 게시판 작성 액션
 	@RequestMapping(value="/boardWriteAction", method=RequestMethod.POST)
 	public String boardWriteAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model, HttpSession session)throws Exception{
 				
@@ -403,20 +482,21 @@ public class view_cms {
 					
 				}
 
-		        if(board_division.equals("customer")) {
+		        if(board_division.equals("contact")) {
 		        	return "redirect:/main1";	
 		        }else if (board_division.equals("portfolio")) {
 		        	return "redirect:/portfolioList?board_division=" + board.getBoard_division();
 				}
-		        return "redirect:/portfolioList?board_division=" + board.getBoard_division();
+		        return "redirect:/downloadsList?board_division=" + board.getBoard_division();
 		    }
 	//공통 CMS 게시판 수정 액션
+	//CMS 공통 게시판 수정 액션
 	@RequestMapping(value="/boardUpdateAction", method=RequestMethod.POST)
-	public String boardUpdateAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag, String[] fName, HttpSession session)throws Exception{
+	public String boardUpdateAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag/*, String[] fName*/, HttpSession session)throws Exception{
 				
 					String board_division =  board.getBoard_division();
 					
-					if (!board_division.equals("customer")) {
+					if (!board_division.equals("contact")) {
 					
 					Object objss_id = session.getAttribute("ad_id");
 				    String session_id = objss_id.toString();
@@ -514,7 +594,7 @@ public class view_cms {
 			    			
 			    			System.out.println("===========fileKey==============>" + file_key[i]);
 			    			System.out.println("===========flag==============>" + flag[i]);
-			        		System.out.println("===========fName==============>" + fName[i]);
+			        		/*System.out.println("===========fName==============>" + fName[i]);*/
 
 			        		//flag가 D인건 삭제. 데이터도 삭제, 파일도 삭제.
 			    			if("D".equals(flag[i])) {
@@ -530,10 +610,17 @@ public class view_cms {
 					}else{
 					boardService.board_update(board);
 					}
-				
-		        return "redirect:/portfolioList?board_division="+board.getBoard_division()+"&board_seq=" + board.getBoard_seq();
+					
+				if(board.getBoard_division().equals("portfolio")) {
+					return "redirect:/portfolioList?board_division="+board.getBoard_division();
+				}else if(board.getBoard_division().equals("contact")) {
+					return "redirect:/contactList?board_division="+board.getBoard_division();
+				}else {
+					return "redirect:/downloadsList?board_division="+board.getBoard_division();
+				}
 		    }
 	//공통 CMS 게시판 목록 및 상세보기에서 삭제 액션 실제로 use_yn = 'N' 처리
+	//CMS 공통 게시판 삭제 액션
 	@RequestMapping(value = "/board_delete" , method = RequestMethod.GET)
 	public String board_delete(Board board, BoardFile boardFile, int[] board_seq, HttpServletRequest request) {
 			
@@ -558,35 +645,113 @@ public class view_cms {
 			}else if(board.getBoard_division().equals("contact")){
 				return "redirect:/contactList?board_division=" + board.getBoard_division();
 			}else {
-				return null;
+				return "redirect:/downloadsList?board_division=" + board.getBoard_division();
 			}
 			
 		}
-	@RequestMapping(value = "/downloadsList")
-	public String downloadsList() {
-		return "cms_view/downloads/downloadsList";
-	}
-
-	@RequestMapping(value = "/downloadsWrite")
-	public String downloadsWrite() {
-		return "cms_view/downloads/downloadsWrite";
-	}
-
-	@RequestMapping(value = "/downloadsUpdate")
-	public String downloadsUpdate() {
-		return "cms_view/downloads/downloadsUpdate";
-	}
-
 	
+	//관리자 목록폼
 	@RequestMapping(value = "/adminList")
-	public String adminList() {
+	public String adminList(@RequestParam Map<String, Object> paramMap, Model model, HttpSession session) {
+		
+		//조회 하려는 페이지
+        int startPage = (!"".equals(paramMap.get("startPage")) && paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
+
+        //한페이지에 보여줄 리스트 수
+        int visiblePages = (!"".equals(paramMap.get("visiblePages")) && paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
+        //일단 전체 건수를 가져온다.
+        int totalCnt = as.employee_cnt(paramMap);
+        
+        //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
+        //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
+        BigDecimal decimal1 = new BigDecimal(totalCnt);
+        BigDecimal decimal2 = new BigDecimal(visiblePages);
+        BigDecimal totalPage = decimal1.divide(decimal2, 0, BigDecimal.ROUND_UP);
+        
+        //int allCount = boardService.getallCount(paramMap);
+ 
+        int startLimitPage = 0;
+        //2.mysql limit 범위를 구하기 위해 계산
+        if(startPage==1){
+            startLimitPage = 0;
+        }else{
+            startLimitPage = (startPage-1)*visiblePages;
+        }
+        
+        //회원가입 대기자 조회
+        int waitCnt = as.wait_cnt(paramMap);
+        
+        paramMap.put("start", startLimitPage);
+        paramMap.put("end", visiblePages);
+        
+        String division = "admin";
+        model.addAttribute("division", division);      
+        
+        model.addAttribute("startPage", startPage+"");//현재 페이지      
+        model.addAttribute("totalCnt", totalCnt);//전체 게시물수
+        model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
+        model.addAttribute("waitCnt", waitCnt);//회원가입대기자 수
+        
+        
+		model.addAttribute("employee_list", as.employee_list(paramMap)); //사원목록 리스트
+		model.addAttribute("wait_list", as.wait_list(paramMap)); //회원가입 대기자 리스트
+		
 		return "cms_view/admin/adminList";
 	}
-
+	//관리자 수정폼
 	@RequestMapping(value = "/adminUpdate")
-	public String adminUpdate(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {			
+	public String adminUpdate(@RequestParam Map<String, Object> paramMap, Admin_tb admin, Model model, HttpServletRequest request, HttpSession session) {
+		
+		String division = "admin";
+        model.addAttribute("division", division); 
+		model.addAttribute("admin_info", as.admin_read(admin));
+		
 		return "cms_view/admin/adminUpdate";
 	}
+	//관리자 삭제
+  	@RequestMapping(value = "/admin_delete" , method = RequestMethod.GET)
+  	public String admin_delete(int[] ad_seq, HttpServletRequest request) {
+  		for (int i = 0; i < ad_seq.length; i++) {
+  			
+  		
+  		as.employee_delete(ad_seq[i]);
+  		}
+  		
+  		return "redirect:/adminList";
+  		
+  	}
+  	//관리자 승인(회원가입)
+  	@RequestMapping(value = "/wait_admit" , method = RequestMethod.GET)
+  	public String wait_admit(Admin_tb admin_tb, int[] chk, String[] ad_rank, String[] ad_hiredate, HttpServletRequest request) {
+  	
+  		
+  		for (int i = 0; i < chk.length; i++) {
+  		
+  					admin_tb.setAd_seq(chk[i]);
+  					admin_tb.setAd_auth("1");
+  					admin_tb.setAd_rank(ad_rank[i]);
+					admin_tb.setAd_hiredate(ad_hiredate[i]);
+  					System.out.println("======================>ad_seq[i] :" + chk[i]);
+					System.out.println("=====================>ad_rank[i] : " + ad_rank[i]);
+					System.out.println("=====================>ad_rank[i] : " + ad_hiredate[i]);
+					as.wait_admit(admin_tb);
+ 
 
-
+  
+  		}
+  		return "redirect:/adminList";
+  		
+  	}
+  	//관리자 승인거절(회원가입)
+  	@RequestMapping(value = "/wait_delete" , method = RequestMethod.GET)
+  	public String wait_delete(int[] chk, HttpServletRequest request) {
+  		for (int i = 0; i < chk.length; i++) {
+  			
+  		
+  		as.employee_delete(chk[i]);
+  		}
+  		
+  		return "redirect:/adminList";
+  		
+  	}
 }

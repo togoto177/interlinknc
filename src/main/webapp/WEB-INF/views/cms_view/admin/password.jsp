@@ -35,6 +35,7 @@ function password_submit() {
 			<input type="text" id="ad_ori_password" name="ad_ori_password">
 			<input type="hidden" id="ad_seq" name="ad_seq" value="${ad_seq}" />
 			<input type="hidden" id="result" name="result" value="${result}" />
+			<input type="hidden" id="division" name="division" value="${division}">
 			</div>
 		</div>
 		<div class="infoCon1">

@@ -11,11 +11,8 @@ public class Admin_tb {
 	private String ad_updateid;
 	private String ad_update_date;
 	private String ad_rank; //직급
+	private String ad_auth;
 	private String ad_etc;
-	
-	//권수 추가
-	private String ad_ori_password; //기존패스워드
-	
 	public int getAd_seq() {
 		return ad_seq;
 	}
@@ -27,12 +24,6 @@ public class Admin_tb {
 	}
 	public void setAd_id(String ad_id) {
 		this.ad_id = ad_id;
-	}
-	public String getAd_ori_password() {
-		return ad_ori_password;
-	}
-	public void setAd_ori_password(String ad_ori_password) {
-		this.ad_ori_password = ad_ori_password;
 	}
 	public String getAd_password() {
 		return ad_password;
@@ -82,6 +73,12 @@ public class Admin_tb {
 	public void setAd_rank(String ad_rank) {
 		this.ad_rank = ad_rank;
 	}
+	public String getAd_auth() {
+		return ad_auth;
+	}
+	public void setAd_auth(String ad_auth) {
+		this.ad_auth = ad_auth;
+	}
 	public String getAd_etc() {
 		return ad_etc;
 	}
@@ -90,10 +87,10 @@ public class Admin_tb {
 	}
 	@Override
 	public String toString() {
-		return "Admin_tb [ad_seq=" + ad_seq + ", ad_id=" + ad_id + ", ad_ori_password=" + ad_ori_password
-				+ ", ad_password=" + ad_password + ", ad_name=" + ad_name + ", ad_contact=" + ad_contact + ", ad_email="
-				+ ad_email + ", ad_hiredate=" + ad_hiredate + ", ad_updateid=" + ad_updateid + ", ad_update_date="
-				+ ad_update_date + ", ad_rank=" + ad_rank + ", ad_etc=" + ad_etc + "]";
+		return "Admin_tb [ad_seq=" + ad_seq + ", ad_id=" + ad_id + ", ad_password=" + ad_password + ", ad_name="
+				+ ad_name + ", ad_contact=" + ad_contact + ", ad_email=" + ad_email + ", ad_hiredate=" + ad_hiredate
+				+ ", ad_updateid=" + ad_updateid + ", ad_update_date=" + ad_update_date + ", ad_rank=" + ad_rank
+				+ ", ad_auth=" + ad_auth + ", ad_etc=" + ad_etc + "]";
 	}
 	
 	

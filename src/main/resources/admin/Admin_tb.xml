@@ -14,12 +14,13 @@
 		<result property="ad_updateid" column="ad_updateid" />
 		<result property="ad_update_date" column="ad_update_date" />
 		<result property="ad_rank" column="ad_rank" />
+		<result property="ad_auth" column="ad_auth" />
 		<result property="ad_etc" column="ad_etc" />
 	</resultMap>
 	
 	<insert id="insert" parameterType="admin_tb">
 		insert into admin_tb values(NULL, #{ad_id}, password(#{ad_password}), #{ad_name}, #{ad_contact}, #{ad_email}, now(), #{ad_updateid},
-		now(), NULL, 0);
+		now(), NULL, 0, NUll);
 	</insert>
 	<select id="idcheck" parameterType="String" resultType="Integer">
 		select count(*) from admin_tb where ad_id = #{ad_id}
@@ -40,11 +41,14 @@
     	update 
     	admin_tb
 		set
-     	ad_name = #{ad_name},
+		ad_name = #{ad_name},
     	ad_contact = #{ad_contact},
     	ad_email = #{ad_email},
+    	ad_hiredate = #{ad_hiredate},
     	ad_updateid = #{ad_updateid},
-		ad_update_date = now()    	
+		ad_update_date = now(),
+		ad_rank = #{ad_rank},
+		ad_etc = #{ad_etc}    	
 		where ad_seq = #{ad_seq}
    </update>
    <!-- 관리자 비밀번호체크 -->
@@ -74,7 +78,7 @@
         *
         
         from admin_tb
-        where ad_etc = 1        
+        where ad_auth = 1        
         order by ad_seq desc
         
         limit #{start}, #{end};
@@ -88,7 +92,7 @@
 	</select>
 	<!-- 회원가입대기자 전체 수 -->
 	<select id="wait_cnt" resultType="int" parameterType="admin_tb">
-	    select count(ad_seq) from admin_tb where ad_etc = 0 
+	    select count(ad_seq) from admin_tb where ad_auth = 0 
 	</select>
 	<!-- 사원관리 삭제쿼리  -->
 	<select id="employee_delete" parameterType="int">
@@ -99,7 +103,7 @@
 	    select	     
         *        
         from admin_tb
-        where ad_etc = 0        
+        where ad_auth = 0        
         order by ad_seq desc	
 	</select>
 	<!-- 회원가입대기자 승인 -->
@@ -110,7 +114,7 @@
 		set
 		ad_hiredate = #{ad_hiredate},
 		ad_rank = #{ad_rank},
-        ad_etc = #{ad_etc},
+        ad_auth = #{ad_auth},
         ad_update_date = now()    
         where
         ad_seq = #{ad_seq}

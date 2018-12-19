@@ -461,7 +461,7 @@ if (window.jQuery)(function ($) {
 								p = file.type.substr(0,6) == 'image/' ? '<img class="MultiFile-preview" style="'+ MultiFile.previewCss+'"/>' : '',
 								label =	$(
 										(
-											'<span class="MultiFile-title" style="display: none;">'+ n +'</span>'+ //권수 style="display : none 추가함"
+											'<span class="MultiFile-title">'+ n +'</span>'+ 
 											'<span class="MultiFile-label" title="' + t + '">'+
 												(MultiFile.preview || $(slave).is('.with-preview') ? p : '' )+
 											'</span>'

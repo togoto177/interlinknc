@@ -12,7 +12,12 @@
 			});*/
 			
 			$("#delete").click(function() {
-				location.href="board_delete?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
+				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+				    location.href="board_delete?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
+				}else{   //취소
+				    return;
+				}
+				
 			});
 			
 			$("#preview").click(function() {

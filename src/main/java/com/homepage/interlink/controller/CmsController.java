@@ -211,7 +211,7 @@ public class CmsController {
 	}
     
     //사원 삭제
-  	@RequestMapping(value = "/employee_delete" , method = RequestMethod.GET)
+  	/*@RequestMapping(value = "/employee_delete" , method = RequestMethod.GET)
   	public String employee_delete(int[] ad_seq, HttpServletRequest request) {
   		
   		for (int i = 0; i < ad_seq.length; i++) {
@@ -222,10 +222,10 @@ public class CmsController {
   		
   		return "redirect:/employee_list";
   		
-  	}
+  	}*/
   	
   	//회원가입 승인
-  	@RequestMapping(value = "/wait_admit" , method = RequestMethod.GET)
+  	/*@RequestMapping(value = "/wait_admit" , method = RequestMethod.GET)
   	public String wait_admit(Admin_tb admin_tb, int[] chk, String[] ad_rank, String[] ad_hiredate, HttpServletRequest request) {
   	
   		
@@ -245,7 +245,7 @@ public class CmsController {
   		}
   		return "redirect:/employee_list";
   		
-  	}
+  	}*/
   	
 
 	

@@ -10,13 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
 <script type="text/javascript">
-$(function(){
-	$('.upload_text').val('미리보여줄 텍스트.');
-	$('.input_file').change(function(){
-		var i = $(this).val();
-		$('.upload_text').val(i);
-	});
-});
+function copy_to_clipboard() { //클립보드 복사
+	  var copyText = $("#Email").text();
+	  alert(copyText);
+	  copyText.select();
+	  document.execCommand("Copy");
+	}
 </script>
 </head>
 <body>
@@ -38,49 +37,54 @@ $(function(){
 				<col style="width: 50%" />
 			</colgroup>
 			<tr>
-				<td colspan="2" class="oneTitle"><a>홈페이지 가격 문의</a></td>
+				<td colspan="2" class="oneTitle"><a>${board_body.board_title}</a></td>
 			</tr>
 			<tr>
 				<td>
 					<label>작성자</label>
-					<a>김영정</a>
+					<a>${board_body.user_id}</a>
 				</td>
 				<td>
 					<label>일자</label>
-					<a>2018-12-12</a>
+					<a>${board_body.board_registerdate}</a>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<label>이메일</label>
-					<a class="Email">question@gmail.com</a><img alt="복사" src="resources/cms/notepad.png">
+					<a class="Email" id="Email">${board_body.user_email}</a>
+					
+					<img alt="복사" src="resources/cms/notepad.png" onclick="copy_to_clipboard()"><!--  2018-12-19 일단보류-->
+					
 				</td>
 				<td>
 					<label>연락처</label>
-					<a>010-1234-1234</a>
+					<a>${board_body.user_contact}</a>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="tdText"><a>홈페이지 가격 문의합니다.</a></td>
+				<td colspan="2" class="tdText"><a>${board_body.board_content}</a></td>
 			</tr>
 			<tr class="noBorder">
 				<td colspan="2">
 					<div class="btnDiv1">
 						<a class="btn1">상태수정</a>
 					</div>
-					<select>
-						<option>상태</option>
-						<option>미확인</option>
-						<option>확인</option>
-						<option>답변완료</option>
+					<form id="board_form" name="board_form" method="post" action="boardUpdateAction" enctype="multipart/form-data">
+					<input type="hidden" id="board_division" name="board_division" value="${board_division}">
+					<input type="hidden" id="board_seq" name="board_seq" value="${board_body.board_seq}">
+					<select name="status" id="status">
+						<option value="0" ${board_body.status eq "0" ? "selected" :""}>미확인</option>
+						<option value="1" ${board_body.status eq "1" ? "selected" :""}>확인</option>
 					</select>
+					</form>
 				</td>
 			</tr>
 		</table>
 	</div>
 	<div class="btnbox">
 		<div class="btnDiv2" style="margin-right: 0;">
-			<a class="btn1" style="padding: 30;" href="/contactList">LIST</a>
+			<a class="btn1" style="padding: 30;" href="/contactList?board_division=contact">LIST</a>
 		</div>
 	</div>
 </div>

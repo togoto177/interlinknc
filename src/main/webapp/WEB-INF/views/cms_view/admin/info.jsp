@@ -35,6 +35,7 @@ function admin_modify() {
 			<input type="text" id="ad_id" name="ad_id" value="${admin_info.ad_id}" readonly="readonly" />
 					<input type="hidden" id="ad_seq" name="ad_seq" value="${ad_seq}" />
 					<input type="hidden" id="result" name="result" value="${result}" />
+					<input type="hidden" id="division" name="division" value="${division}">
 			</div>
 		</div>
 		<div class="infoCon1">
@@ -43,7 +44,7 @@ function admin_modify() {
 			</div>
 			<div class="input">
 			<input type="text" id="ad_name" name="ad_name"
-						value="${admin_info.ad_name}" />
+						value="${admin_info.ad_name}" readonly="readonly"/>
 			</div>
 		</div>
 		<div class="infoCon1">

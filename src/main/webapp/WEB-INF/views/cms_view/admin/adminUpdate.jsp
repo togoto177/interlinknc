@@ -17,6 +17,29 @@ $(function(){
 		$('.upload_text').val(i);
 	});
 });
+
+$(function() {
+
+	  $('input:text[name="ad_hiredate"]').datepicker({
+	    dateFormat: 'yy년 mm월 dd일'
+	  });
+	});
+	
+function admin_modify() {
+	$("#admin_form").submit(); 
+}
+
+$(document).ready(function() {
+
+$("#adDelete").click(function() {
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+	    location.href="admin_delete?ad_seq="+$("#ad_seq").val();
+	}else{   //취소
+	    return;
+	}
+	
+});
+});
 </script>
 </head>
 <body>
@@ -31,6 +54,10 @@ $(function(){
 	<div class="portTitleView">
 		<a>사원정보수정</a>
 	</div>
+	<form id="admin_form" name="admin_form" method="post" action="admin_modify_action">
+	<input type="hidden" id="ad_seq" name="ad_seq" value="${admin_info.ad_seq}" />
+	<input type="hidden" id="chk" name="chk" value="${admin_info.ad_seq}" />
+	<input type="hidden" id="division" name="division" value="${division}">
 	<div class="portBox">
 		<table class="adminUpdate">
 			<colgroup>
@@ -40,53 +67,60 @@ $(function(){
 			<tr>
 				<td>
 					<div class="td1">아이디</div>
-					<div class="td2">dkdlel</div>
+					<div class="td2">${admin_info.ad_id}</div>
 				</td>
 				<td>
 					<div class="td1">전화번호</div>
-					<div class="td2"><input type="text" value="010-1234-1234" /></div>
+					<div class="td2"><input type="text" name="ad_contact" value="${admin_info.ad_contact }" /></div>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<div class="td1">이름</div>
-					<div class="td2">ㅇㅇㅇ</div>
+					<div class="td2"><input type="text" name="ad_name" value="${admin_info.ad_name}" readonly="readonly"/></div>
 				</td>
 				<td>
 					<div class="td1">이메일</div>
-					<div class="td2"><input type="text" value="dkdlel@interlinknc.com" /></div>
+					<div class="td2"><input type="text" name="ad_email" value="${admin_info.ad_email }" /></div>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<div class="td1" style="position: relative; top: 3;">직급</div>
 					<div class="td2">
-						<select>
-							<option>직급</option>
-							<option>사원</option>
-							<option>대리</option>
+						<select name="ad_rank">
+							<option value="사원" ${admin_info.ad_rank eq "사원" ? "selected" :""}>사원</option>
+							<option value="대리" ${admin_info.ad_rank eq "대리" ? "selected" :""}>대리</option>
+							<option value="주임" ${admin_info.ad_rank eq "주임" ? "selected" :""}>주임</option>
+							<option value="과장" ${admin_info.ad_rank eq "과장" ? "selected" :""}>과장</option>
+							<option value="차장" ${admin_info.ad_rank eq "차장" ? "selected" :""}>차장</option>
+							<option value="부장" ${admin_info.ad_rank eq "부장" ? "selected" :""}>부장</option>
+							<option value="이사" ${admin_info.ad_rank eq "이사" ? "selected" :""}>이사</option>
+							<option value="부사장" ${admin_info.ad_rank eq "부사장" ? "selected" :""}>부사장</option>
+							<option value="대표" ${admin_info.ad_rank eq "대표" ? "selected" :""}>대표</option>
 						</select>
 					</div>
 				</td>
 				<td>
 					<div class="td1">입사일</div>
-					<div class="td2"><input type="text" value="2018-12-12"/></div>
+					<div class="td2"><input type="text" name="ad_hiredate" id="datepicker" value="${admin_info.ad_hiredate}"/></div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<div class="td3">비고</div>
-					<div class="td4" style="height: 325;"><textarea rows="3" cols="5" placeholder="내용을 입력하세요."></textarea></div>
+					<div class="td4" style="height: 325;"><textarea rows="3" cols="5" name="ad_etc" placeholder="내용을 입력하세요.">${admin_info.ad_etc}</textarea></div>
 				</td>
 			</tr>
 		</table>
 	</div>
+	</form>
 	<div class="btnbox">
 		<div class="btnDiv1">
-			<a class="btn1">EDIT</a>
+			<a class="btn1" onclick="admin_modify()">EDIT</a>
 		</div>
 		<div class="btnDiv3">
-			<a class="btn1">DELETE</a>
+			<a class="btn1" id="adDelete">DELETE</a>
 		</div>
 		<div class="btnDiv2">
 			<a class="btn1" href="/adminList" style="padding: 30 29;">LIST</a>

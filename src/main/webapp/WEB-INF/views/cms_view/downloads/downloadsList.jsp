@@ -9,6 +9,85 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
+<script type="text/javascript">
+	$(document).ready(function() { 
+							
+							//--페이지 셋팅
+							var totalPage = ${totalPage}; //전체 페이지
+							var startPage = ${startPage}; //현재 페이지
+							
+							var pagination = "";
+
+							//--페이지네이션에 항상 10개가 보이도록 조절
+							var forStart = 0;
+							var forEnd = 0;
+
+							if ((startPage - 5) < 1) {
+								forStart = 1;
+							} else {
+								forStart = startPage - 5;
+							}
+
+							if (forStart == 1) {
+
+								if (totalPage > 9) {
+									forEnd = 10;
+								} else {
+									forEnd = totalPage;
+								}
+
+							} else {
+
+								if ((startPage + 4) > totalPage) {
+
+									forEnd = totalPage;
+
+									if (forEnd > 9) {
+										forStart = forEnd - 9
+									}
+
+								} else {
+									forEnd = startPage + 4;
+								}
+							}
+							//--페이지네이션에 항상 10개가 보이도록 조절
+
+							//전체 페이지 수를 받아 돌린다.
+							for (var i = forStart; i <= forEnd; i++) {
+								if (startPage == i) {
+									
+									pagination  +=  '<a class="focus" name="page_move" start_page="'+i+'" disabled>'
+											+ i + '</a>';
+								} else {
+									pagination += ' <a name="page_move" start_page="'+i+'">'
+											+ i + '</a>';
+								}
+							}
+						
+						
+							//하단 페이지 부분에 붙인다.
+							$("#pagination").append(pagination);
+							//--페이지 셋팅
+
+							$("#searchBtn").click(function() {
+								document.board_form.submit();
+							
+							});
+							
+							
+
+							//페이지 번호 클릭시 이동
+							$(document).on("click","a[name='page_move']",
+									function() {
+										var visiblePages = 10;//리스트 보여줄 페이지
+										
+										$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
+										$('#visiblePages').val(visiblePages);
+										document.board_form.submit();
+									});
+						}); 
+							
+	</script>
 </head>
 <body>
 <%@ include file="../cms_header.jsp"%>
@@ -18,9 +97,15 @@
 		<img alt="이미지" src="resources/mainImg/diagonal_download.png">
 		<a>DOWNLOADS</a>
 	</div>
+	<form name="board_form"  method="get">
+	<input type="hidden" id="board_division" name="board_division" value="${board_division}">
+	<input type="hidden" id="startPage" name="startPage" value="">
+	<input type="hidden" id="visiblePages" name="visiblePages" value="">
 	<div class="portSerch">
-		<input type="text" /><img alt="돋보기" src="resources/cms/search.png">
+	<input type="text" class="searchForm" id="sch_value" name="sch_value" value="${sch_value}" /><img alt="돋보기" src="resources/cms/search.png" id="searchBtn">
+	<input type="hidden" value="board_title" name="sch_type" />
 	</div>
+	</form>
 	<div class="portTable">
 		<table>
 			<colgroup>
@@ -39,94 +124,66 @@
 				<td>다운수</td>
 				<td>조회수</td>
 			</tr>
+			<c:forEach var="board_list" items="${board_list}"  varStatus="status">
+			<input type="hidden" id="filename" name="filename" value="${filename}">
 			<tr class="portTd">
-				<td>9</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
+				<td><!--역순공식: 전체 레코드 수 - ( (현재 페이지 번호 - 1) * 한 페이지당 보여지는 레코드 수 + 현재 게시물 출력 순서 ) -->
+                <c:set var="startpage" value="${startPage-1}" />
+                <c:set var="statuscount" value="${status.count }" />
+                ${totalCnt+1-(startpage*10+statuscount)}</td>
+				<td class="title"><a href="/downloadsUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}">${board_list.board_title}</a></td>
+				<td>${board_list.board_registerdate}</td>
+				<td>
+				
+				<!-- <img alt="" src="resources/mainImg/download_arrow_white.png"> -->
+				<c:set var="boardlist" value="${board_list.file_sub_name}" />													
+						<c:set var="split_file" value="${fn:split(board_list.file_sub_name,'|')}" />
+						<c:if test="${board_list.file_cnt == 0}">
+						X
+						</c:if>
+						<c:if test="${board_list.file_cnt == 1}">
+						<c:forEach items="${split_file}" var="boardlist">
+						<img alt="" src="resources/mainImg/download_arrow_white.png" id="downBtn" onclick="downFile('${boardlist}', '${board_list.board_seq}');">
+						<br/>
+						</c:forEach>
+						</c:if>
+						<c:if test="${board_list.file_cnt >= 2}">
+						<img alt="" src="resources/mainImg/download_arrow_white.png" id="hidden_over" name="hidden_over" onclick="over('${board_list.board_seq}');" >		
+						</c:if>
+				</td>
+				<td>${board_list.file_hit}</td>
+				<td>${board_list.board_hit}</td>
 			</tr>
-			<tr class="portTd">
-				<td>8</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
-			<tr class="portTd">
-				<td>7</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
-			<tr class="portTd">
-				<td>6</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
-			<tr class="portTd">
-				<td>5</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
-			<tr class="portTd">
-				<td>4</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
-			<tr class="portTd">
-				<td>3</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
-			<tr class="portTd">
-				<td>2</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
-			<tr class="portTd">
-				<td>1</td>
-				<td class="title"><a href="/downloadsUpdate">스마트카드v.1.0.1</a></td>
-				<td>2019.04.21</td>
-				<td><img alt="" src="resources/mainImg/download_arrow_white.png"></td>
-				<td>999</td>
-				<td>999</td>
-			</tr>
+					<tr id = "hidden${board_list.board_seq}" style="display: none;">
+						<td align="center" colspan="7">			
+							<c:set var="split_file_ori" value="${fn:split(board_list.file_ori_name,'|')}" />
+							<c:forEach var="boardlist" items="${split_file}" varStatus="status">
+							<c:set var="fileLength" value="${split_file_ori[status.index]}" />
+							${fileLength}																
+							<img alt="" src="resources/mainImg/download_arrow_white.png" style="width: 15px; height: 15px;"  id="downBtn" onclick="downFile('${boardlist}');">
+							<br/>
+							</c:forEach>
+						</td>
+					</tr>
+			</c:forEach>
 		</table>
 	</div>
 	
 	<div class="portCount">
 		<ul>
-		<li class="portCount1"><img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png"><img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"></li>
-		<li class="focus">1</li>
-		<li>2</li>
-		<li>3</li>
-		<li>4</li>
-		<li>5</li>
-		<li class="portCount2"><img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"><img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png"></li>
+		<li class="portCount1">
+		<img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/downloadsList?board_division=download&startPage=1&visiblePages=10';">
+		<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png">
+		</li>
+		<li id="pagination"></li>
+		<li class="portCount2">
+		<img alt="오른쪽" src="resources/mainImg/download_board_arrow1.png">
+		<img alt="오른쪽" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/downloadsList?board_division=download&startPage=${totalPage}&visiblePages=10';">
+		</li>
 		</ul>
 		<div class="btnList">
 		<div class="btnDiv1">
-		<a class="btn1" href="/downloadsWrite">WRITE</a>
+		<a class="btn1" href="/downloadsWrite?board_division=download">WRITE</a>
 		</div>
 		</div>
 	</div>

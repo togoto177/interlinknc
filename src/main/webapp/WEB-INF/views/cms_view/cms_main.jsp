@@ -69,7 +69,7 @@
 			<label>ID</label><input type="text" id="user_id" name="ad_id" />
 			</div>
 			<div class="con2Input2">
-			<label>PASSWORD</label><input type="text" id="user_pwd" name="ad_password" />
+			<label>PASSWORD</label><input type="password" id="user_pwd" name="ad_password" />
 			</div>
 		</div>
 		<div class="con2But">
