@@ -56,34 +56,6 @@ jQuery(document).ready(function($){
 	});
 	/* 이미지 효과 */
 	$(".home_icon").hide();
-
-	$(".bxslider .background_1").mouseover(function(){
-		$(this).find('.portCon3').hide();
-		$(this).find('.protCon2_1').hide();
-		$(this).find('.portCon2').css("background","none");
-		$(this).find('.portUrl').css("color","#99ffff");
-		$(this).find('.protCon2_2').css("color","black");
-    }).mouseleave(function(){
-    	$(this).find('.portCon3').show();
-    	$(this).find('.protCon2_1').show();
-    	$(this).find('.portCon2').css("background","#6600ff");
-    	$(this).find('.portUrl').css("color","rgba(0, 0, 0, 0)");
-    	$(this).find('.protCon2_2').css("color","white");
-    });
-	$(".bxslider .background_2").mouseover(function(){
-		$(this).find('.portCon3').hide();
-		$(this).find('.protCon2_1').hide();
-		$(this).find('.portCon2').css("background","none");
-		$(this).find('.protCon2_2').css("color","black");
-		$(this).find('.portUrl').css("color","#6600ff");
-    }).mouseleave(function(){
-    	$(this).find('.portCon3').show();
-    	$(this).find('.protCon2_1').show();
-    	$(this).find('.portCon2').css("background","#99ffff");
-
-    	$(this).find('.protCon2_2').css("color","black");
-    	$(this).find('.portUrl').css("color","rgba(0, 0, 0, 0)");
-    });
 	
 	$(".downloadsTable table tr").mouseover(function(){
 		$(this).find("img").attr("src", "resources/mainImg/download_arrow_pink.png");
@@ -91,6 +63,10 @@ jQuery(document).ready(function($){
 		$(this).find("img").attr("src", "resources/mainImg/download_arrow_white.png");
     });
 	
+	 $( window ).resize( function() {
+		 var maskHeight = $(document).height();  
+		 $('#mask').css({'width':'100%','height':maskHeight});
+     });
 });
 
 function wrapWindowByMask(){
@@ -99,7 +75,8 @@ function wrapWindowByMask(){
 	var maskWidth = $(window).width();  
 
 	//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-	$('#mask').css({'width':maskWidth,'height':maskHeight});  
+	/*$('#mask').css({'width':maskWidth,'height':maskHeight}); */ 
+	$('#mask').css({'width':'100%','height':maskHeight});  
 
 	//애니메이션 효과 - 일단 1초동안 까맣게 됐다가 80% 불투명도로 간다.
 	$('#mask').fadeIn(1000);      

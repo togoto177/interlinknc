@@ -31,6 +31,7 @@ h1{
 }
 .scroll img{
 	width: 100%;
+	border: 0;
 }
 .about .scroll{
 	top: 5%;
@@ -508,7 +509,7 @@ h1{
 
 .portfolio{
 	background: url("images/portfolio_bg.jpg");
-	background-size: cover;
+	background-size: auto;
 	text-align: center;
 	overflow:hidden;
 }
@@ -607,12 +608,7 @@ h1{
 .portfolioImg .portfolioImg_div .bxslider .portImg{
 	width: 100%;
 	height: 400;
-	position: relative;
-	/* filter: gray; */
-	/* -webkit-filter:grayscale(100%);
-	-moz-filter: grayscale(100%);
-	-o-filter: grayscale(100%); */
-	
+	position: relative;	
 }
 .portfolioImg .portfolioImg_div .bxslider li:hover .portImg{
 	-webkit-filter:grayscale(0%);
@@ -631,6 +627,38 @@ h1{
     background: rgba(0, 0, 37, 0.6);
     z-index: 100;
 }
+.portfolioImg .portfolioImg_div .bxslider .background_1:hover .portCon3{
+	visibility: hidden;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_1:hover .protCon2_1{
+	visibility: hidden;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_1:hover .portCon2{
+	background: none;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_1:hover .portCen .portUrl{
+	color: #99ffff;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_1:hover .protCon2_2{
+	color: black;
+}
+
+.portfolioImg .portfolioImg_div .bxslider .background_2:hover .portCon3{
+	visibility: hidden;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_2:hover .protCon2_1{
+	visibility: hidden;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_2:hover .portCon2{
+	background: none;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_2:hover .portCen .portUrl{
+	color: #6600ff;
+}
+.portfolioImg .portfolioImg_div .bxslider .background_2:hover .protCon2_2{
+	color: black;
+}
+
 .portfolioImg .portfolioImg_div .bxslider li:hover:after{
 	background: none;
 }
@@ -954,7 +982,7 @@ h1{
 	margin: 0 auto;
 	text-align: left;
 	position: relative;
-	overflow: overlay;
+	overflow: hidden;
 	font-family: "Malgun Gothic";
 	padding: 10% 0;
 }
@@ -1083,6 +1111,7 @@ h1{
 	cursor: pointer;
 	margin-top: 8;
 	margin-right: 10;
+	color: #666666;
 }
 .window .windowCon{
 	position: relative;

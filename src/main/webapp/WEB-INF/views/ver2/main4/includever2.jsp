@@ -9,7 +9,6 @@
 <script src="js/bootstrap,jquery/jquery-3.3.1.min.js"></script>
 <script src="js/main4/main.js"></script>
 <script src="js/main4/jquery.bxslider.js"></script>
-<script src="js/main4/jquery.bxslider.min.js"></script>
 
 
 

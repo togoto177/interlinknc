@@ -209,8 +209,9 @@
 				overflow: 'hidden',
 				position: 'relative'
 			});
+			/*.bx-wrapper max-width 설정*/
 			slider.viewport.parent().css({
-				maxWidth: getViewportMaxWidth()
+				/*maxWidth: getViewportMaxWidth()*/
 			});
 			// make modification to the wrapper (.bx-wrapper)
 			if(!slider.settings.pager) {
@@ -266,6 +267,11 @@
 			}
 			// preload all images, then perform final DOM / CSS modifications that depend on images being loaded
 			loadElements(preloadSelector, start);
+			
+			/*ei 오류 추가*/
+			if(navigator.appName == "Microsoft Internet Explorer"){
+				start();
+			}
 		}
 
 		var loadElements = function(selector, callback){

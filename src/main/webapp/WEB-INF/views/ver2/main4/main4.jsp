@@ -3,22 +3,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<!DOCTYPE html PUBLIC>
 <html>
 <%@ include file="includever2.jsp"%>
 <head>
 <script type="text/javascript">
 $(document).ready(function() {
  	var mySlider = $('.bxslider').bxSlider({
+ 		mode: 'horizontal',  //ie 로딩 오류 해결(쫌 괜찮아진듯...)
 		auto: false,
 		controls:true,     //이전/다음 버튼 노출 여부
 		autoHover: true,   // 마우스 호버시 정지 여부
 		pager:false,
 		maxSlides: 5,
+		minSlides: 1,
 		moveSlides:1,
-		slideWidth: 240,
-		slideMargin:0,
+		slideWidth: 230,
+		slideMargin:5,
 	});
+ 	
+	
     //이전 버튼을 클릭하면 이전 슬라이드로 전환
 	  $( '#prevBtn' ).on( 'click', function () {
 	   mySlider.goToPrevSlide();  //이전 슬라이드 배너로 이동
@@ -53,7 +57,7 @@ $(document).ready(function() {
 		
 		<div class="mainImg_con2">
 		<a class="con1"><img alt="main 사선 이미지" src="resources/mainImg/diagonal_main.png"></a><br />
-		<img alt="logo" src="resources/mainImg/white_logo.png"><br />
+		<img class="logo_Img" alt="logo" src="resources/mainImg/white_logo.png"><br />
 		<a class="en">WE</a><a class="en2">ARE</a><a class="en3">INTERLINK&amp;C</a><br />
 		<a class="ko">솔루션 네트워킹으로 정보화를 이끄는 기업</a><br />
 		<a class="con2"><img alt="main 사선 이미지" src="resources/mainImg/diagonal_portfolio.png"></a>
@@ -81,7 +85,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="scroll">
-			<img alt="밑으로" src="resources/mainImg/scroll.png">
+			<a href="#about" class="about_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
 		</div>
 	</div>
 	<div class="home_icon"><img alt="맨위로 가기" src="/resources/mainImg/home.png"></div>
@@ -274,7 +278,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="scroll">
-			<img alt="밑으로" src="resources/mainImg/scroll.png">
+			<a href="#portfolio" class="portfolio_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
 		</div>
 	</div>
 	
@@ -296,6 +300,7 @@ $(document).ready(function() {
 					</ul>
 				</div>
 			</div>
+			<!-- 슬라이더 -->
 			<div class="portfolioImg_div">
 			<ul class="bxslider">
 				<!-- back-보라 -->
@@ -420,7 +425,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="scroll">
-			<img alt="밑으로" src="resources/mainImg/scroll.png">
+			<a href="#downloads" class="downloadst_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
 		</div>
 	</div>
 	
@@ -574,7 +579,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="scroll">
-			<img alt="밑으로" src="resources/mainImg/scroll.png">
+			<a href="#customer" class="customer_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
 		</div>
 	</div>
 	
