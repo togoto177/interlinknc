@@ -135,7 +135,7 @@ $(document).on("click","#save",function(e){
 					</div>		
 					</c:if>
 					</c:forEach>
-					<input type="file" name="uploadfile" class="multi" id="input_file"  title="파일찾기" style="display: none;"/>
+					<input type="file" name="uploadfile" class="multi" id="input_file"  title="파일찾기" style="display: none;" />
 					</div>
 					
 					<div>

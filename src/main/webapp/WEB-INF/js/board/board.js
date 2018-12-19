@@ -3,13 +3,6 @@
 			$("#insert_view").click(function() {
 				location.href = "portfolioWrite?board_division=" + $("#board_division").val();
 			});
-			/*$("#list").click(function() {
-				location.href = "cms_board?board_division=" + $("#board_division").val();
-			});*/
-			
-			/*$("#modify").click(function() {
-				location.href="cms_board_update?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
-			});*/
 			
 			$("#delete").click(function() {
 				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
@@ -29,6 +22,129 @@
 			});
 			
 			$("#customer_select").val("${board_body.board_division}").attr("selected", "selected");
+			
+			var startPage = $('#startPage').val(); //현재 페이지
+			var totalPage = $('#totalPage').val(); //전체 페이지
+			//--페이지 셋팅
+
+			var pagination = "";
+
+			//--페이지네이션에 항상 10개가 보이도록 조절
+			var forStart = 0;
+			var forEnd = 0;
+
+			if ((startPage - 5) < 1) {
+				forStart = 1;
+			} else {
+				forStart = startPage - 5;
+			}
+
+			if (forStart == 1) {
+
+				if (totalPage > 9) {
+					forEnd = 10;
+				} else {
+					forEnd = totalPage;
+				}
+
+			} else {
+
+				if ((startPage + 4) > totalPage) {
+
+					forEnd = totalPage;
+
+					if (forEnd > 9) {
+						forStart = forEnd - 9
+					}
+
+				} else {
+					forEnd = startPage + 4;
+				}
+			}
+			//--페이지네이션에 항상 10개가 보이도록 조절
+
+			//전체 페이지 수를 받아 돌린다.
+			for (var i = forStart; i <= forEnd; i++) {
+				if (startPage == i) {
+
+					pagination  +=  '<a class="focus" name="page_move" id="page_num" start_page="'+i+'" disabled>'
+							+ i + '</a>';
+				} else {
+					pagination += ' <a name="page_move" id="page_num" start_page="'+i+'" style="cursor:pointer;" >'
+							+ i + '</a>';
+				}
+			}
+			//하단 페이지 부분에 붙인다.
+			$("#pagination").append(pagination);
+			//--페이지 셋팅
+
+			$("#searchBtn").click(function() {
+				document.board_form.submit();
+
+			});
+
+
+			//하단 네비바 클릭 시 이동
+			$(document).on("click","a[name='page_move']",function() {
+
+						var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가
+						var totalPage = $('#totalPage').val(); //다운로드 목록 전체 페이지 수
+						var visiblePages = 10;//리스트 보여줄 페이지
+
+						if(id_check == "page_num"){
+						$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
+						var startPage = $('#startPage').val();
+						$('#visiblePages').val(visiblePages);
+
+						var wow = $('#wow').val();
+
+						if (wow == "/test" || wow == "/main_test") {
+
+							$.ajax({ 
+								type: 'get' , 
+								url: '/test?startPage='+ startPage +'&visiblePages='+visiblePages ,
+								dataType : 'text' , 
+								success: function(data) { 
+									$('#Context').remove();
+									$('#downloads').html(data);
+								} 
+							});
+						}else{
+							document.board_form.submit(); 
+						}
+
+						}if(id_check == "page_first"){
+							$.ajax({ 
+								type: 'get' , 
+								url: '/test?startPage=1&visiblePages=10',
+								dataType : 'text' , 
+								success: function(data) { 
+									$('#Context').remove();
+									$('#downloads').html(data);
+								} 
+							});
+
+						}else if(id_check == "page_last"){
+							$.ajax({ 
+								type: 'get' , 
+								url: '/test?startPage='+totalPage+'&visiblePages=10',
+								dataType : 'text' , 
+								success: function(data) {
+									$('#Context').remove();
+									$('#downloads').html(data);
+								} 
+							});
+
+						}
+
+
+					});
+
+
+			var i = $("#hidden_type").val();
+			$("#sch_type > option[value='"+i+"']").attr("selected","selected");
+
+			
 				
 });
 
@@ -142,8 +258,8 @@
 			$("#board_form").submit(); 
 	});
 		
-	})
-
+	});
+	
 	
 
 	
