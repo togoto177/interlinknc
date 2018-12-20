@@ -111,7 +111,7 @@ jQuery(document).ready(function($){
 		    $slider.reloadSlider(config); 
 		    } 
 		    else { 
-		    $slider = $('.bxslider').show().bxSlider(config); 
+		    $slider = $('.bxslider').bxSlider(config); 
 		    } 
 		}
 		$(window).on("orientationchange resize", configureSlider); 

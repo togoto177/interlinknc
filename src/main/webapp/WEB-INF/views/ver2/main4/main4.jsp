@@ -289,7 +289,7 @@ $(document).ready(function() {
 			</div>
 			<!-- 슬라이더 -->
 			<div class="portfolioImg_div">
-			<ul class="bxslider" style="list-style-type:none;display:none">
+			<ul class="bxslider">
 				<!-- back-보라 -->
 				<li class="background_1">
 					<div class="portImg">
