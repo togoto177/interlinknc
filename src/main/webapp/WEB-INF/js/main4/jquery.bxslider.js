@@ -270,6 +270,11 @@
         slider.settings.pager = false;
       }
       loadElements(preloadSelector, start);
+      
+      /*ie 오류 해결*/
+      if( navigator.appName == "Microsoft Internet Explorer"){
+    	  start();
+      }
     };
 
     var loadElements = function(selector, callback) {
