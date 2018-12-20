@@ -67,6 +67,56 @@ jQuery(document).ready(function($){
 		 var maskHeight = $(document).height();  
 		 $('#mask').css({'width':'100%','height':maskHeight});
      });
+	 
+	 /*slider*/
+	 var $slider; 
+		function buildSliderConfiguration() { 
+		    var windowWidth = $(window).width(); 
+		    var numberOfVisibleSlides;
+
+		    if (windowWidth < 570) { 
+		    numberOfVisibleSlides = 1;
+		    }
+		    else if (windowWidth < 800) { 
+		    numberOfVisibleSlides = 2; 
+		    } 
+		    else if (windowWidth < 1200) { 
+		    numberOfVisibleSlides = 3;
+		    } 
+		    else if (windowWidth < 1400) { 
+		    numberOfVisibleSlides = 4;
+		    } 
+		    else { 
+			numberOfVisibleSlides = 5;
+			} 
+
+		    return { 
+		    pager: false, 
+		    mode: 'horizontal',
+		    controls: true, 
+		    auto: false,
+		    autoHover: true,
+		    slideWidth: 230,
+		    moveSlides: 1, 
+		    slideMargin: 5, 
+		    minSlides: numberOfVisibleSlides, 
+		    maxSlides: numberOfVisibleSlides 
+		    }; 
+		} 
+		
+		function configureSlider() { 
+		    var config = buildSliderConfiguration();
+
+		    if ($slider && $slider.reloadSlider) { 
+		    $slider.reloadSlider(config); 
+		    } 
+		    else { 
+		    $slider = $('.bxslider').show().bxSlider(config); 
+		    } 
+		}
+		$(window).on("orientationchange resize", configureSlider); 
+		configureSlider();
+	/*slider end*/
 });
 
 function wrapWindowByMask(){

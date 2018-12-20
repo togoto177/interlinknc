@@ -9,19 +9,6 @@
 <head>
 <script type="text/javascript">
 $(document).ready(function() {
- 	var mySlider = $('.bxslider').bxSlider({
- 		mode: 'horizontal',  //ie 로딩 오류 해결(쫌 괜찮아진듯...)
-		auto: false,
-		controls:true,     //이전/다음 버튼 노출 여부
-		autoHover: true,   // 마우스 호버시 정지 여부
-		pager:false,
-		maxSlides: 5,
-		minSlides: 1,
-		moveSlides:1,
-		slideWidth: 230,
-		slideMargin:5,
-	});
- 	
 	
     //이전 버튼을 클릭하면 이전 슬라이드로 전환
 	  $( '#prevBtn' ).on( 'click', function () {
@@ -302,7 +289,7 @@ $(document).ready(function() {
 			</div>
 			<!-- 슬라이더 -->
 			<div class="portfolioImg_div">
-			<ul class="bxslider">
+			<ul class="bxslider" style="list-style-type:none;display:none">
 				<!-- back-보라 -->
 				<li class="background_1">
 					<div class="portImg">
@@ -420,6 +407,38 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</li>
+				
+				<li class="background_2">
+					<div class="portImg">
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf4.jpg">
+						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
+					</div>
+					<div class="portConText">
+						<div class="portCen">
+							<div class="portCon"></div>
+							<a class="portA">수협중앙회</a><br />
+							<a class="portUrl">www.interlinknc.com</a>
+						</div>
+						<div class="portCon2">
+							<a class="protCon2_1">2007.01 - 2007.12</a><br />
+							<a class="protCon2_2">어촌사랑 홈페이지</a>
+						</div>
+						<div class="portCon3">
+							<ul>
+								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
+								<li>유지보수교육 실시 지원</li>
+								<li>여행상품 개발, 수익모델 구현 등<br />
+								"어촌사랑" 운영업무 지원</li>
+								<li>웹 검색 포털사이트 등록</li>
+								<li>한국정보문화진흥원의 한국형<br />
+								웹컨텐츠 접근성지침1.0 정책 준수</li>
+								<li>4444444444444444444444</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				
+				
 			</ul>
 			</div>
 		</div>
