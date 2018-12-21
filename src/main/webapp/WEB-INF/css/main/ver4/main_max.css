@@ -196,6 +196,35 @@
 	.window .windowCon{
 		top: 15%;
 	}
+	
+	.portfolioImg .portfolioImg_div .bxslider .background_1:hover .portCon3,
+	.portfolioImg .portfolioImg_div .bxslider .background_1:hover .protCon2_1,
+	.portfolioImg .portfolioImg_div .bxslider .background_2:hover .portCon3,
+	.portfolioImg .portfolioImg_div .bxslider .background_2:hover .protCon2_1{
+		visibility: visible;
+	}
+	.portfolioImg .portfolioImg_div .bxslider .background_1:hover .portCon2{
+		background: #6600ff;
+	}
+	.portfolioImg .portfolioImg_div .bxslider .background_1:hover .protCon2_2,
+	.portfolioImg .portfolioImg_div .bxslider .background_1 .portCen .portUrl,
+	.portfolioImg .portfolioImg_div .bxslider .background_1:hover .portCen .portUrl{
+		color: white;
+	}
+	.portfolioImg .portfolioImg_div .bxslider .background_1:hover:after{
+		background: rgba(0, 0, 37, 0.6);
+	}
+	.portfolioImg .portfolioImg_div .bxslider .background_2:hover:after{
+		background: rgba(0, 31, 31, 0.7);
+	}
+	.portfolioImg .portfolioImg_div .bxslider .background_2:hover .portCon2{
+		background: #99ffff;
+	}
+	.portfolioImg .portfolioImg_div .bxslider .background_2:hover .protCon2_2,
+	.portfolioImg .portfolioImg_div .bxslider .background_2 .portCen .portUrl,
+	.portfolioImg .portfolioImg_div .bxslider .background_2:hover .portCen .portUrl{
+		color: #333333;
+	}
 }
 
 /* Mobile Device */
