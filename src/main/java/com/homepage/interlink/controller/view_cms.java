@@ -1,7 +1,11 @@
 package com.homepage.interlink.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -645,7 +649,98 @@ public class view_cms {
 			}
 			
 		}
-	
+	//공통 CMS 게시판 다운로드 액션
+	@RequestMapping("/boardFileDown")
+    private void boardFileDown(String file_name, String file_seq, String board_division, HttpServletRequest request, HttpServletResponse response) throws Exception{
+   	request.setCharacterEncoding("UTF-8");
+
+   		System.out.println("=========================> file_seq1---   " + file_name);
+   		System.out.println("=========================> file_seq2---   " + file_seq);
+   		
+   		//자료실 다운 액션
+   		try {
+			 /*상대경로 */
+   		String file_path = request.getSession().getServletContext().getRealPath("/");
+   		String attach_path = "";
+   		
+   		if(board_division.equals("download")) {
+   			attach_path = "resources/downloads/";
+   		}else if (board_division.equals("portfolio")) {
+   			attach_path = "resources/portfolio/";
+		}
+
+   		String savePath = file_path+attach_path;
+   		String fileName = file_name;
+   		//실제 내보낼 파일명
+   		String oriFileName = file_name;
+   		
+   		String oriFileNames = oriFileName.substring(oriFileName.indexOf("_")+1);
+
+   		
+   		System.out.println(oriFileNames); 
+   		
+   		InputStream in = null;
+   		OutputStream os = null;
+   		File file = null;
+   		boolean skip = false;
+   		String client = "";
+   		
+   		
+   		//파일을 읽어 스트림에 담기
+   		try {
+				file = new File(savePath, fileName);
+				in = new FileInputStream(file);
+			} catch (FileNotFoundException fe) {
+				skip = true;
+			}
+   		
+   		client = request.getHeader("User-Agent");
+   		
+   		
+   		//파일 다운로드 헤더 지정 
+           response.reset();
+           response.setContentType("application/octet-stream");
+           response.setHeader("Content-Description", "JSP Generated Data");
+           
+           
+           
+           if (!skip) {
+               // IE
+               if (client.indexOf("MSIE") != -1) {
+                   response.setHeader("Content-Disposition", "attachment; filename=\""
+                           + java.net.URLEncoder.encode(oriFileNames, "UTF-8").replaceAll("\\+", "\\ ") + "\"");
+                   
+                   // IE 11 이상.
+               } else if (client.indexOf("Trident") != -1) {
+                   response.setHeader("Content-Disposition", "attachment; filename=\""
+                           + java.net.URLEncoder.encode(oriFileNames, "UTF-8").replaceAll("\\+", "\\ ") + "\"");
+               } else {
+                   // 한글 파일명 처리
+                   response.setHeader("Content-Disposition",
+                           "attachment; filename=\"" + new String(oriFileNames.getBytes("UTF-8"), "ISO8859_1") + "\"");
+                   response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
+               }
+               response.setHeader("Content-Length", "" + file.length());
+               os = response.getOutputStream();
+               byte b[] = new byte[(int) file.length()];
+               int leng = 0;
+               while ((leng = in.read(b)) > 0) {
+                   os.write(b, 0, leng);
+               
+                   boardFileService.file_hit(file_seq);
+               
+               }
+           } else {
+               response.setContentType("text/html;charset=UTF-8");
+               System.out.println("파일을 찾을 수 없습니다.");
+           }
+           in.close();
+           os.close();
+       } catch (Exception e) {
+           System.out.println("ERROR : " + e.getMessage());
+       }
+   		
+   	}
 	//관리자 목록폼
 	@RequestMapping(value = "/adminList")
 	public String adminList(@RequestParam Map<String, Object> paramMap, Model model, HttpSession session) {

@@ -43,5 +43,59 @@
 		<beans:property name="order" value="0" />
 	</beans:bean>
 	
+	<!-- 인터셉터객체생성 -->
+	<beans:bean id="interceptors" class="com.homepage.interlink.controller.LoginCheckInterceptor">
+	</beans:bean>	
+	<!-- Interceptor 설정 -->
+    <interceptors>
+        <interceptor>
+        
+        	<!-- 관리자 페이지 intercepter 적용 -->
+       		<mapping path="/info"/>
+       		<mapping path="/admin_modify_action"/>
+       		<mapping path="/password"/>
+       		<mapping path="/password_modify_action"/>
+       		<mapping path="/portfolioList"/>
+       		<mapping path="/portfolioWrite"/>
+       		<mapping path="/portfolioUpdate"/>
+       		<mapping path="/contactList"/>
+       		<mapping path="/contactUpdate"/>
+       		<mapping path="/downloadsList"/>
+       		<mapping path="/downloadsWrite"/>
+       		<mapping path="/downloadsUpdate"/>
+       		<mapping path="/boardWriteAction"/>
+       		<mapping path="/boardUpdateAction"/>
+       		<mapping path="/board_delete"/>
+       		<mapping path="/adminList"/>
+       		<mapping path="/adminUpdate"/>
+       		<mapping path="/admin_delete"/>
+       		<mapping path="/wait_admit"/>
+       		<mapping path="/wait_delete"/>
+       		
+
+       		
+       		
+			<!-- 사용자 페이지 intercepter 제외 -->
+            <exclude-mapping path="/main_test"/>
+            
+			<!-- 관리자 페이지 intercepter 제외 -->
+            <exclude-mapping path="/view_cms_main"/>
+            <exclude-mapping path="/userIdCheck"/>
+            <exclude-mapping path="/loginTry"/>
+            <exclude-mapping path="/sign_form_insert"/>
+            <exclude-mapping path="/logout"/>
+            <exclude-mapping path="/mainDownList"/>
+            <exclude-mapping path="/mainDownHit"/>
+            <exclude-mapping path="/mainContactAction"/>
+            <exclude-mapping path="/mainPortList"/>
+       		<exclude-mapping path="/boardFileDown"/>
+            
+            
+            
+
+            <beans:ref bean="interceptors"/>
+        </interceptor>
+    </interceptors>
+	
 
 </beans:beans>

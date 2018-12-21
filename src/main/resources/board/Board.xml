@@ -277,7 +277,7 @@
         
         from board_tb a left join portfolio_tb c on a.board_seq = c.board_seq left join file_tb d on a.board_seq = d.board_seq
         
-         where a.board_division = 'portfolio' and a.board_use_yn = 'Y' and (select left(c.business_period ,4)) = 
+         where a.board_division = 'portfolio' and a.board_use_yn = 'Y' and d.file_use_yn = 'Y' and (select left(c.business_period ,4)) = 
         <if test="pf_year.equals('2018')">
          2018
     	</if>

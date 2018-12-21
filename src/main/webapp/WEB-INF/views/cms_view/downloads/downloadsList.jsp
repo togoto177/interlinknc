@@ -173,11 +173,15 @@
 		<ul>
 		<li class="portCount1">
 		<img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/downloadsList?board_division=download&startPage=1&visiblePages=10';">
-		<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png">
+		<c:if test="${startPage != '1' }">
+		<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/downloadsList?board_division=download&startPage=${startPage-1}&visiblePages=10';">
+		</c:if>
 		</li>
 		<li id="pagination"></li>
 		<li class="portCount2">
-		<img alt="오른쪽" src="resources/mainImg/download_board_arrow1.png">
+		<c:if test="${totalPage != '1' && totalPage != startPage}">
+		<img alt="오른쪽" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/downloadsList?board_division=download&startPage=${startPage+1}&visiblePages=10';">
+		</c:if>
 		<img alt="오른쪽" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/downloadsList?board_division=download&startPage=${totalPage}&visiblePages=10';">
 		</li>
 		</ul>

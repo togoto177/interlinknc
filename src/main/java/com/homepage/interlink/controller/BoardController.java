@@ -225,7 +225,7 @@ public class BoardController {
 	        }
 	        return "redirect:/cms_board?board_division=" + board.getBoard_division();
 	    }
-	//게시판 다운로드
+/*	//게시판 다운로드
 	@RequestMapping("/boardFileDown")
     private void boardFileDown(String file_name, String file_seq, String board_division, HttpServletRequest request, HttpServletResponse response) throws Exception{
    	request.setCharacterEncoding("UTF-8");
@@ -235,7 +235,7 @@ public class BoardController {
    		
    		//자료실 다운 액션
    		try {
-			 /*상대경로 */
+			 상대경로 
    		String file_path = request.getSession().getServletContext().getRealPath("/");
    		String attach_path = "";
    		
@@ -316,7 +316,7 @@ public class BoardController {
            System.out.println("ERROR : " + e.getMessage());
        }
    		
-   	}
+   	}*/
     //게시판 상세보기
     @RequestMapping(value = "/cms_board_body")
 	public String cms_board_body(@RequestParam Map<String, Object> paramMap, @ModelAttribute Board board, Model model) {

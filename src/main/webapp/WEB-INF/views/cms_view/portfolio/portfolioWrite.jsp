@@ -38,7 +38,7 @@ $(document).on("click","#save",function(e){
 		    alert("제목을 입력해주세요.");
 		    return false;
 		}
-		if($("#board_title").val().length > 21){
+		if($("#board_title").val().length > 41){
 		    alert("제목은 20자이상 입력할 수 없습니다.");
 		    return false;
 		}

@@ -10,7 +10,7 @@
 		<img alt="인터링크앤씨 로고" src="resources/cms/logo_darkgray.png">
 	</div>
 	<div class="cmsTopText">
-		<a class="cmsTopText1">${sessionScope.ad_id}</a><a class="cmsTopText2">님 환영합니다.</a>
+		<a class="cmsTopText1">${sessionScope.ad_name}</a><a class="cmsTopText2"> 님 환영합니다.</a>
 		<a class="cmsTopText3" href="password">비밀번호변경</a><a class="cmsTopText4">|</a><a class="cmsTopText3" onclick="logout()">로그아웃</a>
 	</div>
 </div>

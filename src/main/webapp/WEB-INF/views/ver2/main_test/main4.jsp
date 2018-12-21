@@ -8,7 +8,6 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <%@ include file="includever2.jsp"%>
-
 <head>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -368,7 +367,7 @@ $(document).ready(function() {
 						<div class="portCen">
 							<div class="portCon"></div>
 							<a class="portA">${portfolio_list.buyer}</a><br />
-							<a class="portUrl">${portfolio_list.link}</a>
+							<a class="portUrl" href="//${portfolio_list.link}" target="_blank">${portfolio_list.link}</a>
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">${portfolio_list.business_period}</a><br />
@@ -397,7 +396,7 @@ $(document).ready(function() {
 						<div class="portCen">
 							<div class="portCon"></div>
 							<a class="portA">${portfolio_list.buyer}</a><br />
-							<a class="portUrl" href="${portfolio_list.link}" target="_blank">${portfolio_list.link}</a>
+							<a class="portUrl" href="//${portfolio_list.link}" target="_blank">${portfolio_list.link}</a>
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">${portfolio_list.business_period}</a><br />
@@ -558,9 +557,42 @@ $(document).ready(function() {
 					<a class="text1">Email.</a><a>info@interlinknc.com</a><br />
 					<a class="text1">Address.</a><a>서울특별시 송파구 위례성대로 18, 703호(방이동, 금복빌딩)</a>
 				</div>
-				<div class="coustomerLeftImg">
-					<img alt="네이버 지도" src="resources/mainImg/nav.jpg">
+				<div class="coustomerLeftImg" id="map" style="width: 100%; height: 340px; border: 1px solid #0033cc;">
 				</div>
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de82005d08935c110538a83eeca00381"></script>
+				<script>
+					var container = document.getElementById('map');
+					var options = {
+						center: new daum.maps.LatLng(37.516544, 127.114316),
+						level: 3
+					};
+					
+					var map = new daum.maps.Map(container, options);
+
+					
+					// 마커가 표시될 위치입니다 
+					var markerPosition  = new daum.maps.LatLng(37.516544, 127.114316); 
+
+					// 마커를 생성합니다
+					var marker = new daum.maps.Marker({
+					    position: markerPosition
+					});
+
+					// 마커가 지도 위에 표시되도록 설정합니다
+					marker.setMap(map);
+
+					var iwContent = '<div style="padding:5px;">금복빌딩 <br><a href="http://map.daum.net/link/map/금복빌딩,37.516544, 127.114316" style="color:blue" target="_blank">큰지도보기</a> <a href="http://map.daum.net/link/to/금복빌딩,37.516544, 127.114316" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+					    iwPosition = new daum.maps.LatLng(37.516544, 127.114316); //인포윈도우 표시 위치입니다
+
+					// 인포윈도우를 생성합니다
+					var infowindow = new daum.maps.InfoWindow({
+					    position : iwPosition, 
+					    content : iwContent 
+					});
+					  
+					// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+					infowindow.open(map, marker); 
+				</script>
 			</div>
 			<div class="customerRight">
 				<div class="customerRightText">

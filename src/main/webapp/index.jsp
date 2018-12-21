@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		location.href = "main4";
+		location.href = "main_test";
 	</script>
 </body>
 </html>
