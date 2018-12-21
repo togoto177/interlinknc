@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
-		<hr class="downloads_border-top" id="Context">
+		<hr id="Context" style="display: none">
 			<table>
 				<colgroup>
 					<col style="width: 25%" />
@@ -38,7 +38,27 @@
                     </td>
 					<td class="title"><a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}">${download_list.board_title}</a></td>
 					<td>${download_list.board_registerdate}</td>
-					<td><img alt="" src="resources/mainImg/download_arrow_white.png"> </td>
+					<td>
+					<c:set var="boardlist" value="${download_list.file_sub_name}" />
+					<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
+					<c:choose>
+					<c:when test="${download_list.file_cnt == 0}"><!-- 파일이 없을때 -->
+					</c:when>
+					<c:when test="${download_list.file_cnt == 1}"><!-- 파일이 1개일대 -->
+						<c:forEach items="${split_file}" var="boardlist">
+						<a href="javascript:void(0);" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
+						<img alt="" src="resources/mainImg/download_arrow_white.png">
+						</a>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}">
+						<img alt="" src="resources/mainImg/download_arrow_white.png">
+						</a>
+					</c:otherwise>
+					</c:choose>
+					
+					</td>
 					<td>${download_list.board_hit}</td>
 					<td></td>
 				</tr>

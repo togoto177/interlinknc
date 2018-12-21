@@ -21,6 +21,7 @@ public class Board {
 	
 	private String file_ori_name; //file_tb에서 파일명 가져와서 뿌려줌
 	private String file_sub_name; //file_tb에서 파일명 가져와서 뿌려줌
+	private String file_path;     //file_tb에서 파일명 가져와서 뿌려줌
 	
 	private String file_hit; //파일 다운로드 수
 	
@@ -38,6 +39,8 @@ public class Board {
 	private String link;
 	private String portfolio_etc;
 	private String pf_division;
+	private String pf_year;
+	private String seq_division; //홀수행 짝수행 구분을 위해 추가
 	
 	//고객센터 모델 추가
 	private int customer_seq;
@@ -45,7 +48,6 @@ public class Board {
 	private String user_email;
 	private String user_contact;
 	private String status;
-	
 	public int getBoard_seq() {
 		return board_seq;
 	}
@@ -124,6 +126,12 @@ public class Board {
 	public void setFile_sub_name(String file_sub_name) {
 		this.file_sub_name = file_sub_name;
 	}
+	public String getFile_path() {
+		return file_path;
+	}
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
+	}
 	public String getFile_hit() {
 		return file_hit;
 	}
@@ -196,6 +204,18 @@ public class Board {
 	public void setPf_division(String pf_division) {
 		this.pf_division = pf_division;
 	}
+	public String getPf_year() {
+		return pf_year;
+	}
+	public void setPf_year(String pf_year) {
+		this.pf_year = pf_year;
+	}
+	public String getSeq_division() {
+		return seq_division;
+	}
+	public void setSeq_division(String seq_division) {
+		this.seq_division = seq_division;
+	}
 	public int getCustomer_seq() {
 		return customer_seq;
 	}
@@ -226,20 +246,21 @@ public class Board {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
 	@Override
 	public String toString() {
 		return "Board [board_seq=" + board_seq + ", board_division=" + board_division + ", board_title=" + board_title
 				+ ", board_content=" + board_content + ", board_hit=" + board_hit + ", board_use_yn=" + board_use_yn
 				+ ", board_writer=" + board_writer + ", board_registerdate=" + board_registerdate + ", board_updateid="
 				+ board_updateid + ", board_update_date=" + board_update_date + ", board_etc=" + board_etc
-				+ ", file_ori_name=" + file_ori_name + ", file_sub_name=" + file_sub_name + ", file_hit=" + file_hit
-				+ ", preview=" + preview + ", nextview=" + nextview + ", pretitle=" + pretitle + ", nexttitle="
-				+ nexttitle + ", file_cnt=" + file_cnt + ", portfolio_seq=" + portfolio_seq + ", business_period="
-				+ business_period + ", buyer=" + buyer + ", link=" + link + ", portfolio_etc=" + portfolio_etc
-				+ ", pf_division=" + pf_division + ", customer_seq=" + customer_seq + ", user_id=" + user_id
-				+ ", user_email=" + user_email + ", user_contact=" + user_contact + ", status=" + status + "]";
+				+ ", file_ori_name=" + file_ori_name + ", file_sub_name=" + file_sub_name + ", file_path=" + file_path
+				+ ", file_hit=" + file_hit + ", preview=" + preview + ", nextview=" + nextview + ", pretitle="
+				+ pretitle + ", nexttitle=" + nexttitle + ", file_cnt=" + file_cnt + ", portfolio_seq=" + portfolio_seq
+				+ ", business_period=" + business_period + ", buyer=" + buyer + ", link=" + link + ", portfolio_etc="
+				+ portfolio_etc + ", pf_division=" + pf_division + ", pf_year=" + pf_year + ", seq_division="
+				+ seq_division + ", customer_seq=" + customer_seq + ", user_id=" + user_id + ", user_email="
+				+ user_email + ", user_contact=" + user_contact + ", status=" + status + "]";
 	}
+	
 	
 	
 	

@@ -72,4 +72,9 @@ public class BoardServiceImpl implements BoardService{
 	public int download_hit(int board_seq) {
 		return boardDao.download_hit(board_seq);
 	}
+
+	@Override
+	public List<Board> portfolio_list(Map<String, Object> paramMap) {
+		return boardDao.portfolio_list(paramMap);
+	}
 }

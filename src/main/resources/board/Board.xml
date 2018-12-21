@@ -257,9 +257,52 @@
 	
 	 <update id="download_hit" parameterType="int">
         update board_tb set board_hit = board_hit + 1 where board_seq = #{board_seq}
-    
-    
     </update>
+    
+    <select id="portfolio_list" resultType="Board" parameterType="java.util.HashMap">
+
+	      select 
+        a.*,
+        (select count(b.file_seq) from file_tb b where b.file_use_yn = 'y' and b.board_seq = a.board_seq) as file_cnt,
+        (select sum(b.file_hit) from file_tb b where b.board_seq = a.board_seq and b.file_use_yn = 'Y'  ) as file_hit,
+        (select group_concat(b.file_sub_name,'*',a.board_division,'*',b.file_seq separator '|') 
+        from file_tb b 
+        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_sub_name,  
+        (select group_concat(b.file_ori_name separator '|') 
+        from file_tb b 
+        where a.board_seq = b.board_seq and b.file_use_yn='Y') as file_ori_name,
+        c.business_period, c.buyer, c.link, c.pf_division, (select left(c.business_period ,4)) as pf_year,
+        (MOD(a.board_seq, 2) = 1) as seq_division,
+        d.file_path, d.file_sub_name
+        
+        from board_tb a left join portfolio_tb c on a.board_seq = c.board_seq left join file_tb d on a.board_seq = d.board_seq
+        
+         where a.board_division = 'portfolio' and a.board_use_yn = 'Y' and (select left(c.business_period ,4)) = 
+        <if test="pf_year.equals('2018')">
+         2018
+    	</if>
+    	<if test="pf_year.equals('2009')">
+         2009
+    	</if>
+    	<if test="pf_year.equals('2008')">
+         2008
+    	</if>
+    	<if test="pf_year.equals('2007')">
+         2007
+    	</if>
+		
+		 <choose>
+     	<when test="sch_type == 'board_title'">
+		  AND a.board_title like CONCAT('%', #{sch_value}, '%')
+		  </when>
+		  <when test="sch_type == 'board_content'">
+		  AND a.board_content like CONCAT('%', #{sch_value}, '%')
+		  </when>
+		  </choose>
+        order by board_seq desc;
+        
+	
+	</select>
 	
 
 </mapper>

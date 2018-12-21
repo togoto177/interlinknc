@@ -34,4 +34,6 @@ public interface BoardService {
 	public int download_cnt(Map<String, Object> paramMap);
 	//다운로드 클릭 시 조회수 증가
 	int download_hit(int board_seq);
+	//메인 포트폴리오 뷰 출력
+	List<Board> portfolio_list(Map<String, Object> paramMap); 
 }

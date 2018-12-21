@@ -1,18 +1,32 @@
 package com.homepage.interlink.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Enumeration;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.homepage.interlink.model.Board;
+import com.homepage.interlink.model.BoardFile;
+import com.homepage.interlink.model.Fileup;
 import com.homepage.interlink.service.BoardFileService;
 import com.homepage.interlink.service.BoardService;
 
@@ -62,12 +76,14 @@ public class MainController_test {
         model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
         model.addAttribute("sch_value", paramMap.get("sch_value"));
         model.addAttribute("sch_type", paramMap.get("sch_type"));
-        
-		model.addAttribute("board_division", paramMap.get("board_division"));
+
 		model.addAttribute("download_list", boardService.download_list(paramMap));
-		
-		String ttt =  request.getServletPath();
-		model.addAttribute("wow", ttt);
+		String pf_year = "2018";
+		paramMap.put("pf_year", pf_year);
+		model.addAttribute("portfolio_list", boardService.portfolio_list(paramMap));
+		String path =  request.getServletPath();
+		model.addAttribute("servletPath", path);
+	
 		
 		
 		
@@ -75,8 +91,9 @@ public class MainController_test {
 		return "ver2/main_test/main4";
 	}
 
-	@RequestMapping(value = "/test")
-	public String test(@RequestParam Map<String, Object> paramMap, Model model, Board board, HttpServletRequest request) {
+
+	@RequestMapping(value = "/mainDownList")
+	public String mainDownList(@RequestParam Map<String, Object> paramMap, Model model, Board board, HttpServletRequest request) {
 		
 		/*2018-12-05 메인 테스트 겸 권수 추가*/
 		
@@ -113,24 +130,59 @@ public class MainController_test {
         model.addAttribute("sch_value", paramMap.get("sch_value"));
         model.addAttribute("sch_type", paramMap.get("sch_type"));
         
-		model.addAttribute("board_division", paramMap.get("board_division"));
 		model.addAttribute("download_list", boardService.download_list(paramMap));
 		
-		String ttt =  request.getServletPath();
-		model.addAttribute("wow", ttt);
-		System.out.println(request.getServletPath());
+		String path =  request.getServletPath();
+		model.addAttribute("servletPath", path);
 		
 		
-		return "ver2/main_test/test";
+		return "ver2/main_test/mainDownList";
 	}
-	
+	//메인 download 수 체크
+	@RequestMapping(value = "/mainDownHit", method = RequestMethod.POST)
 	@ResponseBody
-	@RequestMapping(value = "/cnt_test", method = RequestMethod.POST)
-	public int cnt_test(@RequestParam Map<String, Object> paramMap, int board_seq) {
+	public int mainDownHit(@RequestParam Map<String, Object> paramMap, int board_seq) {
 
 		int result = boardService.download_hit(board_seq);
 		
 		return result;
 	}
+	
+	//메인 contact 작성 액션
+		@RequestMapping(value="/mainContactAction", method=RequestMethod.POST)
+		@ResponseBody
+		public String mainContactAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model, HttpSession session)throws Exception{
+					
+			    	board.setBoard_writer("GUEST");
+			    	board.setBoard_use_yn("Y");
+					board.setBoard_hit(0);
+					board.setBoard_updateid("GUEST");
+					board.setBoard_etc("etc");
+			   
+					boardService.board_insert(board);
+					
+					board.setBoard_seq(board.getBoard_seq());
+					board.setStatus("0");
+					boardService.customer_insert(board);
+					
+					return "redirect:/main_test";	
+			      
+			    }
+		@RequestMapping(value = "/mainPortList")
+		public String mainport1(@RequestParam Map<String, Object> paramMap, Model model, Board board, HttpServletRequest request) {
+			
+			
+			
+			String pf_year = request.getParameter("pf_year");
+			model.addAttribute("pf_year", pf_year);
+			model.addAttribute("portfolio_list", boardService.portfolio_list(paramMap));
+			System.out.println("===============================pf_year?" + pf_year);
+			String path =  request.getServletPath();
+			model.addAttribute("servletPath", path);
+			
+			
+			return "ver2/main_test/mainPortList";
+		}
+		
 	
 }

@@ -344,7 +344,6 @@ public class view_cms {
 		return "cms_view/downloads/downloadsWrite";
 	}
 	//다운로드 수정 폼
-	//다운로드 수정 폼
 	@RequestMapping(value = "/downloadsUpdate")
 	public String downloadsUpdate(@RequestParam Map<String, Object> paramMap, Model model, Board board) {
 		
@@ -355,7 +354,6 @@ public class view_cms {
 		return "cms_view/downloads/downloadsUpdate";
 	}
 	//공통 CMS 게시판 작성 액션
-	//CMS 공통 게시판 작성 액션
 	@RequestMapping(value="/boardWriteAction", method=RequestMethod.POST)
 	public String boardWriteAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model, HttpSession session)throws Exception{
 				
@@ -390,7 +388,7 @@ public class view_cms {
 				if(board_division.equals("portfolio")) {
 				board.setBoard_seq(board.getBoard_seq());
 				boardService.portfolio_insert(board);
-				}else if(board_division.equals("customer")) {
+				}else if(board_division.equals("contact")) {
 				board.setBoard_seq(board.getBoard_seq());
 				board.setStatus("0");
 				boardService.customer_insert(board);
@@ -483,14 +481,13 @@ public class view_cms {
 				}
 
 		        if(board_division.equals("contact")) {
-		        	return "redirect:/main1";	
+		        	return "redirect:/main_test";	
 		        }else if (board_division.equals("portfolio")) {
 		        	return "redirect:/portfolioList?board_division=" + board.getBoard_division();
 				}
 		        return "redirect:/downloadsList?board_division=" + board.getBoard_division();
 		    }
 	//공통 CMS 게시판 수정 액션
-	//CMS 공통 게시판 수정 액션
 	@RequestMapping(value="/boardUpdateAction", method=RequestMethod.POST)
 	public String boardUpdateAction(@ModelAttribute Board board, Fileup fileup, HttpServletRequest request, Model model,  String[] file_key, String[] flag/*, String[] fName*/, HttpSession session)throws Exception{
 				
@@ -619,8 +616,7 @@ public class view_cms {
 					return "redirect:/downloadsList?board_division="+board.getBoard_division();
 				}
 		    }
-	//공통 CMS 게시판 목록 및 상세보기에서 삭제 액션 실제로 use_yn = 'N' 처리
-	//CMS 공통 게시판 삭제 액션
+	//공통 CMS 게시판 삭제 액션
 	@RequestMapping(value = "/board_delete" , method = RequestMethod.GET)
 	public String board_delete(Board board, BoardFile boardFile, int[] board_seq, HttpServletRequest request) {
 			

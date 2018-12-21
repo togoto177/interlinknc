@@ -78,35 +78,29 @@
 			$("#pagination").append(pagination);
 			//--페이지 셋팅
 
-			$("#searchBtn").click(function() {
-				document.board_form.submit();
-
-			});
-
-
 			//하단 네비바 클릭 시 이동
 			$(document).on("click","a[name='page_move']",function() {
 
 						var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가
 						var totalPage = $('#totalPage').val(); //다운로드 목록 전체 페이지 수
 						var visiblePages = 10;//리스트 보여줄 페이지
-
+						var sp = $('#servletPath').val();
+						
 						if(id_check == "page_num"){
 						$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
 						var startPage = $('#startPage').val();
 						$('#visiblePages').val(visiblePages);
 
-						var wow = $('#wow').val();
 
-						if (wow == "/test" || wow == "/main_test") {
+						if (sp == "/mainDownList" || sp == "/main_test") {
 
 							$.ajax({ 
 								type: 'get' , 
-								url: '/test?startPage='+ startPage +'&visiblePages='+visiblePages ,
+								url: '/mainDownList?startPage='+ startPage +'&visiblePages='+visiblePages ,
 								dataType : 'text' , 
 								success: function(data) { 
 									$('#Context').remove();
-									$('#downloads').html(data);
+									$('#a').html(data);
 								} 
 							});
 						}else{
@@ -116,36 +110,82 @@
 						}if(id_check == "page_first"){
 							$.ajax({ 
 								type: 'get' , 
-								url: '/test?startPage=1&visiblePages=10',
+								url: '/mainDownList?startPage=1&visiblePages=10',
 								dataType : 'text' , 
 								success: function(data) { 
 									$('#Context').remove();
-									$('#downloads').html(data);
+									$('#a').html(data);
 								} 
 							});
 
 						}else if(id_check == "page_last"){
 							$.ajax({ 
 								type: 'get' , 
-								url: '/test?startPage='+totalPage+'&visiblePages=10',
+								url: '/mainDownList?startPage='+totalPage+'&visiblePages=10',
 								dataType : 'text' , 
 								success: function(data) {
 									$('#Context').remove();
-									$('#downloads').html(data);
+									$('#a').html(data);
+								} 
+							});
+
+						}else if(id_check == "2018"){
+							$.ajax({ 
+								type: 'get' , 
+								url: '/mainPortList',
+								async : false,
+					    		data : {pf_year : id_check} ,
+								dataType : 'text' , 
+								success: function(data) { 
+									$('#pf_context').remove();
+									$('#portfolio').html(data).trigger("create");
+								} 
+							});
+
+						}else if(id_check == "2009"){
+							$.ajax({ 
+								type: 'get' , 
+								url: '/mainPortList',
+								async : false,
+					    		data : {pf_year : id_check} ,
+								dataType : 'text' , 
+								success: function(data) { 
+									$('#pf_context').remove();
+									$('#portfolio').html(data).trigger("create");
+								} 
+							});
+
+						}else if(id_check == "2008"){
+							$.ajax({ 
+								type: 'get' , 
+								url: '/mainPortList',
+								async : false,
+					    		data : {pf_year : id_check} ,
+								dataType : 'text' , 
+								success: function(data) { 
+									$('#pf_context').remove();
+									$('#portfolio').html(data).trigger("create");
+								} 
+							});
+
+						}else if(id_check == "2007"){
+							$.ajax({ 
+								type: 'get' , 
+								url: '/mainPortList',
+								async : false,
+					    		data : {pf_year : id_check} ,
+								dataType : 'text' , 
+								success: function(data) { 
+									$('#pf_context').remove();
+									$('#portfolio').html(data).trigger("create");
 								} 
 							});
 
 						}
+						
 
 
-					});
-
-
-			var i = $("#hidden_type").val();
-			$("#sch_type > option[value='"+i+"']").attr("selected","selected");
-
-			
-				
+					});				
 });
 
 	/* 파일추가버튼 */

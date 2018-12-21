@@ -30,4 +30,6 @@ public interface BoardDao {
 
 	public int download_hit(int board_seq);
 
+	public List<Board> portfolio_list(Map<String, Object> paramMap);
+
 }

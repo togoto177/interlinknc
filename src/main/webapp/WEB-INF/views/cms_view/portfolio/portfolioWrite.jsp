@@ -67,12 +67,12 @@ $(document).on("click","#save",function(e){
 				alert("연결주소를 입력해주세요.");
 				return false;
 			}
-		
+/* 		
 			// 파일 유효성 검사
 			if($("input[type=file]").val() == '' || $("input[type=file]").val() == null){
 				alert("포트폴리오 사진을 선택해주세요.");
 			    return false;
-			}
+			} */
 		
 
 	// id가 smarteditor인 textarea에 에디터에서 대입 

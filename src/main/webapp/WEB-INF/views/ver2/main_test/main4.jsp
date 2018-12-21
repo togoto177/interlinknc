@@ -8,23 +8,11 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <%@ include file="includever2.jsp"%>
+
 <head>
 <script type="text/javascript">
 $(document).ready(function() {
 
-	
- 	var mySlider = $('.bxslider').bxSlider({
- 		mode: 'horizontal',  //ie 로딩 오류 해결(쫌 괜찮아진듯...)
-		auto: false,
-		controls:true,     //이전/다음 버튼 노출 여부
-		autoHover: true,   // 마우스 호버시 정지 여부
-		pager:false,
-		maxSlides: 5,
-		minSlides: 1,
-		moveSlides:1,
-		slideWidth: 230,
-		slideMargin:5,
-	});
  	
 	
     //이전 버튼을 클릭하면 이전 슬라이드로 전환
@@ -44,6 +32,58 @@ $(document).ready(function() {
 	  });
 
 });
+		
+		//contact 등록 버튼 활성화
+	    function save(){ 
+		    var insertData = $('[name=contact_form]').serialize(); //contact_form의 내용을 가져옴
+		    writeInsert(insertData); //Insert 함수호출(아래)
+		}
+
+		//contact 등록
+		function writeInsert(insertData){
+			var str_space = /\s/;
+			if($("#user_id").val() == '' || $("#user_id").val() == null || str_space.exec($("#user_id").val()) ){
+			    alert("작성자를 입력해주세요.");
+			    $("#user_id").focus();
+			    $("#user_id").val('');
+			    return false;
+			}
+			if($("#user_email").val() == '' || $("#user_email").val() == null || str_space.exec($("#user_email").val())){
+			    alert("이메일을 입력해주세요.");
+			    $("#user_email").focus();
+			    $("#user_email").val('');
+			    return false;
+			}
+			if($("#user_contact").val() == '' || $("#user_contact").val() == null || str_space.exec($("#user_contact").val())){
+			    alert("연락처를 입력해주세요.");
+			    $("#user_contact").focus();
+			    return false;
+			}
+			if($("#board_title").val() == '' || $("#board_title").val() == null){
+			    alert("제목을 입력해주세요.");
+			    $("#board_title").focus();
+			    return false;
+			}
+			if($("#board_content").val() == '' || $("#board_content").val() == null){
+			    alert("문의내용을 입력해주세요.");
+			    $("#board_content").focus();
+			    return false;
+			}
+			
+		    $.ajax({
+		        url : 'mainContactAction',
+		        type : 'post',
+		        data : insertData,
+		        success : function(data){
+				alert("문의사항 접수가 완료 되었습니다.");
+				$('#user_id').val('');
+				$('#user_email').val('');
+				$('#user_contact').val('');
+				$('#board_title').val('');
+				$('#board_content').val('');
+		        }
+		    });
+		}
 </script>
 	<title>interlinknc</title>
 </head>
@@ -287,20 +327,23 @@ $(document).ready(function() {
 	</div>
 	
 	<div class="portfolio_menu"></div>
+	
 	<div class="portfolio" id="portfolio">
-		<div class="portfolioImg">
+	<div id="edd" style="visibility:hidden;opacity:0">
+	<input type="hidden" name="pf_year" id="pf_year" value="${pf_year}">
+		<div class="portfolioImg" id="pf_context">
 			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>
 			<div class="portfolio_navigator">
 				<img alt="포트폴리오이미지" src="resources/mainImg/portfolio_navigator.png">
 				<div class="portfolio_div_ul">
 					<ul class="portfolio_ul">
-						<li class="left">&ltrif;</li>
-						<li>2009</li>
+						<li class="left"><a name="page_move" id="2007">&ltrif;</a></li>
+						<li><a name="page_move" id="2007">2007</a></li>
 						<li>&#183;</li>
-						<li class="dddd">2008</li>
+						<li class="dddd">2018</li>
 						<li>&#183;</li>
-						<li>2007</li>
-						<li class="right">&rtrif;</li>
+						<li><a name="page_move" id="2009">2009</a></li>
+						<li class="right"><a name="page_move" id="2009">&rtrif;</a></li>
 					</ul>
 				</div>
 			</div>
@@ -308,124 +351,70 @@ $(document).ready(function() {
 			<div class="portfolioImg_div">
 			<ul class="bxslider">
 				<!-- back-보라 -->
+				<c:forEach var="portfolio_list" items="${portfolio_list}"  varStatus="status">
+				<c:set var="TextValue" value="${portfolio_list.file_sub_name}"/>
+				<c:if test="${portfolio_list.seq_division == '0'}">
 				<li class="background_1">
-					<div class="portImg">
-						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf1.jpg">
+									<div class="portImg">
+						<c:if test="${portfolio_list.file_sub_name ne null}">			
+						<img class="img1" alt="포트폴리오이미지" src="${portfolio_list.file_path}${fn:substringBefore(TextValue,'*')}">
+						</c:if>
+						<c:if test="${portfolio_list.file_sub_name eq null}">			
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf_no_img1.jpg">
+						</c:if>
 						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
 					</div>
 					<div class="portConText">
 						<div class="portCen">
 							<div class="portCon"></div>
-							<a class="portA">수협중앙회</a><br />
-							<a class="portUrl">www.interlinknc.com</a>
+							<a class="portA">${portfolio_list.buyer}</a><br />
+							<a class="portUrl">${portfolio_list.link}</a>
 						</div>
 						<div class="portCon2">
-							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지</a>
+							<a class="protCon2_1">${portfolio_list.business_period}</a><br />
+							<a class="protCon2_2">${portfolio_list.board_title}</a>
 						</div>
 						<div class="portCon3">
 							<ul>
-								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-								<li>유지보수교육 실시 지원</li>
-								<li>여행상품 개발, 수익모델 구현 등<br />
-								"어촌사랑" 운영업무 지원</li>
-								<li>웹 검색 포털사이트 등록</li>
-								<li>한국정보문화진흥원의 한국형<br />
-								웹컨텐츠 접근성지침1.0 정책 준수</li>
-								<li>1111111111111111</li>
+								<li>${portfolio_list.board_content}</li>
 							</ul>
 						</div>
 					</div>
 				</li>
+				</c:if>
+				<c:if test="${portfolio_list.seq_division == '1'}">
 				<li class="background_2">
 					<div class="portImg">
-						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf2.jpg">
+						<c:if test="${portfolio_list.file_sub_name ne null}">
+						<img class="img1" alt="포트폴리오이미지" src="${portfolio_list.file_path}${fn:substringBefore(TextValue,'*')}">
+						</c:if>
+						<c:if test="${portfolio_list.file_sub_name eq null}">			
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf_no_img2.jpg">
+						</c:if>
 						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
 					</div>
 					<div class="portConText">
 						<div class="portCen">
 							<div class="portCon"></div>
-							<a class="portA">수협중앙회</a><br />
-							<a class="portUrl">www.interlinknc.com</a>
+							<a class="portA">${portfolio_list.buyer}</a><br />
+							<a class="portUrl" href="http://${portfolio_list.link}" target="_blank">${portfolio_list.link}</a>
 						</div>
 						<div class="portCon2">
-							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지<br />운영 및 유지보수</a>
+							<a class="protCon2_1">${portfolio_list.business_period}</a><br />
+							<a class="protCon2_2">${portfolio_list.board_title}</a>
 						</div>
 						<div class="portCon3">
 							<ul>
-								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-								<li>유지보수교육 실시 지원</li>
-								<li>여행상품 개발, 수익모델 구현 등<br />
-								"어촌사랑" 운영업무 지원</li>
-								<li>웹 검색 포털사이트 등록</li>
-								<li>한국정보문화진흥원의 한국형<br />
-								웹컨텐츠 접근성지침1.0 정책 준수</li>
-								<li>2222222222222222222</li>
+								<li>${portfolio_list.board_content}</li>
 							</ul>
 						</div>
 					</div>
 				</li>
-				<li class="background_1">
-					<div class="portImg">
-						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf3.jpg">
-						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
-					</div>
-					<div class="portConText">
-						<div class="portCen">
-							<div class="portCon"></div>
-							<a class="portA">수협중앙회</a><br />
-							<a class="portUrl">www.interlinknc.com</a>
-						</div>
-						<div class="portCon2">
-							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지</a>
-						</div>
-						<div class="portCon3">
-							<ul>
-								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-								<li>유지보수교육 실시 지원</li>
-								<li>여행상품 개발, 수익모델 구현 등<br />
-								"어촌사랑" 운영업무 지원</li>
-								<li>웹 검색 포털사이트 등록</li>
-								<li>한국정보문화진흥원의 한국형<br />
-								웹컨텐츠 접근성지침1.0 정책 준수</li>
-								<li>333333333333333333333</li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li class="background_2">
-					<div class="portImg">
-						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf4.jpg">
-						<img class="img2" alt="포트폴리오이미지" src="resources/portfolio/portfolio_monitor.png">
-					</div>
-					<div class="portConText">
-						<div class="portCen">
-							<div class="portCon"></div>
-							<a class="portA">수협중앙회</a><br />
-							<a class="portUrl">www.interlinknc.com</a>
-						</div>
-						<div class="portCon2">
-							<a class="protCon2_1">2007.01 - 2007.12</a><br />
-							<a class="protCon2_2">어촌사랑 홈페이지</a>
-						</div>
-						<div class="portCon3">
-							<ul>
-								<li>홈페이지의 지속적인 유지보수 및 운영지원</li>
-								<li>유지보수교육 실시 지원</li>
-								<li>여행상품 개발, 수익모델 구현 등<br />
-								"어촌사랑" 운영업무 지원</li>
-								<li>웹 검색 포털사이트 등록</li>
-								<li>한국정보문화진흥원의 한국형<br />
-								웹컨텐츠 접근성지침1.0 정책 준수</li>
-								<li>4444444444444444444444</li>
-							</ul>
-						</div>
-					</div>
-				</li>
-			</ul>
+				</c:if>
+				</c:forEach>
+				</ul>
 			</div>
+		</div>
 		</div>
 		
 		<div class="scroll">
@@ -433,17 +422,17 @@ $(document).ready(function() {
 		</div>
 	</div>
 	
-	<div class="downloads">
+	<div class="downloads" id="downloads">
 	<div class="downloads_title"><a class="downloads_titleA"><img alt="downloads 이미지" src="resources/mainImg/diagonal_download.png"><br/>DOWNLOAD</a></div>
 
 		<form name="board_form"  method="get" id="board_form">
-		<input type="hidden" id="board_division" name="board_division" value="${board_division}" />
+		<input type="hidden" id="board_division" name="board_division" value="download" />
 		<input type="hidden" id="totalCnt" name="totalCnt" value="${totalCnt}">
 		<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
-		<input type="hidden" id="wow" name="wow" value="${wow}">
+		<input type="hidden" id="servletPath" name="servletPath" value="${servletPath}">
 		<div class="downloadsTable">
-		<div class="a" id="downloads">
-		<hr class="downloads_border-top" id="Context">
+		<div class="a" id="a">
+		<hr id="Context" style="display: none">
 			<table>
 				<colgroup>
 					<col style="width: 25%" />
@@ -476,7 +465,27 @@ $(document).ready(function() {
                     </td>
 					<td class="title"><a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}">${download_list.board_title}</a></td>
 					<td>${download_list.board_registerdate}</td>
-					<td><img alt="" src="resources/mainImg/download_arrow_white.png"> </td>
+					<td>
+					<c:set var="boardlist" value="${download_list.file_sub_name}" />
+					<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
+					<c:choose>
+					<c:when test="${download_list.file_cnt == 0}"><!-- 파일이 없을때 -->
+					</c:when>
+					<c:when test="${download_list.file_cnt == 1}"><!-- 파일이 1개일대 -->
+						<c:forEach items="${split_file}" var="boardlist">
+						<a onclick="downFile('${boardlist}', '${download_list.board_seq}');">
+						<img alt="" src="resources/mainImg/download_arrow_white.png">
+						</a>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}">
+						<img alt="" src="resources/mainImg/download_arrow_white.png">
+						</a>
+					</c:otherwise>
+					</c:choose>
+					
+					</td>
 					<td>${download_list.board_hit}</td>
 					<td></td>
 				</tr>
@@ -533,7 +542,6 @@ $(document).ready(function() {
 			</a></li>
 			</ul>
 			</div>
-			<hr class="downloads_border-bottom">
 		</div>
 		</form>
 		<div class="scroll">
@@ -561,14 +569,18 @@ $(document).ready(function() {
 					이메일 또는 유선상으로 답변 드립니다</a>
 				</div>
 				<div class="customerRightInput">
-					<label>작성자</label><input type="text" /><br />
-					<label>이메일</label><input type="text" /><br />
-					<label>연락처</label><input type="text" /><br />
-					<label>문의내용</label><textarea></textarea>
+					<form id="contact_form" name="contact_form" method="post" action="mainContactAction" enctype="multipart/form-data">
+					<input type="hidden" id="board_division" name="board_division" value="contact"/>
+					<label>작성자</label><input type="text" id="user_id" name="user_id" /><br />
+					<label>이메일</label><input type="text" id="user_email" name="user_email" /><br />
+					<label>연락처</label><input type="text" id="user_contact" name="user_contact" /><br />
+					<label>제목</label><input type="text" id="board_title" name="board_title" /><br />
+					<label>문의내용</label><textarea id="board_content" name="board_content"></textarea>
+					</form>
 				</div>
 			</div>
 			<div class="send_bt">
-				<a class="sendBt">SEND</a>
+				<a class="sendBt" onclick="save()">SEND</a>
 			</div>
 		</div>
 	</div>
