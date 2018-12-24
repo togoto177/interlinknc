@@ -10,12 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
 <script type="text/javascript">
-function copy_to_clipboard() { //클립보드 복사
-	  var copyText = $("#Email").text();
-	  alert(copyText);
-	  copyText.select();
-	  document.execCommand("Copy");
-	}
+$(function(){
+    $('#copy-url').click(function(){
+    	var urlbox = $('#clipBoard').val();
+    	urlbox.select();
+    	document.execCommand('Copy');
+    	alert(urlbox);
+    });
+});
 </script>
 </head>
 <body>
@@ -53,8 +55,9 @@ function copy_to_clipboard() { //클립보드 복사
 				<td>
 					<label>이메일</label>
 					<a class="Email" id="Email">${board_body.user_email}</a>
-					
-					<img alt="복사" src="resources/cms/notepad.png" onclick="copy_to_clipboard()"><!--  2018-12-19 일단보류-->
+					<input type="hidden" id="clipBoard" name="clipBoard" value="${board_body.user_email}">
+					<img alt="복사" id="copy-url" style="cursor:pointer;" src="resources/cms/notepad.png">
+					<!-- <img alt="복사" id="copy-url" src="resources/cms/notepad.png" > 2018-12-19 일단보류 -->
 					
 				</td>
 				<td>

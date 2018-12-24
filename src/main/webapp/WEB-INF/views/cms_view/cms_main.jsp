@@ -73,14 +73,14 @@
 			</div>
 		</div>
 		<div class="con2But">
-			<a class="con2But1" id="login_btn">SIGN IN</a>
+			<a class="con2But1" id="login_btn" style="cursor:pointer;">SIGN IN</a>
 			
 		</div>
 	</div>
 	</form>
 	<div class="con3">
 		<div class="con3Text">
-			<a class="con2But2" href="#signUp">REGISTER &#183; </a><a class="con2But2_2" href="#signUp">가입하기</a>
+			<a class="con2But2" href="#signUp" >REGISTER &#183; </a><a class="con2But2_2" href="#signUp">가입하기</a>
 		</div>
 	</div>
 </div>
@@ -106,7 +106,7 @@
 					<input type="text" id="ad_id" name="ad_id" />
 				</div>
 				<div class="popupCon2_1_bt">
-					<a id="userIdCheck_btn">중복확인</a>
+					<a id="userIdCheck_btn" style="cursor:pointer;">중복확인</a>
 				</div>
 			</div>
 			
@@ -134,7 +134,7 @@
 			</div>
 			
 			<div class="popupCon2_1_But">
-				<a id="signUp_btn">REGISTER</a>
+				<a id="signUp_btn" style="cursor:pointer;">REGISTER</a>
 			</div>
 			</form>
 		</div>

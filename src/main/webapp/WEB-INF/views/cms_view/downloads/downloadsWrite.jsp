@@ -26,43 +26,29 @@ $(document).ready(function() {
 	    }
 
 
-	});
-	 
-	$(document).on("click","#save",function(e){
-
-		if (confirm("글을 등록 하시겠습니까?") == true){    //확인
+	});	
+$(document).on("click","#save",function(e){
+	
+	if (confirm("글을 등록 하시겠습니까?") == true){    //확인
 			// 제목 유효성 검사
 			if($("#board_title").val() == '' || $("#board_title").val() == null ){
 			    alert("제목을 입력해주세요.");
 			    return false;
 			}
-			if($("#board_title").val().length > 21){
+			if($("#board_title").val().length > 41){
 			    alert("제목은 20자이상 입력할 수 없습니다.");
 			    return false;
 			}
-		// id가 smarteditor인 textarea에 에디터에서 대입 
-		oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
-		// 이부분에 에디터 validation 검증
-		$("#board_form").submit(); 
-		}else{   
-		    return;
-		}
+	// id가 smarteditor인 textarea에 에디터에서 대입 
+	oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
+	// 이부분에 에디터 validation 검증
+	$("#board_form").submit(); 
+	}else{   
+	    return;
+	}
 
-	  });
-	});
-
-		$(function(){
-			$('.upload_text').val('미리보여줄 텍스트.');
-			$('.multi').change(function(){
-				var fileValue = $('.multi').val().split("\\");
-				var fileName = fileValue[fileValue.length-1];
-				$('.upload_text').val(fileName);
-			});
-			/* $('.MultiFile-remove').click(function(){
-				$('.upload_text').val('취소완료');
-			}); */
-
-		});
+  });
+});
 </script>
 </head>
 <body>
@@ -92,7 +78,7 @@ $(document).ready(function() {
 								<div class="upload-btn_wrap">
 								  <!-- <input type="file" class="input_file" title="파일찾기"> -->
 								  <button type="button" id="newFile" class="upload-btn_wrap" title="파일선택하기">
-								   <span>선택</span>
+								   <span style="cursor:pointer;">선택</span>
 								  </button>
 								</div>
 								<!-- <input type="text" class="upload_text" readonly="readonly"> -->
@@ -111,7 +97,7 @@ $(document).ready(function() {
 	</form>
 	<div class="btnbox">
 		<div class="btnDiv1">
-			<a class="btn1" id="save">SAVE</a>
+			<a class="btn1" id="save" style="cursor:pointer;">SAVE</a>
 		</div>
 		<div class="btnDiv2">
 			<a class="btn1" href="/downloadsList?board_division=download">CANCEL</a>

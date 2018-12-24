@@ -9,6 +9,9 @@
 <html>
 <%@ include file="includever2.jsp"%>
 <head>
+	<%
+       session.invalidate(); // 모든세션정보 삭제
+   	%>
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -83,7 +86,7 @@ $(document).ready(function() {
 		        }
 		    });
 		}
-</script>
+	</script>
 	<title>interlinknc</title>
 </head>
 <body class="main_body">
@@ -336,13 +339,13 @@ $(document).ready(function() {
 				<img alt="포트폴리오이미지" src="resources/mainImg/portfolio_navigator.png">
 				<div class="portfolio_div_ul">
 					<ul class="portfolio_ul">
-						<li class="left"><a name="page_move" id="2007">&ltrif;</a></li>
-						<li><a name="page_move" id="2007">2007</a></li>
+						<li class="left" style="cursor:pointer;"><a name="page_move" id="2007">&ltrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
 						<li>&#183;</li>
 						<li class="dddd">2018</li>
 						<li>&#183;</li>
-						<li><a name="page_move" id="2009">2009</a></li>
-						<li class="right"><a name="page_move" id="2009">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
+						<li class="right" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
 					</ul>
 				</div>
 			</div>
@@ -612,7 +615,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<div class="send_bt">
-				<a class="sendBt" onclick="save()">SEND</a>
+				<a class="sendBt" onclick="save()" style="cursor:pointer;">SEND</a>
 			</div>
 		</div>
 	</div>

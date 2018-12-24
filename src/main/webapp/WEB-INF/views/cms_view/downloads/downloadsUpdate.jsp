@@ -10,38 +10,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
 <script type="text/javascript">
-
-
 $(document).ready(function() {
-// 네이버 에디터  
-var oEditors = [];
+	// 네이버 에디터  
+	var oEditors = [];
 
-nhn.husky.EZCreator.createInIFrame({
-    oAppRef: oEditors,
-    elPlaceHolder: "board_content",
-    sSkinURI: "util/naver_edit/SmartEditor2Skin.html",
-    fCreator: "createSEditor2",
-    htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-    bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-    bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-    bUseModeChanger : true, 
-    }
+	nhn.husky.EZCreator.createInIFrame({
+	    oAppRef: oEditors,
+	    elPlaceHolder: "board_content",
+	    sSkinURI: "util/naver_edit/SmartEditor2Skin.html",
+	    fCreator: "createSEditor2",
+	    htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+	    bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+	    bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+	    bUseModeChanger : true, 
+	    }
 
 
-});
- 
+	});	
 $(document).on("click","#save",function(e){
-
+	
 	if (confirm("글을 등록 하시겠습니까?") == true){    //확인
-		// 제목 유효성 검사
-		if($("#board_title").val() == '' || $("#board_title").val() == null ){
-		    alert("제목을 입력해주세요.");
-		    return false;
-		}
-		if($("#board_title").val().length > 21){
-		    alert("제목은 20자이상 입력할 수 없습니다.");
-		    return false;
-		}		
+			// 제목 유효성 검사
+			if($("#board_title").val() == '' || $("#board_title").val() == null ){
+			    alert("제목을 입력해주세요.");
+			    return false;
+			}
+			if($("#board_title").val().length > 41){
+			    alert("제목은 20자이상 입력할 수 없습니다.");
+			    return false;
+			}
 	// id가 smarteditor인 textarea에 에디터에서 대입 
 	oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
 	// 이부분에 에디터 validation 검증
@@ -52,21 +49,6 @@ $(document).on("click","#save",function(e){
 
   });
 });
-
-	$(function(){
-		$('.upload_text').val('미리보여줄 텍스트.');
-		$('.multi').change(function(){
-			var fileValue = $('.multi').val().split("\\");
-			var fileName = fileValue[fileValue.length-1];
-			$('.upload_text').val(fileName);
-		});
-		/* $('.MultiFile-remove').click(function(){
-			$('.upload_text').val('취소완료');
-		}); */
-
-	});
-
-
 </script>
 </head>
 <body>

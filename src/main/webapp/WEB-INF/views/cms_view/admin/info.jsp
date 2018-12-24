@@ -10,10 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
 <script type="text/javascript">
-
-function admin_modify() {
-	$("#admin_form").submit(); 
-}
+$(document).ready(function() { 
+	$("#ad_contact").focus();
+});
 </script>
 </head>
 <body>
@@ -73,7 +72,7 @@ function admin_modify() {
 		</c:if>
 	</div>
 	<div class="butEdit">
-		<a onclick="admin_modify()">EDIT</a>
+		<a onclick="admin_modify()" style="cursor:pointer;">EDIT</a>
 	</div>
 </div>
 </body>

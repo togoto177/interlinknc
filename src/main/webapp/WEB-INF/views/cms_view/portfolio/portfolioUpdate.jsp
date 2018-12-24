@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%@ include file="../cms_include.jsp"%>
 <!DOCTYPE html PUBLIC>
 <html>
@@ -10,43 +11,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
 <script type="text/javascript">
-
-
 $(document).ready(function() {
-// 네이버 에디터  
-var oEditors = [];
 
-nhn.husky.EZCreator.createInIFrame({
-    oAppRef: oEditors,
-    elPlaceHolder: "board_content",
-    sSkinURI: "util/naver_edit/SmartEditor2Skin.html",
-    fCreator: "createSEditor2",
-    htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-    bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-    bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-    bUseModeChanger : true, 
-    }
+	// 네이버 에디터  
+	var oEditors = [];
+
+	nhn.husky.EZCreator.createInIFrame({
+	    oAppRef: oEditors,
+	    elPlaceHolder: "board_content",
+	    sSkinURI: "util/naver_edit/SmartEditor2Skin.html",
+	    fCreator: "createSEditor2",
+	    htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+	    bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+	    bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+	    bUseModeChanger : true, 
+	    }
 
 
-});
- 
-$(document).on("click","#save",function(e){
-
+	});	
+	$(document).on("click","#save",function(e){
 	if (confirm("글을 등록 하시겠습니까?") == true){    //확인
-		// 제목 유효성 검사
-		if($("#board_title").val() == '' || $("#board_title").val() == null ){
-		    alert("제목을 입력해주세요.");
-		    return false;
-		}
-		if($("#board_title").val().length > 41){
-		    alert("제목은 40자이상 입력할 수 없습니다.");
-		    return false;
-		}
-	
+			// 제목 유효성 검사
+			if($("#board_title").val() == '' || $("#board_title").val() == null ){
+			    alert("제목을 입력해주세요.");
+			    return false;
+			}
+			if($("#board_title").val().length > 41){
+			    alert("제목은 40자이상 입력할 수 없습니다.");
+			    return false;
+			}
+			
 			// 구분 유효성 검사
 			if($("#pf_division").val() == '' || $("#pf_division").val() == null || $("#pf_division").val().indexOf(" ") >= 0){
-				alert("구분을 입력해주세요.");
-				return false;
+					alert("구분을 입력해주세요.");
+					return false;
 			}
 			if($("#pf_division").val().length > 10){
 				alert("구분은 10자이상 입력할 수 없습니다.");
@@ -67,14 +65,6 @@ $(document).on("click","#save",function(e){
 				alert("연결주소를 입력해주세요.");
 				return false;
 			}
-		
-/* 			// 파일 유효성 검사
-			if($("input[type=file]").val() == '' || $("input[type=file]").val() == null){
-				alert("포트폴리오 사진을 선택해주세요.");
-			    return false;
-			}
-		 */
-
 	// id가 smarteditor인 textarea에 에디터에서 대입 
 	oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
 	// 이부분에 에디터 validation 검증
@@ -85,21 +75,6 @@ $(document).on("click","#save",function(e){
 
   });
 });
-
-	$(function(){
-		$('.upload_text').val('미리보여줄 텍스트.');
-		$('.multi').change(function(){
-			var fileValue = $('.multi').val().split("\\");
-			var fileName = fileValue[fileValue.length-1];
-			$('.upload_text').val(fileName);
-		});
-		/* $('.MultiFile-remove').click(function(){
-			$('.upload_text').val('취소완료');
-		}); */
-
-	});
-
-
 </script>
 </head>
 <body>
@@ -137,6 +112,18 @@ $(document).on("click","#save",function(e){
 			<tr>
 				<td colspan="2"><label>사업기간</label><input type="text" name="business_period" id="business_period" value="${board_update.business_period}" /></td>
 				<td rowspan="3" colspan="2" class="imgTd">
+						<c:if test="${fn:length(file_list) == 0}">
+						<a>첨부이미지</a>
+					<input type="text" class="upload_text" readonly="readonly">
+					<div class="upload-btn_wrap">
+					  <button type="button" id="newFile" class="upload-btn_wrap">
+					   <span style="cursor:pointer;">선택</span>  
+					  </button>
+					</div>
+					  <!-- <input type="file" class="input_file" title="파일찾기"> -->
+					  <input type="file" name="uploadfile" class="multi with-preview" id="input_file" maxlength="1" title="파일찾기" style="display: none;"/>
+					  <!-- <input type="file" name="uploadfile" class="multi with-preview" id="input_file" maxlength="1" title="파일찾기" /> -->
+						</c:if>
 					<c:forEach var="file_list" items="${file_list}"  varStatus="status">
 						<c:if test="${file_list.file_use_yn eq 'Y'}">
 						 	<div id="flist_${status.count}">
@@ -150,17 +137,20 @@ $(document).on("click","#save",function(e){
 							</label>
 						 	<img alt="${file_list.file_ori_name}" src="resources/portfolio/${fn:substringBefore(TextValue,'*') }">
 							</div>
-						</c:if>
+						
 					<div id="addfile_${status.count}"  style="display: none;">
 					<a>첨부이미지</a>
 					<input type="text" class="upload_text" readonly="readonly">
 					<div class="upload-btn_wrap">
 					  <button type="button" id="newFile" class="upload-btn_wrap">
-					   <span>선택</span>  
+					   <span style="cursor:pointer;">선택</span>  
 					  </button>
+					</div>
+					  <!-- <input type="file" class="input_file" title="파일찾기"> -->
 					  <input type="file" name="uploadfile" class="multi with-preview" id="input_file" maxlength="1" title="파일찾기" style="display: none;"/>
+					  <!-- <input type="file" name="uploadfile" class="multi with-preview" id="input_file" maxlength="1" title="파일찾기" /> -->
 					</div>
-					</div>
+					</c:if>
 					</c:forEach>
 					
 				</td>
@@ -179,10 +169,10 @@ $(document).on("click","#save",function(e){
 	</form>
 	<div class="btnbox">
 		<div class="btnDiv1">
-			<a class="btn1" id="save">SAVE</a>
+			<a class="btn1" id="save" style="cursor:pointer;">SAVE</a>
 		</div>
 		<div class="btnDiv3">
-			<a class="btn1" id="delete">DELETE</a>
+			<a class="btn1" id="delete" style="cursor:pointer;">DELETE</a>
 		</div>
 		<div class="btnDiv2">
 			<a class="btn1" style="padding: 30 29;" href="/portfolioList?board_division=portfolio">LIST</a>

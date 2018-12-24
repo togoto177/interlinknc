@@ -9,85 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
-<script type="text/javascript">
-	$(document).ready(function() { 
-							
-							//--페이지 셋팅
-							var totalPage = ${totalPage}; //전체 페이지
-							var startPage = ${startPage}; //현재 페이지
-							
-							var pagination = "";
-
-							//--페이지네이션에 항상 10개가 보이도록 조절
-							var forStart = 0;
-							var forEnd = 0;
-
-							if ((startPage - 5) < 1) {
-								forStart = 1;
-							} else {
-								forStart = startPage - 5;
-							}
-
-							if (forStart == 1) {
-
-								if (totalPage > 9) {
-									forEnd = 10;
-								} else {
-									forEnd = totalPage;
-								}
-
-							} else {
-
-								if ((startPage + 4) > totalPage) {
-
-									forEnd = totalPage;
-
-									if (forEnd > 9) {
-										forStart = forEnd - 9
-									}
-
-								} else {
-									forEnd = startPage + 4;
-								}
-							}
-							//--페이지네이션에 항상 10개가 보이도록 조절
-
-							//전체 페이지 수를 받아 돌린다.
-							for (var i = forStart; i <= forEnd; i++) {
-								if (startPage == i) {
-									
-									pagination  +=  '<a class="focus" name="page_move" start_page="'+i+'" disabled>'
-											+ i + '</a>';
-								} else {
-									pagination += ' <a name="page_move" start_page="'+i+'">'
-											+ i + '</a>';
-								}
-							}
-						
-						
-							//하단 페이지 부분에 붙인다.
-							$("#pagination").append(pagination);
-							//--페이지 셋팅
-
-							$("#searchBtn").click(function() {
-								document.board_form.submit();
-							
-							});
-							
-							
-
-							//페이지 번호 클릭시 이동
-							$(document).on("click","a[name='page_move']",
-									function() {
-										var visiblePages = 10;//리스트 보여줄 페이지
-										
-										$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
-										$('#visiblePages').val(visiblePages);
-										document.board_form.submit();
-									});
-						}); 
-							
-	</script>
 </head>
 <body>
 <%@ include file="../cms_header.jsp"%>
@@ -97,12 +18,13 @@
 		<img alt="포트폴리오 이미지" src="resources/mainImg/diagonal_download.png">
 		<a>PORTFOLIO</a>
 	</div>
+	<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
 	<form name="board_form"  method="get">
 	<input type="hidden" id="board_division" name="board_division" value="${board_division}">
 	<input type="hidden" id="startPage" name="startPage" value="">
 	<input type="hidden" id="visiblePages" name="visiblePages" value="">
 	<div class="portSerch">
-	<input type="text" class="searchForm" id="sch_value" name="sch_value" value="${sch_value}" /><img alt="돋보기" src="resources/cms/search.png" id="searchBtn">
+	<input type="text" class="searchForm" id="sch_value" name="sch_value" value="${sch_value}" /><img alt="돋보기" style="cursor:pointer;" src="resources/cms/search.png" id="searchBtn">
 	<input type="hidden" value="board_title" name="sch_type" />
 	</div>
 	</form>
@@ -132,7 +54,7 @@
                                  
             </td>
             <td>${board_list.pf_division}</td>
-			<td class="title"><a onclick="location.href='portfolioUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
+			<td class="title"><a style="cursor:pointer;" onclick="location.href='portfolioUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
 			<td>${board_list.business_period}</td>
 			<td>${board_list.board_hit}</td>
 			</tr>
@@ -143,22 +65,22 @@
 	<div class="portCount">
 		<ul>
 		<li class="portCount1">
-		<img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=1&visiblePages=10';">
+		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=1&visiblePages=10';">
 		<c:if test="${startPage != '1' }">
-		<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${startPage-1}&visiblePages=10';">
+		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${startPage-1}&visiblePages=10';">
 		</c:if>
 		</li>
 		<li id="pagination"></li>
 		<li class="portCount2">
 		<c:if test="${totalPage != '1' && totalPage != startPage}">
-		<img alt="오른쪽" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${startPage+1}&visiblePages=10';">
+		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${startPage+1}&visiblePages=10';">
 		</c:if>
-		<img alt="오른쪽" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${totalPage}&visiblePages=10';">
+		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${totalPage}&visiblePages=10';">
 		</li>
 		</ul>
  		<div class="btnList">
 		<div class="btnDiv1">
-		<a class="btn1" id="insert_view">WRITE</a>
+		<a class="btn1" id="insert_view" style="cursor:pointer;">WRITE</a>
 		</div>
 		</div>
 	</div>

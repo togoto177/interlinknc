@@ -10,25 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
 <script type="text/javascript">
-$(function(){
-	$('.upload_text').val('미리보여줄 텍스트.');
-	$('.input_file').change(function(){
-		var i = $(this).val();
-		$('.upload_text').val(i);
-	});
-});
-
-$(function() {
-
-	  $('input:text[name="ad_hiredate"]').datepicker({
-	    dateFormat: 'yy년 mm월 dd일'
-	  });
-	});
-	
-function admin_modify() {
-	$("#admin_form").submit(); 
-}
-
 $(document).ready(function() {
 
 $("#adDelete").click(function() {
@@ -71,7 +52,7 @@ $("#adDelete").click(function() {
 				</td>
 				<td>
 					<div class="td1">전화번호</div>
-					<div class="td2"><input type="text" name="ad_contact" value="${admin_info.ad_contact }" /></div>
+					<div class="td2"><input type="text" id="ad_contact" name="ad_contact" value="${admin_info.ad_contact }" /></div>
 				</td>
 			</tr>
 			<tr>
@@ -81,7 +62,7 @@ $("#adDelete").click(function() {
 				</td>
 				<td>
 					<div class="td1">이메일</div>
-					<div class="td2"><input type="text" name="ad_email" value="${admin_info.ad_email }" /></div>
+					<div class="td2"><input type="text" id="ad_email" name="ad_email" value="${admin_info.ad_email }" /></div>
 				</td>
 			</tr>
 			<tr>
@@ -117,10 +98,10 @@ $("#adDelete").click(function() {
 	</form>
 	<div class="btnbox">
 		<div class="btnDiv1">
-			<a class="btn1" onclick="admin_modify()">EDIT</a>
+			<a class="btn1" onclick="admin_modify()" style="cursor:pointer;">EDIT</a>
 		</div>
 		<div class="btnDiv3">
-			<a class="btn1" id="adDelete">DELETE</a>
+			<a class="btn1" id="adDelete" style="cursor:pointer;">DELETE</a>
 		</div>
 		<div class="btnDiv2">
 			<a class="btn1" href="/adminList" style="padding: 30 29;">LIST</a>

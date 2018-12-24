@@ -9,13 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
-<script type="text/javascript">
-
-function password_submit() {
-	$("#password_modify").submit(); 
-}
-
-</script>
 </head>
 <body>
 <%@ include file="../cms_header.jsp"%>
@@ -32,7 +25,7 @@ function password_submit() {
 			<a>기존비밀번호</a>
 			</div>
 			<div class="input">
-			<input type="text" id="ad_ori_password" name="ad_ori_password">
+			<input type="password" id="ad_ori_password" name="ad_ori_password">
 			<input type="hidden" id="ad_seq" name="ad_seq" value="${ad_seq}" />
 			<input type="hidden" id="result" name="result" value="${result}" />
 			<input type="hidden" id="division" name="division" value="${division}">
@@ -43,7 +36,7 @@ function password_submit() {
 			<a>신규비밀번호</a>
 			</div>
 			<div class="input">
-			<input type="text" id="ad_password" name="ad_password">
+			<input type="password" id="ad_password" name="ad_password">
 			</div>
 		</div>
 		<div class="infoCon1">
@@ -51,7 +44,7 @@ function password_submit() {
 			<a>비밀번호확인</a>
 			</div>
 			<div class="input">
-			<input type="text" id="ad_passwordChk" name="ad_passwordChk">
+			<input type="password" id="ad_passwordChk" name="ad_passwordChk">
 			</div>
 		</div>
 	</div>

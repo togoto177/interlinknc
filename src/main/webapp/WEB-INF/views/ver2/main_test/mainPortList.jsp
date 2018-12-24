@@ -73,40 +73,40 @@ jQuery(document).ready(function($){
 				<div class="portfolio_div_ul">
 					<ul class="portfolio_ul">
 					<c:if test="${pf_year == '2018'}">
-						<li class="left"><a name="page_move" id="2007">&rtrif;</a></li>
-						<li><a name="page_move" id="2007">2007</a></li>
+						<li class="left" style="cursor:pointer;"><a name="page_move" id="2007">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
 						<li>&#183;</li>
 						<li class="dddd">2018</li>
 						<li>&#183;</li>
-						<li><a name="page_move" id="2009">2009</a></li>
-						<li class="right"><a name="page_move" id="2009">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
+						<li class="right" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
 					</c:if>
 					<c:if test="${pf_year == '2009'}">
-						<li class="left"><a name="page_move" id="2018">&rtrif;</a></li>
-						<li><a name="page_move" id="2018">2018</a></li>
+						<li class="left" style="cursor:pointer;"><a name="page_move" id="2018">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2018">2018</a></li>
 						<li>&#183;</li>
 						<li class="dddd">2009</li>
 						<li>&#183;</li>
-						<li><a name="page_move" id="2008">2008</a></li>
-						<li class="right"><a name="page_move" id="2008">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2008">2008</a></li>
+						<li class="right" style="cursor:pointer;"><a name="page_move" id="2008">&rtrif;</a></li>
 					</c:if>
 					<c:if test="${pf_year == '2008'}">
-						<li class="left"><a name="page_move" id="2009">&rtrif;</a></li>
-						<li><a name="page_move" id="2009">2009</a></li>
+						<li class="left" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
 						<li>&#183;</li>
 						<li class="dddd">2008</li>
 						<li>&#183;</li>
-						<li><a name="page_move" id="2007">2007</a></li>
-						<li class="right"><a name="page_move" id="2007">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
+						<li class="right" style="cursor:pointer;"><a name="page_move" id="2007">&rtrif;</a></li>
 					</c:if>
 					<c:if test="${pf_year == '2007'}">
-						<li class="left"><a name="page_move" id="2008">&rtrif;</a></li>
-						<li><a name="page_move" id="2008">2008</a></li>
+						<li class="left" style="cursor:pointer;"><a name="page_move" id="2008">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2008">2008</a></li>
 						<li>&#183;</li>
 						<li class="dddd">2007</li>
 						<li>&#183;</li>
-						<li><a name="page_move" id="2018">2018</a></li>
-						<li class="right"><a name="page_move" id="2018">&rtrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2018">2018</a></li>
+						<li class="right" style="cursor:pointer;"><a name="page_move" id="2018">&rtrif;</a></li>
 					</c:if>		
 					</ul>
 				</div>

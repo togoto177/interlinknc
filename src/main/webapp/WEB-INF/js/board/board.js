@@ -77,6 +77,11 @@
 			//하단 페이지 부분에 붙인다.
 			$("#pagination").append(pagination);
 			//--페이지 셋팅
+			
+			$("#searchBtn").click(function() {
+				document.board_form.submit();
+			
+			});
 
 			//하단 네비바 클릭 시 이동
 			$(document).on("click","a[name='page_move']",function() {
@@ -185,8 +190,8 @@
 						
 
 
-					});				
-});
+					});
+	});
 
 	/* 파일추가버튼 */
 	function addbt() {
@@ -300,6 +305,49 @@
 		
 	});
 	
-	
+	//체크박스 전체 선택
+	function all_check() { 
+		
+		var chk = $(this).prop("disabled");
+		$('input:checkbox[name="check_box"]').each(function() {
 
+			if (chk) {
+				$('input[name="check_box"]').each(function() {
+					var opt = $(this).prop("disabled");
+					if (!opt) {
+						$(this).attr("checked", true);
+					}
+				});
+			} else {
+				$("input[name='check_box']").attr("checked", false);
+			}
+		});
+	};
 	
+	//파일선택시 텍스트 대체
+	$(function(){
+		$('.upload_text').val('미리보여줄 텍스트.');
+		$('.multi').change(function(){
+			var fileValue = $('.multi').val().split("\\");
+			var fileName = fileValue[fileValue.length-1];
+			$('.upload_text').val(fileName);
+		});
+	});
+	
+	//게시판 체크박스 삭제
+	function detailSubmit() { 
+		//체크박스 선택에 따른 삭제 유무
+		if(confirm("정말로 삭제 하시겠습니까?") == true) {
+			if($('input:checkbox[id="checkOne"]').is(":checked") == true)  {
+	           document.board_form.action='board_delete';
+					alert("삭제 되었습니다.");
+	          } else{
+	            alert("삭제하실 목록을 체크하여 주십시오.")
+	            return;
+	             }
+			}else{
+				alert("취소 되었습니다.");
+				return;
+			}	
+	document.board_form.submit();
+	};
