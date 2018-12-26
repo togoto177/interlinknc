@@ -81,18 +81,23 @@
 						<a>${download_list.board_content}</a>
 					</div>
 					<div class="windowCon3">
-						<!-- <a class="windowConBut">DOWNLOAD&darr;</a> -->
-						<c:set var="boardlist" value="${download_list.file_sub_name}" />													
+					
+					<c:if test="${download_list.file_cnt == 0}"><!-- 파일이 없을때 -->
+					</c:if>
+					<c:if test="${download_list.file_cnt != 0}">
+						<!-- <a class="windowConBut">DOWNLOAD&darr;</a> -->													
 						<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
 						<c:forEach items="${split_file}" var="boardlist">
-						<br/>
 						<a href="javascript:void(0);" class="windowConBut" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
-						DOWNLOAD &darr;
+						<c:set var="oriName" value="${fn:substringAfter(boardlist, '_')}" />
+						${fn:substringBefore(oriName, '*')} &darr;
 						
 						</a>									
 						</c:forEach>
-						
+					</c:if>
 					</div>
+					
+					
 				</div>
 			</div>
 			</c:forEach>

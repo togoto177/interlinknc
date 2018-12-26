@@ -429,15 +429,18 @@ public class view_cms {
 							String attach_path = "";
 							
 							if(board_division.equals("download")) {
-								attach_path = "resources/downloads/";
+								attach_path = "resources/download/download_uploadfile/";
 							}else if (board_division.equals("portfolio")) {
-								attach_path = "resources/portfolio/";
+								attach_path = "resources/portfolio/portfolio_uploadfile/";
 							}
 							
 							File f = new File(file_path + attach_path + file_sub_name);
 							
 							System.out.println("===========자료실 파일업로드 실제 Path=========" + f);
-
+							
+							if(!f.exists())
+								f.mkdirs();
+							
 							//	이력서 model에 파일명,주소 저장
 							//         파일명에서 확장자 추출 
 							String filename = file_ori_name;
@@ -535,15 +538,18 @@ public class view_cms {
 								
 								String attach_path = "";
 								if(board_division.equals("download")) {
-									attach_path = "resources/downloads/";
+									attach_path = "resources/download/download_uploadfile/";
 								}else if (board_division.equals("portfolio")) {
-									attach_path = "resources/portfolio/";
+									attach_path = "resources/portfolio/portfolio_uploadfile/";
 								}
 								
 								File f = new File(file_path + attach_path + file_sub_name);
 								
 								System.out.println("===========자료실 파일업로드 실제 Path=========" + f);
-
+								
+								if(!f.exists())
+									f.mkdirs();
+								
 								//	이력서 model에 파일명,주소 저장
 								//         파일명에서 확장자 추출 
 								String filename = file_ori_name;
@@ -666,9 +672,9 @@ public class view_cms {
    		String attach_path = "";
    		
    		if(board_division.equals("download")) {
-   			attach_path = "resources/downloads/";
+   			attach_path = "resources/download/download_uploadfile/";
    		}else if (board_division.equals("portfolio")) {
-   			attach_path = "resources/portfolio/";
+   			attach_path = "resources/portfolio/portfolio_uploadfile/";
 		}
 
    		String savePath = file_path+attach_path;

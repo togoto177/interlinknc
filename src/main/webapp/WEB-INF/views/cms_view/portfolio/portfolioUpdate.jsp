@@ -135,7 +135,7 @@ $(document).ready(function() {
 							<label>${file_list.file_size} KB
 							<button type="button" class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
 							</label>
-						 	<img alt="${file_list.file_ori_name}" src="resources/portfolio/${fn:substringBefore(TextValue,'*') }">
+						 	<img alt="${file_list.file_ori_name}" src="resources/portfolio/portfolio_uploadfile/${fn:substringBefore(TextValue,'*') }">
 							</div>
 						
 					<div id="addfile_${status.count}"  style="display: none;">

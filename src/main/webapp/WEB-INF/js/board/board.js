@@ -1,6 +1,6 @@
 	$(document).ready(function() {
 		
-			alert("TEST");
+			/*alert("TEST");*/
 			//게시물 등록 클릭
 			$("#insert_view").click(function() {
 				location.href = "portfolioWrite?board_division=" + $("#board_division").val();
