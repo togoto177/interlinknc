@@ -922,6 +922,9 @@ h1{
 	font-family: "HPSimplified_Rg";
 	/* padding-top: 9; */
 }
+.downloads .downCnt li a{
+	padding: 0 5px;
+}
 .downloads .downCnt li img{
 	padding-top: 2;
 }
@@ -933,17 +936,21 @@ h1{
 	position: relative;
 }
 .downloads .downCnt .downCntli1 img{
+	position: relative;
+	right: -7px;
 	width: 10;
 	margin:0 auto;
 	height: 10;
 	margin-top:2;
-	padding-right: 10;
+	top: 1px;
 	transform: rotate(180deg);
 }
 .downloads .downCnt .downCntli2 img{
+	position: relative;
+	right: 7px;
 	width: 10;
 	height: 10;
-	padding-right: 10;
+	top: 1px;
 }
 
 /* customer */
@@ -1097,7 +1104,7 @@ h1{
   display: none;
   position:fixed;
   width: 500;
-  height: 400;
+  height: 480;
   margin: 0 auto;
   top: 50%;
   left: 50%;
@@ -1116,7 +1123,7 @@ h1{
 }
 .window .windowCon{
 	position: relative;
-	top: 18%;
+	top: 15%;
 	text-align: left;
 }
 .window .close_div{
@@ -1159,8 +1166,12 @@ h1{
 }
 .window .windowCon .windowCon3{
 	margin-top: 20;
+	height: 105px;
+	overflow: scroll;
+	overflow-x: hidden;
 }
 .window .windowCon .windowCon3 .windowConBut{
+	margin-right: 5px;
 	background: #6600ff;
 	color: white;
 	float: right;
@@ -1170,4 +1181,8 @@ h1{
     padding: 8 25;
     letter-spacing: 2;
     font-size: 11;
+    width: 280px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
 }

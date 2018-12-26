@@ -514,9 +514,8 @@ $(document).ready(function() {
 						<c:set var="boardlist" value="${download_list.file_sub_name}" />													
 						<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
 						<c:forEach items="${split_file}" var="boardlist">
-						<br/>
 						<a href="javascript:void(0);" class="windowConBut" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
-						DOWNLOAD &darr;
+						${download_list.file_ori_name} &darr;
 						
 						</a>									
 						</c:forEach>

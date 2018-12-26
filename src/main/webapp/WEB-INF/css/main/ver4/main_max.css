@@ -146,10 +146,12 @@
 	.downloads .downCnt .downCntli1 img{
 		width: 8;
 		height: 8;
+		top: 3;
 	}
 	.downloads .downCnt .downCntli2 img{
 		width: 8;
 		height: 8;
+		top: 3;
 	}
 	.customer_con{
 		width: 95%;
@@ -190,11 +192,15 @@
 		font-size: 8px;
 	}
 	.window .windowCon .windowCon3 .windowConBut{
+		width: 156px;
 		font-size: 10px;
 		padding: 5px 11px;
 	}
 	.window .windowCon{
 		top: 15%;
+	}
+	.window .windowCon .windowCon3{
+		height: 55px;
 	}
 	
 	.portfolioImg .portfolioImg_div .bxslider .background_1:hover .portCon3,
@@ -357,10 +363,12 @@
 	.downloads .downCnt .downCntli1 img{
 		width: 8;
 		height: 8;
+		top: 3;
 	}
 	.downloads .downCnt .downCntli2 img{
 		width: 8;
 		height: 8;
+		top: 3;
 	}
 	.customer_con{
 		width: 95%;
@@ -387,11 +395,15 @@
 		font-size: 8px;
 	}
 	.window .windowCon .windowCon3 .windowConBut{
+		width: 156px;
 		font-size: 10px;
 		padding: 5px 11px;
 	}
 	.window .windowCon{
 		top: 15%;
+	}
+	.window .windowCon .windowCon3{
+		height: 55px;
 	}
 }
 
