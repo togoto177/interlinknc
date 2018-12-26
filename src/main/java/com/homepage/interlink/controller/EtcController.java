@@ -81,6 +81,7 @@ public class EtcController {
         //Session 생성
         
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+        	/*Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {*/
         	String un=username; 
         	String pw=password; 
         	protected javax.mail.PasswordAuthentication getPasswordAuthentication() { 

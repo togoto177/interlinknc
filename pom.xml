@@ -213,12 +213,6 @@
 			<version>2.4</version>
 		</dependency>
 		
-		<!-- 메일전송을 위해 권수 추가 -->
-		<dependency> 
-			<groupId>javax.mail</groupId> 
-			<artifactId>mail</artifactId> 
-			<version>1.4.7</version> 
-		</dependency>
 		
 	</dependencies>
 	<build>
