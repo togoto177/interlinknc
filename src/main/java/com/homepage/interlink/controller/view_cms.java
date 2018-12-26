@@ -615,7 +615,9 @@ public class view_cms {
 				if(board.getBoard_division().equals("portfolio")) {
 					return "redirect:/portfolioList?board_division="+board.getBoard_division();
 				}else if(board.getBoard_division().equals("contact")) {
-					return "redirect:/contactList?board_division="+board.getBoard_division();
+					//2018-12-26 권수 수정
+					//리스트에서 수정창으로 변경
+					return "redirect:/contactUpdate?board_division="+board.getBoard_division()+"&board_seq="+board.getBoard_seq();  
 				}else {
 					return "redirect:/downloadsList?board_division="+board.getBoard_division();
 				}

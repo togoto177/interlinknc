@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 		<hr id="Context" style="display: none">
+		<input type="hidden" id="startPageList" name="startPageList" value="${startPage}">
 			<table>
 				<colgroup>
 					<col style="width: 25%" />
@@ -38,7 +39,7 @@
                     </td>
 					<td class="title"><a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}">${download_list.board_title}</a></td>
 					<td>${download_list.board_registerdate}</td>
-					<td>
+					<td style="height: 36px;">
 					<c:set var="boardlist" value="${download_list.file_sub_name}" />
 					<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
 					<c:choose>
@@ -46,7 +47,7 @@
 					</c:when>
 					<c:when test="${download_list.file_cnt == 1}"><!-- 파일이 1개일대 -->
 						<c:forEach items="${split_file}" var="boardlist">
-						<a href="javascript:void(0);" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
+						<a onclick="downFile('${boardlist}', '${download_list.board_seq}');">
 						<img alt="" src="resources/mainImg/download_arrow_white.png">
 						</a>
 						</c:forEach>
@@ -80,7 +81,17 @@
 						<a>${download_list.board_content}</a>
 					</div>
 					<div class="windowCon3">
-						<a class="windowConBut">DOWNLOAD&darr;</a>
+						<!-- <a class="windowConBut">DOWNLOAD&darr;</a> -->
+						<c:set var="boardlist" value="${download_list.file_sub_name}" />													
+						<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
+						<c:forEach items="${split_file}" var="boardlist">
+						<br/>
+						<a href="javascript:void(0);" class="windowConBut" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
+						DOWNLOAD &darr;
+						
+						</a>									
+						</c:forEach>
+						
 					</div>
 				</div>
 			</div>

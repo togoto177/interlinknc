@@ -1,4 +1,6 @@
 	$(document).ready(function() {
+		
+			alert("TEST");
 			//게시물 등록 클릭
 			$("#insert_view").click(function() {
 				location.href = "portfolioWrite?board_division=" + $("#board_division").val();
@@ -23,7 +25,7 @@
 			
 			$("#customer_select").val("${board_body.board_division}").attr("selected", "selected");
 			
-			var startPage = $('#startPage').val(); //현재 페이지
+			var startPage = $('#startPageList').val(); //현재 페이지
 			var totalPage = $('#totalPage').val(); //전체 페이지
 			//--페이지 셋팅
 
@@ -66,7 +68,6 @@
 			//전체 페이지 수를 받아 돌린다.
 			for (var i = forStart; i <= forEnd; i++) {
 				if (startPage == i) {
-
 					pagination  +=  '<a class="focus" name="page_move" id="page_num" start_page="'+i+'" disabled>'
 							+ i + '</a>';
 				} else {
@@ -93,19 +94,22 @@
 						
 						if(id_check == "page_num"){
 						$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
-						var startPage = $('#startPage').val();
+						var startPageList = $('#startPage').val();
+						$('#startPageList').val(startPageList);
+						var startPage = $('#startPageList').val(); 
 						$('#visiblePages').val(visiblePages);
-
-
 						if (sp == "/mainDownList" || sp == "/main_test") {
-
+							
 							$.ajax({ 
 								type: 'get' , 
 								url: '/mainDownList?startPage='+ startPage +'&visiblePages='+visiblePages ,
-								dataType : 'text' , 
+								dataType : 'text' ,
 								success: function(data) { 
 									$('#Context').remove();
-									$('#a').html(data);
+									$('#pagination').empty();
+									$('#a').html(data).trigger("create");
+									history.go(-1);
+									$("#pagination").append(pagination);
 								} 
 							});
 						}else{
@@ -119,7 +123,10 @@
 								dataType : 'text' , 
 								success: function(data) { 
 									$('#Context').remove();
-									$('#a').html(data);
+									$('#pagination').empty();
+									$('#a').html(data).trigger("create");
+									history.go(-1);
+									$("#pagination").append(pagination);
 								} 
 							});
 
@@ -130,7 +137,10 @@
 								dataType : 'text' , 
 								success: function(data) {
 									$('#Context').remove();
-									$('#a').html(data);
+									$('#pagination').empty();
+									$('#a').html(data).trigger("create");
+									history.go(-1);
+									$("#pagination").append(pagination);
 								} 
 							});
 

@@ -432,9 +432,10 @@ $(document).ready(function() {
 		<input type="hidden" id="totalCnt" name="totalCnt" value="${totalCnt}">
 		<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
 		<input type="hidden" id="servletPath" name="servletPath" value="${servletPath}">
-		<div class="downloadsTable">
+		<div class="downloadsTable" id="downloadsTable">
 		<div class="a" id="a">
 		<hr id="Context" style="display: none">
+		<input type="hidden" id="startPageList" name="startPageList" value="${startPage}">
 			<table>
 				<colgroup>
 					<col style="width: 25%" />
@@ -467,7 +468,7 @@ $(document).ready(function() {
                     </td>
 					<td class="title"><a href="javascript:void(0);" class="openMask" id="${download_list.board_seq}">${download_list.board_title}</a></td>
 					<td>${download_list.board_registerdate}</td>
-					<td>
+					<td style="height: 36px;">
 					<c:set var="boardlist" value="${download_list.file_sub_name}" />
 					<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
 					<c:choose>
@@ -527,7 +528,7 @@ $(document).ready(function() {
 			</table>
 			</div>
 			
-			<div class="downCnt">
+			<div class="downCnt" id="downCnt">
 			<input type="hidden" id="startPage" name="startPage" value="">
 			<input type="hidden" id="visiblePages" name="visiblePages" value="">
 			<ul>

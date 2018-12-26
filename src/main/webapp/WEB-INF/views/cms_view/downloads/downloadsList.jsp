@@ -18,6 +18,7 @@
 		<img alt="이미지" src="resources/mainImg/diagonal_download.png">
 		<a>DOWNLOADS</a>
 	</div>
+	<input type="hidden" id="startPageList" name="startPageList" value="${startPage}">
 	<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
 	<form name="board_form"  method="get">
 	<input type="hidden" id="board_division" name="board_division" value="${board_division}">

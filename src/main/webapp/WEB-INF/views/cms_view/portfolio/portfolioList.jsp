@@ -19,6 +19,7 @@
 		<a>PORTFOLIO</a>
 	</div>
 	<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
+	<input type="hidden" id="startPageList" name="startPageList" value="${startPage}">
 	<form name="board_form"  method="get">
 	<input type="hidden" id="board_division" name="board_division" value="${board_division}">
 	<input type="hidden" id="startPage" name="startPage" value="">

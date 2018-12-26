@@ -47,7 +47,7 @@
 		<img alt="이미지" src="resources/mainImg/diagonal_download.png">
 		<a>사원관리</a>
 	</div>
-	<input type="hidden" id="pagingStartPage" name="pagingStartPage" value="${startPage}">
+	<input type="hidden" id="startPageList" name="startPageList" value="${startPage}">
 	<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
 	<form name="admin_form"  method="get">
 	<input type="hidden" id="division" name="division" value="${division}">
