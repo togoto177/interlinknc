@@ -39,6 +39,7 @@ public class EtcController {
   		
   		String division = "email";
         model.addAttribute("division", division); 
+        System.out.println("ee");
         
   		return "/cms_view/etc/emailSend";
   		
