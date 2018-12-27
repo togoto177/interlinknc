@@ -7,15 +7,6 @@
 <link href="css/main/ver4/jquery.bxslider.css" rel="stylesheet">
 <script src="js/bootstrap,jquery/jquery.js"></script>
 <script src="js/bootstrap,jquery/jquery-3.3.1.min.js"></script>
-<script src="js/main_test/main.js"></script>
-<script src="js/main_test/jquery.bxslider.js"></script>
+<script src="js/main/main.js"></script>
+<script src="js/main/jquery.bxslider.js"></script>
 <script src="js/board/board.js"></script>
-
-
-
-
-
-
-
-
-<!-- <link href="css/convention_css/datepicker.min.css" rel="stylesheet" type="text/css"> -->

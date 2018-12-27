@@ -897,6 +897,7 @@ h1{
 .downloadsTable table img{
 	width: 20px;
 	height: 20px;
+	border: 0;
 }
 .downloads .downCnt{
 	margin: 0 auto;
@@ -923,6 +924,7 @@ h1{
 	/* padding-top: 9; */
 }
 .downloads .downCnt li a{
+	text-decoration: none;
 	padding: 0 5px;
 }
 .downloads .downCnt li img{
@@ -944,6 +946,7 @@ h1{
 	margin-top:2;
 	top: 1px;
 	transform: rotate(180deg);
+	border: 0;
 }
 .downloads .downCnt .downCntli2 img{
 	position: relative;
@@ -951,6 +954,7 @@ h1{
 	width: 10;
 	height: 10;
 	top: 1px;
+	border: 0;
 }
 
 /* customer */
@@ -1172,7 +1176,7 @@ h1{
 }
 .window .windowCon .windowCon3 .windowConBut{
 	margin-right: 5px;
-	background: #6600ff;
+	background: #cc99ff;
 	color: white;
 	float: right;
 	font-family: "HPSimplified_Rg;";
@@ -1185,4 +1189,5 @@ h1{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow-x: hidden;
+    text-align: right;
 }

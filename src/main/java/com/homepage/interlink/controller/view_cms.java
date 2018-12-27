@@ -488,7 +488,7 @@ public class view_cms {
 				}
 
 		        if(board_division.equals("contact")) {
-		        	return "redirect:/main_test";	
+		        	return "redirect:/main";	
 		        }else if (board_division.equals("portfolio")) {
 		        	return "redirect:/portfolioList?board_division=" + board.getBoard_division();
 				}

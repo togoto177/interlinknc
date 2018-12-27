@@ -20,7 +20,7 @@
 			<%
 			response.setHeader("cache-control","no-store"); //뒤로가기시 이전페이지 유실시키기
 			%>
-			window.open('main_test', '_blank'); 
+			window.open('main', '_blank'); 
 			location.href = "view_cms_main";
 			}else{
 			 return false;	

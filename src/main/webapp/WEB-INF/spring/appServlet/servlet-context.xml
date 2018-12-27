@@ -76,7 +76,7 @@
        		
        		
 			<!-- 사용자 페이지 intercepter 제외 -->
-            <exclude-mapping path="/main_test"/>
+            <exclude-mapping path="/main"/>
             
 			<!-- 관리자 페이지 intercepter 제외 -->
             <exclude-mapping path="/view_cms_main"/>

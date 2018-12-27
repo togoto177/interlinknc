@@ -98,7 +98,7 @@
 						$('#startPageList').val(startPageList);
 						var startPage = $('#startPageList').val(); 
 						$('#visiblePages').val(visiblePages);
-						if (sp == "/mainDownList" || sp == "/main_test") {
+						if (sp == "/mainDownList" || sp == "/main") {
 							
 							$.ajax({ 
 								type: 'get' , 

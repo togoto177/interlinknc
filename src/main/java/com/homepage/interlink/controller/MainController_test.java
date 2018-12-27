@@ -38,8 +38,8 @@ public class MainController_test {
 	@Autowired
     BoardFileService boardFileService;
 	
-	@RequestMapping(value = "/main_test")
-	public String main_test(@RequestParam Map<String, Object> paramMap, Model model, Board board, HttpServletRequest request) {
+	@RequestMapping(value = "/main")
+	public String main(@RequestParam Map<String, Object> paramMap, Model model, Board board, HttpServletRequest request) {
 		
 
 		/*2018-12-05 메인 테스트 겸 권수 추가*/
@@ -88,7 +88,7 @@ public class MainController_test {
 		
 		
 		
-		return "ver2/main_test/main4";
+		return "main/main";
 	}
 
 
@@ -136,7 +136,7 @@ public class MainController_test {
 		model.addAttribute("servletPath", path);
 		
 		
-		return "ver2/main_test/mainDownList";
+		return "main/mainDownList";
 	}
 	//메인 download 수 체크
 	@RequestMapping(value = "/mainDownHit", method = RequestMethod.POST)
@@ -165,7 +165,7 @@ public class MainController_test {
 					board.setStatus("0");
 					boardService.customer_insert(board);
 					
-					return "redirect:/main_test";	
+					return "redirect:/main";	
 			      
 			    }
 		@RequestMapping(value = "/mainPortList")
@@ -181,7 +181,7 @@ public class MainController_test {
 			model.addAttribute("servletPath", path);
 			
 			
-			return "ver2/main_test/mainPortList";
+			return "main/mainPortList";
 		}
 		
 	
