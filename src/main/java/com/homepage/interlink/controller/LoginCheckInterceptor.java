@@ -35,7 +35,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
          * 서버에 로그에 계속 찍혀서 주석처리함
          * */
         
-//        System.out.println("============obj=========" + obj);
         return true;
 
 

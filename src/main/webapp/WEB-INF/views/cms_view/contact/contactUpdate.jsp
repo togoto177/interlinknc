@@ -10,14 +10,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
 <script type="text/javascript">
-$(function(){
-    $('#copy-url').click(function(){
-    	var urlbox = $('#clipBoard').val();
-    	urlbox.select();
-    	document.execCommand('Copy');
-    	alert(urlbox);
-    });
-});
+		    function clipBoard(clip) {
+		        /* var urlbox = document.getElementById(clipBoard); */
+		        $('#clipBoard').val(clip);
+		        $('#clipBoard').select();
+		        try { 
+		            var successful = document.execCommand('copy');  
+		            alert(successful);
+		            alert('클립보드에 주소가 복사되었습니다. Ctrl + V 로 붙여넣기 하세요.'); 
+		        } catch (err) { 
+		            alert('이 브라우저는 지원하지 않습니다.'); 
+		        }
+		    }
+
 </script>
 </head>
 <body>
@@ -55,8 +60,8 @@ $(function(){
 				<td>
 					<label>이메일</label>
 					<a class="Email" id="Email">${board_body.user_email}</a>
-					<input type="hidden" id="clipBoard" name="clipBoard" value="${board_body.user_email}">
-					<img alt="복사" id="copy-url" style="cursor:pointer;" src="resources/cms/notepad.png">
+					<input type="hidden" id="clipBoard" name="clipBoard" value="">
+					<img alt="복사" id="copy-url" style="cursor:pointer;" src="resources/cms/notepad.png" onclick="clipBoard('${board_body.user_email}')">
 					<!-- <img alt="복사" id="copy-url" src="resources/cms/notepad.png" > 2018-12-19 일단보류 -->
 					
 				</td>

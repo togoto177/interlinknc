@@ -31,7 +31,7 @@ import com.homepage.interlink.service.BoardFileService;
 import com.homepage.interlink.service.BoardService;
 
 @Controller
-public class MainController_test {
+public class MainController {
 	
 	@Autowired
     BoardService boardService;
