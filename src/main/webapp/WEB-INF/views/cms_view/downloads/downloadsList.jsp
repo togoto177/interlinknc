@@ -16,13 +16,12 @@ $(document).ready(function() {
 		    var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
 		    var pageCount = 5;        // 한 화면에 나타낼 페이지 수
 		    function paging(totalData, dataPerPage, pageCount, currentPage){
-		        
-		        console.log("currentPage : " + currentPage);
+		    	var startPage = $('#startPageList').val(); //현재 페이지
+		        console.log("currentPage : " + startPage);
 		        
 		        var totalPage = Math.ceil(totalData/dataPerPage);    // 총 페이지 수
-		        var pageGroup = Math.ceil(currentPage/pageCount);    // 페이지 그룹
+		        var pageGroup = Math.ceil(startPage/pageCount);    // 페이지 그룹
 
-		        
 		        console.log("pageGroup : " + pageGroup);
 		        
 		        var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
@@ -37,32 +36,32 @@ $(document).ready(function() {
 		        console.log("next : " + next);
 		        console.log("prev : " + prev);
 		 
-		        var $pingingView = $("#paging");
+		        var pingingView = $("#paging");
 		        
 		        var html = "";
 		        
 		        if(prev > 0)
 		            html += '<li class="portCount1">'+
-		            '<a href="#" id="prev">' +
+		            '<a href="#" name="page_move" id="prev" start_page="'+prev+'">' +
 		            '<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">'+
 		            '</a>'+
 		            '</li>' ;
 		        
 		        for(var i=first; i <= last; i++){
-		            html += '<li><a id="'+i+'" name="page_move" start_page="'+i+'">'+ i +'</a></li>';
+		            html += '<li><a href="#" id="'+i+'" name="page_move" start_page="'+i+'">'+ i +'</a></li>';
 		            
 		        }
 		        
 		        if(last < totalPage)
 		            html += '<li class="portCount2">'+
-		            '<a href="#" id="next">' + 
+		            '<a href="#" name="page_move" id="next" start_page="'+next+'">' + 
 		    		'<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">' +
 		    		'</a>' +
 		    		'</li>';
 		        
 		        $("#paging").html(html);    // 페이지 목록 생성
 		        $("#paging a").css("color", "black");
-		        $("#paging a#" + currentPage).css({"text-decoration":"none", 
+		        $("#paging a#" + startPage).css({"text-decoration":"none", 
 		                                           "color":"red", 
 		                                           "font-weight":"bold"});    // 현재 페이지 표시
 		                                           
@@ -83,126 +82,18 @@ $(document).ready(function() {
 		                                           
 		    }
 		    
-		    $("document").ready(function(){        
+		    $(document).ready(function(){        
 		        paging(totalData, dataPerPage, pageCount, 1);
 		    });
 		    
-		  //하단 네비바 클릭 시 이동
-			$(document).on("click","a[name='page_move']",function() {
-						alert();
-						var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가
-						var totalPage = $('#totalPage').val(); //다운로드 목록 전체 페이지 수
+		  //페이지 번호 클릭시 이동
+			$(document).on("click","a[name='page_move']",
+					function() {
 						var visiblePages = 10;//리스트 보여줄 페이지
-						var sp = $('#servletPath').val();
 						
-						if(id_check == "page_num"){
 						$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
-						var startPageList = $('#startPage').val();
-						$('#startPageList').val(startPageList);
-						var startPage = $('#startPageList').val(); 
 						$('#visiblePages').val(visiblePages);
-						if (sp == "/mainDownList" || sp == "/main_test") {
-							
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainDownList?startPage='+ startPage +'&visiblePages='+visiblePages ,
-								dataType : 'text' ,
-								success: function(data) { 
-									$('#Context').remove();
-									$('#pagination').empty();
-									$('#a').html(data).trigger("create");
-									history.go(-1);
-									$("#pagination").append(pagination);
-								} 
-							});
-						}else{
-							document.board_form.submit(); 
-						}
-
-						}if(id_check == "page_first"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainDownList?startPage=1&visiblePages=10',
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#Context').remove();
-									$('#pagination').empty();
-									$('#a').html(data).trigger("create");
-									history.go(-1);
-									$("#pagination").append(pagination);
-								} 
-							});
-
-						}else if(id_check == "page_last"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainDownList?startPage='+totalPage+'&visiblePages=10',
-								dataType : 'text' , 
-								success: function(data) {
-									$('#Context').remove();
-									$('#pagination').empty();
-									$('#a').html(data).trigger("create");
-									history.go(-1);
-									$("#pagination").append(pagination);
-								} 
-							});
-
-						}else if(id_check == "2018"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}else if(id_check == "2009"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}else if(id_check == "2008"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}else if(id_check == "2007"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}
-						
-
-
+						document.board_form.submit();
 					});
 		    
 });
