@@ -2,82 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="cmsLeft">
-	<ul>
-		<c:if test="${board_division == 'portfolio'}">
-		<li class="title">게시판관리</li>		
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
-		<li><a class="right">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
+<input type="hidden" value="${board_division}" id="board_division" />
+<input type="hidden" value="${division}" id="division" />
+	<ul class="leftbar_ul">
+		<li class="title">게시판관리</li>
+			<li id="li_02"><a class="right" id="portfolio">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
+			<li id="li_03"><a class="right" id="download">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
+			<li id="li_04"><a class="right" id="contact">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
+		<li class="title">기타</li>
+			<li id="li_06"><a class="right" id="emailSend">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
+			<li id="li_07"><a class="right" id="smsSend">&rtrif;</a><a href="/smsSend"> 문자보내기</a></li>
 		<li class="title">설정</li>
-		<li><a class="right">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList?division=admin"> 사원관리</a></li>
-		<li><a class="right">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-		</c:if>
-		
-		<c:if test="${board_division == 'download'}">
-		<li class="title">게시판관리</li>		
-		<li><a class="right">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
-		<li class="title">설정</li>
-		<li><a class="right">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList?division=admin"> 사원관리</a></li>
-		<li><a class="right">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-		</c:if>
-		
-		<c:if test="${board_division == 'contact'}">
-		<li class="title">게시판관리</li>		
-		<li><a class="right">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
-		<li><a class="right">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
-		<li class="title">설정</li>
-		<li><a class="right">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList?division=admin"> 사원관리</a></li>
-		<li><a class="right">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-		</c:if>
-		
-		<c:if test="${division == 'info'}">
-		<li class="title">게시판관리</li>		
-		<li><a class="right">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
-		<li><a class="right">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
-		<li class="title">설정</li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList?division=admin"> 사원관리</a></li>
-		<li><a class="right">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-		</c:if>
-		
-		<c:if test="${division == 'admin'}">
-		<li class="title">게시판관리</li>		
-		<li><a class="right">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
-		<li><a class="right">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
-		<li class="title">설정</li>
-		<li><a class="right">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
-		<li><a class="right">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-		</c:if>
-		
-		<c:if test="${division == 'password'}">
-		<li class="title">게시판관리</li>		
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
-		<li><a class="right">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
-		<li class="title">설정</li>
-		<li><a class="right">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
-		<li><a class="right">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-		</c:if>
-		
-		<c:if test="${division == 'email'}">
-		<li class="title">게시판관리</li>		
-		<li><a class="right">&rtrif;</a><a href="/portfolioList?board_division=portfolio"> PORTFOLIO</a></li>
-		<li><a class="right">&rtrif;</a><a href="/downloadsList?board_division=download">  DOWNLOADS</a></li>
-		<li><a class="right">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
-		<li class="title">설정</li>
-		<li><a class="right">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
-		<li><a class="right">&rtrif;</a><a href="/adminList"> 사원관리</a></li>
-		<li class="rightAc"><a class="right">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-		</c:if>
+			<li id="li_09"><a class="right" id="info">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
+			<li id="li_10"><a class="right" id="admin">&rtrif;</a><a href="/adminList?division=admin"> 사원관리</a></li>
 	</ul>
 </div>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="surem_admins">
+	<resultMap type="surem_admin" id="surem_adminResult">
+		<result property="surem_admin_seq" column="surem_admin_seq" />
+		<result property="surem_usercode" column="surem_usercode" />
+		<result property="surem_deptcode" column="surem_deptcode" />
+		<result property="surem_tell" column="surem_tell" />
+		<result property="surem_reserved_time" column="surem_reserved_time" />
+		<result property="surem_etc" column="surem_etc" />
+	</resultMap>
+	<resultMap type="sms_tb" id="sms_tbResult">
+		<result property="sms_seq" column="sms_seq" />
+		<result property="sms_messages" column="sms_messages" />
+		<result property="sms_userName" column="sms_userName" />
+		<result property="sms_tell" column="sms_tell" />
+		<result property="sms_sendDate" column="sms_sendDate" />
+		<result property="sms_adminId" column="sms_adminId" />
+		<result property="sms_division" column="sms_division" />
+		<result property="sms_result" column="sms_result" />
+		<result property="sms_result2" column="sms_result2" />
+		<result property="sms_error" column="sms_error" />
+		<result property="etc" column="etc" />
+	</resultMap>
+	
+	<select id="surem_admin_select" resultType="surem_admin" parameterType="java.util.HashMap">
+		select * from surem_admin order by surem_admin_seq desc limit 1;
+	</select>
+	<select id="smsMessage_id_select" resultType="Integer" parameterType="java.util.HashMap">
+		select sms_seq from sms_tb order by sms_seq desc limit 1;
+	</select>
+</mapper>

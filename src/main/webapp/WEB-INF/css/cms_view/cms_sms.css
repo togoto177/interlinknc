@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+.smsCon{
+	width: 600px;
+	height: 400px;
+	border: 1px solid black;
+	position: relative;
+	margin: 0 auto;
+	margin-top: 10%;
+}
+.smsCon .smsText{
+	float: left;
+	width: 50%;
+}
+.smsCon .smsNum{
+	float: left;
+	width: 50%;
+}
+.smsCon .smsNum .smsNumBox{
+	width: 80%;
+	height: 310px;
+	border: 1px solid;
+	margin: 10px;
+	padding: 10px;
+	border-radius: .25em;
+}
+.smsCon .smsNum .smsBut{
+	float: right;
+	margin-right: 27px;
+}
+.smsCon .smsNum .smsBut .send{
+	background: #993399;
+	padding: 3px 20px;
+}
+.smsCon .smsNum .smsBut .add{
+	background: #607d8b;
+	padding: 3px 20px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.smsCon .smsNum .smsNumBox ol{
+	padding-left: 30px;
+	overflow: hidden;
+}
+.smsCon .smsNum .smsNumBox ol li{
+	margin-bottom: 10px;
+	height: 26px;
+	position: relative;
+}
+.smsNum .smsNumBox .numDel{
+	background: rgba(0,0,0,0.5);
+	padding: 5px 10px;
+	margin-left: 10px;
+	font-size: 12px;
+	position: relative;
+	cursor: pointer;
+}
+.smsNum .smsNumBox input{
+	float: left;
+	width: 140px;
+	padding: 3px;
+}
+.smsCon .smsText textarea{
+	margin: 10px;
+	width: 90%;
+	height: 240px;
+	resize: none;
+}
+
+.filebox{
+	margin: 10px;
+	margin-bottom: 5px;
+	float: left;
+}
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip:rect(0,0,0,0);
+	border: 0;
+}
+.filebox label {
+	display: inline-block;
+	padding: .2em .5em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #9999ff;
+	cursor: pointer;
+	border: 1px solid #9999ff;
+	border-radius: .25em;
+}
+/* named upload */
+.filebox .upload-name {
+	width: 195px;
+	display: inline-block;
+	padding: .2em .5em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.smsText .textarea_count{
+	float: right;
+	height: 0;
+}
+.smsText .textarea_count #textarea_msg1{
+	position: relative;
+	background: #e91e63;
+	top: -32px;
+	right: 40px;
+	border-radius: 8px;
+	display: block;
+	width: 45px;
+	text-align: center;
+	font-size: 12px;
+	padding: 2px;
+}

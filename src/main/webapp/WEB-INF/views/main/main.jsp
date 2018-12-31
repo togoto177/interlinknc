@@ -331,7 +331,7 @@ $(document).ready(function() {
 	<div class="portfolio_menu"></div>
 	
 	<div class="portfolio" id="portfolio">
-	<div id="edd" style="visibility:hidden;opacity:0">
+	<div id="edd">
 	<input type="hidden" name="pf_year" id="pf_year" value="${pf_year}">
 		<div class="portfolioImg" id="pf_context">
 			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>

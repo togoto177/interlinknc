@@ -8,11 +8,14 @@
 		<typeAlias  type="com.homepage.interlink.model.Admin_tb" alias="admin_tb"/>
 		<typeAlias  type="com.homepage.interlink.model.Board" alias="board"/>
 		<typeAlias  type="com.homepage.interlink.model.BoardFile" alias="boardFile"/>
+		<typeAlias  type="com.homepage.interlink.model.Surem_admin" alias="surem_admin"/>
+		<typeAlias  type="com.homepage.interlink.model.Sms_tb" alias="sms_tb"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="admin/Admin_tb.xml" />
 		<mapper resource="board/Board.xml" />
 		<mapper resource="board/BoardFile.xml" />
+		<mapper resource="etc/Surem_admin.xml" />
 	</mappers>
 </configuration>
