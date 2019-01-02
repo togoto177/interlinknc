@@ -94,7 +94,6 @@ public class view_cms {
 			request.getSession().setAttribute("ad_name", admin_tb.getAd_name());
 			request.getSession().setAttribute("ad_contact", admin_tb.getAd_contact());
 			request.getSession().setAttribute("ad_email", admin_tb.getAd_email());
-			
 			request.getSession().setMaxInactiveInterval(60*30);
 			mav.setViewName("redirect:/portfolioList?board_division=portfolio");
 		}

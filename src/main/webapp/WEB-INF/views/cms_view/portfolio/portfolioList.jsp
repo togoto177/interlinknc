@@ -20,6 +20,7 @@
 	</div>
 	<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
 	<input type="hidden" id="startPageList" name="startPageList" value="${startPage}">
+	<input type="hidden" id="totalCnt" name="totalCnt" value="${totalCnt}">
 	<form name="board_form"  method="get">
 	<input type="hidden" id="board_division" name="board_division" value="${board_division}">
 	<input type="hidden" id="startPage" name="startPage" value="">
@@ -64,20 +65,7 @@
 	</div>
 	
 	<div class="portCount">
-		<ul>
-		<li class="portCount1">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=1&visiblePages=10';">
-		<c:if test="${startPage != '1' }">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${startPage-1}&visiblePages=10';">
-		</c:if>
-		</li>
-		<li id="pagination"></li>
-		<li class="portCount2">
-		<c:if test="${totalPage != '1' && totalPage != startPage}">
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${startPage+1}&visiblePages=10';">
-		</c:if>
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/portfolioList?board_division=portfolio&startPage=${totalPage}&visiblePages=10';">
-		</li>
+		<ul id="paging">
 		</ul>
  		<div class="btnList">
 		<div class="btnDiv1">

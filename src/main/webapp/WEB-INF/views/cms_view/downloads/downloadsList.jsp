@@ -9,95 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>interLink&amp;C</title>
-<script type="text/javascript">
-$(document).ready(function() {
-			
-			var totalData = $("#totalCnt").val();    // 총 데이터 수
-		    var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
-		    var pageCount = 5;        // 한 화면에 나타낼 페이지 수
-		    function paging(totalData, dataPerPage, pageCount, currentPage){
-		    	var startPage = $('#startPageList').val(); //현재 페이지
-		        console.log("currentPage : " + startPage);
-		        
-		        var totalPage = Math.ceil(totalData/dataPerPage);    // 총 페이지 수
-		        var pageGroup = Math.ceil(startPage/pageCount);    // 페이지 그룹
-
-		        console.log("pageGroup : " + pageGroup);
-		        
-		        var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
-		        if(last > totalPage)
-		            last = totalPage;
-		        var first = last - (pageCount-1);    // 화면에 보여질 첫번째 페이지 번호
-		        var next = last+1;
-		        var prev = first-1;
-		        
-		        console.log("last : " + last);
-		        console.log("first : " + first);
-		        console.log("next : " + next);
-		        console.log("prev : " + prev);
-		 
-		        var pingingView = $("#paging");
-		        
-		        var html = "";
-		        
-		        if(prev > 0)
-		            html += '<li class="portCount1">'+
-		            '<a href="#" name="page_move" id="prev" start_page="'+prev+'">' +
-		            '<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">'+
-		            '</a>'+
-		            '</li>' ;
-		        
-		        for(var i=first; i <= last; i++){
-		            html += '<li><a href="#" id="'+i+'" name="page_move" start_page="'+i+'">'+ i +'</a></li>';
-		            
-		        }
-		        
-		        if(last < totalPage)
-		            html += '<li class="portCount2">'+
-		            '<a href="#" name="page_move" id="next" start_page="'+next+'">' + 
-		    		'<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">' +
-		    		'</a>' +
-		    		'</li>';
-		        
-		        $("#paging").html(html);    // 페이지 목록 생성
-		        $("#paging a").css("color", "black");
-		        $("#paging a#" + startPage).css({"text-decoration":"none", 
-		                                           "color":"red", 
-		                                           "font-weight":"bold"});    // 현재 페이지 표시
-		                                           
-		        $("#paging a").click(function(){
-		            
-		            var item = $(this);
-		            
-		            var id = item.attr("id");
-		            var selectedPage = item.text();
-		            
-		            if(id == "next")    selectedPage = next;
-		            if(id == "prev")    selectedPage = prev;
-		            
-		            paging(totalData, dataPerPage, pageCount, selectedPage);
-		        });
-		                                           
-		                                           
-		                                           
-		    }
-		    
-		    $(document).ready(function(){        
-		        paging(totalData, dataPerPage, pageCount, 1);
-		    });
-		    
-		  //페이지 번호 클릭시 이동
-			$(document).on("click","a[name='page_move']",
-					function() {
-						var visiblePages = 10;//리스트 보여줄 페이지
-						
-						$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
-						$('#visiblePages').val(visiblePages);
-						document.board_form.submit();
-					});
-		    
-});
-</script>
 </head>
 <body>
 <%@ include file="../cms_header.jsp"%>
@@ -181,29 +92,6 @@ $(document).ready(function() {
 			</c:forEach>
 		</table>
 	</div>
-	
-	<%-- <div class="portCount">
-		<ul>
-		<li class="portCount1">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/downloadsList?board_division=download&startPage=1&visiblePages=10';">
-		<c:if test="${startPage != '1' }">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/downloadsList?board_division=download&startPage=${startPage-1}&visiblePages=10';">
-		</c:if>
-		</li>
-		<li id="pagination"></li>
-		<li class="portCount2">
-		<c:if test="${totalPage != '1' && totalPage != startPage}">
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/downloadsList?board_division=download&startPage=${startPage+1}&visiblePages=10';">
-		</c:if>
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/downloadsList?board_division=download&startPage=${totalPage}&visiblePages=10';">
-		</li>
-		</ul>
-		<div class="btnList">
-		<div class="btnDiv1">
-		<a class="btn1" href="/downloadsWrite?board_division=download">WRITE</a>
-		</div>
-		</div>
-	</div> --%>
 	<div class="portCount">
 	<ul id="paging">
 	</ul>
