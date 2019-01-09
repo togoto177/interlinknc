@@ -5,11 +5,12 @@
 <configuration>
 	<!-- <properties resource="db.properties" /> -->
 	<typeAliases>
-		<typeAlias  type="com.homepage.interlink.model.Admin_tb" alias="admin_tb"/>
-		<typeAlias  type="com.homepage.interlink.model.Board" alias="board"/>
-		<typeAlias  type="com.homepage.interlink.model.BoardFile" alias="boardFile"/>
-		<typeAlias  type="com.homepage.interlink.model.Surem_admin" alias="surem_admin"/>
-		<typeAlias  type="com.homepage.interlink.model.Sms_tb" alias="sms_tb"/>
+		<typeAlias type="com.homepage.interlink.model.Admin_tb" alias="admin_tb"/>
+		<typeAlias type="com.homepage.interlink.model.Board" alias="board"/>
+		<typeAlias type="com.homepage.interlink.model.BoardFile" alias="boardFile"/>
+		<typeAlias type="com.homepage.interlink.model.Surem_admin" alias="surem_admin"/>
+		<typeAlias type="com.homepage.interlink.model.Sms_tb" alias="sms_tb"/>
+		<typeAlias type="com.homepage.interlink.model.Sms_get" alias="sms_get"/>
 	</typeAliases>
 
 	<mappers>

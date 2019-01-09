@@ -24,6 +24,18 @@
 		<result property="sms_error" column="sms_error" />
 		<result property="etc" column="etc" />
 	</resultMap>
+	<resultMap type="sms_get" id="sms_getResult">
+		<result property="sms_get_no" column="sms_get_no" />
+		<result property="result" column="result" />
+		<result property="seqNum" column="seqNum" />
+		<result property="userCode" column="userCode" />
+		<result property="deptCode" column="deptCode" />
+		<result property="phone" column="phone" />
+		<result property="recvTime" column="recvTime" />
+		<result property="reqPhone" column="reqPhone" />
+		<result property="error" column="error" />
+		<result property="etc" column="etc" />
+	</resultMap>
 	
 	<select id="surem_admin_select" resultType="surem_admin" parameterType="java.util.HashMap">
 		select * from surem_admin order by surem_admin_seq desc limit 1;
@@ -46,4 +58,11 @@
 	<select id="sms_cnt" resultType="int" parameterType="java.util.HashMap">
 		select count(*) from sms_tb;
 	</select>
+	<insert id="smsGetInsert" parameterType="sms_get">
+		insert into sms_get values(NULL, #{result}, #{seqNum}, #{userCode}, #{deptCode}, #{phone}, #{recvTime}, #{reqPhone}, #{error}, NULL);
+	</insert>
+	<update id="smsTbUpdate" parameterType="sms_tb">
+        update sms_tb set sms_result2 = #{sms_result2}, sms_error = #{sms_error}
+        where sms_seq = #{sms_seq};
+    </update>
 </mapper>

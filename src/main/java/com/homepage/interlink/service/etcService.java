@@ -3,6 +3,7 @@ package com.homepage.interlink.service;
 import java.util.List;
 import java.util.Map;
 
+import com.homepage.interlink.model.Sms_get;
 import com.homepage.interlink.model.Sms_tb;
 import com.homepage.interlink.model.Surem_admin;
 
@@ -12,4 +13,6 @@ public interface etcService {
 	int smsInsert(Sms_tb sms_tb);
 	List<Sms_tb> sms_select(Map<String, Object> paramMap);
 	int sms_cnt(Map<String, Object> paramMap);
+	int smsGetInsert(Sms_get sms_get);
+	int smsTbUpdate(Sms_tb sms_tb);
 }

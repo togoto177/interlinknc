@@ -12,5 +12,7 @@ ${result }
 <input type="text" value="${SeqNum }" />
 <input type="text" value="${UserCode }" />
 
+파람 결과값 : ${result}
+
 </body>
 </html>

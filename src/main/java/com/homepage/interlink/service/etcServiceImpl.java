@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.homepage.interlink.dao.etcDao;
+import com.homepage.interlink.model.Sms_get;
 import com.homepage.interlink.model.Sms_tb;
 import com.homepage.interlink.model.Surem_admin;
 
@@ -39,6 +40,16 @@ public class etcServiceImpl implements etcService {
 	@Override
 	public int sms_cnt(Map<String, Object> paramMap) {
 		return etc.sms_cnt(paramMap);
+	}
+
+	@Override
+	public int smsGetInsert(Sms_get sms_get) {
+		return etc.smsGetInsert(sms_get);
+	}
+
+	@Override
+	public int smsTbUpdate(Sms_tb sms_tb) {
+		return etc.smsTbUpdate(sms_tb);
 	}
 	
 }

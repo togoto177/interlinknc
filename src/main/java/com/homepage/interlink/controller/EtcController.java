@@ -49,9 +49,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.homepage.interlink.model.Fileup;
+import com.homepage.interlink.model.Sms_get;
 import com.homepage.interlink.model.Sms_tb;
 import com.homepage.interlink.model.Surem_admin;
 import com.homepage.interlink.service.BoardFileService;
@@ -142,10 +144,6 @@ public class EtcController {
         model.addAttribute("division", division); 
         
   		return "/cms_view/etc/smsSend";
-  	}
-  	@RequestMapping(value = "/sms_get")
-  	public String sms_get() {
-  		return "/cms_view/etc/sms_get";
   	}
   	
   	/*sms api 전송*/
@@ -366,10 +364,54 @@ public class EtcController {
         model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
         model.addAttribute("sch_value", paramMap.get("sch_value"));
         model.addAttribute("sch_type", paramMap.get("sch_type"));
-        System.out.println("sch_type = "+paramMap.get("sch_type"));
         
 		/*model.addAttribute("board_division", paramMap.get("board_division"));*/
         model.addAttribute("board_list", sms_tb);
 		return "/cms_view/etc/smsResult";
 	}
+	
+	@RequestMapping(value = "/sms_get")
+  	public String sms_get(Map<String, Object> paramMap, Model model,
+  			@RequestParam(value="Result", required=true) List<String> Result,
+			@RequestParam(value="SeqNum", required=true) List<String> SeqNum,
+			@RequestParam(value="UserCode", required=true) List<String> UserCode,
+			@RequestParam(value="DeptCode", required=true) List<String> DeptCode,
+			@RequestParam(value="Phone", required=true) List<String> Phone,
+			@RequestParam(value="RecvTime", required=true) List<String> RecvTime,
+			@RequestParam(value="ReqPhone", required=true) List<String> ReqPhone,
+			@RequestParam(value="Error", required=true) List<String> Error) {
+  		model.addAttribute("result", paramMap.toString());
+  		/*{Result=2, SeqNum=29, UserCode=seantour2011, DeptCode=AK-UFG-AG, Phone=01031663135,
+  				RecvTime=20180801183041, ReqPhone=01096908579, Error=101}*/
+  		
+  		for(int i =0; i < Result.size(); i++) {
+  			Sms_get get = new Sms_get();
+  			get.setResult(Result.get(i));
+  			get.setSeqNum(SeqNum.get(i));
+  			get.setUserCode(UserCode.get(i));
+  			get.setDeptCode(DeptCode.get(i));
+  			get.setPhone(Phone.get(i));
+  			get.setRecvTime(RecvTime.get(i));
+  			get.setReqPhone(ReqPhone.get(i));
+  			get.setError(Error.get(i));
+  			try {
+  				etc.smsGetInsert(get);
+  				System.out.println("sms_result 저장 성공");
+			} catch (Exception e) {
+				System.out.println("sms_result 저장 실패");
+			}
+  			Sms_tb sms_tb = new Sms_tb();
+  			int smssep = Integer.parseInt(SeqNum.get(i));
+  			sms_tb.setSms_seq(smssep);
+  			sms_tb.setSms_result2(Result.get(i));
+  			sms_tb.setSms_error(Error.get(i));
+  			try {
+				etc.smsTbUpdate(sms_tb);
+				System.out.println("sms_get 업데이트 성공");
+			} catch (Exception e) {
+				System.out.println("sms_get 업데이트 실패");
+			}
+  		}
+  		return "/cms_view/etc/sms_get";
+  	}
 }

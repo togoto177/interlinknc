@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.homepage.interlink.model.Sms_get;
 import com.homepage.interlink.model.Sms_tb;
 import com.homepage.interlink.model.Surem_admin;
 
@@ -39,6 +40,16 @@ public class etcDaoImpl implements etcDao {
 	@Override
 	public int sms_cnt(Map<String, Object> paramMap) {
 		return sst.selectOne("surem_admins.sms_cnt", paramMap);
+	}
+
+	@Override
+	public int smsGetInsert(Sms_get sms_get) {
+		return sst.insert("surem_admins.smsGetInsert", sms_get);
+	}
+
+	@Override
+	public int smsTbUpdate(Sms_tb sms_tb) {
+		return sst.update("surem_admins.smsTbUpdate", sms_tb);
 	}
 
 }
