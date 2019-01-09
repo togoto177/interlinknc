@@ -4,9 +4,9 @@ package com.homepage.interlink.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -21,6 +21,16 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 /*import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -39,11 +49,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.homepage.interlink.model.Fileup;
 import com.homepage.interlink.model.Sms_tb;
 import com.homepage.interlink.model.Surem_admin;
-import com.homepage.interlink.service.Admin_tbService;
 import com.homepage.interlink.service.BoardFileService;
 import com.homepage.interlink.service.BoardService;
 import com.homepage.interlink.service.etcService;
@@ -51,8 +61,6 @@ import com.homepage.interlink.service.etcService;
 @Controller
 public class EtcController {
 	
-	@Autowired
-	private Admin_tbService as;
 	@Autowired
     BoardService boardService;
 	@Autowired
@@ -127,7 +135,7 @@ public class EtcController {
   		
   	}
   	
-  	@RequestMapping(value = "/smsSend")
+  	@RequestMapping(value = "/smsSend.do")
   	public String smsSend(HttpServletRequest request, Model model){
   		
   		String division = "smsSend";
@@ -195,7 +203,7 @@ public class EtcController {
 			System.out.println("mms url-----*");
 		}
 		
-/*
+
 		  try {
 		        CloseableHttpClient httpclient = HttpClients.createDefault();
 		        HttpPost httpPost = new HttpPost(url);
@@ -212,19 +220,22 @@ public class EtcController {
 		        	httpPost.setHeader("Content-type", "application/json");
 		        	httpPost.setEntity(params);
 		        }else if ("M".equals(division)) {
+		        	System.out.println(root_path + attach_path);
 		        	
-		        	 파일저장 
+		        	/* 파일저장*/ 
 		        	List<MultipartFile> files = fileup.getUploadfile();
 		        	
 		    		if (null != files && files.size() > 0) {
+		    			System.out.println(root_path + attach_path);
 		    			for (MultipartFile multipartFile : files) {
 		    				if (!"".equals(multipartFile.getOriginalFilename()) && multipartFile.getSize() > 0) {
-		    				 상대경로 
+		    				/* 상대경로 */
 		    				String fileName = multipartFile.getOriginalFilename();
 		    				
 		    				File f = new File(root_path + attach_path + fileName);
 		    				try {
 		    					multipartFile.transferTo(f);
+		    					System.out.println("파일저장성공!");
 		    				} catch (IllegalStateException e) {
 		    					e.printStackTrace();
 		    				} catch (IOException e) {
@@ -234,27 +245,31 @@ public class EtcController {
 		    				}
 		    			}
 		    		}
-		    		 파일저장 end 
+		    		/* 파일저장 end */
 		    		
 		        	httpPost.setHeader("Connection", "Keep-Alive");
 		        	httpPost.setHeader("Accept-Charset", "UTF-8");
-		        	MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE,     
-		                    null, Charset.forName("UTF-8"));
+		        	
+		        	/* MultipartEntityBuilder 버전업 */
+		        	MultipartEntityBuilder reqEntity = MultipartEntityBuilder.create();
+		        	Charset chars = Charset.forName("UTF-8");
+		        	reqEntity.setCharset(chars);
 		        	
 		        	for(int k=0; k<fileNames.size(); k++) {
 		        	File f1 = new File(root_path + attach_path + fileNames.get(k).toString());
-		        	File f1 = new File("C:\\Users\\interlink\\Desktop\\KakaoTalk_20180724_104457508.jpg");
+		        	/*File f1 = new File("C:\\Users\\interlink\\Desktop\\KakaoTalk_20180724_104457508.jpg");*/
 		        	FileBody bin = new FileBody(f1);
 		        	int v = k+1;
 		        	reqEntity.addPart("image"+v+"", bin);
 		        	}
-					reqEntity.addPart("reqJSON", new StringBody(stringData1, Charset.forName("utf-8")));
+					reqEntity.addTextBody("reqJSON", stringData1);
 					
-					httpPost.setEntity(reqEntity);
+					HttpEntity entity = reqEntity.build();  
+					httpPost.setEntity(entity);
 					
 		        }
 		        //UTF-8은 한글
-		        httpPost.setEntity(new UrlEncodedFormEntity(reqEntity,"UTF-8"));
+		       /* httpPost.setEntity(new UrlEncodedFormEntity(reqEntity,"UTF-8"));*/
 		        
 				
 
@@ -275,7 +290,7 @@ public class EtcController {
 		        e.printStackTrace();
 		    }
 		  
-		   파일삭제 
+		  /* 파일삭제 */
 		  for(int k=0; k<fileNames.size(); k++) {
 			  File file = new File(root_path + attach_path + fileNames.get(k).toString());
 				System.out.println("=========path============>" + root_path + attach_path + fileNames.get(k).toString());
@@ -292,27 +307,69 @@ public class EtcController {
 			  }
 
 		  
-		 sms DB 저장 
+		 /*sms DB 저장 */
 		
-		  for(int i = 0; i < user_name1.length; i++) { 
+		  for(int i = 0; i < user_name.length; i++) { 
 			  String q = "";
-			  if(user_name1[i]!=q) {
-				  sms_td.setUser_name(user_name1[i]);
-				  sms_td.setTell(tell1[i]);
-				  sms_td.setAdmin_id((String)session.getAttribute("admin_id"));
+			  if(user_name[i]!=q) {
+				  sms_tb.setSms_userName(user_name[i]);
+				  sms_tb.setSms_tell(tell[i]);
+				  sms_tb.setSms_adminId((String)session.getAttribute("admin_id"));
 				  String sendresult = result.substring(9,12);
-				  sms_td.setSend_result(sendresult);
-			      sms_td.setEtc("null"); 
+				  sms_tb.setSms_result(sendresult);
+			      sms_tb.setEtc("null"); 
 			      try { 
-			    	  sms.sms_td_insert(sms_td); 
+			    	  etc.smsInsert(sms_tb);
 			      } catch (Exception e){
 			    	  System.out.println("sms DB insert fail");
 			    	  System.out.println(e);
 				  } 
 			  } 
 		  }
-		  */
 		  
-		return "redirect:/sms_view1.do";
+		return "redirect:/smsSend.do";
+	}
+	
+	@RequestMapping(value = "/smsResult.do")
+	public String smsResult(Map<String, Object> paramMap, Model model) {
+		
+		
+		//조회 하려는 페이지
+        int startPage = (!"".equals(paramMap.get("startPage")) && paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
+
+        //한페이지에 보여줄 리스트 수
+        int visiblePages = (!"".equals(paramMap.get("visiblePages")) && paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
+        //일단 전체 건수를 가져온다.
+        int totalCnt = etc.sms_cnt(paramMap);
+        
+        //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
+        //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
+        BigDecimal decimal1 = new BigDecimal(totalCnt);
+        BigDecimal decimal2 = new BigDecimal(visiblePages);
+        BigDecimal totalPage = decimal1.divide(decimal2, 0, BigDecimal.ROUND_UP);
+ 
+        int startLimitPage = 0;
+        //2.mysql limit 범위를 구하기 위해 계산
+        if(startPage==1){
+            startLimitPage = 0;
+        }else{
+            startLimitPage = (startPage-1)*visiblePages;
+        }
+        
+        paramMap.put("start", startLimitPage);
+        paramMap.put("end", visiblePages);
+        
+        List<Sms_tb> sms_tb = etc.sms_select(paramMap);
+        
+        model.addAttribute("startPage", startPage+"");//현재 페이지      
+        model.addAttribute("totalCnt", totalCnt);//전체 게시물수
+        model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
+        model.addAttribute("sch_value", paramMap.get("sch_value"));
+        model.addAttribute("sch_type", paramMap.get("sch_type"));
+        System.out.println("sch_type = "+paramMap.get("sch_type"));
+        
+		/*model.addAttribute("board_division", paramMap.get("board_division"));*/
+        model.addAttribute("board_list", sms_tb);
+		return "/cms_view/etc/smsResult";
 	}
 }

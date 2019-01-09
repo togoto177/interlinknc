@@ -31,4 +31,19 @@
 	<select id="smsMessage_id_select" resultType="Integer" parameterType="java.util.HashMap">
 		select sms_seq from sms_tb order by sms_seq desc limit 1;
 	</select>
+	<insert id="smsInsert" parameterType="sms_tb">
+		insert into sms_tb values(NULL, #{sms_messages}, #{sms_userName}, #{sms_tell}, now(), #{sms_adminId}, #{sms_division}, #{sms_result}, NULL, NULL, NULL);
+	</insert>
+	<select id="sms_select" resultType="sms_tb" parameterType="java.util.HashMap">
+		select * from sms_tb
+		<choose>
+	     	<when test="sch_value != null">
+			  where * like CONCAT('%', #{sch_value}, '%')
+			</when>
+		</choose>
+		;
+	</select>
+	<select id="sms_cnt" resultType="int" parameterType="java.util.HashMap">
+		select count(*) from sms_tb;
+	</select>
 </mapper>

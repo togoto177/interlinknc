@@ -11,7 +11,7 @@
 			<li id="li_04"><a class="right" id="contact">&rtrif;</a><a href="/contactList?board_division=contact"> CONTACT</a></li>
 		<li class="title">기타</li>
 			<li id="li_06"><a class="right" id="emailSend">&rtrif;</a><a href="/emailSend"> 메일보내기</a></li>
-			<li id="li_07"><a class="right" id="smsSend">&rtrif;</a><a href="/smsSend"> 문자보내기</a></li>
+			<li id="li_07"><a class="right" id="smsSend">&rtrif;</a><a href="/smsSend.do"> 문자보내기</a></li>
 		<li class="title">설정</li>
 			<li id="li_09"><a class="right" id="info">&rtrif;</a><a href="/info?ad_seq=${ad_seq}"> 내정보수정</a></li>
 			<li id="li_10"><a class="right" id="admin">&rtrif;</a><a href="/adminList?division=admin"> 사원관리</a></li>
