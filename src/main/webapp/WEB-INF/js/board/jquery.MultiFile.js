@@ -506,7 +506,7 @@ if (window.jQuery)(function ($) {
 						// Create label elements
 						var
 							r = $('<div class="MultiFile-label"></div>'),
-							b = $('<a class="MultiFile-remove" href="#' + MultiFile.wrapID + '">' + MultiFile.STRING.remove + '</a>')
+							b = $('<a id="remove" class="MultiFile-remove" href="#' + MultiFile.wrapID + '">' + MultiFile.STRING.remove + '</a>')
 
 								// ********
 								// TODO:
@@ -851,11 +851,11 @@ if (window.jQuery)(function ($) {
 
 		// previews
 		preview: false,
-		previewCss: 'max-height:100px; max-width:100px;',
+		previewCss: 'height:100px; width:100px;',
 
 		// STRING: collection lets you show messages in different languages
 		STRING: {
-			remove: '취소',
+			remove: 'X',
 			denied: 'You cannot select a $ext file.\nTry again...',
 			file: '$file',
 			selected: 'File selected: $file',

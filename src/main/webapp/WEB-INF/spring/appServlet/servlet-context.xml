@@ -72,6 +72,13 @@
        		<mapping path="/wait_admit"/>
        		<mapping path="/wait_delete"/>
        		
+       		<!-- 기타추가 -->
+       		<mapping path="/emailSend"/>
+       		<mapping path="/emailSendAction"/>
+       		<mapping path="/smsSend"/>
+       		<mapping path="/sms_get"/>
+       		<mapping path="/send_api.do"/>
+       		
 
        		
        		

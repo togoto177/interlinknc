@@ -1,6 +1,273 @@
 	$(document).ready(function() {
+			
+		/*$.ajax({ 
+			type: 'get' , 
+			url: '/mainDownList',
+			dataType : 'text' ,
+			success: function(data) { 
+				$('#downLoadsList').html(data);
+			} 
+		});*/
 		
-			/*alert("TEST");*/
+		
+		var totalData = $("#totalCnt").val();    // 총 데이터 수
+	    var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
+	    var pageCount = "";        // 한 화면에 나타낼 페이지 수
+	    if($("#totalPage").val() == "1"){
+	    pageCount = 1;
+	    }else if($("#totalPage").val() == "2"){
+	    pageCount = 2;	
+	    }else if($("#totalPage").val() == "3"){
+		pageCount = 3;	
+		}else if($("#totalPage").val() == "4"){
+		pageCount = 4;	
+		}else{
+		pageCount = 5;	
+		}
+	    var sp = $('#servletPath').val();
+	    var next = "";
+	    var prev = "";
+	    function paging(totalData, dataPerPage, pageCount, currentPage){
+	    	var startPage = $('#startPageList').val(); //현재 페이지
+	        console.log("currentPage : " + startPage);
+	        
+	        var totalPage = Math.ceil(totalData/dataPerPage);    // 총 페이지 수
+	        var pageGroup = Math.ceil(startPage/pageCount);    // 페이지 그룹
+
+
+	        console.log("pageGroup : " + pageGroup);
+	        
+	        var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
+	        if(last > totalPage){
+	            last = totalPage;
+	        }
+	        var first = last - (pageCount-1);    // 화면에 보여질 첫번째 페이지 번호
+	        
+	        var next = last+1;
+	        var prev = first-1;
+	        
+	        console.log("last : " + last);
+	        console.log("first : " + first);
+	        console.log("next : " + next);
+	        console.log("prev : " + prev);
+	 
+	        var pingingView = $("#paging");
+	        
+	        var html = "";
+	        	if(prev >= 5){
+	        	html +=
+	        		'<li class="downCntli1">' +
+	        		'<a name="page_move" id="start" start_page="'+1+'">' +
+	    			'<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png">' +
+	    			'</a>' +
+	    			'<a name="page_move" id="prev" start_page="'+prev+'">' +
+		            '<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">'+
+		            '</a>'+
+	    			'</li>';
+	        	}
+		        if (sp == "/mainDownList" || sp == "/main") {		
+			        for(var i=first; i <= last; i++){
+			        	html += '<li><a class="'+i+'" id="page_num" name="page_move" start_page="'+i+'" style="cursor:pointer;">'+ i +'</a></li>';
+			        	
+			        }
+		        }else{
+		        	for(var i=first; i <= last; i++){
+		        		html += '<li><a id="'+i+'" name="page_move" start_page="'+i+'" style="cursor:pointer;">'+ i +'</a></li>';
+		        		
+		        	}
+		        }    
+	    	if(last < totalPage){
+		        	html +=
+	        		'<li class="downCntli2">' +
+	        		'<a name="page_move" id="next" start_page="'+next+'">' + 
+		    		'<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">' +
+		    		'</a>' +
+	        		'<a name="page_move" id="end" start_page="'+totalPage+'">' +
+	    			'<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png">' +
+	    			'</a>' +
+	    			'</li>';
+	    	}
+	        $("#paging").append(html);    // 페이지 목록 생성
+            $("#paging a." + startPage).addClass("focus");    // 현재 페이지 표시
+            $("#paging a#" + startPage).addClass("focus");    // 현재 페이지 표시
+	        $("#paging a").click(function(){
+	            
+	            var item = $(this);
+	            
+	            var id = item.attr("id");
+	            var selectedPage = item.text();
+	            
+	            if(id == "next")    selectedPage = next;
+	            if(id == "prev")    selectedPage = prev;
+	            if(id == "start")    selectedPage = 1;
+	            if(id == "end")    selectedPage = totalPage;
+	            
+	            paging(totalData, dataPerPage, pageCount, selectedPage);
+	        });
+	                                           
+	                                           
+	                                           
+	    }
+	    
+	    $(document).ready(function(){        
+	        paging(totalData, dataPerPage, pageCount, 1);		        
+	    });
+	    
+	    
+	    
+	    
+	    
+	    $(document).off("click", "a[name='page_move']").on("click","a[name='page_move']",function() {
+			var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가
+			var totalPage = $('#totalPage').val(); //다운로드 목록 전체 페이지 수
+			var visiblePages = 10;//리스트 보여줄 페이지
+			var sp = $('#servletPath').val();
+			$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
+			var startPageList = $('#startPage').val();
+			$('#startPageList').val(startPageList);
+			var startPage = $('#startPageList').val(); 
+			$('#visiblePages').val(visiblePages);
+			
+			if (sp == "/mainDownList" || sp == "/main") {
+				if(id_check == "page_num"){
+				$.ajax({ 
+					type: 'get' , 
+					url: '/mainDownList?startPage='+ startPage +'&visiblePages='+visiblePages ,
+					async : false,
+					cache : false,
+					dataType : 'text' ,
+					success: function(data) { 
+						$('#downLoadsList').empty();
+						$('#downLoadsList').html(data).trigger("create");
+						$.getScript("js/board/board.js"); 
+						$.getScript("js/main/main.js"); 
+					} 
+				});
+				}else if(id_check == "start"){
+					$.ajax({ 
+						type: 'get' , 
+						url: '/mainDownList?startPage=1&visiblePages=10',
+						async : false,
+						cache : false,
+						dataType : 'text' , 
+						success: function(data) { 
+							$('#downloads').remove();
+							$('#downLoadsList').html(data).trigger("create");
+							$.getScript("js/board/board.js");
+							$.getScript("js/main/main.js"); 
+						} 
+					});
+
+				}else if(id_check == "end"){
+					$.ajax({ 
+						type: 'get' , 
+						url: '/mainDownList?startPage='+totalPage+'&visiblePages=10',
+						async : false,
+						cache : false,
+						dataType : 'text' , 
+						success: function(data) {
+							$('#downloads').remove();
+							$('#downLoadsList').html(data).trigger("create");
+							$.getScript("js/board/board.js");
+							$.getScript("js/main/main.js"); 
+						} 
+					});
+
+				}else if(id_check == "next"){
+					$.ajax({ 
+						type: 'get' , 
+						url: '/mainDownList?startPage='+startPage+'&visiblePages=10',
+						async : false,
+						cache : false,
+						dataType : 'text' , 
+						success: function(data) {
+							$('#downloads').remove();
+							$('#downLoadsList').html(data).trigger("create");
+							$.getScript("js/board/board.js");
+							$.getScript("js/main/main.js"); 
+						} 
+					});
+
+				}else if(id_check == "prev"){
+					$.ajax({ 
+						type: 'get' , 
+						url: '/mainDownList?startPage='+startPage+'&visiblePages=10',
+						async : false,
+						cache : false,
+						dataType : 'text' , 
+						success: function(data) {
+							$('#downloads').remove();
+							$('#downLoadsList').html(data).trigger("create");
+							$.getScript("js/board/board.js");
+							$.getScript("js/main/main.js"); 
+						} 
+					});
+
+				}else if(id_check == "2018"){
+					$.ajax({ 
+						type: 'post' , 
+						url: '/mainPortList',
+						async : false,
+						cache : false,
+			    		data : {pf_year : id_check} ,
+						dataType : 'text' , 
+						success: function(data) { 
+							$('#pf_context').remove();
+							$('#portfolio').html(data).trigger("create");
+						} 
+					});
+
+				}else if(id_check == "2009"){
+					$.ajax({ 
+						type: 'post' , 
+						url: '/mainPortList',
+						async : false,
+						cache : false,
+			    		data : {pf_year : id_check} ,
+						dataType : 'text' , 
+						success: function(data) { 
+							$('#pf_context').remove();
+							$('#portfolio').html(data).trigger("create");
+						} 
+					});
+
+				}else if(id_check == "2008"){
+					$.ajax({ 
+						type: 'post' , 
+						url: '/mainPortList',
+						async : false,
+						cache : false,
+			    		data : {pf_year : id_check} ,
+						dataType : 'text' , 
+						success: function(data) { 
+							$('#pf_context').remove();
+							$('#portfolio').html(data).trigger("create");
+						} 
+					});
+
+				}else if(id_check == "2007"){
+					$.ajax({ 
+						type: 'post' , 
+						url: '/mainPortList',
+						async : false,
+						cache : false,
+			    		data : {pf_year : id_check} ,
+						dataType : 'text' , 
+						success: function(data) { 
+							$('#pf_context').remove();
+							$('#portfolio').html(data).trigger("create");
+						} 
+					});
+
+				}
+			}else{
+				document.board_form.submit();
+			}
+
+		});
+		
+			
+			
 			//게시물 등록 클릭
 			$("#insert_view").click(function() {
 				location.href = "portfolioWrite?board_division=" + $("#board_division").val();
@@ -25,223 +292,15 @@
 			
 			$("#customer_select").val("${board_body.board_division}").attr("selected", "selected");
 			
-			var totalData = $("#totalCnt").val();    // 총 데이터 수
-		    var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
-		    var pageCount = 5;        // 한 화면에 나타낼 페이지 수
-		    function paging(totalData, dataPerPage, pageCount, currentPage){
-		    	var startPage = $('#startPageList').val(); //현재 페이지
-		        console.log("currentPage : " + startPage);
-		        
-		        var totalPage = Math.ceil(totalData/dataPerPage);    // 총 페이지 수
-		        var pageGroup = Math.ceil(startPage/pageCount);    // 페이지 그룹
-
-		        console.log("pageGroup : " + pageGroup);
-		        
-		        var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
-		        if(last > totalPage)
-		            last = totalPage;
-		        var first = last - (pageCount-1);    // 화면에 보여질 첫번째 페이지 번호
-		        var next = last+1;
-		        var prev = first-1;
-		        
-		        console.log("last : " + last);
-		        console.log("first : " + first);
-		        console.log("next : " + next);
-		        console.log("prev : " + prev);
-		 
-		        var pingingView = $("#paging");
-		        
-		        var html = "";
-		        	if(prev > 0){
-		        	if($("#board_division").val() == 'download'){
-		        	html +=
-		        		'<li class="portCount1">' +
-		        		'<a href="/downloadsList?board_division=download&startPage=1&visiblePages=10">' +
-		    			'<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png">' +
-		    			'</a>' +
-		    			'</li>';
-		        	}
-		        	}
-		    			
-		        if(prev > 0){
-		            html +=
-		            '<li class="portCount1">'+
-		            '<a name="page_move" id="prev" start_page="'+prev+'">' +
-		            '<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">'+
-		            '</a>'+
-		            '</li>';
-		        }
-		        
-		        for(var i=first; i <= last; i++){
-		            html += '<li><a id="'+i+'" name="page_move" start_page="'+i+'" style="cursor:pointer;">'+ i +'</a></li>';
-		            
-		        }
-		        
-		        if(last < totalPage){
-		            html += 
-		            '<li class="portCount2">'+
-		            '<a name="page_move" id="next" start_page="'+next+'">' + 
-		    		'<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png">' +
-		    		'</a>' +
-		    		'</li>';
-		        }
-		    	if($("#startPageList").val() != $("#totalPage").val()){
-		        if($("#board_division").val() == 'download'){
-		        	html +=
-	        		'<li class="portCount2">' +
-	        		'<a href="/downloadsList?board_division=download&startPage='+$("#totalPage").val()+'&visiblePages=10">' +
-	    			'<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png">' +
-	    			'</a>' +
-	    			'</li>';
-		        	}	
-		    	}
-		        
-		        $("#paging").html(html);    // 페이지 목록 생성
-                $("#paging a#" + startPage).addClass("focus");    // 현재 페이지 표시
-		        $("#paging a").click(function(){
-		            
-		            var item = $(this);
-		            
-		            var id = item.attr("id");
-		            var selectedPage = item.text();
-		            
-		            if(id == "next")    selectedPage = next;
-		            if(id == "prev")    selectedPage = prev;
-		            
-		            paging(totalData, dataPerPage, pageCount, selectedPage);
-		        });
-		                                           
-		                                           
-		                                           
-		    }
-		    
-		    $(document).ready(function(){        
-		        paging(totalData, dataPerPage, pageCount, 1);
-		    });
-			
 			$("#searchBtn").click(function() {
 				document.board_form.submit();
 			
 			});
-
-			//하단 네비바 클릭 시 이동
-			$(document).on("click","a[name='page_move']",function() {
-
-						var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가
-						var totalPage = $('#totalPage').val(); //다운로드 목록 전체 페이지 수
-						var visiblePages = 10;//리스트 보여줄 페이지
-						var sp = $('#servletPath').val();
-						
-						if(id_check == "page_num"){
-						$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
-						var startPageList = $('#startPage').val();
-						$('#startPageList').val(startPageList);
-						var startPage = $('#startPageList').val(); 
-						$('#visiblePages').val(visiblePages);
-						if (sp == "/mainDownList" || sp == "/main") {
-							
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainDownList?startPage='+ startPage +'&visiblePages='+visiblePages ,
-								dataType : 'text' ,
-								success: function(data) { 
-									$('#Context').remove();
-									$('#pagination').empty();
-									$('#a').html(data).trigger("create");
-									history.go(-1);
-									$("#pagination").append(pagination);
-								} 
-							});
-						}else{
-							document.board_form.submit(); 
-						}
-
-						}if(id_check == "page_first"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainDownList?startPage=1&visiblePages=10',
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#Context').remove();
-									$('#pagination').empty();
-									$('#a').html(data).trigger("create");
-									history.go(-1);
-									$("#pagination").append(pagination);
-								} 
-							});
-
-						}else if(id_check == "page_last"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainDownList?startPage='+totalPage+'&visiblePages=10',
-								dataType : 'text' , 
-								success: function(data) {
-									$('#Context').remove();
-									$('#pagination').empty();
-									$('#a').html(data).trigger("create");
-									history.go(-1);
-									$("#pagination").append(pagination);
-								} 
-							});
-
-						}else if(id_check == "2018"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}else if(id_check == "2009"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}else if(id_check == "2008"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}else if(id_check == "2007"){
-							$.ajax({ 
-								type: 'get' , 
-								url: '/mainPortList',
-								async : false,
-					    		data : {pf_year : id_check} ,
-								dataType : 'text' , 
-								success: function(data) { 
-									$('#pf_context').remove();
-									$('#portfolio').html(data).trigger("create");
-								} 
-							});
-
-						}
-						
-
-
-					});
-	});
+			
+			
+		});
+	
+	
 
 	/* 파일추가버튼 */
 	function addbt() {
@@ -376,7 +435,6 @@
 	
 	//파일선택시 텍스트 대체
 	$(function(){
-		$('.upload_text').val('미리보여줄 텍스트.');
 		$('.multi').change(function(){
 			var fileValue = $('.multi').val().split("\\");
 			var fileName = fileValue[fileValue.length-1];

@@ -5,6 +5,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
+	
+		<div class="downloads" id="downloads">
+		<div class="downloads_title"><a class="downloads_titleA"><img alt="downloads 이미지" src="resources/mainImg/diagonal_download.png"><br/>DOWNLOAD</a></div>
+
+		<form name="board_form"  method="get" id="board_form">
+		<input type="hidden" id="board_division" name="board_division" value="download" />
+		<input type="hidden" id="totalCnt" name="totalCnt" value="${totalCnt}">
+		<input type="hidden" id="totalPage" name="totalPage" value="${totalPage}">
+		<input type="hidden" id="servletPath" name="servletPath" value="${servletPath}">
+		<div class="downloadsTable" id="downloadsTable">
+		<div class="a" id="a">
 		<hr id="Context" style="display: none">
 		<input type="hidden" id="startPageList" name="startPageList" value="${startPage}">
 			<table>
@@ -30,7 +41,6 @@
 				<tr class="tabletD">
 					
 					<td>
-					<%-- <input type="hidden" id="board_seq" name="board_seq" value="${download_list.board_seq}"> --%>
 					</td>
 					<td>
 					<c:set var="startpage" value="${startPage-1}" />
@@ -84,8 +94,7 @@
 					
 					<c:if test="${download_list.file_cnt == 0}"><!-- 파일이 없을때 -->
 					</c:if>
-					<c:if test="${download_list.file_cnt != 0}">
-						<!-- <a class="windowConBut">DOWNLOAD&darr;</a> -->													
+					<c:if test="${download_list.file_cnt != 0}">												
 						<c:set var="split_file" value="${fn:split(download_list.file_sub_name,'|')}" />
 						<c:forEach items="${split_file}" var="boardlist">
 						<a href="javascript:void(0);" class="windowConBut" style="margin-bottom: 15;" id="downBtn" onclick="downFile('${boardlist}', '${download_list.board_seq}');">
@@ -96,9 +105,21 @@
 						</c:forEach>
 					</c:if>
 					</div>
-					
-					
 				</div>
 			</div>
 			</c:forEach>
 			</table>
+			</div>
+			
+			<div class="downCnt" id="downCnt">
+			<input type="hidden" id="startPage" name="startPage" value="">
+			<input type="hidden" id="visiblePages" name="visiblePages" value="">
+			<ul id="paging">
+			</ul>
+			</div>
+		</div>
+		</form>
+		<div class="scroll">
+			<a href="#customer" class="customer_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
+		</div>
+		</div>

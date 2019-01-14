@@ -34,10 +34,24 @@ jQuery(document).ready(function($){
     });
     
     /*모달창*/
-    $('.openMask').click(function(e){
+    $(document).on("click",".openMask",function(e){
+
+    	var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가 
+
+    	$.ajax({
+    		type : "POST",
+    		url : "mainDownHit",
+    		async : false,
+    		data : {board_seq : id_check} ,
+    		dataType : "json",
+    		cache: false,
+    		success: function(data){    
+    		}  
+    	});
+
 		e.preventDefault();
 		$('body').css("overflow", "hidden");
-		wrapWindowByMask();
+		wrapWindowByMask(id_check);
 	});
 
 	//닫기 버튼을 눌렀을 때
@@ -119,7 +133,7 @@ jQuery(document).ready(function($){
 	/*slider end*/
 });
 
-function wrapWindowByMask(){
+function wrapWindowByMask(seq){
 	//화면의 높이와 너비를 구한다.
 	var maskHeight = $(document).height();  
 	var maskWidth = $(window).width();  
@@ -133,5 +147,5 @@ function wrapWindowByMask(){
 	$('#mask').fadeTo("slow",0.8);    
 
 	//윈도우 같은 거 띄운다.
-	$('.window').show();
+	$('#'+seq+'').show();
 }

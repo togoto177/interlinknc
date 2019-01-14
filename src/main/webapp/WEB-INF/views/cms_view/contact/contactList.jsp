@@ -43,6 +43,7 @@
 		<input type="text" class="searchForm" id="sch_value" name="sch_value" value="${sch_value}" /><img alt="돋보기" style="cursor:pointer;" src="resources/cms/search.png" id="searchBtn">
 		<input type="hidden" value="board_title" name="sch_type" />
 	</div>
+		</form>
 	<div class="portTable">
 		<table>
 			<colgroup>
@@ -84,7 +85,6 @@
 			</c:forEach>
 		</table>
 	</div>
-	</form>
 	<div class="portCount">
 		<ul id="paging">
 		</ul>

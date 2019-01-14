@@ -423,9 +423,9 @@ $(document).ready(function() {
 			<a href="#downloads" class="downloadst_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
 		</div>
 	</div>
-	
-	<div class="downloads" id="downloads">
-	<div class="downloads_title"><a class="downloads_titleA"><img alt="downloads 이미지" src="resources/mainImg/diagonal_download.png"><br/>DOWNLOAD</a></div>
+	<div id="downLoadsList">
+		<div class="downloads" id="downloads">
+		<div class="downloads_title"><a class="downloads_titleA"><img alt="downloads 이미지" src="resources/mainImg/diagonal_download.png"><br/>DOWNLOAD</a></div>
 
 		<form name="board_form"  method="get" id="board_form">
 		<input type="hidden" id="board_division" name="board_division" value="download" />
@@ -534,24 +534,24 @@ $(document).ready(function() {
 			<div class="downCnt" id="downCnt">
 			<input type="hidden" id="startPage" name="startPage" value="">
 			<input type="hidden" id="visiblePages" name="visiblePages" value="">
-			<ul>
-			<li class="downCntli1">
+			<ul id="paging">
+			<!-- <li class="downCntli1">
 			<a href="javascript:void(0);" name="page_move" id="page_first">
 			<img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png">
-			<!-- <img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"> -->
+			<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png">
 			</a>
-			</li>
-			<li id="pagination"></li>
-			<li class="downCntli2"><a href="javascript:void(0)" name="page_move" id="page_last">
-			<!-- <img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png"> -->
+			</li> -->
+			<!-- <li class="downCntli2"><a href="javascript:void(0)" name="page_move" id="page_last">
+			<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png">
 			<img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png">
-			</a></li>
+			</a></li> -->
 			</ul>
 			</div>
 		</div>
 		</form>
 		<div class="scroll">
 			<a href="#customer" class="customer_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
+		</div>
 		</div>
 	</div>
 	

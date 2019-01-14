@@ -91,7 +91,7 @@ public class MainController {
 		return "main/main";
 	}
 
-
+	
 	@RequestMapping(value = "/mainDownList")
 	public String mainDownList(@RequestParam Map<String, Object> paramMap, Model model, Board board, HttpServletRequest request) {
 		
@@ -168,7 +168,7 @@ public class MainController {
 					return "redirect:/main";	
 			      
 			    }
-		@RequestMapping(value = "/mainPortList")
+		@RequestMapping(value = "/mainPortList", method=RequestMethod.POST)
 		public String mainport1(@RequestParam Map<String, Object> paramMap, Model model, Board board, HttpServletRequest request) {
 			
 			

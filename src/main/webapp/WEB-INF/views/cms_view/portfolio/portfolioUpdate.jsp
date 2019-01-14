@@ -28,7 +28,8 @@ $(document).ready(function() {
 	    }
 
 
-	});	
+	});		
+	
 	$(document).on("click","#save",function(e){
 	if (confirm("글을 등록 하시겠습니까?") == true){    //확인
 			// 제목 유효성 검사
@@ -135,15 +136,15 @@ $(document).ready(function() {
 							<label>${file_list.file_size} KB
 							<button type="button" class="btn btn-primary" id="downBtn" onclick="delFile('${status.count}');">삭제</button>
 							</label>
-						 	<img alt="${file_list.file_ori_name}" src="resources/portfolio/portfolio_uploadfile/${fn:substringBefore(TextValue,'*') }">
+						 	<img style="width: 100px; height: 100px; padding-left: 20px;" alt="${file_list.file_ori_name}" src="resources/portfolio/portfolio_uploadfile/${fn:substringBefore(TextValue,'*') }">
 							</div>
 						
 					<div id="addfile_${status.count}"  style="display: none;">
 					<a>첨부이미지</a>
-					<input type="text" class="upload_text" readonly="readonly">
+					<input type="text" class="upload_text" readonly="readonly" value="file name">
 					<div class="upload-btn_wrap">
 					  <button type="button" id="newFile" class="upload-btn_wrap">
-					   <span style="cursor:pointer;">선택</span>  
+					   <span id="file_select" style="cursor:pointer;">선택</span>  
 					  </button>
 					</div>
 					  <!-- <input type="file" class="input_file" title="파일찾기"> -->
