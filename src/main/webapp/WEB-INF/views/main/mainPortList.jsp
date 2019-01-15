@@ -121,7 +121,7 @@ jQuery(document).ready(function($){
 				<li class="background_1">
 									<div class="portImg">
 						<c:if test="${portfolio_list.file_sub_name ne null}">			
-						<img class="img1" alt="포트폴리오이미지" src="${portfolio_list.file_path}${fn:substringBefore(TextValue,'*')}">
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/portfolio_uploadfile/${fn:substringBefore(TextValue,'*')}">
 						</c:if>
 						<c:if test="${portfolio_list.file_sub_name eq null}">			
 						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf_no_img1.jpg">
