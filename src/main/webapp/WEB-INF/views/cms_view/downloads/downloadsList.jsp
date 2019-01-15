@@ -99,6 +99,9 @@
 		<div class="btnDiv1">
 		<a class="btn1" href="/downloadsWrite?board_division=download">WRITE</a>
 		</div>
+		<div class="btnDiv1">
+		<input type="button" value="Print" onclick="window.print()" />
+		</div>
 		</div>
 	</div>
 </div>
