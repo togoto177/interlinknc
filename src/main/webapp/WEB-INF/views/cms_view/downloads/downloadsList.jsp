@@ -48,8 +48,17 @@
 				<td>다운수</td>
 				<td>조회수</td>
 			</tr>
+			<c:if test="${fn:length(board_list) == 0}">	
+			<tr class="portTd">
+			<td colspan="6">
+			조회 결과가 없습니다.
+			</td>
+			</tr>
+			</c:if>
+			<c:if test="${fn:length(board_list) != 0}">
 			<c:forEach var="board_list" items="${board_list}"  varStatus="status">
 			<input type="hidden" id="filename" name="filename" value="${filename}">
+			
 			<tr class="portTd">
 				<td><!--역순공식: 전체 레코드 수 - ( (현재 페이지 번호 - 1) * 한 페이지당 보여지는 레코드 수 + 현재 게시물 출력 순서 ) -->
                 <c:set var="startpage" value="${startPage-1}" />
@@ -90,11 +99,14 @@
 						</td>
 					</tr>
 			</c:forEach>
+			</c:if>
 		</table>
 	</div>
 	<div class="portCount">
+	<c:if test="${fn:length(board_list) != 0}">
 	<ul id="paging">
 	</ul>
+	</c:if>
 	<div class="btnList">
 		<div class="btnDiv1">
 		<a class="btn1" href="/interlinknc/downloadsWrite?board_division=download">WRITE</a>

@@ -62,6 +62,13 @@
 				<td>일자</td>
 				<td>상태</td>
 			</tr>
+			<c:if test="${fn:length(board_list) == 0}">
+			<tr class="portTd">
+			<td colspan="6">
+			조회 결과가 없습니다.
+			</td>
+			</tr>
+			</c:if>
 			<c:forEach var="board_list" items="${board_list}"  varStatus="status">
 			<tr class="portTd">
 			<td>
@@ -86,8 +93,10 @@
 		</table>
 	</div>
 	<div class="portCount">
+		<c:if test="${fn:length(board_list) != 0}">
 		<ul id="paging">
 		</ul>
+		</c:if>
 		<div class="btnList">
 			<div class="btnDiv1">
 				<a class="btn1" onclick="detailSubmit()" style="padding: 30 21; cursor:pointer;">DELETE</a>

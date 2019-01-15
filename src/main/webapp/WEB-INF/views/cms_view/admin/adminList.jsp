@@ -86,6 +86,14 @@
 				<td>이메일</td>
 				<td>입사일</td>
 			</tr>
+			<c:if test="${fn:length(employee_list) == 0}">
+			<tr class="portTd">
+			<td colspan="7">
+			조회 결과가 없습니다.
+			</td>
+			</tr>
+			</c:if>
+			<c:if test="${fn:length(employee_list) != 0}">
 			<c:forEach var="list" items="${employee_list}"  varStatus="status">
 			<c:if test="${list.ad_id != 'interlink_admin'}">
 			<tr class="portTd">
@@ -104,26 +112,16 @@
 			</tr>
 			</c:if>
 			</c:forEach>
+			</c:if>
 		</table>
 	</div>
 	
 	
 	<div class="portCount">
-		<ul>
-		<li class="portCount1">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/interlinknc/adminList?startPage=1&visiblePages=10';">
-		<c:if test="${startPage != '1' }">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/interlinknc/adminList?startPage=${startPage-1}&visiblePages=10';">
-		</c:if>
-		</li>
-		<li id="pagination"></li>
-		<li class="portCount2">
-		<c:if test="${totalPage != '1' && totalPage != startPage}">
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/interlinknc/adminList?startPage=${startPage+1}&visiblePages=10';">
-		</c:if>
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/interlinknc/adminList?startPage=${totalPage}&visiblePages=10';">
-		</li>
+	<c:if test="${fn:length(employee_list) != 0}">
+		<ul id="paging">
 		</ul>
+	</c:if>	
 		<div class="btnList">
 			<div class="btnDiv1">
 				<a class="btn1" onclick="adminDeleteSubmit()" style="padding: 30 21; cursor: pointer;">DELETE</a>

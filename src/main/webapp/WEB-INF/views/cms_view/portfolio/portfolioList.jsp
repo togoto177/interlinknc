@@ -46,6 +46,14 @@
 				<td>일자</td>
 				<td>조회수</td>
 			</tr>
+			<c:if test="${fn:length(board_list) == 0}">
+			<tr class="portTd">
+			<td colspan="5">
+			조회 결과가 없습니다.
+			</td>
+			</tr>
+			</c:if>
+			<c:if test="${fn:length(board_list) != 0}">
 			<c:forEach var="board_list" items="${board_list}"  varStatus="status">
 			<tr class="portTd">
 			<td>
@@ -60,13 +68,16 @@
 			<td>${board_list.business_period}</td>
 			<td>${board_list.board_hit}</td>
 			</tr>
-			</c:forEach>			
+			</c:forEach>
+			</c:if>			
 		</table>
 	</div>
 	
 	<div class="portCount">
+		<c:if test="${fn:length(board_list) != 0}">
 		<ul id="paging">
 		</ul>
+		</c:if>
  		<div class="btnList">
 		<div class="btnDiv1">
 		<a class="btn1" id="insert_view" style="cursor:pointer;">WRITE</a>
