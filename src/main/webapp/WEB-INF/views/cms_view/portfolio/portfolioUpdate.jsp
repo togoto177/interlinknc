@@ -52,19 +52,18 @@ $(document).ready(function() {
 				return false;
 			}
 			// 사업기간 유효성 검사
-			if($("#business_period").val() == '' || $("#business_period").val() == null || $("#business_period").val().indexOf(" ") >= 0){
+			if($("#business_period").val() == '' || $("#business_period").val() == null){
 				alert("사업기간을 입력해주세요.");
 				return false;
 			}
 			// 발주처 유효성 검사
-			if($("#buyer").val() == '' || $("#buyer").val() == null || $("#buyer").val().indexOf(" ") >= 0){
+			if($("#buyer").val() == '' || $("#buyer").val() == null){
 				alert("발주처를 입력해주세요.");
 				return false;
 			}
 			// 발주처 유효성 검사
-			if($("#link").val() == '' || $("#link").val() == null || $("#link").val().indexOf(" ") >= 0){
-				alert("연결주소를 입력해주세요.");
-				return false;
+			if($("#link").val() == '' || $("#link").val() == null){
+				$("#link").val("interlinknc.com");
 			}
 	// id가 smarteditor인 textarea에 에디터에서 대입 
 	oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
