@@ -270,12 +270,12 @@
 			
 			//게시물 등록 클릭
 			$("#insert_view").click(function() {
-				location.href = "portfolioWrite?board_division=" + $("#board_division").val();
+				location.href = "/interlinknc/portfolioWrite?board_division=" + $("#board_division").val();
 			});
 			
 			$("#delete").click(function() {
 				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-				    location.href="board_delete?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
+				    location.href="/interlinknc/board_delete?board_division="+$("#board_division").val()+"&board_seq="+$("#board_seq").val();
 				}else{   //취소
 				    return;
 				}
@@ -283,11 +283,11 @@
 			});
 			
 			$("#preview").click(function() {
-				location.href="cms_board_body?board_division="+$("#board_division").val()+"&board_seq="+$("#preview").val();
+				location.href="/interlinknc/cms_board_body?board_division="+$("#board_division").val()+"&board_seq="+$("#preview").val();
 			});
 			
 			$("#nextview").click(function() {
-				location.href="cms_board_body?board_division="+$("#board_division").val()+"&board_seq="+$("#nextview").val();
+				location.href="/interlinknc/cms_board_body?board_division="+$("#board_division").val()+"&board_seq="+$("#nextview").val();
 			});
 			
 			$("#customer_select").val("${board_body.board_division}").attr("selected", "selected");
@@ -368,9 +368,9 @@
 		
 		var file_name = fileName.split('*');
 		if(file_name[1] == "download"){
-			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division="+file_name[1]+"&file_seq="+file_name[2];
+			location.href="/interlinknc/boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division="+file_name[1]+"&file_seq="+file_name[2];
 		}else if(file_name[1] == "portfolio"){
-			location.href="boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division="+file_name[1];
+			location.href="/interlinknc/boardFileDown?file_name="+encodeURI(file_name[0])+"&board_division="+file_name[1];
 		}
 
 

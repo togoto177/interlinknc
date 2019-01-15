@@ -97,7 +97,7 @@
 				</td>
 				<td><input type="checkbox" class="check" id="checkOne" name="ad_seq" value="${list.ad_seq}" /><label class="label"></label></td>
 				<td class="textLeft">${list.ad_rank}</td>
-				<td class="title"><a href="/adminUpdate?ad_seq=${list.ad_seq}">${list.ad_name}</a></td>
+				<td class="title"><a href="/interlinknc/adminUpdate?ad_seq=${list.ad_seq}">${list.ad_name}</a></td>
 				<td>${list.ad_contact}</td>
 				<td>${list.ad_email}</td>
 				<td>${list.ad_hiredate}</td>
@@ -111,17 +111,17 @@
 	<div class="portCount">
 		<ul>
 		<li class="portCount1">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/adminList?startPage=1&visiblePages=10';">
+		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/interlinknc/adminList?startPage=1&visiblePages=10';">
 		<c:if test="${startPage != '1' }">
-		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/adminList?startPage=${startPage-1}&visiblePages=10';">
+		<img alt="왼쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/interlinknc/adminList?startPage=${startPage-1}&visiblePages=10';">
 		</c:if>
 		</li>
 		<li id="pagination"></li>
 		<li class="portCount2">
 		<c:if test="${totalPage != '1' && totalPage != startPage}">
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/adminList?startPage=${startPage+1}&visiblePages=10';">
+		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow1.png" onclick="location.href='/interlinknc/adminList?startPage=${startPage+1}&visiblePages=10';">
 		</c:if>
-		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/adminList?startPage=${totalPage}&visiblePages=10';">
+		<img alt="오른쪽" style="cursor:pointer;" src="resources/mainImg/download_board_arrow2.png" onclick="location.href='/interlinknc/adminList?startPage=${totalPage}&visiblePages=10';">
 		</li>
 		</ul>
 		<div class="btnList">

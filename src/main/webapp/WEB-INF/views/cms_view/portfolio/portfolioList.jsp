@@ -56,7 +56,7 @@
                                  
             </td>
             <td>${board_list.pf_division}</td>
-			<td class="title"><a style="cursor:pointer;" onclick="location.href='portfolioUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
+			<td class="title"><a style="cursor:pointer;" onclick="location.href='/interlinknc/portfolioUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
 			<td>${board_list.business_period}</td>
 			<td>${board_list.board_hit}</td>
 			</tr>

@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 $("#adDelete").click(function() {
 	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-	    location.href="admin_delete?ad_seq="+$("#ad_seq").val();
+	    location.href="/interlinknc/admin_delete?ad_seq="+$("#ad_seq").val();
 	}else{   //취소
 	    return;
 	}
@@ -104,7 +104,7 @@ $("#adDelete").click(function() {
 			<a class="btn1" id="adDelete" style="cursor:pointer;">DELETE</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1" href="/adminList" style="padding: 30 29;">LIST</a>
+			<a class="btn1" href="/interlinknc/adminList" style="padding: 30 29;">LIST</a>
 		</div>
 	</div>
 </div>

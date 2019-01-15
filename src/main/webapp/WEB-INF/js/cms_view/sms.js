@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
 		$(this).parents('li').remove();
 	});
 	$('.result').click(function() {
-		location.href = "smsResult.do";
+		location.href = "/interlinknc/smsResult.do";
 	});
 	$('.add').click(function() {
 		var text = '<li><input placeholder="name" class="name" type="text" name="sms_userName" /><input placeholder="tell" class="tell) 010-1234-1234" name="sms_tell" type="text" id="numbersOnly" /><a class="numDel">삭제</a></li>';

@@ -55,7 +55,7 @@
                 <c:set var="startpage" value="${startPage-1}" />
                 <c:set var="statuscount" value="${status.count }" />
                 ${totalCnt+1-(startpage*10+statuscount)}</td>
-				<td class="title"><a href="/downloadsUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}">${board_list.board_title}</a></td>
+				<td class="title"><a href="/interlinknc/downloadsUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}">${board_list.board_title}</a></td>
 				<td>${board_list.board_registerdate}</td>
 				<td>
 				
@@ -97,7 +97,7 @@
 	</ul>
 	<div class="btnList">
 		<div class="btnDiv1">
-		<a class="btn1" href="/downloadsWrite?board_division=download">WRITE</a>
+		<a class="btn1" href="/interlinknc/downloadsWrite?board_division=download">WRITE</a>
 		</div>
 		<div class="btnDiv1">
 		<input type="button" value="Print" onclick="window.print()" />

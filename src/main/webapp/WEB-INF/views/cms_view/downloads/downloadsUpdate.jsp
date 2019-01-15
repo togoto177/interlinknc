@@ -150,7 +150,7 @@ $(document).on("click","#save",function(e){
 			<a class="btn1" id="delete">REMOVE</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1" style="padding: 30 29;" href="/downloadsList?board_division=download">LIST</a>
+			<a class="btn1" style="padding: 30 29;" href="/interlinknc/downloadsList?board_division=download">LIST</a>
 		</div>
 	</div>
 </div>

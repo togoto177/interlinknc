@@ -92,7 +92,7 @@
 	</div>
 	<div class="btnbox">
 		<div class="btnDiv2" style="margin-right: 0;">
-			<a class="btn1" style="padding: 30;" href="/contactList?board_division=contact">LIST</a>
+			<a class="btn1" style="padding: 30;" href="/interlinknc/contactList?board_division=contact">LIST</a>
 		</div>
 	</div>
 </div>

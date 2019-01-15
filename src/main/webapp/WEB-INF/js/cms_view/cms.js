@@ -14,7 +14,7 @@ function login() {
 		alert("비밀번호를 입력해주세요");
 		this.focus();
 	}else{
-	var url = "/loginTry";
+	var url = "/interlinknc/loginTry";
 	var comSubmit = new ComSubmit("login_form");
 	comSubmit.setUrl(url);
 	comSubmit.submit();
@@ -54,14 +54,14 @@ function signUpFun() {
 		alert("아이디 중복채크를 해주세요.");
 		this.focus();
 	}else{
-		var url = "/sign_form_insert";
+		var url = "/interlinknc/sign_form_insert";
 		var comSubmit = new ComSubmit("sign_form");
 		comSubmit.setUrl(url);
 		comSubmit.submit();
 	}
 }
 function logout() {
-	location.href = "logout";
+	location.href = "/interlinknc/logout";
 }
 
 //내정보수정 유효성

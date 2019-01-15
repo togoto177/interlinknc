@@ -127,7 +127,7 @@ $(document).ready(function() {
 			<a class="btn1" href="mailto:someone@example.com?Subject=Hello%20again" target="_top">SEND</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1" href="/downloadsList?board_division=download">CANCEL</a>
+			<a class="btn1" href="/interlinknc/downloadsList?board_division=download">CANCEL</a>
 		</div>
 	</div>
 </div>

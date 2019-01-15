@@ -138,7 +138,7 @@ $(document).ready(function() {
 			<a class="btn1" id="save" style="cursor:pointer;">SAVE</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1" href="/portfolioList">CANCEL</a>
+			<a class="btn1" href="/interlinknc/portfolioList">CANCEL</a>
 		</div>
 	</div>
 </div>

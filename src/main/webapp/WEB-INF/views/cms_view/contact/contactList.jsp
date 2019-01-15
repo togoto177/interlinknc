@@ -72,7 +72,7 @@
                                  
             </td>
             <td><input type="checkbox" id="checkOne" name="board_seq" class="check" value="${board_list.board_seq}" /><label class="label"></label></td>
-			<td class="title"><a id="title" style="cursor:pointer;" onclick="location.href='contactUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
+			<td class="title"><a id="title" style="cursor:pointer;" onclick="location.href='/interlinknc/contactUpdate?board_division=${board_division}&board_seq=${board_list.board_seq}'">${board_list.board_title}</a></td>
 			<td>${board_list.user_id}</td>
 			<td>${board_list.board_registerdate}</td>
 				<c:if test="${board_list.status == '0'}">

@@ -176,7 +176,7 @@ $(document).ready(function() {
 			<a class="btn1" id="delete" style="cursor:pointer;">DELETE</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1" style="padding: 30 29;" href="/portfolioList?board_division=portfolio">LIST</a>
+			<a class="btn1" style="padding: 30 29;" href="/interlinknc/portfolioList?board_division=portfolio">LIST</a>
 		</div>
 	</div>
 </div>

@@ -100,7 +100,7 @@ $(document).on("click","#save",function(e){
 			<a class="btn1" id="save" style="cursor:pointer;">SAVE</a>
 		</div>
 		<div class="btnDiv2">
-			<a class="btn1" href="/downloadsList?board_division=download">CANCEL</a>
+			<a class="btn1" href="/interlinknc/downloadsList?board_division=download">CANCEL</a>
 		</div>
 	</div>
 </div>
