@@ -60,9 +60,9 @@ $(document).ready(function() {
 				return false;
 			}
 			// 발주처 유효성 검사
-			if($("#link").val() == '' || $("#link").val() == null){
+/* 			if($("#link").val() == '' || $("#link").val() == null){
 				$("#link").val("interlinknc.com");
-			}
+			} */
 	// id가 smarteditor인 textarea에 에디터에서 대입 
 	oEditors.getById["board_content"].exec("UPDATE_CONTENTS_FIELD", []); 
 	// 이부분에 에디터 validation 검증

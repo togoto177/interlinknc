@@ -132,7 +132,13 @@ jQuery(document).ready(function($){
 						<div class="portCen">
 							<div class="portCon"></div>
 							<a class="portA">${portfolio_list.buyer}</a><br />
+							<c:if test="${!empty portfolio_list.link}">
 							<a class="portUrl" href="//${portfolio_list.link}" target="_blank">${portfolio_list.link}</a>
+							</c:if>
+							<c:if test="${empty portfolio_list.link}">
+							<a class="portUrl">interlinknc.com</a>
+							</c:if>
+							
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">${portfolio_list.business_period}</a><br />

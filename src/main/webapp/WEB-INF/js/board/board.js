@@ -132,7 +132,7 @@
 				if(id_check == "page_num"){
 				$.ajax({ 
 					type: 'get' , 
-					url: '/mainDownList?startPage='+ startPage +'&visiblePages='+visiblePages ,
+					url: '/interlinknc/mainDownList?startPage='+ startPage +'&visiblePages='+visiblePages ,
 					async : false,
 					cache : false,
 					dataType : 'text' ,
@@ -146,7 +146,7 @@
 				}else if(id_check == "start"){
 					$.ajax({ 
 						type: 'get' , 
-						url: '/mainDownList?startPage=1&visiblePages=10',
+						url: '/interlinknc/mainDownList?startPage=1&visiblePages=10',
 						async : false,
 						cache : false,
 						dataType : 'text' , 
@@ -161,7 +161,7 @@
 				}else if(id_check == "end"){
 					$.ajax({ 
 						type: 'get' , 
-						url: '/mainDownList?startPage='+totalPage+'&visiblePages=10',
+						url: '/interlinknc/mainDownList?startPage='+totalPage+'&visiblePages=10',
 						async : false,
 						cache : false,
 						dataType : 'text' , 
@@ -176,7 +176,7 @@
 				}else if(id_check == "next"){
 					$.ajax({ 
 						type: 'get' , 
-						url: '/mainDownList?startPage='+startPage+'&visiblePages=10',
+						url: '/interlinknc/mainDownList?startPage='+startPage+'&visiblePages=10',
 						async : false,
 						cache : false,
 						dataType : 'text' , 
@@ -191,7 +191,7 @@
 				}else if(id_check == "prev"){
 					$.ajax({ 
 						type: 'get' , 
-						url: '/mainDownList?startPage='+startPage+'&visiblePages=10',
+						url: '/interlinknc/mainDownList?startPage='+startPage+'&visiblePages=10',
 						async : false,
 						cache : false,
 						dataType : 'text' , 
@@ -206,7 +206,7 @@
 				}else if(id_check == "2018"){
 					$.ajax({ 
 						type: 'post' , 
-						url: '/mainPortList',
+						url: '/interlinknc/mainPortList',
 						async : false,
 						cache : false,
 			    		data : {pf_year : id_check} ,
@@ -220,7 +220,7 @@
 				}else if(id_check == "2009"){
 					$.ajax({ 
 						type: 'post' , 
-						url: '/mainPortList',
+						url: '/interlinknc/mainPortList',
 						async : false,
 						cache : false,
 			    		data : {pf_year : id_check} ,
@@ -234,7 +234,7 @@
 				}else if(id_check == "2008"){
 					$.ajax({ 
 						type: 'post' , 
-						url: '/mainPortList',
+						url: '/interlinknc/mainPortList',
 						async : false,
 						cache : false,
 			    		data : {pf_year : id_check} ,
@@ -248,7 +248,7 @@
 				}else if(id_check == "2007"){
 					$.ajax({ 
 						type: 'post' , 
-						url: '/mainPortList',
+						url: '/interlinknc/mainPortList',
 						async : false,
 						cache : false,
 			    		data : {pf_year : id_check} ,
