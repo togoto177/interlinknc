@@ -134,7 +134,7 @@ $(document).ready(function() {
 			<a href="#about" class="about_menu"><img alt="밑으로" src="resources/mainImg/scroll.png"></a>
 		</div>
 	</div>
-	<div class="home_icon"><img alt="맨위로 가기" src="/resources/mainImg/home.png"></div>
+	<div class="home_icon"><img alt="맨위로 가기" src="resources/mainImg/home.png"></div>
 	<div class="about" id="about">
 	
 		<div class="about_inter">
@@ -534,18 +534,15 @@ $(document).ready(function() {
 			<div class="downCnt" id="downCnt">
 			<input type="hidden" id="startPage" name="startPage" value="">
 			<input type="hidden" id="visiblePages" name="visiblePages" value="">
-			<ul id="paging">
-			<!-- <li class="downCntli1">
-			<a href="javascript:void(0);" name="page_move" id="page_first">
-			<img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png">
-			<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png">
-			</a>
-			</li> -->
-			<!-- <li class="downCntli2"><a href="javascript:void(0)" name="page_move" id="page_last">
-			<img alt="왼쪽" src="resources/mainImg/download_board_arrow1.png">
-			<img alt="왼쪽" src="resources/mainImg/download_board_arrow2.png">
-			</a></li> -->
-			</ul>
+				<c:if test="${fn:length(board_list) != 0}">
+				<ul id="paging">
+				</ul>
+				</c:if>
+				<c:if test="${fn:length(board_list) == 0}">
+				<ul>
+				<li>0</li>
+				</ul>
+				</c:if>
 			</div>
 		</div>
 		</form>

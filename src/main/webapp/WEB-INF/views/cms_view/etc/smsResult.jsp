@@ -80,8 +80,16 @@ $(document).ready(function(){
 	</div>
 	
 	<div class="portCount">
+		<c:if test="${fn:length(board_list) != 0}">
 		<ul id="paging">
 		</ul>
+		</c:if>
+		<c:if test="${fn:length(board_list) == 0}">
+		<ul>
+		<li>0</li>
+		</ul>
+		</c:if>
+		
  		<div class="btnList">
 		</div>
 	</div>

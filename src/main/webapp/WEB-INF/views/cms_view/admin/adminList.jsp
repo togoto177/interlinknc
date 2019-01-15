@@ -121,7 +121,13 @@
 	<c:if test="${fn:length(employee_list) != 0}">
 		<ul id="paging">
 		</ul>
-	</c:if>	
+		</c:if>
+		<c:if test="${fn:length(employee_list) == 0}">
+		<ul>
+		<li>0</li>
+		</ul>
+		</c:if>
+	
 		<div class="btnList">
 			<div class="btnDiv1">
 				<a class="btn1" onclick="adminDeleteSubmit()" style="padding: 30 21; cursor: pointer;">DELETE</a>
