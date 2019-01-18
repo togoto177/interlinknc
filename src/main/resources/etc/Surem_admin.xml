@@ -53,7 +53,7 @@
 			  where * like CONCAT('%', #{sch_value}, '%')
 			</when>
 		</choose>
-		;
+		order by sms_seq DESC;
 	</select>
 	<select id="sms_cnt" resultType="int" parameterType="java.util.HashMap">
 		select count(*) from sms_tb;

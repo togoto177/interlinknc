@@ -42,7 +42,7 @@ jQuery(document).ready(function($){
 		}
 		
 		
-		var url = "/send_api.do";
+		var url = "/interlinknc/send_api.do";
 		var comSubmit = new ComSubmit("send_api");
 		comSubmit.setUrl(url);
 		comSubmit.addParam("sms_division",divi);

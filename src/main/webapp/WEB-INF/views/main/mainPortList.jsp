@@ -72,6 +72,15 @@ jQuery(document).ready(function($){
 				<img alt="포트폴리오이미지" src="resources/mainImg/portfolio_navigator.png">
 				<div class="portfolio_div_ul">
 					<ul class="portfolio_ul">
+					<c:if test="${pf_year == '2019'}">
+						<li class="left" style="cursor:pointer;"><a name="page_move" id="2007">&ltrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
+						<li>&#183;</li>
+						<li class="dddd">2019</li>
+						<li>&#183;</li>
+						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
+						<li class="right" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
+					</c:if>
 					<c:if test="${pf_year == '2018'}">
 						<li class="left" style="cursor:pointer;"><a name="page_move" id="2007">&ltrif;</a></li>
 						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
@@ -80,6 +89,15 @@ jQuery(document).ready(function($){
 						<li>&#183;</li>
 						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
 						<li class="right" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
+					</c:if>
+					<c:if test="${pf_year == '2010'}">
+						<li class="left" style="cursor:pointer;"><a name="page_move" id="2018">&ltrif;</a></li>
+						<li style="cursor:pointer;"><a name="page_move" id="2018">2018</a></li>
+						<li>&#183;</li>
+						<li class="dddd">2010</li>
+						<li>&#183;</li>
+						<li style="cursor:pointer;"><a name="page_move" id="2008">2008</a></li>
+						<li class="right" style="cursor:pointer;"><a name="page_move" id="2008">&rtrif;</a></li>
 					</c:if>
 					<c:if test="${pf_year == '2009'}">
 						<li class="left" style="cursor:pointer;"><a name="page_move" id="2018">&ltrif;</a></li>

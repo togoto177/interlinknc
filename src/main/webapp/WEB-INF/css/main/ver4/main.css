@@ -782,6 +782,8 @@ h1{
 	background: #6600ff;
 }
 .portfolioImg .portfolioImg_div .bxslider .background_2 .portCon2 .protCon2_2{
+	white-space: pre-line;
+	word-break: keep-all;
 	color: #333333;
 	line-height: 1.2;
 }
@@ -797,6 +799,8 @@ h1{
 	color: #9999ff;
 }
 .portfolioImg .portfolioImg_div .bxslider .portCon2 .protCon2_2{
+	white-space: pre-line;
+	word-break: keep-all;
 	font-size: 18;
 	z-index: 105;
 	letter-spacing: -0.5;
@@ -818,6 +822,7 @@ h1{
 	width: 85%;
 	white-space: normal;
 	z-index: 105;
+	list-style: none;
 }
 .portfolioImg .portfolioImg_div .bxslider .portCon3 li{
 	margin:3 0;
