@@ -114,8 +114,12 @@
 			<div class="downCnt" id="downCnt">
 			<input type="hidden" id="startPage" name="startPage" value="">
 			<input type="hidden" id="visiblePages" name="visiblePages" value="">
-			<ul id="paging">
-			</ul>
+			<c:if test="${fn:length(download_list) != 0}">
+				<ul id="paging">
+				</ul>
+			</c:if>
+			<c:if test="${fn:length(download_list) == 0}">
+			</c:if>
 			</div>
 		</div>
 		</form>

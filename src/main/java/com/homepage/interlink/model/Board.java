@@ -42,12 +42,22 @@ public class Board {
 	private String pf_year;
 	private String seq_division; //홀수행 짝수행 구분을 위해 추가
 	
+	//포트폴리오 메인 년도 구분때문에 추가
+	
+	private String pf_pre_max_year;
+	private String pf_pre_year;
+	private String pf_this_year;
+	private String pf_next_year;
+	private String pf_next_min_year;
+	
+	
 	//고객센터 모델 추가
 	private int customer_seq;
 	private String user_id;
 	private String user_email;
 	private String user_contact;
 	private String status;
+	
 	public int getBoard_seq() {
 		return board_seq;
 	}
@@ -216,6 +226,36 @@ public class Board {
 	public void setSeq_division(String seq_division) {
 		this.seq_division = seq_division;
 	}
+	public String getPf_pre_max_year() {
+		return pf_pre_max_year;
+	}
+	public void setPf_pre_max_year(String pf_pre_max_year) {
+		this.pf_pre_max_year = pf_pre_max_year;
+	}
+	public String getPf_pre_year() {
+		return pf_pre_year;
+	}
+	public void setPf_pre_year(String pf_pre_year) {
+		this.pf_pre_year = pf_pre_year;
+	}
+	public String getPf_this_year() {
+		return pf_this_year;
+	}
+	public void setPf_this_year(String pf_this_year) {
+		this.pf_this_year = pf_this_year;
+	}
+	public String getPf_next_year() {
+		return pf_next_year;
+	}
+	public void setPf_next_year(String pf_next_year) {
+		this.pf_next_year = pf_next_year;
+	}
+	public String getPf_next_min_year() {
+		return pf_next_min_year;
+	}
+	public void setPf_next_min_year(String pf_next_min_year) {
+		this.pf_next_min_year = pf_next_min_year;
+	}
 	public int getCustomer_seq() {
 		return customer_seq;
 	}
@@ -257,11 +297,11 @@ public class Board {
 				+ pretitle + ", nexttitle=" + nexttitle + ", file_cnt=" + file_cnt + ", portfolio_seq=" + portfolio_seq
 				+ ", business_period=" + business_period + ", buyer=" + buyer + ", link=" + link + ", portfolio_etc="
 				+ portfolio_etc + ", pf_division=" + pf_division + ", pf_year=" + pf_year + ", seq_division="
-				+ seq_division + ", customer_seq=" + customer_seq + ", user_id=" + user_id + ", user_email="
+				+ seq_division + ", pf_pre_max_year=" + pf_pre_max_year + ", pf_pre_year=" + pf_pre_year
+				+ ", pf_this_year=" + pf_this_year + ", pf_next_year=" + pf_next_year + ", pf_next_min_year="
+				+ pf_next_min_year + ", customer_seq=" + customer_seq + ", user_id=" + user_id + ", user_email="
 				+ user_email + ", user_contact=" + user_contact + ", status=" + status + "]";
 	}
-	
-	
 	
 	
 	

@@ -203,68 +203,42 @@
 						} 
 					});
 
-				}else if(id_check == "2018"){
-					$.ajax({ 
-						type: 'post' , 
-						url: '/interlinknc/mainPortList',
-						async : false,
-						cache : false,
-			    		data : {pf_year : id_check} ,
-						dataType : 'text' , 
-						success: function(data) { 
-							$('#pf_context').remove();
-							$('#portfolio').html(data).trigger("create");
-						} 
-					});
-
-				}else if(id_check == "2009"){
-					$.ajax({ 
-						type: 'post' , 
-						url: '/interlinknc/mainPortList',
-						async : false,
-						cache : false,
-			    		data : {pf_year : id_check} ,
-						dataType : 'text' , 
-						success: function(data) { 
-							$('#pf_context').remove();
-							$('#portfolio').html(data).trigger("create");
-						} 
-					});
-
-				}else if(id_check == "2008"){
-					$.ajax({ 
-						type: 'post' , 
-						url: '/interlinknc/mainPortList',
-						async : false,
-						cache : false,
-			    		data : {pf_year : id_check} ,
-						dataType : 'text' , 
-						success: function(data) { 
-							$('#pf_context').remove();
-							$('#portfolio').html(data).trigger("create");
-						} 
-					});
-
-				}else if(id_check == "2007"){
-					$.ajax({ 
-						type: 'post' , 
-						url: '/interlinknc/mainPortList',
-						async : false,
-						cache : false,
-			    		data : {pf_year : id_check} ,
-						dataType : 'text' , 
-						success: function(data) { 
-							$('#pf_context').remove();
-							$('#portfolio').html(data).trigger("create");
-						} 
-					});
-
 				}
 			}else{
 				document.board_form.submit();
 			}
 
 		});
+	    
+	    $(document).off("click", "a[name='port_move']").on("click","a[name='port_move']",function() {
+			var id_check = $(this).attr("id"); //해당 seq값을 가져오기위해 새로 추가
+			var totalPage = $('#totalPage').val(); //다운로드 목록 전체 페이지 수
+			var visiblePages = 10;//리스트 보여줄 페이지
+			var sp = $('#servletPath').val();
+			$('#startPage').val($(this).attr("start_page"));//보고 싶은 페이지
+			var startPageList = $('#startPage').val();
+			$('#startPageList').val(startPageList);
+			var startPage = $('#startPageList').val(); 
+			$('#visiblePages').val(visiblePages);
+			
+					$.ajax({ 
+						type: 'post' , 
+						url: '/interlinknc/mainPortList',
+						async : false,
+						cache : false,
+			    		data : {pf_year : id_check} ,
+						dataType : 'text' , 
+						success: function(data) { 
+							$('#pf_context').remove();
+							$('#portfolio').html(data).trigger("create");
+						},
+						error: function(xhr, option, error){
+							alert(xhr.status); //오류코드
+							alert(error); //오류내용
+						}
+			    		
+					});
+	    	});
 		
 			
 			

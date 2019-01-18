@@ -32,4 +32,6 @@ public interface BoardDao {
 
 	public List<Board> portfolio_list(Map<String, Object> paramMap);
 
+	public Board port_pf_Year(String pf_year);
+
 }

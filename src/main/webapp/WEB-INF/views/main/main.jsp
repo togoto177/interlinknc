@@ -332,20 +332,32 @@ $(document).ready(function() {
 	
 	<div class="portfolio" id="portfolio">
 	<div id="edd">
-	<input type="hidden" name="pf_year" id="pf_year" value="${pf_year}">
+	<input type="hidden" name="pf_year" id="pf_year" value="${port_pf_Year.pf_this_year}">
 		<div class="portfolioImg" id="pf_context">
 			<div class="portfolio_title"><a class="portfolio_titleA"><img alt="portfolio 이미지" src="resources/mainImg/diagonal_portfolio.png"><br/>PORTFOLIO</a></div>
 			<div class="portfolio_navigator">
 				<img alt="포트폴리오이미지" src="resources/mainImg/portfolio_navigator.png">
 				<div class="portfolio_div_ul">
 					<ul class="portfolio_ul">
-						<li class="left" style="cursor:pointer;"><a name="page_move" id="2007">&ltrif;</a></li>
-						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
+					<c:if test="${empty port_pf_Year.pf_pre_year}">
+						<li class="left" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_max_year}">&ltrif;</a></li>
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_max_year}">${port_pf_Year.pf_pre_max_year}</a></li>
+					</c:if>
+					<c:if test="${!empty port_pf_Year.pf_pre_year}">
+						<li class="left" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_year}">&ltrif;</a></li>
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_year}">${port_pf_Year.pf_pre_year}</a></li>
+					</c:if>
 						<li>&#183;</li>
-						<li class="dddd">2018</li>
+						<li class="dddd">${port_pf_Year.pf_this_year}</li>
 						<li>&#183;</li>
-						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
-						<li class="right" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
+					<c:if test="${empty port_pf_Year.pf_next_year}">	
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_min_year}">${port_pf_Year.pf_next_min_year}</a></li>
+						<li class="right" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_min_year}">&rtrif;</a></li>
+					</c:if>
+					<c:if test="${!empty port_pf_Year.pf_next_year}">	
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_year}">${port_pf_Year.pf_next_year}</a></li>
+						<li class="right" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_year}">&rtrif;</a></li>
+					</c:if>		
 					</ul>
 				</div>
 			</div>
@@ -545,14 +557,11 @@ $(document).ready(function() {
 			<div class="downCnt" id="downCnt">
 			<input type="hidden" id="startPage" name="startPage" value="">
 			<input type="hidden" id="visiblePages" name="visiblePages" value="">
-				<c:if test="${fn:length(board_list) != 0}">
+				<c:if test="${fn:length(download_list) != 0}">
 				<ul id="paging">
 				</ul>
 				</c:if>
-				<c:if test="${fn:length(board_list) == 0}">
-				<ul>
-				<li>0</li>
-				</ul>
+				<c:if test="${fn:length(download_list) == 0}">
 				</c:if>
 			</div>
 		</div>

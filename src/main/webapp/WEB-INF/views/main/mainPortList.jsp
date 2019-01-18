@@ -72,59 +72,24 @@ jQuery(document).ready(function($){
 				<img alt="포트폴리오이미지" src="resources/mainImg/portfolio_navigator.png">
 				<div class="portfolio_div_ul">
 					<ul class="portfolio_ul">
-					<c:if test="${pf_year == '2019'}">
-						<li class="left" style="cursor:pointer;"><a name="page_move" id="2007">&ltrif;</a></li>
-						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
-						<li>&#183;</li>
-						<li class="dddd">2019</li>
-						<li>&#183;</li>
-						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
-						<li class="right" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
+					<c:if test="${empty port_pf_Year.pf_pre_year}">
+						<li class="left" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_max_year}">&ltrif;</a></li>
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_max_year}">${port_pf_Year.pf_pre_max_year}</a></li>
 					</c:if>
-					<c:if test="${pf_year == '2018'}">
-						<li class="left" style="cursor:pointer;"><a name="page_move" id="2007">&ltrif;</a></li>
-						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
-						<li>&#183;</li>
-						<li class="dddd">2018</li>
-						<li>&#183;</li>
-						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
-						<li class="right" style="cursor:pointer;"><a name="page_move" id="2009">&rtrif;</a></li>
+					<c:if test="${!empty port_pf_Year.pf_pre_year}">
+						<li class="left" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_year}">&ltrif;</a></li>
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_pre_year}">${port_pf_Year.pf_pre_year}</a></li>
 					</c:if>
-					<c:if test="${pf_year == '2010'}">
-						<li class="left" style="cursor:pointer;"><a name="page_move" id="2018">&ltrif;</a></li>
-						<li style="cursor:pointer;"><a name="page_move" id="2018">2018</a></li>
 						<li>&#183;</li>
-						<li class="dddd">2010</li>
+						<li class="dddd">${port_pf_Year.pf_this_year}</li>
 						<li>&#183;</li>
-						<li style="cursor:pointer;"><a name="page_move" id="2008">2008</a></li>
-						<li class="right" style="cursor:pointer;"><a name="page_move" id="2008">&rtrif;</a></li>
+					<c:if test="${empty port_pf_Year.pf_next_year}">	
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_min_year}">${port_pf_Year.pf_next_min_year}</a></li>
+						<li class="right" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_min_year}">&rtrif;</a></li>
 					</c:if>
-					<c:if test="${pf_year == '2009'}">
-						<li class="left" style="cursor:pointer;"><a name="page_move" id="2018">&ltrif;</a></li>
-						<li style="cursor:pointer;"><a name="page_move" id="2018">2018</a></li>
-						<li>&#183;</li>
-						<li class="dddd">2009</li>
-						<li>&#183;</li>
-						<li style="cursor:pointer;"><a name="page_move" id="2008">2008</a></li>
-						<li class="right" style="cursor:pointer;"><a name="page_move" id="2008">&rtrif;</a></li>
-					</c:if>
-					<c:if test="${pf_year == '2008'}">
-						<li class="left" style="cursor:pointer;"><a name="page_move" id="2009">&ltrif;</a></li>
-						<li style="cursor:pointer;"><a name="page_move" id="2009">2009</a></li>
-						<li>&#183;</li>
-						<li class="dddd">2008</li>
-						<li>&#183;</li>
-						<li style="cursor:pointer;"><a name="page_move" id="2007">2007</a></li>
-						<li class="right" style="cursor:pointer;"><a name="page_move" id="2007">&rtrif;</a></li>
-					</c:if>
-					<c:if test="${pf_year == '2007'}">
-						<li class="left" style="cursor:pointer;"><a name="page_move" id="2008">&ltrif;</a></li>
-						<li style="cursor:pointer;"><a name="page_move" id="2008">2008</a></li>
-						<li>&#183;</li>
-						<li class="dddd">2007</li>
-						<li>&#183;</li>
-						<li style="cursor:pointer;"><a name="page_move" id="2018">2018</a></li>
-						<li class="right" style="cursor:pointer;"><a name="page_move" id="2018">&rtrif;</a></li>
+					<c:if test="${!empty port_pf_Year.pf_next_year}">	
+						<li style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_year}">${port_pf_Year.pf_next_year}</a></li>
+						<li class="right" style="cursor:pointer;"><a name="port_move" id="${port_pf_Year.pf_next_year}">&rtrif;</a></li>
 					</c:if>		
 					</ul>
 				</div>

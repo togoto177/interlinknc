@@ -277,7 +277,9 @@
         
         from board_tb a left join portfolio_tb c on a.board_seq = c.board_seq left join file_tb d on a.board_seq = d.board_seq
         
-         where a.board_division = 'portfolio' and a.board_use_yn = 'Y' and d.file_use_yn = 'Y' and (select left(c.business_period ,4)) = 
+         where a.board_division = 'portfolio' and a.board_use_yn = 'Y' and d.file_use_yn = 'Y' and (select left(c.business_period ,4)) = #{pf_year}
+        
+        <!-- 
         <if test="pf_year.equals('2018')">
          2018
     	</if>
@@ -289,7 +291,7 @@
     	</if>
     	<if test="pf_year.equals('2007')">
          2007
-    	</if>
+    	</if> -->
 		
 		 <choose>
      	<when test="sch_type == 'board_title'">
@@ -303,6 +305,27 @@
         
 	
 	</select>
+	
+	<select id="port_pf_Year" resultType="Board" parameterType="String">	
+	 
+	 select 
+		(select (left(business_period ,4))
+		from portfolio_tb where (left(business_period ,4)) order by (left(business_period ,4)) desc LIMIT 1) as pf_pre_max_year,
+		
+		(select (left(business_period ,4))
+		from portfolio_tb where  (left(business_period ,4))<![CDATA[ < ]]> #{pf_year} order by (left(business_period ,4)) desc LIMIT 1)  as pf_pre_year,
+		
+		(left(business_period ,4)) as pf_this_year,
+		
+		(select (left(business_period ,4))
+		from portfolio_tb where (left(business_period ,4))<![CDATA[ > ]]>#{pf_year} order by (left(business_period ,4)) LIMIT 1) as pf_next_year,
+		
+		(select (left(business_period ,4))
+		from portfolio_tb where (left(business_period ,4))order by (left(business_period ,4)) LIMIT 1) as pf_next_min_year
+	from portfolio_tb 
+	where (left(business_period ,4)) = #{pf_year} group by pf_this_year limit 3;
+	
+</select>
 	
 
 </mapper>

@@ -36,4 +36,6 @@ public interface BoardService {
 	int download_hit(int board_seq);
 	//메인 포트폴리오 뷰 출력
 	List<Board> portfolio_list(Map<String, Object> paramMap); 
+	
+	public Board port_pf_Year(String pf_year);
 }
