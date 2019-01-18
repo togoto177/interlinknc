@@ -156,7 +156,7 @@ jQuery(document).ready(function($){
 				<li class="background_2">
 					<div class="portImg">
 						<c:if test="${portfolio_list.file_sub_name ne null}">
-						<img class="img1" alt="포트폴리오이미지" src="${portfolio_list.file_path}${fn:substringBefore(TextValue,'*')}">
+						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/portfolio_uploadfile/${fn:substringBefore(TextValue,'*')}">
 						</c:if>
 						<c:if test="${portfolio_list.file_sub_name eq null}">			
 						<img class="img1" alt="포트폴리오이미지" src="resources/portfolio/pf_no_img2.jpg">
@@ -167,7 +167,12 @@ jQuery(document).ready(function($){
 						<div class="portCen">
 							<div class="portCon"></div>
 							<a class="portA">${portfolio_list.buyer}</a><br />
+							<c:if test="${!empty portfolio_list.link}">
 							<a class="portUrl" href="//${portfolio_list.link}" target="_blank">${portfolio_list.link}</a>
+							</c:if>
+							<c:if test="${empty portfolio_list.link}">
+							<a class="portUrl">interlinknc.com</a>
+							</c:if>
 						</div>
 						<div class="portCon2">
 							<a class="protCon2_1">${portfolio_list.business_period}</a><br />
