@@ -76,7 +76,6 @@
        		<mapping path="/emailSend"/>
        		<mapping path="/emailSendAction"/>
        		<mapping path="/smsSend"/>
-       		<mapping path="/sms_get"/>
        		<mapping path="/send_api.do"/>
        		
 
@@ -96,6 +95,9 @@
             <exclude-mapping path="/mainContactAction"/>
             <exclude-mapping path="/mainPortList"/>
        		<exclude-mapping path="/boardFileDown"/>
+       		
+       		<!-- 기타 intercepter 제외 -->
+       		<exclude-mapping path="/sms_get"/>
             
             
             

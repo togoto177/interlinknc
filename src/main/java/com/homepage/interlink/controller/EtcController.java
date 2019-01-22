@@ -371,16 +371,24 @@ public class EtcController {
 	}
 	
 	@RequestMapping(value = "/sms_get")
-  	public String sms_get(Map<String, Object> paramMap, Model model,
-  			@RequestParam(value="Result", required=true) List<String> Result,
-			@RequestParam(value="SeqNum", required=true) List<String> SeqNum,
-			@RequestParam(value="UserCode", required=true) List<String> UserCode,
-			@RequestParam(value="DeptCode", required=true) List<String> DeptCode,
-			@RequestParam(value="Phone", required=true) List<String> Phone,
-			@RequestParam(value="RecvTime", required=true) List<String> RecvTime,
-			@RequestParam(value="ReqPhone", required=true) List<String> ReqPhone,
-			@RequestParam(value="Error", required=true) List<String> Error) {
+  	public String sms_get(Map<String, Object> paramMap, Model model) {
+		model.addAttribute("result", paramMap.toString());
+  		System.out.println(paramMap.toString());
+		return "/cms_view/etc/sms_get";
+	}
+	
+	@RequestMapping(value = "/sms_get1")
+  	public String sms_get1(Map<String, Object> paramMap, Model model,
+  			@RequestParam(value="Result", required=false) List<String> Result,
+			@RequestParam(value="SeqNum", required=false) List<String> SeqNum,
+			@RequestParam(value="UserCode", required=false) List<String> UserCode,
+			@RequestParam(value="DeptCode", required=false) List<String> DeptCode,
+			@RequestParam(value="Phone", required=false) List<String> Phone,
+			@RequestParam(value="RecvTime", required=false) List<String> RecvTime,
+			@RequestParam(value="ReqPhone", required=false) List<String> ReqPhone,
+			@RequestParam(value="Error", required=false) List<String> Error) {
   		model.addAttribute("result", paramMap.toString());
+  		System.out.println(paramMap.toString());
   		/*{Result=2, SeqNum=29, UserCode=seantour2011, DeptCode=AK-UFG-AG, Phone=01031663135,
   				RecvTime=20180801183041, ReqPhone=01096908579, Error=101}*/
   		
