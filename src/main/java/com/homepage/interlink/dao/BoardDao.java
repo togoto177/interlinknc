@@ -34,4 +34,6 @@ public interface BoardDao {
 
 	public Board port_pf_Year(String pf_year);
 
+	public String thisYear(Map<String, Object> paramMap);
+
 }

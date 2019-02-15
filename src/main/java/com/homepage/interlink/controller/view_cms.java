@@ -630,8 +630,6 @@ public class view_cms {
 	//공통 CMS 게시판 삭제 액션
 	@RequestMapping(value = "/board_delete" , method = RequestMethod.GET)
 	public String board_delete(Board board, BoardFile boardFile, int[] board_seq, HttpServletRequest request) {
-			
-		System.out.println("=======================board_seq?" + board_seq);
 		
 			for (int i = 0; i < board_seq.length; i++) {
 				

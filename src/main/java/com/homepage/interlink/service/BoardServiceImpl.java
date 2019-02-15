@@ -82,4 +82,9 @@ public class BoardServiceImpl implements BoardService{
 	public Board port_pf_Year(String pf_year) {
 		return boardDao.port_pf_Year(pf_year);
 	}
+
+	@Override
+	public String thisYear(Map<String, Object> paramMap) {
+		return boardDao.thisYear(paramMap);
+	}
 }

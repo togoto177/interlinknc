@@ -36,6 +36,8 @@ public interface BoardService {
 	int download_hit(int board_seq);
 	//메인 포트폴리오 뷰 출력
 	List<Board> portfolio_list(Map<String, Object> paramMap); 
-	
+	//포트폴리오 년도 가져옴
 	public Board port_pf_Year(String pf_year);
+	//제일 마지막 포트폴리오 년도 가져옴
+	public String thisYear(Map<String, Object> paramMap);
 }

@@ -84,5 +84,10 @@ public class BoardDaoImpl implements BoardDao {
 	public Board port_pf_Year(String pf_year) {
 		return SqlSession.selectOne("boards.port_pf_Year", pf_year);
 	}
+
+	@Override
+	public String thisYear(Map<String, Object> paramMap) {
+		return SqlSession.selectOne("boards.thisYear", paramMap);
+	}
 	
 }

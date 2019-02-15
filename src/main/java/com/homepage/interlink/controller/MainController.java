@@ -78,14 +78,10 @@ public class MainController {
         model.addAttribute("sch_type", paramMap.get("sch_type"));
 
 		model.addAttribute("download_list", boardService.download_list(paramMap));
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-
-        Calendar c1 = Calendar.getInstance();
-
-        String pf_year = sdf.format(c1.getTime());
+		String pf_year = boardService.thisYear(paramMap);
 		paramMap.put("pf_year", pf_year);
 		board.setPf_this_year(pf_year);
-		System.out.println(pf_year);
+		/*System.out.println(pf_year);*/
 		model.addAttribute("portfolio_list", boardService.portfolio_list(paramMap));
 		model.addAttribute("port_pf_Year", boardService.port_pf_Year(pf_year));
 		System.out.println(boardService.port_pf_Year(pf_year));
