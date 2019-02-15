@@ -371,9 +371,24 @@ public class EtcController {
 	}
 	
 	@RequestMapping(value = "/sms_get")
-  	public String sms_get(Map<String, Object> paramMap, Model model) {
+  	public String sms_get(@RequestParam Map<String, Object> paramMap, Model model
+  			/*@RequestParam(value="Result", required=false) List<String> Result,
+			@RequestParam(value="SeqNum", required=false) List<String> SeqNum,
+			@RequestParam(value="UserCode", required=false) List<String> UserCode,
+			@RequestParam(value="DeptCode", required=false) List<String> DeptCode,
+			@RequestParam(value="Phone", required=false) List<String> Phone,
+			@RequestParam(value="RecvTime", required=false) List<String> RecvTime,
+			@RequestParam(value="ReqPhone", required=false) List<String> ReqPhone,
+			@RequestParam(value="Error", required=false) List<String> Error*/) {
+		
+		/*{CallCount=31260810, SeqNum=19, UserCode=seantour2011, DeptCode=AK-UFG-AG, Result=2, Error=101, Phone=01031663135,
+				RTime=00000000000000, RecvTime=20190124161612, ReqPhone=0222028565}*/
+
+		
+		
 		model.addAttribute("result", paramMap.toString());
-  		System.out.println(paramMap.toString());
+  		System.out.println("결과값 : "+paramMap.toString());
+  		/*System.out.println(Result+","+SeqNum+","+UserCode);*/
 		return "/cms_view/etc/sms_get";
 	}
 	

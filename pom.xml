@@ -65,6 +65,13 @@
 			<version>1.4</version>
 		</dependency>
 		
+		<!-- 마리아 DB -->
+		<dependency>
+		    <groupId>org.mariadb.jdbc</groupId>
+		    <artifactId>mariadb-java-client</artifactId>
+		    <version>2.3.0</version>
+		</dependency>
+
 		<!-- cglib ibatis -->
 		<dependency>
 			<groupId>cglib</groupId>

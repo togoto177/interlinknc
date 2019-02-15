@@ -11,6 +11,44 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#textarea_msg1').keyup();
+    $('#testClick').click(function() {
+    	/* $.ajax({ 
+			type: 'get' , 
+			url: '/interlinknc/sms_get?startPage=12333더ㅏ' ,
+			async : false,
+			cache : false,
+			dataType : 'text' ,
+			success: function(data) { 
+				console.log("성공");
+			}
+    	}); */
+    	
+    	$.ajax({
+		    url: 'http://interlink3.cafe24.com/interlinknc/sms_get', // 요청 할 주소
+		    /* url: '/interlinknc/sms_get', */
+		    async: false, // false 일 경우 동기 요청으로 변경
+		    type: 'GET', // GET, PUT
+		    data: {
+		    	'Result' : "4",
+		    	'SeqNum' : "10",
+		    	'UserCode' : "UserCode10",
+		    	'DeptCode' : "DeptCode10",
+		    	'Phone' : "Phone10",
+		    	'RTime' : "RTime10",
+		    	'RecvTime' : "RecvTime10",
+		    	'ReqPhone' : "ReqPhone10",
+		    	/* 'CallCount' : "CallCount10", */
+		    	'Error' : "101"
+		    }, // 전송할 데이터
+		    dataType: 'json', // xml, json, script, html
+		    success: function(data) {
+		    	console.log("성공!");
+		    }, // 요청 완료 시
+		    error: function(data) {
+		    	console.log("error");
+		    }
+		}); 
+    });
 }); 
 
 </script>
@@ -65,6 +103,8 @@ $(document).ready(function(){
 		<input type="hidden" name="division" id="division" value="S" />
 	</form>
 	</div>
+	
+	<a id="testClick">click</a>
 </div>
 </body>
 </html>
