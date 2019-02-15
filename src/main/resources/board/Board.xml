@@ -319,7 +319,7 @@
 		
 		(select (left(a.business_period ,4))
 		from portfolio_tb a left join board_tb b on a.board_seq = b.board_seq where b.board_use_yn= 'y' and (left(a.business_period ,4)) <![CDATA[ > ]]> #{pf_year} order by (left(a.business_period ,4)) LIMIT 1) as pf_next_year,
-		
+		 
 		(select (left(a.business_period ,4))
 		from portfolio_tb a left join board_tb b on a.board_seq = b.board_seq where b.board_use_yn= 'y' and (left(a.business_period ,4))order by (left(a.business_period ,4)) LIMIT 1) as pf_next_min_year
 	from portfolio_tb a left join board_tb b on a.board_seq = b.board_seq
