@@ -584,6 +584,7 @@ $(document).ready(function() {
 				<div class="coustomerLeftImg" id="map" style="width: 100%; height: 340px; border: 1px solid #0033cc;">
 				</div>
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d82b4891a59728c973a033fb7e33bb6e"></script>
+				
 				<script>
 					var container = document.getElementById('map');
 					var options = {
