@@ -10,3 +10,12 @@
 <script src="js/main/main.js"></script>
 <script src="js/main/jquery.bxslider.js"></script>
 <script src="js/board/board.js"></script>
+<!-- before www-->
+<script type="text/javascript"> 
+var host = location.host.toLowerCase(); 
+var currentAddress = location.href; 
+if (host.indexOf("www")== -1) { 
+	currentAddress = currentAddress.replace("//","//www."); 
+	location.href = currentAddress; } 
+</script>
+
